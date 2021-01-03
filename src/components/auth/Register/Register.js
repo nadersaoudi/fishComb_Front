@@ -56,7 +56,7 @@ export default class Register extends Component {
                 <div className="row">
                     <div className='col-3'></div>
                     <div className='col-6'>
-                <div className="card col-md-10">
+                <div className="card col-md-9">
                     <div className="card-body">
                         <form onSubmit={this.handleSubmit}>
                             <div className="mb-4 mt-3 ">
@@ -64,11 +64,12 @@ export default class Register extends Component {
                             </div>
                             <div className="form-group">
                                 <div className="row">
-                                    <div className="col-md-6 mb-3 ">
+                                    <div className="col-5 mb-3 ">
                                         <input type="text" className="form-control reg__input" placeholder="First Name"
                                                onChange={e => this.firstname = e.target.value}/>
                                     </div>
-                                    <div className="col-md-6 mb-3 ">
+                                    <div className='col-2'></div>
+                                    <div className="col-5 mb-3 ">
                                         <input type="text" className="form-control reg__input" placeholder="Last Name"
                                                onChange={e => this.lastname = e.target.value}/>
                                     </div>
@@ -293,3 +294,5 @@ export default class Register extends Component {
         );
     }
 }
+
+

@@ -16,7 +16,7 @@ const Container = () => {
 return(
 
   <div classes='row no-gutters '>
-     <div className="content-wrapper col-10">
+     <div className="content-wrapper col-10 px-0">
     <main role="main">
         <div className="main">
       
