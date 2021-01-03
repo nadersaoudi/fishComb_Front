@@ -1,0 +1,26 @@
+.Reset{
+    padding:15.2%
+}
+
+.card-reset{
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0.45rem !important;
+}
+
+.res-button{
+    background-color: #323F56 !important;
+	border: 0px solid !important;
+	border-radius: 0 !important;
+	padding: 0.7rem 0.75rem !important; 
+}
+.res-button:hover{
+    background-color: #00E2C8 !important;
+}
+.res__input{
+  
+ 
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 14px;
+}

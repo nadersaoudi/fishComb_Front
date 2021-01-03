@@ -1,0 +1,123 @@
+.form-signin{
+	margin: -10px;
+	align-items: center;
+	
+	
+   
+}
+
+.Login{
+	width: 100%;
+	padding-top: 10%;
+			
+}
+.img{
+	margin: 40px auto;
+	width: 220px !important;
+    
+}
+
+
+.card {
+	position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,.125);
+     border-radius: 0 !important;
+	padding: 0.25rem !important;
+}
+
+.log_su{
+	font-size: 12px;
+    font-weight: 750;
+}
+
+.log__input{
+	background-color: #F7F8F9 !important;
+	
+
+}
+
+.log__text{
+	font-size: 11.5px;
+
+	
+}
+
+.log-button{
+	background-color: #323F56 !important;
+	border: 0px solid !important;
+	border-radius: 0 !important;
+	padding: 0.7rem 0.75rem !important; 
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 20px;
+	text-align: center;
+	
+	
+}
+
+.log-button:hover{
+	background-color: #00E2C8 !important;
+}
+
+
+
+.btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn {
+	background-color: #F7F8F9 !important;
+	border: 0px solid !important;
+	color: #555 !important; 
+	
+}
+.btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:hover{
+	background-color: #00E2c8 !important;
+	
+}
+
+.btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:first-child):not(.dropdown-toggle) {
+	margin-left: 10px !important;
+}
+
+.form-control{
+	border-radius: 0 !important;
+	
+}
+
+.log__link{
+	text-align:center;
+	font-size: 15px;
+	color: #02175c;
+    text-decoration: none !important;
+	background-color: transparent !important;
+    font-weight: 500;
+}
+.span1{
+	text-align: center;
+}
+.face{
+	text-align: left;
+}
+.log-button1{
+	background-color: #00E2c8 !important;
+	border: 0px solid !important;
+	border-radius: 0 !important;
+	padding: 0.7rem 0.75rem !important; 
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 20px;
+	text-align: center;
+	
+}
+.log-button1:hover{
+	background-color: #323F56 !important;
+}
+.center_text_box{
+	background-color: rgba(0, 0, 0, 0.502);
+    max-width: 678px;
+    padding: 40px 70px;
+    text-align: center;
+    margin-top: 225px;
+    margin-left: 30px;
+}

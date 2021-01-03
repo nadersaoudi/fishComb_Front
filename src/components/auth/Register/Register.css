@@ -1,0 +1,58 @@
+body {
+	height:100%;
+	background-color: #f7f8fa !important;
+
+}
+
+.Register{
+	padding-top: 4%;
+}
+
+.card {
+	margin: 0 auto;
+}
+
+.reg_su{
+	font-size: 12px;
+    font-weight: 750;
+}
+
+.reg__input{
+	background-color: #F7F8F9 !important;
+}
+
+.reg__text{
+	font-size: 11.5px;
+	margin-bottom: 7%;
+}
+
+.reg-button{
+	background-color: #323F56 !important;
+	border: 0px solid !important;
+	border-radius: 0 !important;
+	padding: 0.7rem 0.75rem !important; 
+}
+
+.reg-button:hover{
+    background-color: #00E2C8 !important;
+    border-radius: 0 !important;
+}
+
+
+
+.btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn {
+	background-color: #F7F8F9 !important;
+	border: 0px solid !important;
+    color: #555 !important; 
+	border-radius: 0 !important;
+	 padding: 0.8rem 0.9rem;
+}
+.btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:hover{
+    background-color: #00E2c8 !important;
+    border-radius: 0 !important;
+    
+}
+
+.btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:first-child):not(.dropdown-toggle) {
+	margin-left: 10px !important;
+}

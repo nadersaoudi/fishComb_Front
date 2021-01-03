@@ -1,0 +1,153 @@
+.pub{
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	border-radius: 0;
+	position: relative;
+	background-color: #fff;
+
+}
+.post{
+    border: 1px 1px solid black;
+    width: 100%;
+}
+.post > input{
+    border: none;
+    width: 100%;
+}
+.post > button{
+    align-items: right;
+}
+.post > input {
+	outline-width: 0;
+	border:0;
+	padding: 3%;
+	background-color: #fff;
+}
+
+
+.pub__top{
+	display: flex;
+	border-bottom: 0.1px solid #c7c7c8;
+	padding-bottom: 15px;
+	padding: 3%;
+}
+.pub__top > form {
+	flex:1;
+	display: flex;
+}
+.pub__top > form > input {
+	outline-width: 0;
+	border:0;
+	
+	background-color: #fff;
+}
+.pub__top > form  > button {
+	display: none;
+}
+.pub__input {
+	flex: 1;
+
+}
+.pub__bottom{
+	display: flex;
+	
+
+}
+
+.pub__option{
+	margin-left: 9px;
+	display: flex;
+	align-items: center;
+	padding: 3%;
+}
+
+.pub__option > h6{
+	font-size: 14px;
+	font-weight: 100  ;
+	color: black;
+	letter-spacing: 0.05;
+	cursor: pointer;
+	margin-left: 7px;
+}
+
+
+
+.form-pub{
+	position: relative;
+    min-width: 0;
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,.125);
+     border-radius: 0 !important;	
+}
+
+#sub{
+	width: 80px;	
+	height: fit-content;
+	margin-top: 13px;
+	border: none;
+	display: none;
+	background-color: rgb(228, 228, 228);
+}
+
+#bi{
+	color :#35bfff;
+	height: 77%;
+    width: 42px;
+}
+.iconpub1{
+	color:#f8a15a;
+	font-size: 32px;
+}
+.flex{
+    display: flex;
+}
+#pub-bot{
+    padding: 1%;
+}
+#lik{
+    font-size:50px;
+    color:#c7c7c8;
+
+}
+#linkurl{
+	display:none;
+}
+#pnt{
+	margin-left: auto;
+	
+
+}
+@media only screen and (max-width: 200px) {
+	/* For mobile phones: */
+	[class*="col-"] {
+	  width: 100%;
+	}
+  }
+  [class*="col-"] {
+	width: 100%;
+  }
+  
+  @media only screen and (min-width: 768px) {
+	/* For desktop: */
+	.col-1 {width: 8.33%;}
+	.col-2 {width: 16.66%;}
+	.col-3 {width: 25%;}
+	.col-4 {width: 33.33%;}
+	.col-5 {width: 41.66%;}
+	.col-6 {width: 50%;}
+	.col-7 {width: 58.33%;}
+	.col-8 {width: 66.66%;}
+	.col-9 {width: 75%;}
+	.col-10 {width: 83.33%;}
+	.col-11 {width: 91.66%;}
+	.col-12 {width: 100%;}
+  }
+ 
+  .col-6.mt-4{
+	padding-left: 0!important;
+}
+.postPv{
+	font-size: 14px;
+	font-weight: 360;
+}

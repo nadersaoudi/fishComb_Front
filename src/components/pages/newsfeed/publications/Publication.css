@@ -1,0 +1,83 @@
+.ml {
+    font-size: 50px;
+}
+#lik{
+    font-size:50px;
+    color:#c7c7c8;
+
+}
+
+#lo{
+    padding: 3%;
+}
+#lcp{
+    cursor: pointer;
+}
+#pnt{
+    cursor: pointer;
+}
+.nameuser{
+    font-weight: 500;
+}
+.datepost{
+    font-size: 14px;
+    font-weight: 100;
+}
+.like{
+    fill:#000000;
+ }
+#like:hover{
+    cursor: pointer;
+    fill :rgb(65, 105, 236)  ;
+}
+.icon:active{
+        cursor: pointer;
+}
+#comment{
+    background-color: rgb(231, 228, 228);
+   
+   
+}
+#com{
+    border: none;
+    font-size: 80%;
+    background-color: transparent;
+    outline-width: 0;
+    border-radius: 25px;
+  
+}
+
+
+.ButCom{
+    border : 0;
+    background-color: transparent;
+}
+.But__Like{
+    border : 0;
+    background-color: transparent;
+}
+.b{
+    display: none;
+}
+.comm{
+    outline: 0;
+    background: #f2f2f2;
+    border: 0;
+    padding: 1.5%;
+    border-radius: 3%;
+}
+.pp{
+    align-items: center;
+    
+}
+#comment{
+    outline: 0;
+    background: #f2f2f2;
+    border: 0;
+    padding: 1.5%;
+    border-radius: 3%;
+  
+}
+.butDelCom{
+    color: #c8bdbd; 
+}

@@ -1,0 +1,19 @@
+button{
+    background-color: none;
+}
+.mt-2>button{
+    width: 185px;
+
+}
+.roombtn{
+    background-color: #F7F8F9;
+}
+#add{
+    border: none;
+}
+#box{
+    border-left: solid 1px;
+}
+.col-8-pb-3-h-100{
+    border-left: solid 1px;
+}

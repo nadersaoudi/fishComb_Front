@@ -1,0 +1,14 @@
+.card{
+    display:-webkit-box!important;
+}
+
+#btn{
+    background-color: white !important;
+    color: #fff;
+    border-left: 0 solid transparent;
+    align-items: center;  
+
+}
+#btn__ask{
+    background-color: white;
+}

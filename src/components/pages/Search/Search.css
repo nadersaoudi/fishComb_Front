@@ -1,0 +1,10 @@
+.add{
+    color :rgb(104, 97, 97);
+    font-size: 20px;
+    cursor: pointer;
+}
+#cardSearsh{
+    border: 0 ;
+    outline: 0;
+    border-radius: 5;
+}
