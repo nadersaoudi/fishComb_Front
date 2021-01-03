@@ -93,6 +93,8 @@ return(
         </svg>
     </div>
     <div className="row">
+      <div className='col-3'></div>
+      <div className='col-6'>
     <div className="card col-md-5">
         <div className="card-reset">
             <form onSubmit={e => onSubmit(e)}>
@@ -117,7 +119,8 @@ return(
             </form>
         </div>
     </div>
-
+    </div>
+    <div className='col-3'></div>
     </div>
   
 </div>
