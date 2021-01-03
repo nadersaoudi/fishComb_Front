@@ -41,8 +41,8 @@ const Login = ({ log, isAuthenticated }) => {
       </div>
 
       <div className='row'>
-        <div className='col-3'></div>
-        <div className='col-6'>
+        
+  
         <div className="card col-md-3 ">
           <div className="card-body">
             
@@ -81,8 +81,8 @@ const Login = ({ log, isAuthenticated }) => {
             </form>
           </div>
         </div>
-        </div>
-        <div className='col-3'></div>
+     
+      
      
       </div>
 
