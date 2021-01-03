@@ -54,13 +54,13 @@ const Watch =() => {
                             <Avatar  src="../../../../jeje.jpg" className={classes.large} />
                         </div>
                         
-                        <div className='col-9'>
+                        <div className='col-8'>
                             <span className='nameuser'>Tom Hard</span> 
                             <div className='row'>
                                 <div className='col-2 datepost'>Starts in2m</div></div>
                         </div>
                         <div className='col-1'></div>
-                        <div className='col-1'>
+                        <div className='col-1 pt-0 ml-4'>
                         <Button>Join Now</Button>
                         </div>
 

@@ -49,7 +49,7 @@ export default function (state = initialState, action) {
                 loading: false
             }
         case ADD_COMMENT:
-           
+           // eslint-disable-next-line
                 const com = state.posts.map(c =>{
                     
                     c.comments.push(payload)

@@ -30,6 +30,7 @@ const Search = ({ friend, addFriend }) => {
   }));
   const classes = useStyles();
   const friend_id = friend.data.user_id
+  // eslint-disable-next-line
  const [disable,setDisable]=useState(false)
   return (
     <div className='row pt-3'>

@@ -56,7 +56,7 @@ export default class Register extends Component {
                 <div className="row">
                     <div className='col-3'></div>
                     <div className='col-6'>
-                <div className="card col-md-9">
+                <div className="card col-md-8">
                     <div className="card-body">
                         <form onSubmit={this.handleSubmit}>
                             <div className="mb-4 mt-3 ">

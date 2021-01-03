@@ -95,7 +95,7 @@ export const addPost = formData => async dispatch => {
             payload: res.data.data
         })
         // save post id 
-        idpost = res.data.data.id;
+        
         // create function 
         getPost(res.data.data);
         toast.success('Post Created');
@@ -122,7 +122,7 @@ export function getPost(post) {
 
 
 
-var idpost
+
 export const addComment = (idpost, formData) => async dispatch => {
 
     const config = {

@@ -9,12 +9,13 @@ import { addPost } from '../../../../Actions/Post';
 import $ from 'jquery';
 
 const Post = ({ auth: { user }, addPost,  }) => {
+  // eslint-disable-next-line
   const [show, setShow] = useState(false);
  
   const handleShow = () => setShow(true);
   const [url, setUrl] = useState(null);
   const inputEl = useRef(null);
-
+// eslint-disable-next-line
   const [formData, setFormData] = useState({
     link: '',
     description: '',
