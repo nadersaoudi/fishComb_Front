@@ -39,7 +39,7 @@ const Login = ({ log, isAuthenticated }) => {
           <img src="../../../../dist/img/logofish.png" alt="" /></a>
 
       </div>
-
+      
       <div className='row'>
         <div className='col-3'></div>
         <div className='col-6'>
@@ -47,6 +47,7 @@ const Login = ({ log, isAuthenticated }) => {
           <div className="card-body">
             
             <form onSubmit={e => onSubmit(e)} className="form-signin">
+            
               <div className="mb-3  ">
               </div>
               <div className="form-group">
@@ -68,6 +69,7 @@ const Login = ({ log, isAuthenticated }) => {
               <div className="col-md-12  mt-3 mb-4 span1" >
                 <NavLink to="/reset" className="log__link" > <span>Forget password?</span></NavLink>
               </div >
+              
               <hr></hr>
               <div>
                 <NavLink to="/register">
@@ -79,11 +81,12 @@ const Login = ({ log, isAuthenticated }) => {
 
 
             </form>
+            
           </div>
+          
         </div>
         </div>
         <div className='col-3'></div>
-     
       </div>
 
 
