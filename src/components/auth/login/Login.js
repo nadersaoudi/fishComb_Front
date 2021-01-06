@@ -23,7 +23,7 @@ const Login = ({ log, isAuthenticated }) => {
   const onSubmit = async e => {
     e.preventDefault();
     log(login, password);
-    console.log(login, password);
+    
   }
   if (Cookies.get('user')) {
 
