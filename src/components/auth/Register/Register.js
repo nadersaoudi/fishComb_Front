@@ -4,7 +4,7 @@ import axios from 'axios';
 import {Redirect} from "react-router-dom";
 import { toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Footer from "../../layout/Footer/Footer"
 export default class Register extends Component {
     state = {}
     handleSubmit = e => {
@@ -285,7 +285,8 @@ export default class Register extends Component {
                 </div>
               <div className='col-3'></div>
                 </div>
-               
+                <div className='pt-5'></div>
+      <Footer />
              
             </div>
 

@@ -3,6 +3,7 @@ import { reset } from '../../../Actions/auth';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './Reset.css';
+import Footer from "../../layout/Footer/Footer"
 const Reset = ({ reset }) => {
     const [formData, setFormData] = useState({
         email: ''
@@ -20,6 +21,7 @@ const Reset = ({ reset }) => {
       }
 
 return(
+    <div>
     <div className="Reset">
     <div className="row">
     <a href="/" className="img">
@@ -55,8 +57,12 @@ return(
     </div>
     <div className='col-3'></div>
     </div>
-  
+   
 </div>
+
+      <Footer />
+</div>
+
 )
 }
 Reset.propTypes = {

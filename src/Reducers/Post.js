@@ -50,12 +50,13 @@ export default function (state = initialState, action) {
             }
         case ADD_COMMENT:
            // eslint-disable-next-line
-                const com = state.posts.map(c =>{
+           
+               /* const com = state.posts.map(c =>{
                     
                     c.comments.push(payload)
                     console.log(c.id)
                 } );
-                console.log(com)
+                console.log(com)*/
 
          
            

@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { log } from "../../../Actions/auth";
+import Footer from "../../layout/Footer/Footer"
 import {
   NavLink
 } from "react-router-dom";
@@ -88,8 +89,8 @@ const Login = ({ log, isAuthenticated }) => {
         </div>
         <div className='col-3'></div>
       </div>
-
-
+      <div className='pt-5'></div>
+      <Footer />
     </div>
 
   )
