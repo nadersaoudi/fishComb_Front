@@ -25,7 +25,7 @@ return(
     <div className="Reset">
     <div className="row">
     <a href="/" className="img">
-          <img src="../../../../dist/img/logofish.png" alt="" /></a>
+          <img src="../../../../dist/img/logofish.png" alt="fishcomb" /></a>
     </div>
     <div className="row">
       <div className='col-3'></div>
