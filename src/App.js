@@ -8,7 +8,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,HashRouter
 } from "react-router-dom";
 import store from "./store";
 import { loadUser  } from "./Actions/auth";
@@ -32,8 +32,9 @@ const App = () => {
 
   return (
     <div className="container-fluid">
-    <Router>
+    
     <Provider store={store}>
+    <HashRouter>
     <React.Suspense fallback={loading()}>
     <Switch>
       <Route path="/login">
@@ -57,9 +58,10 @@ const App = () => {
      
     </Switch>
     </React.Suspense>
+    </HashRouter>
     </Provider>
     
-  </Router>
+ 
   </div>
   );
 }
