@@ -123,8 +123,8 @@ export function getPost(post) {
 
 
 
-export const addComment = (idpost, formData) => async dispatch => {
-
+export const addComment = (idpost, formData) => async (dispatch,getState) => {
+   // console.log(getState().Post.posts)
     const config = {
         headers: {
             Authorization: 'Bearer ' + Cookies.get('user'),
@@ -134,12 +134,14 @@ export const addComment = (idpost, formData) => async dispatch => {
 
 
     try {
-
-        const res = await axios.post(`/api/posts/${idpost}/comment`, formData, config)
-
+        
+            await axios.post(`/api/posts/${idpost}/comment`, formData, config)
+             const res = await axios.post('/api/posts/getaLlposts', {}, config)
+             //  const finded= getState().Post.posts.filter(el=>el.id !==res.data.post_id)
+           // console.log(res.data)
         dispatch({
-            type: ADD_COMMENT,
-            payload: res.data
+            type: GET_POSTS,
+            payload: res.data //finded.concat(res.data)
         })
         toast.success('Your have commented this Post');
     } catch (error) {

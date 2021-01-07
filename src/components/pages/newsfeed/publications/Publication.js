@@ -199,7 +199,7 @@ const Publication = ({
                   </button>
                 </div>
                 <div className="col-3">
-                  {/*posts.likes.like_count > 0 && (<div className="col-4 datepost">{posts.likes.like_count} </div>)*/}
+                  {(<div className="col-4 datepost">{posts.likes.length} </div>)}
                 </div>
 
               </div>
@@ -228,7 +228,7 @@ const Publication = ({
 
                 </div>
 
-                <div className="col-3 datepost">{/*posts.comments.length*/} </div>
+                <div className="col-3 datepost">{posts.comments.length} </div>
               </div>
             </div>
             <div className="col-2" id="lcp">

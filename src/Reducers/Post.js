@@ -11,8 +11,10 @@ const initialState = {
 // eslint-disable-next-line
 export default function (state = initialState, action) {
     const { type, payload } = action;
+  
     switch (type) {
         case GET_POSTS:
+          
             return {
                 ...state,
                 posts: payload,
@@ -38,8 +40,7 @@ export default function (state = initialState, action) {
         case UPDATE_LIKES:
             return {
                 ...state,
-                posts: state.posts.map(post => post.id === payload.data.id ? post.likes = payload.data : post),
-                loading: false
+                posts: state.posts.map(post => post.id === payload[0].pivot.post_id ? { likes: payload,...post  } : post), loading: false
             }
         case DELETE_POST:
             return {
@@ -47,18 +48,20 @@ export default function (state = initialState, action) {
                 posts: state.posts.filter(post => post.id !== payload),
                 loading: false
             }
-        case ADD_COMMENT:
-            var index =0;
+       case ADD_COMMENT:
+            //var index =0;
            
             return {
                 ...state,
-                   posts:[{
+                posts:state.posts
+             /* posts:[{
                       
                        ...state.posts[index],
                        comments:[payload,...state.posts[index].comments]
-                   }],
-           
+                   }],*/
             }
+           
+            
         case REMOVE_COMMENT:
             return {
                 ...state,
