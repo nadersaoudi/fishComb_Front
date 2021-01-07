@@ -35,13 +35,13 @@ const Publication = ({
   posts,
   deletePost,
   addLike,
-  addComment, getPosts,post
+  addComment
 }) => {
 
 
   const [hidden, setHidden] = useState(true);
   const [body, setText] = useState("");
-  
+
 
   const onclick = () => {
     setHidden(false);
@@ -49,7 +49,7 @@ const Publication = ({
 
   const addcomment = async (id, body) => {
     addComment(id, body);
-   // getPosts();
+    // getPosts();
   };
   /******************************/
   const classes = useStyles();
@@ -121,14 +121,14 @@ const Publication = ({
                       aria-haspopup="true"
                       onClick={handleToggle}
                     >
-                        <svg width="26px" height="7px" version="1.1" xmlns="http://www.w3.org/1999/xlink" >
+                      <svg width="26px" height="7px" version="1.1" xmlns="http://www.w3.org/1999/xlink" >
                         <g id="Group" transform="translate(0.5 0.5)">
                           <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" id="Oval" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
                           <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(20 0)" id="Oval-Copy" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
                           <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(10 0)" id="Oval-Copy-2" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
                         </g>
                       </svg>
-                 </Button>
+                    </Button>
                     <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                       {({ TransitionProps, placement }) => (
                         <Grow
@@ -199,9 +199,9 @@ const Publication = ({
                   </button>
                 </div>
                 <div className="col-3">
-                {/*posts.likes.like_count > 0 && (<div className="col-4 datepost">{posts.likes.like_count} </div>)*/}
-                 </div>
-               
+                  {/*posts.likes.like_count > 0 && (<div className="col-4 datepost">{posts.likes.like_count} </div>)*/}
+                </div>
+
               </div>
             </div>
             <div className="col-2">
@@ -227,7 +227,7 @@ const Publication = ({
 
 
                 </div>
-              
+
                 <div className="col-3 datepost">{/*posts.comments.length*/} </div>
               </div>
             </div>
@@ -254,11 +254,11 @@ const Publication = ({
               </div>
             </div>
           </div>
-          
+
 
           <div className='row pt-2' hidden={hidden}>
             <div ><hr /></div>
-            <form 
+            <form
               onSubmit={(e) => {
                 e.preventDefault();
                 addcomment(posts.id, { body });
@@ -285,20 +285,24 @@ const Publication = ({
                     add
                 </button>
                 </div>
-              </div> 
+              </div>
             </form>
             <div className="row pt-1">
               <div className='col-1'></div>
               <div className='col-11'>
-              {posts && posts.comments.map((comments) => (
-                <SingleComm key={comments.id} comments={comments} />
-              ))}
+                {posts && posts.comments.map(comments => 
+
+                  (
+                    <SingleComm key={comments.id} comments={comments} />
+                  )
+                 
+                )}
               </div>
 
 
             </div>
-            
-            
+
+
           </div>
         </div></div></div>
   );

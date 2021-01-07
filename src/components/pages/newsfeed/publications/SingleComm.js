@@ -14,7 +14,7 @@ const SingleComm =( {deleteComment,comments})=> {
              <div className="col-1">
              <Avatar  />
             </div>
-          
+            
             <div className="col-10" id="comment" >
             {comments.body} 
             </div>

@@ -91,11 +91,11 @@ export const addPost = formData => async dispatch => {
     try {
         const res = await axios.post('/api/posts', formData, config)
         dispatch({
-            type:  ADD_POST,
+            type: ADD_POST,
             payload: res.data.data
         })
         // save post id 
-        
+
         // create function 
         getPost(res.data.data);
         toast.success('Post Created');
@@ -161,9 +161,8 @@ export const deleteComment = id => async dispatch => {
                     'Content-Type': 'application/json'
                 }
             }
-
-        const res= await axios.delete(`/api/posts/comments/${id}`, config);
-          // console.log(res.data.data)
+            await axios.delete(`/api/posts/comments/${id}`, config);
+            // console.log(res.data.data)
             dispatch({
                 type: REMOVE_COMMENT,
                 payload: id,

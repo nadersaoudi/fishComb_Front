@@ -24,9 +24,13 @@ const NewFeed = ({ Post: { posts }, getPosts }) => {
         {posts.length > 0 ? (
           <div className='col-6'>
             <div className='row'>
-             
-                {posts.map(posts => <Publication key={posts.id} posts={posts} />)}
-           
+
+              {posts && posts.map(posts =>
+                <Publication key={posts.id} posts={posts} />
+
+
+              )}
+
             </div>
 
           </div>

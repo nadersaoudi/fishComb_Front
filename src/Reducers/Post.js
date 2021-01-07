@@ -25,7 +25,6 @@ export default function (state = initialState, action) {
                 loading: false
             }
         case ADD_POST:
-            console.log(payload)
             return {
                 isAuthenticated: true,
                 ...state,
@@ -49,18 +48,25 @@ export default function (state = initialState, action) {
                 loading: false
             }
         case ADD_COMMENT:
-            
+            var index =0;
+           
             return {
                 ...state,
                    posts:[{
-                       ...state.posts[0],
-                       comments:[...state.posts[0].comments,payload]
-                   }]
-                
+                      
+                       ...state.posts[index],
+                       comments:[payload,...state.posts[index].comments]
+                   }],
+           
             }
         case REMOVE_COMMENT:
             return {
                 ...state,
+                posts:[{
+                    ...state.posts[0],
+                    comments:[...state.posts[0].comments.filter(c=> c.id !== payload)]
+                }],
+                
             }
         default:
             return state;
