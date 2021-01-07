@@ -36,11 +36,12 @@ export default function (state = initialState, action) {
         case POST_ERROR:
             return {
                 ...state,
+               // posts: state.posts.map(post => post.id === payload[0].pivot.post_id ? { ...post,likes: null  } : post), loading: false
             }
         case UPDATE_LIKES:
             return {
                 ...state,
-                posts: state.posts.map(post => post.id === payload[0].pivot.post_id ? { likes: payload,...post  } : post), loading: false
+              //  posts: state.posts.map(post => post.id === payload[0].pivot.post_id ? { ...post,likes: payload  } : post), loading: false
             }
         case DELETE_POST:
             return {

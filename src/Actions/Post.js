@@ -29,7 +29,7 @@ export const getPosts = () => async dispatch => {
 }
 //Add like
 export const addLike = (post_id) => async dispatch => {
-    console.log(post_id)
+   
     const config = {
         headers: {
             Authorization: 'Bearer ' + Cookies.get('user'),
