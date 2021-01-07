@@ -1,0 +1,23 @@
+.home{
+    background-image: url('./hero_banner.jpg');
+}
+.header{
+    background-color:  #fff
+}
+.logo{
+    align-items: center
+}
+.title{
+    text-align: center;
+    color : red;
+}
+
+.login{
+    text-decoration: none;
+    color : black;
+    font-size: 22px;
+    font-weight: 500;
+}
+.login:hover{
+    color: #00E2C8;
+}

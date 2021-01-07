@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST, ADD_COMMENT, REMOVE_COMMENT } from './types';
+import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST ,UPDATE_COMMENT ,ERROR_UPDATE } from './types';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 toast.configure();
-
 
 //get posts
 export const getPosts = () => async dispatch => {
@@ -119,10 +118,6 @@ export function getPost(post) {
     //show post
 }
 
-
-
-
-
 export const addComment = (idpost, formData) => async (dispatch,getState) => {
    // console.log(getState().Post.posts)
     const config = {
@@ -131,7 +126,6 @@ export const addComment = (idpost, formData) => async (dispatch,getState) => {
             'Content-Type': 'application/json'
         }
     }
-
 
     try {
         
@@ -181,4 +175,26 @@ export const deleteComment = id => async dispatch => {
 
     }
 
+}
+//Update comments
+export const updateComment = (commentId , formData) => async dispatch => {
+    const config = {
+        headers: {
+            Authorization : 'Bearer ' + Cookies.get('user'),
+            'Content-Type': 'application/json'
+        }
+    }
+    try {
+         await axios.patch(`/api/posts/${commentId}/comment`,formData,config);
+         const res = await axios.post('/api/posts/getaLlposts', {}, config)
+        dispatch({
+            type:UPDATE_COMMENT,
+            payload: res.data
+        })
+     }
+     catch (error) {
+        dispatch({
+            type: ERROR_UPDATE,
+        });
+     }
 }

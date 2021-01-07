@@ -4,6 +4,7 @@ import Dashboard from './components/pages/Dashboard/Dashboard'
 import Login  from './components/auth/login/Login';
 import Reset  from './components/auth/Reset/Reset';
 import Register from './components/auth/Register/Register';
+import HomePage from './components/auth/HomePage/HomePage';
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,6 +28,7 @@ const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
+
  
 
 
@@ -36,6 +38,9 @@ const App = () => {
     <Provider store={store}>
     <React.Suspense fallback={loading()}>
     <Switch>
+    <Route path="/home">
+        <HomePage />
+      </Route>
       <Route path="/login">
         <Login />
       </Route>

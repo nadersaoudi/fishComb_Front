@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, {  useState} from 'react';
 import './Header.css';
 import {  Link } from "react-router-dom"
 import  { Avatar } from '@material-ui/core';
@@ -10,19 +10,11 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Searchfriend} from '../../../Actions/Friends'
 import { useHistory } from 'react-router-dom';
+
 const Header =  ({ auth: {  user }, logout,Searchfriend }) => {
 
-    useEffect(() => {
-        getuser();
-      }, [])
-      const getuser =()=> {
-        
-      }
-
-
     
-      
-
+  
       const [anchorEl, setAnchorEl] = React.useState(null);
 
       const handleClick = (event) => {
@@ -122,19 +114,18 @@ return(
 
       </div>
       <div className="col-3  flex">
-    <div className="col-2 pt-1">
+    <div className="col-1 pl-0 pt-1">
     <Avatar  src={user && user.profile_image}  className={classes.large}  />
     </div>
-    
-    <div className="col-3 pt-3">
+    <div className="col-4 pt-3">
     <Link to={`/dashboard/profile`}  className='lin' >
          {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}
     </Link>
     </div>
-    <div className="col-2 pt-3">
+    <div className="col-2 pl-0 pt-3">
     <Link to={`/dashboard/newsfeed`}  className='lin'>Home</Link>
     </div>
-    <div className='col-4 pt-3 flex'>
+    <div className='col-5 pt-3 flex'>
         <div className='col-4 '>
         <svg width="20px" height="20px"  version="1.1" xmlns="http://www.w3.org/1999/xlink"  className="icon">
                     <g id="Chat-01">
@@ -154,7 +145,7 @@ return(
                           <path d="M0.0696772 0L6.88812 0C7.25167 1.8313 6.69827 4.41783 5.67631 5.74118C4.52034 7.26307 2.91116 7.41937 1.6555 6.13173C0.399847 4.84408 -0.231586 2.3901 0.0777559 0L0.0696772 0Z" transform="translate(7 15)" id="Path"  fill-rule="evenodd" stroke="none" />
                         </g>
                       </svg>
-
+                    
         </div>
         
         <div className='col-4 '>
