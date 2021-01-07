@@ -164,10 +164,11 @@ export const deleteComment = id => async dispatch => {
                 }
             }
             await axios.delete(`/api/posts/comments/${id}`, config);
+            const res = await axios.post('/api/posts/getaLlposts', {}, config)
             // console.log(res.data.data)
             dispatch({
-                type: REMOVE_COMMENT,
-                payload: id,
+                type: GET_POSTS,
+                payload: res.data,
 
             })
             toast.success('Delete success');

@@ -65,10 +65,11 @@ export default function (state = initialState, action) {
         case REMOVE_COMMENT:
             return {
                 ...state,
-                posts:[{
+                posts:state.posts
+               /* posts:[{
                     ...state.posts[0],
                     comments:[...state.posts[0].comments.filter(c=> c.id !== payload)]
-                }],
+                }],*/
                 
             }
         default:
