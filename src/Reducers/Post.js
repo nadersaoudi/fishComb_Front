@@ -49,22 +49,14 @@ export default function (state = initialState, action) {
                 loading: false
             }
         case ADD_COMMENT:
-           // eslint-disable-next-line
-           
-               /* const com = state.posts.map(c =>{
-                    
-                    c.comments.push(payload)
-                    console.log(c.id)
-                } );
-                console.log(com)*/
-
-         
-           
+            
             return {
-
                 ...state,
-               // posts: { ...state.posts, payload },
-                loading: false
+                   posts:[{
+                       ...state.posts[0],
+                       comments:[...state.posts[0].comments,payload]
+                   }]
+                
             }
         case REMOVE_COMMENT:
             return {

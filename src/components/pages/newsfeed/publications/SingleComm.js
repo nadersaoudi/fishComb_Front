@@ -27,6 +27,8 @@ const SingleComm =( {deleteComment,comments})=> {
          
     
       </div>
+     
+      
     
     )
 }

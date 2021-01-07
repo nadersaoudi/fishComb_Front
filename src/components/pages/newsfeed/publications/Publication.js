@@ -35,7 +35,7 @@ const Publication = ({
   posts,
   deletePost,
   addLike,
-  addComment, getPosts
+  addComment, getPosts,post
 }) => {
 
 
@@ -297,6 +297,8 @@ const Publication = ({
 
 
             </div>
+            
+            
           </div>
         </div></div></div>
   );
