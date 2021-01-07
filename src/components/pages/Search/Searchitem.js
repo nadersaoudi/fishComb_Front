@@ -29,7 +29,7 @@ const Searchitem = ({ Friends: { friend, loading } }) => {
             <div className='col-3'></div>
             <div className='col-9'>
             
-              {friend.map(f => (<Search key={f.id} friend={f} />))}
+              {friend && friend.map((f,index) => (<Search key={index} friend={f} />))}
             
             </div>
         

@@ -49,7 +49,7 @@ const Publication = ({
 
   const addcomment = async (id, body) => {
     addComment(id, body);
-    // getPosts();
+    
   };
   /******************************/
   const classes = useStyles();
