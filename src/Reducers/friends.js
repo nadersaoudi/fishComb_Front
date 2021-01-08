@@ -32,8 +32,7 @@ export default function (state = initialState, action) {
             case GET_INV:
             return {
                ...state,
-                friends: payload,
-                users:payload,
+                users: payload,
             }
         default:
             return state;

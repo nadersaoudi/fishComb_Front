@@ -93,3 +93,10 @@ fill :rgb(78, 75, 75);
     margin-top: 10px;
     border-radius: 10px;
   }
+
+  .add{
+      color : #343f54;
+  }
+  .abouts{
+      color: rgb(172, 167, 167);
+  }

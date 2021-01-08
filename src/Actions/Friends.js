@@ -52,7 +52,7 @@ try {
 
 }
 
-export const getMyinvitations = () =>  dispatch => {
+export const getMyinvitations = () => async  dispatch => {
     const config = {
         headers: {
             Authorization: 'Bearer ' + Cookies.get('user'),
@@ -60,11 +60,11 @@ export const getMyinvitations = () =>  dispatch => {
         }
     }
     try{
-      const res =  axios.post('/api/user/friends/myinvitations',{},config)
-      
+      const res = await axios.post('/api/user/friends/myinvitations',{},config)
+      console.log(res.data.users);
         dispatch({
             type:GET_INV,
-            payload: res
+            payload: res.data.users
             
         })
     }catch (error){

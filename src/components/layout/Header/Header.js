@@ -1,4 +1,4 @@
-import React, {  useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import './Header.css';
 import {  Link } from "react-router-dom"
 import  { Avatar } from '@material-ui/core';
@@ -8,14 +8,32 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import {Searchfriend} from '../../../Actions/Friends'
+import {Searchfriend} from '../../../Actions/Friends';
 import { useHistory } from 'react-router-dom';
+import Notification from './Notification';
+import Toast from 'react-bootstrap/Toast'
+const Header =  ({ auth: {  user }, logout,Searchfriend , Friends:{ users } }) => {
 
-const Header =  ({ auth: {  user }, logout,Searchfriend }) => {
+    useEffect(() => {
+        getuser();
+      }, [])
+      const getuser =()=> {
+        
+      }
 
-    
-  
+      const [visible, setvisible] = useState(false);
+
+
+      
+
+     const  handleClick1=e=> {
+      setvisible(visible === false ? true : false);
+      }
+
+      
       const [anchorEl, setAnchorEl] = React.useState(null);
+      
+  
 
       const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -114,18 +132,19 @@ return(
 
       </div>
       <div className="col-3  flex">
-    <div className="col-1 pl-0 pt-1">
+    <div className="col-2 pt-1">
     <Avatar  src={user && user.profile_image}  className={classes.large}  />
     </div>
+    
     <div className="col-4 pt-3">
     <Link to={`/dashboard/profile`}  className='lin' >
          {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}
     </Link>
     </div>
-    <div className="col-2 pl-0 pt-3">
+    <div className="col-2 pt-3">
     <Link to={`/dashboard/newsfeed`}  className='lin'>Home</Link>
     </div>
-    <div className='col-5 pt-3 flex'>
+    <div className='col-4 pt-3 flex'>
         <div className='col-4 '>
         <svg width="20px" height="20px"  version="1.1" xmlns="http://www.w3.org/1999/xlink"  className="icon">
                     <g id="Chat-01">
@@ -139,19 +158,53 @@ return(
         </div>
       
         <div className='col-4'>
-        <svg width="21px" height="22px"  version="1.1"  xmlns="http://www.w3.org/2000/svg" className="icon" >
+        <svg width="21px" height="22px"  version="1.1"  xmlns="http://www.w3.org/2000/svg" className="icon"        onClick={handleClick1}>
                         <g id="63-631368_community-transition-black-chat-icon-png-transparent-png-02">
                           <path d="M8.39318 3.743C7.53909 2.75915 7.70804 1.36059 8.77815 0.556153C9.76258 -0.17984 11.2073 -0.185995 12.1998 0.541574C13.2777 1.34993 13.4509 2.75664 12.5947 3.74884L12.8336 3.81881C15.7375 4.76058 17.4567 6.56831 17.898 9.26532C18.21 11.1664 18.4456 13.0761 18.7377 14.9801C18.8743 15.9165 19.3749 16.7827 20.1548 17.4322C20.3406 17.5925 20.5364 17.7442 20.7289 17.9016C20.9746 18.0691 21.0652 18.3588 20.9513 18.613C20.8419 18.8629 20.5581 19.0196 20.2544 18.9979L0.746799 18.9979C0.443889 19.0201 0.160414 18.8647 0.0498637 18.6159C-0.0624534 18.3679 0.0191885 18.0845 0.252307 17.9133C0.627315 17.6111 0.982966 17.2908 1.31762 16.954C1.88957 16.2993 2.23518 15.5139 2.31324 14.6914C2.57874 12.7933 2.79114 10.8835 3.1562 8.99708C3.6507 6.42836 5.37976 4.71393 8.1675 3.82173L8.36994 3.75758C8.36994 3.75758 8.38322 3.74884 8.39318 3.743ZM11.2572 2.34056C11.281 2.09295 11.1464 1.85421 10.9077 1.7209C10.669 1.58758 10.3658 1.58176 10.1207 1.70577C9.87557 1.82978 9.72913 2.06311 9.74058 2.3114C9.71678 2.55901 9.85146 2.79775 10.0902 2.93106C10.3288 3.06437 10.6321 3.0702 10.8772 2.94619C11.1223 2.82218 11.2687 2.58884 11.2572 2.34056L11.2572 2.34056Z" id="Shape"  stroke="none" />
                           <path d="M0.0696772 0L6.88812 0C7.25167 1.8313 6.69827 4.41783 5.67631 5.74118C4.52034 7.26307 2.91116 7.41937 1.6555 6.13173C0.399847 4.84408 -0.231586 2.3901 0.0777559 0L0.0696772 0Z" transform="translate(7 15)" id="Path"  fill-rule="evenodd" stroke="none" />
                         </g>
                       </svg>
-                    
+                      <div 
+                      aria-live="polite"
+                      aria-atomic="true"
+                      style={{
+                        position: 'relative',
+                        minHeight: '100px',
+                        display:visible ? 'block': 'none'
+                      }}
+                      >
+                        <Toast
+                          style={{
+                            position: 'fixed',
+                            top: 140,
+                            right: 40,
+                            width:'425px',
+                            height:' 1000px',
+                            
+                          }}
+                        >
+                        
+                          <Toast.Body>
+                          <div className='row pt-3 pb-5 pl-3'>
+                           <h5><b>Notification</b></h5> 
+                          </div>
+                          {users && users.map(  users=> 
+                                  (
+                                    <Notification key={users.id} users={users} />
+                                  )
+                                  )}
+                            </Toast.Body>
+                      </Toast>
+              </div>
+
         </div>
         
         <div className='col-4 '>
         <svg width="14px" height="13px"  version="1.1" xmlns="http://www.w3.org/2000/svg"   aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}  className="icon">
                       <path d="M6.5 0L13 12L0 12L6.5 0Z" transform="matrix(-1 -8.742278E-08 8.742278E-08 -1 13.5 12.5)" id="Triangle"  fill-rule="evenodd" stroke="none" />
                     </svg>
+
+                    
                     <Menu
                         id="menu-list-grow"
                         anchorEl={anchorEl}
@@ -162,16 +215,19 @@ return(
                           vertical: 'bottom',
                           horizontal: 'center',
                         }}
+                        
                         transformOrigin={{
                           vertical: 'bottom',
                           horizontal: 'center',
                         }}
                       >
+                         
                          <MenuItem >Settings</MenuItem>
                          <MenuItem>Password</MenuItem>
-                         <Link to='/home'onClick={logout} className='rea'>
+                         <Link to='/login'onClick={logout} className='rea'>
                          <MenuItem onClick={handleClose}>Logout</MenuItem>
                          </Link>
+                        
                       </Menu>
 
 
@@ -193,9 +249,11 @@ return(
 Header.propTypes = {
      logout: PropTypes.func.isRequired,
      auth: PropTypes.object.isRequired,
+     Friends: PropTypes.object.isRequired,
      Searchfriend: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
-      auth: state.auth,      
+      auth: state.auth,  
+      Friends : state.Friends    
 })
 export default connect(mapStateToProps,{logout,Searchfriend})(Header);
