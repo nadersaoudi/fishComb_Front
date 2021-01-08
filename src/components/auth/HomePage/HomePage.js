@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './HomePage.css';
 import {
     NavLink
@@ -7,7 +7,7 @@ import Footer from '../../layout/Footer/Footer';
 
 const HomePage = () => {
     return (
-      <Fragment>
+      <div>
         <div className='row pt-5 pb-5 header'>
         <div className='col-1'></div>
           <div className='col-1'>
@@ -23,34 +23,14 @@ const HomePage = () => {
           <NavLink className='login' to="/register">Register</NavLink>
           </div>
         </div>
-        <div className='home'>
-        
-          <div className='row pt-5 '>
-          <div className='Home__page'>
-          <div className='title  pb-5'>
+        <div className='home  '>
           
-          </div>
-          </div>
-          <div className='row'>
-            
-          </div>
-          </div>
-          <div className='row pt-5'></div>
-          <div className='row pt-5'></div>
-          <div className='row pt-5'></div>
-          <div className='row pt-5'></div>
-          <div className='row pt-5'></div>
-          <div className='row pt-5'></div>
-          <div className='row pt-5'></div>
-          <div className='row pt-5'></div>
-          <div className='row pt-5'></div>
           </div>
          
-          <Footer />
-      
-           
-          
-      </Fragment>
+        <div className=' pt-5'>  <Footer  /></div>
+         
+   
+      </div>
     )
 }
 

@@ -6,13 +6,13 @@ import Reset  from './components/auth/Reset/Reset';
 import Register from './components/auth/Register/Register';
 import HomePage from './components/auth/HomePage/HomePage';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,HashRouter
 } from "react-router-dom";
 import store from "./store";
 import { loadUser  } from "./Actions/auth";
+import { getMyinvitations } from './Actions/Friends'; 
 import { Provider } from 'react-redux';
 import ProtectedRoute from "./ProtectedRoute";
 import  Cookies from 'js-cookie';
@@ -28,7 +28,9 @@ const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
-
+  useEffect(() => {
+    store.dispatch(getMyinvitations());
+  }, []);
  
 
 

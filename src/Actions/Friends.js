@@ -1,5 +1,5 @@
 
-import { ADD_FRIEND, ADD_FRIEND_FAILED, SEARCH_SUCCESS, SEARCH_FAILED } from './types'
+import { ADD_FRIEND, ADD_FRIEND_FAILED, SEARCH_SUCCESS, SEARCH_FAILED, GET_INV, INV_ERROR} from './types'
 import axios from 'axios'
 import Cookies from 'js-cookie';
 import { toast} from 'react-toastify';
@@ -50,4 +50,26 @@ try {
 }
 
 
+}
+
+export const getMyinvitations = () =>  dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'Content-type': 'application/json'
+        }
+    }
+    try{
+      const res =  axios.post('/api/user/friends/myinvitations',{},config)
+      
+        dispatch({
+            type:GET_INV,
+            payload: res
+            
+        })
+    }catch (error){
+        dispatch({
+            type: INV_ERROR,
+        });
+    }
 }

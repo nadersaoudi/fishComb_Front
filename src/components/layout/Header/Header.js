@@ -162,19 +162,16 @@ return(
                           vertical: 'bottom',
                           horizontal: 'center',
                         }}
-                        
                         transformOrigin={{
                           vertical: 'bottom',
                           horizontal: 'center',
                         }}
                       >
-                         
                          <MenuItem >Settings</MenuItem>
                          <MenuItem>Password</MenuItem>
-                         <Link to='/login'onClick={logout} className='rea'>
+                         <Link to='/home'onClick={logout} className='rea'>
                          <MenuItem onClick={handleClose}>Logout</MenuItem>
                          </Link>
-                        
                       </Menu>
 
 

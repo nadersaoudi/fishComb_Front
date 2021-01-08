@@ -1,15 +1,19 @@
 .home{
     background-image: url('./hero_banner.jpg');
+    padding-bottom: 50%;
+    margin-left: -5%;
+    margin-right:-5%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .header{
     background-color:  #fff
 }
 .logo{
     align-items: center
-}
-.title{
-    text-align: center;
-    color : red;
 }
 
 .login{

@@ -1,9 +1,10 @@
-import { ADD_FRIEND,ADD_FRIEND_FAILED,SEARCH_SUCCESS,SEARCH_FAILED} from '../Actions/types'
+import { ADD_FRIEND,ADD_FRIEND_FAILED,SEARCH_SUCCESS,SEARCH_FAILED ,GET_INV} from '../Actions/types'
 
 const initialState = {
     friend:null,
-    loading:false
-
+    friends: null,
+    loading:false,
+    users: []
 }
 // eslint-disable-next-line
 export default function (state = initialState, action) {
@@ -27,6 +28,12 @@ export default function (state = initialState, action) {
         case ADD_FRIEND_FAILED:
             return {
                 ...state
+            }
+            case GET_INV:
+            return {
+               ...state,
+                friends: payload,
+                users:payload,
             }
         default:
             return state;
