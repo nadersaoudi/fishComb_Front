@@ -41,7 +41,7 @@ export default function (state = initialState, action) {
         case UPDATE_LIKES:
             return {
                 ...state,
-              //  posts: state.posts.map(post => post.id === payload[0].pivot.post_id ? { ...post,likes: payload  } : post), loading: false
+                posts: state.posts.map(post => post.id === payload[0].pivot.post_id ? { ...post,likes: payload  } : post), loading: false
             }
         case DELETE_POST:
             return {

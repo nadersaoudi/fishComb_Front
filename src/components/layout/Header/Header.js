@@ -49,7 +49,7 @@ return(
     <div className="header">
     <header className="main-header row  pt-4 pb-5 ">
       <div className="col-md-2   pi"> 
-      <a href="/dashboard/newsfeed" className="logo flex-center">
+      <a href="/#/dashboard/newsfeed" className="logo flex-center">
      
      <svg width="37px" height="39px"  version="1.1"  xmlns="http://www.w3.org/2000/svg">
        <defs>
