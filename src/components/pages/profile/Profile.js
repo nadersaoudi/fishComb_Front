@@ -91,8 +91,7 @@ return(
             <div className='info' >
             <Image  className="profile_img" src= {user && user.profile_image} alt='' roundedCircle  />
             <PageviewIcon className="photoEdit" id="profilepic"  />
-            </div>
-            
+            </div>  
       </div>
       </form>
       <div>

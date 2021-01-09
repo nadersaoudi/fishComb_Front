@@ -31,10 +31,13 @@ const Post = ({ auth: { user }, addPost,  }) => {
     var link = $('#linkurl').val();
     var description = $('#description').val();
     console.log(link);
-
+    
     console.log(link + "-------" + description + "-----" + type)
     addPost({ link, description });
-
+    setFormData({
+      link: '',
+      description: '',
+    })
   }
 
 
