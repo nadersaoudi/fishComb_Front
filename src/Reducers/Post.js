@@ -68,7 +68,7 @@ export default function (state = initialState, action) {
                 post:{ ...state.posts, comments: payload },
                 loading: false
             }
-            case GET_POST:
+           
         case REMOVE_COMMENT:
             return {
                 ...state,
