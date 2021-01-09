@@ -20,7 +20,6 @@ const Profile =({ auth: { user, loading }, edit ,history }) => {
     // eslint-disable-next-line
     profile_image:'',
 });
-
 const {
   first_name,
   last_name,
@@ -31,7 +30,6 @@ const {
   // eslint-disable-next-line
   profile_image,
   username
-
 } = formdata;
 useEffect(() => {
   setFormData({  
@@ -55,7 +53,6 @@ return(
         <Image src={user && user.cover_image} alt=''  className='coverture'/>
         <PageviewIcon className="photoEdit" id="profilepic"  />
         </div>
-        
             <div className='info' >
             <Image  className="profile_img" src= {user && user.profile_image} alt='' roundedCircle  />
             <PageviewIcon className="photoEdit" id="profilepic"  />

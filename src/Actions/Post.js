@@ -163,7 +163,7 @@ export const deleteComment = id => async dispatch => {
             // console.log(res.data.data)
             dispatch({
                 type: GET_POSTS,
-                payload: res.data.data,
+                payload: res.data,
 
             })
             toast.success('Delete success');
