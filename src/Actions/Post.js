@@ -92,8 +92,9 @@ export const addPost = formData => async dispatch => {
         const res = await axios.post('/api/posts', formData, config)
         dispatch({
             type: ADD_POST,
-            payload: res.data.data
+            payload: res.data.data.data
         })
+      
         // save post id 
 
         // create function 
