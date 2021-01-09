@@ -55,7 +55,7 @@ export const picture =  file => async dispatch => {
         console.log(res.data + " res")
         dispatch({
             type: EDIT_PIC,
-            payload: res.data,
+            payload: res.data.data,
         })
 
         toast.success('image uploaded');
