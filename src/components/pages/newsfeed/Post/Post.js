@@ -31,11 +31,8 @@ const Post = ({ auth: { user }, addPost,  }) => {
     var link = $('#linkurl').val();
     var description = $('#description').val();
     console.log(link);
-
-    console.log(link + "-------" + description + "-----" + type)
     addPost({ link, description });
-   
-
+    e.target.reset();
   }
 
 
@@ -81,8 +78,8 @@ const Post = ({ auth: { user }, addPost,  }) => {
           <Avatar src={user && user.profile_image} className={classes.large} />
           <div className='post'>
 
-            <input ref={inputEl} id="description" placeholder={`What's on your mind?`} onChange={preview} className='pub__input' />
-            {url && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={url} />}
+            <input ref={inputEl} id="description" placeholder={`What's on your mind?`} onChange={preview} className='pub__input'  />
+            {url && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={url}  />}
             <input type="text" id="linkurl" />
 
           </div>
