@@ -263,11 +263,11 @@ export default class Register extends Component {
                                 <div className="row">
                                     <div className="btn-group btn-group-toggle col-md-12 mb-2 mt-2" id="lp"
                                          data-toggle="buttons">
-                                        <label className="btn btn-secondary col-md-4 reg__check" id='ll'>
+                                        <label className="btn btn-secondary col-md-4" id='ll'>
                                             <input type="radio" name="options" className="reg__check" value="M"
                                                    onChange={(e) => this.gender = e.target.value} id='l'/> Male
                                         </label>
-                                        <label className="btn btn-secondary col-md-4 reg__check">
+                                        <label className="btn btn-secondary col-md-4 ">
                                             <input type="radio" name="options" id="option3" className="reg__check"
                                                    value="F" onChange={(e) => this.gender = e.target.value}/> Female
                                         </label>

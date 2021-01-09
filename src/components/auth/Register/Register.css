@@ -38,8 +38,6 @@ body {
     border-radius: 0 !important;
 }
 
-
-
 .btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn {
 	background-color: #F7F8F9 !important;
 	border: 0px solid !important;
@@ -56,3 +54,4 @@ body {
 .btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:first-child):not(.dropdown-toggle) {
 	margin-left: 10px !important;
 }
+
