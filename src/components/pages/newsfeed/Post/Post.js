@@ -34,6 +34,7 @@ const Post = ({ auth: { user }, addPost,  }) => {
 
     console.log(link + "-------" + description + "-----" + type)
     addPost({ link, description });
+   
 
   }
 
