@@ -94,7 +94,7 @@ const Publication = ({
             <div className="row" id="pub-top1">
               <div className="col-1">
                 <Avatar
-                  src={posts && posts.user.profile_image}
+                  
                 />
               </div>
               <div className="col-10">
@@ -270,11 +270,9 @@ const Publication = ({
               <div className='col-1'></div>
               <div className='col-11'>
                 {posts && posts.comments.map(comments => 
-
                   (
                     <SingleComm key={comments.id} comments={comments} />
                   )
-                 
                 )}
               </div>
 
