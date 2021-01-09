@@ -95,18 +95,48 @@ const Profile = ({ auth: { user, loading }, edit, history, picture }) => {
     sethide(true)
 
   }
-
+  const [type1,settype1]=useState('cover')
+  const [file2,setFile2]=useState('')
+  const [hide1, sethide1] = useState(true)
+  const onchange2 = e => {
+    setFile2(e.target.files[0])
+  sethide1(false)
+  };
+const onsubmit2=e=>{
+  e.preventDefault();
+  const file = new FormData();
+  file.append('file', file2, file2.name);
+  file.append('type', type1)
+  picture(file)
+  sethide1(true)
+}
 
   /**************************************************************************************** */
   const classes = useStyles();
   return (
     <Fragment>
-      <form onSubmit={e => onsubmit1(e)}>
+    
 
 
 
         <div className='Top___header'>
-          <Image src="../../../../london.jpg" alt='' className='coverture' />
+          <form onSubmit={e=>onsubmit2(e)}>
+          <Image src={user && user.cover_image} alt='fishcomb-cover' className='coverture' />
+          <input accept="image/*" className={classes.input} id="icon-button-file" type="file" onChange={onchange2} />
+            <label htmlFor="icon-button-file">
+              <IconButton color="primary" aria-label="upload picture" component="span">
+                <PhotoCamera />
+
+              </IconButton>
+              <input
+                type='submit'
+                value='Upload'
+                className='btn btn-primary btn-block mt-4'
+                hidden={hide1}
+              />
+            </label>
+          </form>
+          <form onSubmit={e => onsubmit1(e)}>
           <div className='info' >
             <Image className="profile_img" src={user && user.profile_image} alt='' roundedCircle />
             <input accept="image/*" className={classes.input} id="icon-button-file" type="file" onChange={onchange1} />
@@ -123,9 +153,9 @@ const Profile = ({ auth: { user, loading }, edit, history, picture }) => {
               />
             </label>
           </div>
-
+          </form>
         </div>
-      </form>
+     
       <div>
         <h2>
           <p>{user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}  {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}</p>
