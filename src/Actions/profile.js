@@ -6,7 +6,6 @@ import { loadUser } from './auth';
 
 
 //edit user 
-
 export const edit = (
      formdata, history, edit = false) => async dispatch => {
         toast.configure();
@@ -18,8 +17,6 @@ export const edit = (
          
         }
       };
-
-      
           const res = await axios.patch('api/user/profile',formdata,config);  
           dispatch({
             type: UPDATE_PROFILE,
@@ -29,9 +26,6 @@ export const edit = (
         loadUser()
         toast.success('Profile Updated');
         window.location.reload(false);
-        
-        
-       
       }
      catch (err) {
         toast.error('Email is null ')

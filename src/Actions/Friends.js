@@ -1,5 +1,5 @@
 
-import { ADD_FRIEND, ADD_FRIEND_FAILED, SEARCH_SUCCESS, SEARCH_FAILED, GET_INV, INV_ERROR} from './types'
+import { ADD_FRIEND, ADD_FRIEND_FAILED, SEARCH_SUCCESS, SEARCH_FAILED, GET_INV, INV_ERROR , ACC_INV ,ACC_ERROR} from './types'
 import axios from 'axios'
 import Cookies from 'js-cookie';
 import { toast} from 'react-toastify';
@@ -71,5 +71,26 @@ export const getMyinvitations = () => async  dispatch => {
         dispatch({
             type: INV_ERROR,
         });
+    }
+}
+
+//accept Inv 
+export const acceptInv = (user_id,status) => async dispatch =>  {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'Content-type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.post('/api/user/friends/accept' ,{user_id,status}, config)
+        dispatch({
+            type:ACC_INV,
+            payload: res.data
+        })
+    }catch{
+            dispatch({
+                type: ACC_ERROR,
+            })
     }
 }
