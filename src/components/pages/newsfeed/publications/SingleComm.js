@@ -29,7 +29,7 @@ const SingleComm =(
     return (
         <div className="row pt-1 pb-3" >
              <div className="col-1 mr-4">
-             <Avatar src={posts && posts.user.profile_image}  />
+             <Avatar src={ comments.user.profile_image}  />
             </div>
             <div className="col-7" id="comment" >
               { comments.body} 
@@ -57,7 +57,7 @@ const SingleComm =(
               <div className="row pt-2  " >
                 
                 <div className="col-1">
-                  <Avatar src={posts && posts.comments.user.profile_image} />
+                  <Avatar src={ comments.user.profile_image} />
                 </div>
                 <div className="col-9 pp" >
                   <input

@@ -118,39 +118,51 @@ const onsubmit2=e=>{
     
 
 
-
         <div className='Top___header'>
           <form onSubmit={e=>onsubmit2(e)}>
-               <Image src={user && user.cover_image} alt='fishcomb-cover' className='coverture' />
-               <input accept="image/*" className={classes.input} id="icon-button-filee" type="file" onChange={onchange2} />
-               <label htmlFor="icon-button-filee">
-              <IconButton color="primary" aria-label="upload picture" component="span">
-                <PhotoCamera />
+          <Image src={user && user.cover_image} alt='fishcomb-cover' className='coverture' />
+         
+          <input accept="image/*" className={classes.input} id="icon-button-filee" type="file" onChange={onchange2} />
+            <div className='row'>
+              <div className='col-11'></div>
+              <div className='col-1'>
+              <label htmlFor="icon-button-filee">
+              <IconButton className='upload' color="primary" aria-label="upload picture" component="span">
+                <PhotoCamera   />
 
               </IconButton>
               <input
                 type='submit'
                 value='Upload'
-                className='btn btn-primary btn-block mt-4'
+                id='vali1'
+                className='btn'
                 hidden={hide1}
               />
             </label>
+              </div>
+            
+            </div>
+          
           </form>
           <form onSubmit={e => onsubmit1(e)}>
-            <div className='info' >
+          <div className='info' >
             <Image className="profile_img" src={user && user.profile_image} alt='' roundedCircle />
             <input accept="image/*" className={classes.input} id="icon-button-file" type="file" onChange={onchange1} />
+            
             <label htmlFor="icon-button-file">
-              <IconButton color="primary" aria-label="upload picture" component="span">
+              <IconButton className='upload1' color="primary" aria-label="upload picture" component="span">
                 <PhotoCamera />
-
               </IconButton>
+              <div className='row'>
               <input
                 type='submit'
                 value='Upload'
-                className='btn btn-primary btn-block mt-4'
+                id="vali2"
+                className='btn '
                 hidden={hide}
               />
+              </div>
+           
             </label>
           </div>
           </form>
@@ -240,12 +252,11 @@ const onsubmit2=e=>{
 }
 Profile.propTypes = {
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired,
   editt: PropTypes.func.isRequired,
   picture: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => ({
   auth: state.auth,
-  profile:state.profile
+
 })
 export default connect(mapStateToProps, { edit, picture })(withRouter(Profile));
