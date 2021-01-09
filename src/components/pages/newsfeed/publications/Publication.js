@@ -99,7 +99,7 @@ const Publication = ({
               </div>
               <div className="col-10">
                 <span className="nameuser">
-                  {posts && posts.user.first_name.charAt(0).toUpperCase() + posts.user.first_name.slice(1)} {posts && posts.user.last_name.charAt(0).toUpperCase() + posts.user.last_name.slice(1)}
+                  {/*posts && posts.user.first_name.charAt(0).toUpperCase() + posts.user.first_name.slice(1)} {posts && posts.user.last_name.charAt(0).toUpperCase() + posts.user.last_name.slice(1)*/}
                 </span>
                 <div className="row">
                   <div className="col-8 datepost">
