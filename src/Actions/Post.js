@@ -14,9 +14,10 @@ export const getPosts = () => async dispatch => {
     }
     try {
         const res = await axios.post('/api/posts/getaLlposts', {}, config)
+        console.log (res);
         dispatch({
             type: GET_POSTS,
-            payload: res.data
+            payload: res.data.data
         })
     } catch (error) {
         toast.error('Error happened when fetching posts');
@@ -135,7 +136,7 @@ export const addComment = (idpost, formData) => async (dispatch,getState) => {
            // console.log(res.data)
         dispatch({
             type: GET_POSTS,
-            payload: res.data //finded.concat(res.data)
+            payload: res.data.data //finded.concat(res.data)
         })
         toast.success('Your have commented this Post');
     } catch (error) {

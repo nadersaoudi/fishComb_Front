@@ -94,12 +94,12 @@ const Publication = ({
             <div className="row" id="pub-top1">
               <div className="col-1">
                 <Avatar
-                  src={user && user.profile_image}
+                  
                 />
               </div>
               <div className="col-10">
                 <span className="nameuser">
-                  {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}
+                  {posts && posts.user.first_name.charAt(0).toUpperCase() + posts.user.first_name.slice(1)} {posts && posts.user.last_name.charAt(0).toUpperCase() + posts.user.last_name.slice(1)}
                 </span>
                 <div className="row">
                   <div className="col-8 datepost">
@@ -270,11 +270,9 @@ const Publication = ({
               <div className='col-1'></div>
               <div className='col-11'>
                 {posts && posts.comments.map(comments => 
-
                   (
                     <SingleComm key={comments.id} comments={comments} />
                   )
-                 
                 )}
               </div>
 

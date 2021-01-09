@@ -4,7 +4,6 @@ import { UPDATE_PROFILE, PROFILE_ERROR, EDIT_PIC } from './types';
 import { toast } from 'react-toastify';
 import { loadUser } from './auth';
 
-
 //edit user 
 toast.configure();
 export const edit = (
@@ -45,16 +44,14 @@ export const edit = (
 
     }
 export const picture =  file => async dispatch => {
-
     const config = {
         headers: {
             Authorization: 'Bearer ' + Cookies.get('user'),
             'Content-Type': 'multipart/form-data'
         }
     }
-
     try {
-        const res = await axios.post(`/api/user/user-images`, file, config)
+        const res = await axios.post('/api/user/user-images', file, config)
         console.log(res.data + " res")
         dispatch({
             type: EDIT_PIC,
