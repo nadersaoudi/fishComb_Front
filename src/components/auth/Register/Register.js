@@ -261,19 +261,16 @@ export default class Register extends Component {
                                 </div>
                                 <label>Gender</label>
                                 <div className="row">
-                                    <div className="btn-group btn-group-toggle col-md-12 mb-2 mt-2" id="lp"
-                                         data-toggle="buttons">
-                                        <label className="btn btn-secondary col-md-4 reg__check" id='ll'>
-                                            <input type="radio" name="options" className="reg__check" value="M"
-                                                   onChange={(e) => this.gender = e.target.value} id='l'/> Male
-                                        </label>
-                                        <label className="btn btn-secondary col-md-4 reg__check">
-                                            <input type="radio" name="options" id="option3" className="reg__check"
-                                                   value="F" onChange={(e) => this.gender = e.target.value}/> Female
-                                        </label>
-                                    </div>
+                                <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" className="btn-check" name="btnradio" id="btnradio2" value="M"
+                                                   onChange={(e) => this.gender = e.target.value}  autocomplete="off" />
+                                <label className="btn btn-outline-primary" for="btnradio2">Male</label>
+
+                                <input type="radio" className="btn-check" name="btnradio" id="btnradio3" value="F" onChange={(e) => this.gender = e.target.value} autocomplete="off" />
+                                <label className="btn btn-outline-primary" for="btnradio3">Female</label>
                                 </div>
-                            </div>
+                                </div>
+                                 </div>
                           
                             <div>
                                 <button className="btn btn-primary col-md-12 reg-button" type="submit">Sign Up</button>

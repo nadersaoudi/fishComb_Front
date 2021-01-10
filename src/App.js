@@ -58,14 +58,11 @@ const App = () => {
         <Dashboard />
       </ProtectedRoute>
       <Route exact path="/">
-        <Redirect exact from="/" to="dashboard" />
+        <Redirect exact from="/" to="/dashboard/newsfeed" />
       </Route>
       <Route path="*">
-        <Redirect from="/" to="dashboard" />
-      </Route >
-   <Route 
-   path='/NavEvents' 
-   component={NavEvents}/>
+        <Redirect from="/" to="/dashboard" />
+      </Route>
      
     </Switch>
     </React.Suspense>

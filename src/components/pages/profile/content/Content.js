@@ -1,6 +1,6 @@
 import React  from 'react';
 import {  Switch, Route,  } from "react-router-dom";
-import Aboute from '../edit-profile/Aboute';
+//import Aboute from '../edit-profile/Aboute';
 import Order from '../edit-profile/Order';
 
 const Content = () => {
@@ -10,9 +10,9 @@ const Content = () => {
         <main role="main">
         <div className="main">
         <Switch>
-        <Route path={`/dashboard/profile/about`}>
+       {/* <Route path={`/dashboard/profile/about`}>
             <Aboute/>
-          </Route>
+          </Route>*/}
           <Route path={`/dashboard/profile/order`}>
             <Order />
           </Route>

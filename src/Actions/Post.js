@@ -14,9 +14,10 @@ export const getPosts = () => async dispatch => {
     }
     try {
         const res = await axios.post('/api/posts/getaLlposts', {}, config)
+        
         dispatch({
             type: GET_POSTS,
-            payload: res.data
+            payload: res.data.data
         })
     } catch (error) {
         toast.error('Error happened when fetching posts');
@@ -91,8 +92,9 @@ export const addPost = formData => async dispatch => {
         const res = await axios.post('/api/posts', formData, config)
         dispatch({
             type: ADD_POST,
-            payload: res.data.data
+            payload: res.data.data.data
         })
+      
         // save post id 
 
         // create function 
@@ -132,10 +134,11 @@ export const addComment = (idpost, formData) => async (dispatch,getState) => {
             await axios.post(`/api/posts/${idpost}/comment`, formData, config)
              const res = await axios.post('/api/posts/getaLlposts', {}, config)
              //  const finded= getState().Post.posts.filter(el=>el.id !==res.data.post_id)
-           // console.log(res.data)
+        console.log(res.data.data)
         dispatch({
             type: GET_POSTS,
-            payload: res.data //finded.concat(res.data)
+            payload: res.data.data //finded.concat(res.data)
+            
         })
         toast.success('Your have commented this Post');
     } catch (error) {
@@ -160,9 +163,10 @@ export const deleteComment = id => async dispatch => {
             await axios.delete(`/api/posts/comments/${id}`, config);
             const res = await axios.post('/api/posts/getaLlposts', {}, config)
             // console.log(res.data.data)
+            //console.log(res.data)
             dispatch({
                 type: GET_POSTS,
-                payload: res.data,
+                payload: res.data.data,
 
             })
             toast.success('Delete success');
