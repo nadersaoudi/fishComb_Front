@@ -16,6 +16,7 @@ import { getMyinvitations } from './Actions/Friends';
 import { Provider } from 'react-redux';
 import ProtectedRoute from "./ProtectedRoute";
 import  Cookies from 'js-cookie';
+import NavEvents from './components/pages/events/NavEvents';
 
 
 
@@ -61,7 +62,10 @@ const App = () => {
       </Route>
       <Route path="*">
         <Redirect from="/" to="dashboard" />
-      </Route>
+      </Route >
+   <Route 
+   path='/NavEvents' 
+   component={NavEvents}/>
      
     </Switch>
     </React.Suspense>
