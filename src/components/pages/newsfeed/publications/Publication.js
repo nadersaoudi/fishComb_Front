@@ -44,7 +44,7 @@ const Publication = ({
 
 
   const onclick = () => {
-    setHidden(false);
+    setHidden(hidden === false ? true : false);
   }
 
   const addcomment = async (id, body) => {
@@ -114,8 +114,8 @@ const Publication = ({
               </div>
               <div className="col-1" id="pnt">
                 <div className={classes.root}>
-                  <div>
-                    <Button
+                {user && user.id === posts.user_id ? <div>
+                   <Button
                       ref={anchorRef}
                       aria-controls={open ? 'menu-list-grow' : undefined}
                       aria-haspopup="true"
@@ -145,8 +145,8 @@ const Publication = ({
                         </Grow>
                       )}
                     </Popper>
-                  </div>
-                </div>
+                  </div>  
+                  : (<div></div>)}  </div>
               </div>
 
             </div>
