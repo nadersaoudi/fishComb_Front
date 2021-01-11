@@ -207,13 +207,7 @@ const Events = ({ addEvent,getevents,events:{events} }) => {
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
+ 
                         </div>
                         <div className='row'>
                             <div className='col-md-12 mt-5 mb-3'> <h6><b>All Events</b></h6></div>
@@ -222,115 +216,7 @@ const Events = ({ addEvent,getevents,events:{events} }) => {
                              (
                                 <Single key={event.id} event={event}/>)
                              )} 
-                              
-                               {/* <div className='col-md-2'>
-                                    <div className='image_holder grid '>
-                                        <img src='https://picsum.photos/id/14/200/300' width="125" height="100" alt='event' />
-                                        <div className='description'>
-                                            <span>lorem ipsuem</span> <br />
-                                            <span>lorem ipsuem</span> <br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md-2 mb-4'>
-                                    <div className='image_holder grid '>
-                                        <img src='https://picsum.photos/id/10/200/300' width="125" height="100" alt='event' />
-                                        <div className='description'>
-                                            <span>lorem ipsuem</span> <br />
-                                            <span>lorem ipsuem</span> <br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md-2 mb-4'>
-                                    <div className='image_holder grid '>
-                                        <img src='https://picsum.photos/id/7/200/300' width="125" height="100" alt='event' />
-                                        <div className='description'>
-                                            <span>lorem ipsuem</span> <br />
-                                            <span>lorem ipsuem</span> <br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md-2 mb-4'>
-                                    <div className='image_holder grid '>
-                                        <img src='https://picsum.photos/id/6/200/300' width="125" height="100" alt='event' />
-                                        <div className='description'>
-                                            <span>lorem ipsuem</span> <br />
-                                            <span>lorem ipsuem</span> <br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md-2 mb-4'>
-                                    <div className='image_holder grid '>
-                                        <img src='https://picsum.photos/id/32/200/300' width="125" height="100" alt='event' />
-                                        <div className='description'>
-                                            <span>lorem ipsuem</span> <br />
-                                            <span>lorem ipsuem</span> <br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md-2 mb-4'>
-                                    <div className='image_holder grid '>
-                                        <img src='https://picsum.photos/id/4/200/300' width="125" height="100" alt='event' />
-                                        <div className='description'>
-                                            <span>lorem ipsuem</span> <br />
-                                            <span>lorem ipsuem</span> <br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md-2 mb-4'>
-                                    <div className='image_holder grid '>
-                                        <img src='https://picsum.photos/id/16/200/300' width="125" height="100" alt='event' />
-                                        <div className='description'>
-                                            <span>lorem ipsuem</span> <br />
-                                            <span>lorem ipsuem</span> <br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md-2 mb-4'>
-                                    <div className='image_holder grid '>
-                                        <img src='https://picsum.photos/id/12/200/300' width="125" height="100" alt='event' />
-                                        <div className='description'>
-                                            <span>lorem ipsuem</span> <br />
-                                            <span>lorem ipsuem</span> <br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md-2 mb-4'>
-                                    <div className='image_holder grid '>
-                                        <img src='https://picsum.photos/id/17/200/300' width="125" height="100" alt='event' />
-                                        <div className='description'>
-                                            <span>lorem ipsuem</span> <br />
-                                            <span>lorem ipsuem</span> <br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md-2 mb-4'>
-                                    <div className='image_holder grid '>
-                                        <img src='https://picsum.photos/id/24/200/300' width="125" height="100" alt='event' />
-                                        <div className='description'>
-                                            <span>lorem ipsuem</span> <br />
-                                            <span>lorem ipsuem</span> <br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md-2 mb-4'>
-                                    <div className='image_holder grid '>
-                                        <img src='https://picsum.photos/id/41/200/300' width="125" height="100" alt='event' />
-                                        <div className='description'>
-                                            <span>lorem ipsuem</span> <br />
-                                            <span>lorem ipsuem</span> <br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md-2 mb-4'>
-                                    <div className='image_holder grid '>
-                                        <img src='https://picsum.photos/id/52/200/300' width="125" height="100" alt='event' />
-                                        <div className='description'>
-                                            <span>lorem ipsuem</span> <br />
-                                            <span>lorem ipsuem</span> <br />
-                                        </div>
-                                    </div>
-                                </div>*/} 
+                                  
                             </div>
                         </div>
 

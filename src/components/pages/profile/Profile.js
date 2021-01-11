@@ -83,6 +83,7 @@ const Profile = ({ auth: { user, loading }, edit, history, picture }) => {
     setFile(e.target.files[0])
     sethide(false)
   };
+  // eslint-disable-next-line
   const [type, setType] = useState('profile')
 
   const onsubmit1 = e => {
@@ -95,6 +96,7 @@ const Profile = ({ auth: { user, loading }, edit, history, picture }) => {
     sethide(true)
 
   }
+  // eslint-disable-next-line
   const [type1,settype1]=useState('cover')
   const [file2,setFile2]=useState('')
   const [hide1, sethide1] = useState(true)

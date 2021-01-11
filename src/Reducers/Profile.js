@@ -1,4 +1,4 @@
-import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, UPDATE_PROFILE, GET_PROFILES, EDIT_PIC } from "../Actions/types";
+import {PROFILE_ERROR, EDIT_PIC } from "../Actions/types";
 
 
 
@@ -9,6 +9,7 @@ const initialState = {
     error: {}
 
 }
+// eslint-disable-next-line
 export default function (state = initialState, action) {
 
     const { type, payload } = action;
