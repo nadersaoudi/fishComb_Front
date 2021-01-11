@@ -10,23 +10,16 @@
 .wrapper {
     display: flex;
     height: 100%;
-   
-    background: #343f54;
-    
+    background: #343f54; 
 }
-.Sidebar {
-    
+.Sidebar {  
     width: 100%;
     padding:  150px 0 ; 
     text-decoration: none;
-   
-    
 }
 .lins {
 
 }
-
-
 .lins .row__cont{
     color: #fff;
    padding: 10%;

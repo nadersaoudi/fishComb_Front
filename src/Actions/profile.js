@@ -59,7 +59,7 @@ export const picture =  file => async dispatch => {
         })
 
         toast.success('image uploaded');
-
+        window.location.reload(false);
     } catch (err) {
         toast.error('problem occured');
     }

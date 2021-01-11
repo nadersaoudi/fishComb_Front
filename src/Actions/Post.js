@@ -92,12 +92,14 @@ export const addPost = formData => async dispatch => {
         const res = await axios.post('/api/posts', formData, config)
         dispatch({
             type: ADD_POST,
-            payload: res.data.data
+            payload: res.data.data.data
         })
+        
         // save post id 
 
         // create function 
         getPost(res.data.data);
+        
         toast.success('Post Created');
         // 1 call get post function params post id 
         // 2 update layout ==> show post 
@@ -127,9 +129,7 @@ export const addComment = (idpost, formData) => async (dispatch,getState) => {
             'Content-Type': 'application/json'
         }
     }
-
     try {
-        
             await axios.post(`/api/posts/${idpost}/comment`, formData, config)
              const res = await axios.post('/api/posts/getaLlposts', {}, config)
              //  const finded= getState().Post.posts.filter(el=>el.id !==res.data.post_id)

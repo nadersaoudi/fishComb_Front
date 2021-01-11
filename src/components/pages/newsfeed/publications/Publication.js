@@ -93,13 +93,13 @@ const Publication = ({
           <form id="lo">
             <div className="row" id="pub-top1">
               <div className="col-1">
-                <Avatar src={posts && posts.user.profile_image}
+                <Avatar 
                  
                 />
               </div>
               <div className="col-10">
                 <span className="nameuser">
-                {posts && posts.user.first_name.charAt(0).toUpperCase() + posts.user.first_name.slice(1)} {posts && posts.user.last_name.charAt(0).toUpperCase() + posts.user.last_name.slice(1)}
+               {posts && posts.user.first_name}{posts && posts.user.last_name}
                 </span>
                 <div className="row">
                   <div className="col-8 datepost">
