@@ -1,21 +1,30 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 import './Events.css';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { addEvent,getevents } from '../../../Actions/events'
+import { addEvent, getevents } from '../../../Actions/events'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Single from './Single'
-
-const Events = ({ addEvent,getevents,events:{events} }) => {
-    useEffect(()=>{
+import FormControl from 'react-bootstrap/FormControl'
+import { makeStyles } from '@material-ui/core/styles';
+const useStyles = makeStyles({
+    root: {
+      //  maxWidth: '2200px'
+     // width:'2200px',
+      
+    
+    
+    },
+  });
+const Events = ({ addEvent, getevents, events: { events } }) => {
+    useEffect(() => {
         getevents()
-    },[getevents])
+    }, [getevents])
+    const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -41,15 +50,17 @@ const Events = ({ addEvent,getevents,events:{events} }) => {
     const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const submit = e => {
         e.preventDefault();
-         addEvent({  name,
-         description,
-         category_id: '2',
-         location,
-         date,
-         cover: 'non',
-         video_link,
-         status: '1'})
-         e.target.reset();
+        addEvent({
+            name,
+            description,
+            category_id: '2',
+            location,
+            date,
+            cover: 'non',
+            video_link,
+            status: '1'
+        })
+        e.target.reset();
     }
     return (
         <div>
@@ -91,75 +102,102 @@ const Events = ({ addEvent,getevents,events:{events} }) => {
 
 
 
-                        <Button  className="event"  onClick={handleClickOpen}>
+                        <Button className="event" onClick={handleClickOpen}>
                             Add Events
                                  </Button>
-                        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title"    >
                             <form onSubmit={e => submit(e)}>
                                 <DialogTitle id="form-dialog-title">Add event</DialogTitle>
                                 <DialogContent>
-                                    <TextField
-                                        autoFocus
-                                        margin="dense"
-                                        id="Title"
-                                        label="Title"
-                                        type="text"
-                                        fullWidth
-                                        name="name" value={name} onChange={e => onchange(e)}
-                                    />
-                                    <TextField
-                                        autoFocus
-                                        margin="dense"
-                                        id="Date"
-                                        type="Date"
-                                        fullWidth
-                                        name="date" value={date} onChange={e => onchange(e)}
-                                    />
-                                    <TextField
-                                        autoFocus
-                                        margin="dense"
-                                        id="Time"
-                                        label="Time"
-                                        type="text"
-                                        fullWidth
-                                        name="category_id" value={category_id} onChange={e => onchange(e)}
-                                    />
-                                    <TextField
-                                        autoFocus
-                                        margin="dense"
-                                        id="Location"
-                                        label="Location"
-                                        type="text"
-                                        fullWidth
-                                        name="location" value={location} onChange={e => onchange(e)}
-                                    />
-                                    <TextField
-                                        autoFocus
-                                        margin="dense"
-                                        id="Description"
-                                        label="Description"
-                                        type="textarea"
-                                        fullWidth
-                                        name="description" value={description} onChange={e => onchange(e)}
-                                    />
-                                    <TextField
-                                        autoFocus
-                                        margin="dense"
-                                        id="video"
-                                        label="video link"
-                                        type="textarea"
-                                        fullWidth
-                                        name="video_link" value={video_link} onChange={e => onchange(e)}
-                                    />
+                                    <div className="row pt-1">
+                                        <div className=' col-sm-12'>
+                                            <FormControl
+                                                className='input_event'
+                                                placeholder="Title"
+                                                margin="dense"
+                                                id="Title"
+                                                label="Title"
+                                                type="text"
+
+                                                name="name" value={name} onChange={e => onchange(e)}
+                                            /></div></div>
+                                    <div className="row pt-3">
+                                        <div className='col-6'>
+                                            <FormControl
+                                                className='input_event'
+                                                margin="dense"
+                                                id="Date"
+                                                type="Date"
+
+                                                 name="date" value={date} onChange={e => onchange(e)}
+                                            />
+
+                                        </div>
+                                        <div className='col-6'>
+                                            <FormControl
+                                                placeholder="Time"
+                                                className='input_event'
+                                                margin="dense"
+                                                id="Time"
+                                                label="Time"
+                                                type="text"
+
+                                                name="category_id" value={category_id} onChange={e => onchange(e)}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="row pt-3">
+                                        <div className='col-sm-12'>
+                                            <FormControl
+                                                placeholder="Location"
+                                                margin="dense"
+                                                id="Location"
+                                                className='input_event'
+                                                type="text"
+                                                fullWidth
+                                                name="location" value={location} onChange={e => onchange(e)}
+                                            /></div></div>
+                                    <div className="row pt-3">
+                                        <div className='col-sm-12'>
+                                            <FormControl
+                                                placeholder="Description"
+                                                className='input_event'
+                                                margin="dense"
+                                                id="Description"
+                                                as="textarea" aria-label="With textarea"
+                                                type="textarea"
+
+                                                name="description" value={description} onChange={e => onchange(e)}
+                                            /></div></div>
+                                    <div className='row pt-3'>
+
+
+                                        <div className="btn-group btn-group-toggle col-md-12  ">
+                                            <Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+
+                                                <span  >Upload Video </span>
+
+                                            </Button>
+                                        </div>  </div>
+                                    <div className="row pt-3">
+                                        <div className='col-sm-12'>
+                                            <FormControl
+                                                placeholder="Video Link"
+                                                className='input_event'
+                                                margin="dense"
+                                                id="video"
+
+                                                type="textarea"
+                                                fullWidth
+                                                name="video_link" value={video_link} onChange={e => onchange(e)}
+                                            /></div></div>
+                                    <div className='row pt-3'><div className='col-sm-8'></div><div className='col-sm-4'><Button type='submit' style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} onClick={handleClose}>
+                                        Add Event
+          </Button></div></div>
                                 </DialogContent>
-                                <DialogActions>
-                                    <Button onClick={handleClose} color="primary">
-                                        Cancel
-          </Button>
-                                    <Button type='submit' color="primary" onClick={handleClose}>
-                                        Add
-          </Button>
-                                </DialogActions>
+
+
+
                             </form>
                         </Dialog>
 
@@ -207,16 +245,16 @@ const Events = ({ addEvent,getevents,events:{events} }) => {
                                     </div>
                                 </div>
                             </div>
- 
+
                         </div>
                         <div className='row'>
                             <div className='col-md-12 mt-5 mb-3'> <h6 className="h66"><b>All Events</b></h6></div>
                             <div className='row'>
-                             {events && events.map((event,index)=>
-                             (
-                                <Single key={index} event={event}/>)
-                             )} 
-                                  
+                                {events && events.map((event) =>
+                                (
+                                    <Single key={event.id} event={event} />)
+                                )}
+
                             </div>
                         </div>
 
@@ -241,4 +279,4 @@ const mapStateToProps = state => ({
     addEvent: state.addEvent,
     events: state.events
 })
-export default connect(mapStateToProps, { addEvent,getevents })(Events);
+export default connect(mapStateToProps, { addEvent, getevents })(Events);

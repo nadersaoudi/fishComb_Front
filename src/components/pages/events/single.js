@@ -1,7 +1,7 @@
 import React   from 'react';
 import Moment from 'react-moment';
 import { NavLink } from 'react-router-dom';
-
+import PropTypes from 'prop-types'
 
 
 const Single =({  event})=> {
@@ -13,9 +13,9 @@ const Single =({  event})=> {
         <div className='col-md-2'>
               
         <div className='image_holder grid '>
-            <img src='https://picsum.photos/id/14/200/300' width="125" height="100" alt='event' />
+        <NavLink to={`/dashboard/singleevent/${event.id}`} > <img src='https://picsum.photos/id/14/200/300' width="125" height="100" alt='event' /></NavLink>
             <div className='description'>
-        <NavLink to={`/dashboard/singleevent`}><span>{event.name}</span> <br /> </NavLink>
+        <span>{event.name}</span> <br /> 
                 <Moment
                       date={event.date}
                       format="YYYY-MM-DD"
@@ -30,5 +30,7 @@ const Single =({  event})=> {
     
     )
 }
-
+Single.propTypes = {
+    event: PropTypes.object.isRequired,
+}
 export default   Single;

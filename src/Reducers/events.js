@@ -1,4 +1,4 @@
-import {ADD_EVENT,GET_EVENTS} from  '../Actions/types'
+import {ADD_EVENT,GET_EVENTS,GET_EVENT} from  '../Actions/types'
 const initialState = {
 
     events: [],
@@ -13,6 +13,11 @@ export default function (state = initialState, action) {
                 ...state,
                 events:payload
             }
+            case GET_EVENT :
+                return {
+                    ...state,
+                    event:payload
+                }
        case  ADD_EVENT:
         return{
             ...state,

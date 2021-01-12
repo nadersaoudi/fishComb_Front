@@ -10,6 +10,7 @@ import Message from '../../pages/messages/Messages';
 import NewFeed from '../../pages/newsfeed/Newfeed';
 import Searchitem from '../../pages/Search/Searchitem';
 import Eventitem from '../../pages/events/Eventitem'
+
 const Container = () => {
 
   return (
@@ -36,8 +37,8 @@ const Container = () => {
               <Route path={`/dashboard/events`}>
                 <Events />
               </Route>
-              <Route path={`/dashboard/singleevent`}>
-                <Eventitem />
+              <Route path={'/dashboard/singleevent/:id'} render={props => <Eventitem {...props} />}>
+                
               </Route>
               <Route path={`/dashboard/board`}>
                 <Board />
