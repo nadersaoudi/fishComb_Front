@@ -10,7 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { addEvent,getevents } from '../../../Actions/events'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Single from './single'
+import Single from './Single'
 
 const Events = ({ addEvent,getevents,events:{events} }) => {
     useEffect(()=>{
@@ -61,13 +61,13 @@ const Events = ({ addEvent,getevents,events:{events} }) => {
                     <div className="col-6 pb-3">
                         <ul className="nav nav-pills nav-justified " id='navprofil'>
                             <li className="nav-item">
-                                <NavLink to={`/NavEvents`} className="m"><span className='n'>All Webinars</span></NavLink>
+                                <NavLink to={`/NavEvents`} className="m"><span className="n">All Webinars</span></NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to={`/MyStream`} className="m"><span className='n'>My Streams</span></NavLink>
+                                <NavLink to={`/MyStream`} className="m"><span className="n">My Streams</span></NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to={`/invited`} className="m"><span className='n'>Invited Webinars</span></NavLink>
+                                <NavLink to={`/invited`} className="m"><span className="n">Invited Webinars</span></NavLink>
                             </li>
 
                         </ul>
@@ -87,11 +87,11 @@ const Events = ({ addEvent,getevents,events:{events} }) => {
                                 </svg>
                             </button>
                         </div>
-                        <Button>My Events</Button><br />
+                        <Button className="event">My Events</Button><br />
 
 
 
-                        <Button color="primary" onClick={handleClickOpen}>
+                        <Button  className="event"  onClick={handleClickOpen}>
                             Add Events
                                  </Button>
                         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -169,7 +169,7 @@ const Events = ({ addEvent,getevents,events:{events} }) => {
 
                     <div className='col-md-9 ' id='body'>
                         <div className='row'>
-                            <div className='col-md-12 pb-4'><h6><b>Featred</b></h6></div>
+                            <div className='col-md-12 pb-4'><h6 className="h66"><b>Featred</b></h6></div>
                         </div>
 
                         <div className='row'>
@@ -210,11 +210,11 @@ const Events = ({ addEvent,getevents,events:{events} }) => {
  
                         </div>
                         <div className='row'>
-                            <div className='col-md-12 mt-5 mb-3'> <h6><b>All Events</b></h6></div>
+                            <div className='col-md-12 mt-5 mb-3'> <h6 className="h66"><b>All Events</b></h6></div>
                             <div className='row'>
-                             {events && events.map(event=>
+                             {events && events.map((event,index)=>
                              (
-                                <Single key={event.id} event={event}/>)
+                                <Single key={index} event={event}/>)
                              )} 
                                   
                             </div>
