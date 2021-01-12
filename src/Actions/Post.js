@@ -14,7 +14,7 @@ export const getPosts = () => async dispatch => {
     }
     try {
         const res = await axios.post('/api/posts/getaLlposts', {}, config)
-        console.log (res);
+        
         dispatch({
             type: GET_POSTS,
             payload: res.data.data
@@ -94,9 +94,8 @@ export const addPost = formData => async dispatch => {
             type: ADD_POST,
             payload: res.data.data.data
         })
-        
+      
         // save post id 
-
         // create function 
         getPost(res.data.data);
         
@@ -133,7 +132,7 @@ export const addComment = (idpost, formData) => async (dispatch,getState) => {
             await axios.post(`/api/posts/${idpost}/comment`, formData, config)
              const res = await axios.post('/api/posts/getaLlposts', {}, config)
              //  const finded= getState().Post.posts.filter(el=>el.id !==res.data.post_id)
-     
+        console.log(res.data.data)
         dispatch({
             type: GET_POSTS,
             payload: res.data.data //finded.concat(res.data)

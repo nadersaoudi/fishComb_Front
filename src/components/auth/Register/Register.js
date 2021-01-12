@@ -54,9 +54,9 @@ export default class Register extends Component {
       </div>
                   
                 <div className="row">
-                    <div className='col-3'></div>
-                    <div className='col-6'>
-                <div className="card col-md-8">
+                    <div className='col-sm-3'></div>
+                    <div className='col-sm-6'>
+                <div className="card col-sm-8">
                     <div className="card-body">
                         <form onSubmit={this.handleSubmit}>
                             <div className="mb-4 mt-3 ">
@@ -64,37 +64,37 @@ export default class Register extends Component {
                             </div>
                             <div className="form-group">
                                 <div className="row">
-                                    <div className="col-5 mb-3 ">
+                                    <div className="col-sm-5 mb-3 ">
                                         <input type="text" className="form-control reg__input" placeholder="First Name"
                                                onChange={e => this.firstname = e.target.value}/>
                                     </div>
-                                    <div className='col-2'></div>
-                                    <div className="col-5 mb-3 ">
+                                    <div className='col-sm-2'></div>
+                                    <div className="col-sm-5 mb-3 ">
                                         <input type="text" className="form-control reg__input" placeholder="Last Name"
                                                onChange={e => this.lastname = e.target.value}/>
                                     </div>
-                                    <div className="col-md-12 mb-3 ">
+                                    <div className="col-sm-12 mb-3 ">
                                         <input type="email" className="form-control reg__input" placeholder="Email"
                                                onChange={e => this.email = e.target.value}/>
                                     </div>
-                                    <div className="col-md-12 mb-3 ">
+                                    <div className="col-sm-12 mb-3 ">
                                         <input type="text" className="form-control reg__input" placeholder="Location"
                                                onChange={e => this.location = e.target.value}/>
                                     </div>
-                                    <div className="col-md-12 mb-3 ">
+                                    <div className="col-sm-12 mb-3 ">
                                         <input type="text" className="form-control reg__input" placeholder="Phone"
                                                onChange={e => this.phone = e.target.value}/>
                                     </div>
-                                    <div className="col-md-12 mb-3 ">
+                                    <div className="col-sm-12 mb-3 ">
                                         <input type="text" className="form-control reg__input" placeholder="About"
                                                onChange={e => this.about = e.target.value}/>
                                     </div>
-                                    <div className="col-md-12 mb-3 ">
+                                    <div className="col-sm-12 mb-3 ">
                                         <input type="text" className="form-control reg__input"
                                                placeholder="UserName"
                                                onChange={e => this.username = e.target.value}/>
                                     </div>
-                                    <div className="col-md-12 mb-3 ">
+                                    <div className="col-sm-12 mb-3 ">
                                         <input type="password" className="form-control reg__input"
                                                placeholder="New Password"
                                                onChange={e => this.password = e.target.value}/>
@@ -105,7 +105,7 @@ export default class Register extends Component {
                               
                                 <label>Birthday</label>
                                 <div className="row">
-                                    <div className="col-md-4 mt-2">
+                                    <div className="col-sm-4 mt-2">
                                         <select className=" form-control reg__input" onChange={(e) => this.month = e.target.value}>
                                             <option className='reg__input' >- Month -</option>
                                             <option value="1">January</option>
@@ -123,7 +123,7 @@ export default class Register extends Component {
                                         </select>
 
                                     </div>
-                                    <div className="col-md-4 mt-2">
+                                    <div className="col-sm-4 mt-2">
 
                                         <select className=" form-control reg__input"
                                                 onChange={(e) => this.day = e.target.value}>
@@ -161,7 +161,7 @@ export default class Register extends Component {
                                             <option value="31">31</option>
                                         </select>
                                     </div>
-                                    <div className="col-md-4 mt-2 mb-3">
+                                    <div className="col-sm-4 mt-2 mb-3">
                                         <select className=" form-control reg__input"
                                                 onChange={(e) => this.year = e.target.value}>
                                             <option className='reg__input'>- Year -</option>
@@ -273,14 +273,14 @@ export default class Register extends Component {
                                  </div>
                           
                             <div>
-                                <button className="btn btn-primary col-md-12 reg-button" type="submit">Sign Up</button>
+                                <button className="btn btn-primary col-sm-12 reg-button" type="submit">Sign Up</button>
                             </div>
                         </form>
                     </div>
                    
                 </div>
                 </div>
-              <div className='col-3'></div>
+              <div className='col-sm-3'></div>
                 </div>
                 <div className='pt-5'></div>
       <Footer />

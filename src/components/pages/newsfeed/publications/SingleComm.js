@@ -28,20 +28,20 @@ const SingleComm =(
   };
     return (
         <div className="row pt-1 pb-3" >
-             <div className="col-1 mr-4">
+             <div className="col-sm-1 mr-4">
              <Avatar src={ comments.user.profile_image}  />
             </div>
-            <div className="col-7" id="comment" >
+            <div className="col-sm-7" id="comment" >
               { comments.body} 
              <div>
              </div>
             </div>
-            <div className='col-1 mr-2'>
+            <div className='col-sm-1 mr-2'>
             <Button variant="light" onClick={onclick} >
                <EditIcon  className='butDelCom'/>
               </Button> 
               </div>
-              <div className='col-1 mr-2'> 
+              <div className='col-sm-1 mr-2'> 
               <Button variant="light" onClick={(e) => deleteComment(comments.id)} >
                  <DeleteIcon className='butDelCom' />
               </Button>  
@@ -59,9 +59,9 @@ const SingleComm =(
                 <div className="col-1">
                   <Avatar src={ comments.user.profile_image} />
                 </div>
-                <div className="col-9 pp" >
+                <div className="col-sm-9 pp" >
                   <input
-                    className=" col-10 comm"
+                    className=" col-sm-10 comm"
                     type="text" 
                     value={body}
                     onChange={(e) => setText(e.target.value)}

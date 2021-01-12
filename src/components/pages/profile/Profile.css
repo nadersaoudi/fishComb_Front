@@ -87,7 +87,7 @@ h2 >p {
 .upload1{
     position: relative;
     top: -50px;
-    right: 70px;
+    right: 65px;
     color: #343f54;
     background-color:#343f54 ;
 }
@@ -100,7 +100,7 @@ h2 >p {
 #vali2{
     position: relative;
     top: -30px;
-    left: 40px;
+    left: 50px;
     background-color: #00E2C8;
 }
 .upload1:hover{

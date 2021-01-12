@@ -27,7 +27,7 @@ const Login = ({ log, isAuthenticated }) => {
   }
   if (Cookies.get('user')) {
 
-    return <Redirect to="/dashboard/newsfeed" />;
+    return <Redirect to="#/dashboard/newsfeed" />;
   };
 
 
@@ -42,9 +42,9 @@ const Login = ({ log, isAuthenticated }) => {
       </div>
       
       <div className='row'>
-        <div className='col-3'></div>
-        <div className='col-6'>
-        <div className="card col-md-7 ">
+        <div className='col-sm-3'></div>
+        <div className='col-sm-6'>
+        <div className="card col-sm-7 ">
           <div className="card-body">
             
             <form onSubmit={e => onSubmit(e)} className="form-signin">
@@ -53,11 +53,11 @@ const Login = ({ log, isAuthenticated }) => {
               </div>
               <div className="form-group">
                 <div className="row">
-                  <div className="col-md-12 mb-4 " >
+                  <div className="col-sm-12 mb-4 " >
                     <input type="email" className="form-control log__input" placeholder="Email"
                       name="login" value={login} onChange={e => onchange(e)} />
                   </div>
-                  <div className="col-md-12 mb-4 ">
+                  <div className="col-sm-12 mb-4 ">
                     <input type="password" name="password" className="form-control log__input" placeholder="New Password"
                       value={password}
                       onChange={e => onchange(e)} />
@@ -65,16 +65,16 @@ const Login = ({ log, isAuthenticated }) => {
                 </div>
               </div>
               <div>
-                <button className="btn btn-primary col-md-12  log-button" type="submit" value="handleSubmit" >Login</button>
+                <button className="btn btn-primary col-sm-12  log-button" type="submit" value="handleSubmit" >Login</button>
               </div>
-              <div className="col-md-12  mt-3 mb-4 span1" >
+              <div className="col-sm-12  mt-3 mb-4 span1" >
                 <NavLink to="/reset" className="log__link" > <span>Forget password?</span></NavLink>
               </div >
               
               <hr></hr>
               <div>
                 <NavLink to="/register">
-                  <button className="btn btn-primary col-md-12 mt-2 mb-4 log-button1">Create Account</button>
+                  <button className="btn btn-primary col-sm-12 mt-2 mb-4 log-button1">Create Account</button>
                 </NavLink>
 
 

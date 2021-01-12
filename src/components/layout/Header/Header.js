@@ -22,6 +22,12 @@ const Header =  ({ auth: {  user }, logout,Searchfriend , Friends:{ users } }) =
       }
 
       const [visible, setvisible] = useState(false);
+      const [visible2, setvisible2] = useState(false);
+      
+      const  handleClick2=e=> {
+        setvisible2(visible2 === false ? true : false);
+        }
+
 
 
       
@@ -66,7 +72,7 @@ const Header =  ({ auth: {  user }, logout,Searchfriend , Friends:{ users } }) =
 return(
     <div className="header">
     <header className="main-header row  pt-4 pb-5 ">
-      <div className="col-md-2   pi"> 
+      <div className="col-sm-2   pi"> 
       <a href="/#/dashboard/newsfeed" className="logo flex-center">
      
      <svg width="37px" height="39px"  version="1.1"  xmlns="http://www.w3.org/2000/svg">
@@ -105,17 +111,17 @@ return(
    
  </a>
       </div>
-      <form className="col-5  header__input" onSubmit={e => {
+      <form className="col-sm-5  header__input" onSubmit={e => {
                                     e.preventDefault();
                                     Searchfriend({ uid });
                                     setText('')
                                 }}>
-      <div className="col  header__input" >
+      <div className="col-sm  header__input" >
       
       <input type="text" placeholder='Search Fishcomb' aria-label="Search" value={uid} onChange={e => setText(e.target.value)} />
     
       
-      <button className="col-1  header__button" onClick={() => {history.push('/dashboard/search') }}>
+      <button className="col-sm-1  header__button" onClick={() => {history.push('/dashboard/search') }}>
 
           <svg width="19px" height="19px"  version="1.1" xmlns="http://www.w3.org/1999/xlink">
             <g id="fishcomb-product-icons-14">
@@ -125,25 +131,25 @@ return(
      </button>
       </div>
       </form>
-      <div className="col-2">
+      <div className="col-sm-2">
 
       </div>
-      <div className="col-3  flex">
-    <div className="col-2 pt-1">
+      <div className="col-sm-3  flex">
+    <div className="col-sm-2 pt-1">
     <Avatar  src={user && user.profile_image}  className={classes.large}  />
     </div>
     
-    <div className="col-4 pt-3">
+    <div className="col-sm-4 pt-3">
     <Link to={`/dashboard/profile`}  className='lin' >
          {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}
     </Link>
     </div>
-    <div className="col-2 pt-3">
+    <div className="col-sm-2 pt-3">
     <Link to={`/dashboard/newsfeed`}  className='lin'>Home</Link>
     </div>
-    <div className='col-4 pt-3 flex'>
+    <div className='col-sm-4 pt-3 flex'>
         <div className='col-4 '>
-        <svg width="20px" height="20px"  version="1.1" xmlns="http://www.w3.org/1999/xlink"  className="icon">
+        <svg width="20px" height="20px"  version="1.1" xmlns="http://www.w3.org/1999/xlink"  className="icon" onClick={handleClick2}>
                     <g id="Chat-01">
                       <path d="M3.19465 20L3.19465 19.7873C3.19465 18.469 3.19465 17.1537 3.19465 15.8354C3.19681 15.7191 3.14436 15.6083 3.05271 15.5358C1.23752 14.0249 0.139704 11.8314 0.0235906 9.48359C-0.193853 6.41255 1.10175 4.04262 3.5027 2.20899C4.93851 1.13877 6.61957 0.438735 8.39519 0.171619C11.0663 -0.328585 13.8275 0.275335 16.0389 1.84346C17.6648 2.91738 18.901 4.47983 19.5664 6.3017C20.0232 7.60583 20.1212 9.00723 19.8503 10.3615C19.1949 13.9358 16.4195 16.7222 12.6021 17.4833C11.5004 17.6972 10.3733 17.7517 9.2559 17.645C8.77269 17.6031 8.2925 17.5522 7.80627 17.5132C7.72623 17.51 7.64685 17.5287 7.57675 17.5671L3.34867 19.9191L3.19465 20ZM5.18487 10.0079C5.81958 9.99147 6.32296 9.47173 6.31419 8.84189C6.30542 8.21206 5.78775 7.70631 5.15283 7.70728C4.5179 7.70824 4.00179 8.21555 3.99496 8.84541C3.99736 9.15611 4.12407 9.45314 4.34722 9.67116C4.57037 9.88917 4.87169 10.0103 5.18487 10.0079L5.18487 10.0079ZM8.80893 8.8514C8.78673 9.34044 9.06656 9.79371 9.51575 9.99632C9.96495 10.1989 10.4932 10.1101 10.85 9.77204C11.2069 9.43395 11.3206 8.91453 11.1373 8.46004C10.9539 8.00555 10.5104 7.70738 10.017 7.70688C9.70169 7.6964 9.39531 7.81149 9.1661 8.02649C8.9369 8.2415 8.80394 8.53854 8.79685 8.8514L8.80893 8.8514ZM16.0027 8.8514C16.0224 8.36279 15.7409 7.91129 15.2914 7.7106C14.842 7.5099 14.3146 7.60027 13.9591 7.93892C13.6035 8.27757 13.491 8.79659 13.6747 9.25033C13.8585 9.70407 14.3018 10.0015 14.7947 10.0019C15.4441 10.0136 15.9804 9.5016 15.9936 8.8574L16.0027 8.8514Z" id="Shape"  stroke="none" />
                       <path d="M1.91667 3.99955C0.823442 3.95395 -0.0302127 3.038 0.000819927 1.94391C0.0318526 0.849811 0.936051 -0.0162416 2.03011 0.000231138C3.12416 0.0167039 4.0019 0.909586 4 2.00412C3.97439 3.13012 3.04235 4.02283 1.91667 3.99955Z" transform="translate(3 7)" id="Path"  fill-rule="evenodd" stroke="none" />
@@ -151,10 +157,34 @@ return(
                       <path d="M3.99839 1.92025C4.03103 2.73555 3.565 3.4889 2.82084 3.82378C2.07668 4.15865 1.20368 4.00788 0.614992 3.44281C0.0263038 2.87773 -0.159983 2.01172 0.144295 1.25461C0.448573 0.497505 1.18238 0.00117858 1.99843 0.000525566C2.51865 -0.0115316 3.02222 0.184286 3.39761 0.54461C3.77299 0.904935 3.98921 1.40003 3.99839 1.92025L3.99839 1.92025Z" transform="translate(13 7)" id="Path"  fill-rule="evenodd" stroke="none" />
                     </g>
                   </svg>
+                  <div 
+                      aria-live="polite"
+                      aria-atomic="true"
+                      style={{
+                        position: 'relative',
+                        minHeight: '100px',
+                        display:visible2 ? 'block': 'none'
+                      }}
+                      >
+                        <Toast
+                          style={{
+                            position: 'fixed',
+                            top: 100,
+                            right: 50,
+                            
+                          }}
+                        >
+          <Toast.Header>
+                <strong className="mr-auto">Message</strong>
+                <small>just now</small>
+                  </Toast.Header>
+              <Toast.Body><Avatar/> your message goes here</Toast.Body>
 
+          </Toast>
+              </div>
         </div>
       
-        <div className='col-4'>
+        <div className='col-sm-4'>
               <svg width="21px" height="22px"  version="1.1"  xmlns="http://www.w3.org/2000/svg" className="icon"        onClick={handleClick1}>
                               <g id="63-631368_community-transition-black-chat-icon-png-transparent-png-02">
                                 <path d="M8.39318 3.743C7.53909 2.75915 7.70804 1.36059 8.77815 0.556153C9.76258 -0.17984 11.2073 -0.185995 12.1998 0.541574C13.2777 1.34993 13.4509 2.75664 12.5947 3.74884L12.8336 3.81881C15.7375 4.76058 17.4567 6.56831 17.898 9.26532C18.21 11.1664 18.4456 13.0761 18.7377 14.9801C18.8743 15.9165 19.3749 16.7827 20.1548 17.4322C20.3406 17.5925 20.5364 17.7442 20.7289 17.9016C20.9746 18.0691 21.0652 18.3588 20.9513 18.613C20.8419 18.8629 20.5581 19.0196 20.2544 18.9979L0.746799 18.9979C0.443889 19.0201 0.160414 18.8647 0.0498637 18.6159C-0.0624534 18.3679 0.0191885 18.0845 0.252307 17.9133C0.627315 17.6111 0.982966 17.2908 1.31762 16.954C1.88957 16.2993 2.23518 15.5139 2.31324 14.6914C2.57874 12.7933 2.79114 10.8835 3.1562 8.99708C3.6507 6.42836 5.37976 4.71393 8.1675 3.82173L8.36994 3.75758C8.36994 3.75758 8.38322 3.74884 8.39318 3.743ZM11.2572 2.34056C11.281 2.09295 11.1464 1.85421 10.9077 1.7209C10.669 1.58758 10.3658 1.58176 10.1207 1.70577C9.87557 1.82978 9.72913 2.06311 9.74058 2.3114C9.71678 2.55901 9.85146 2.79775 10.0902 2.93106C10.3288 3.06437 10.6321 3.0702 10.8772 2.94619C11.1223 2.82218 11.2687 2.58884 11.2572 2.34056L11.2572 2.34056Z" id="Shape"  stroke="none" />
@@ -195,7 +225,7 @@ return(
 
         </div>
         
-        <div className='col-4 '>
+        <div className='col-sm-4 '>
         <svg width="14px" height="13px"  version="1.1" xmlns="http://www.w3.org/2000/svg"   aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}  className="icon">
                       <path d="M6.5 0L13 12L0 12L6.5 0Z" transform="matrix(-1 -8.742278E-08 8.742278E-08 -1 13.5 12.5)" id="Triangle"  fill-rule="evenodd" stroke="none" />
                     </svg>

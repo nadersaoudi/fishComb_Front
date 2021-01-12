@@ -28,9 +28,9 @@ return(
           <img src="../../../../dist/img/logofish.png" alt="fishcomb" /></a>
     </div>
     <div className="row">
-      <div className='col-3'></div>
-      <div className='col-6'>
-    <div className="card col-md-7">
+      <div className='col-sm-3'></div>
+      <div className='col-sm6'>
+    <div className="card col-sm-7">
         <div className="card-reset">
             <form onSubmit={e => onSubmit(e)}>
                 <div >
@@ -39,7 +39,7 @@ return(
 
                 <div className="form-group">
                     <div className="row">
-                        <div className="col-md-12 pt-3 ">
+                        <div className="col-sm-12 pt-3 ">
                             <input type="email" className="form-control res__input" placeholder="Your Email"
                                  name="email" value={email} onChange={e => onchange(e)}/>
                         </div>
@@ -47,7 +47,7 @@ return(
                     </div>
                 </div>
                 <div>
-                    <button className="btn btn-primary col-md-12 mt-3  res-button">Reset Password
+                    <button className="btn btn-primary col-sm-12 mt-3  res-button">Reset Password
                     </button>
                 </div>
 
@@ -55,7 +55,7 @@ return(
         </div>
     </div>
     </div>
-    <div className='col-3'></div>
+    <div className='col-sm-3'></div>
     </div>
    
 </div>

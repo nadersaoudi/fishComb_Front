@@ -12,10 +12,10 @@ const NewFeed = ({ Post: { posts }, getPosts }) => {
   }, [getPosts])
 
   return (
-    <div className='row mt-5'>
+    <div className='row mt-5 no-gutters'>
       <div className='col-1'></div>
-      <div className='col-6 mt-4'>
-        <div className='card'>
+      <div className='col-6 '>
+        <div className='card col-12'>
           <Post />
         </div>
       </div>
@@ -36,9 +36,9 @@ const NewFeed = ({ Post: { posts }, getPosts }) => {
           </div>
         ) :
 
-          <div className='col-6'>
+          <div className='col-sm-6'>
             <div className='row'>
-              <div className='col-6'>
+              <div className='col-sm-6'>
                 No recent Feed
           </div>
             </div>
@@ -47,8 +47,8 @@ const NewFeed = ({ Post: { posts }, getPosts }) => {
 
 
 
-        <div className='col-1'></div>
-        <div className='col-3'>
+        <div className='col-sm-1'></div>
+        <div className='col-sm-3'>
           <div className='row'>
 
 
@@ -57,7 +57,7 @@ const NewFeed = ({ Post: { posts }, getPosts }) => {
 
           </div>
         </div>
-        <div className='col-1'></div>
+        <div className='col-sm-1'></div>
       </div>
     </div>
 

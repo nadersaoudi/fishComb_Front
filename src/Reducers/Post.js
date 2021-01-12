@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
             return {
                 isAuthenticated: true,
                 ...state,
-                posts: [ payload ,...state.posts],
+                posts: [payload,...state.posts ],
                 loading: false
             }
         case POST_ERROR:
@@ -90,7 +90,6 @@ export default function (state = initialState, action) {
 
 
 }
-
 
 
 

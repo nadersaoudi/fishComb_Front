@@ -14,15 +14,12 @@ import Searchitem from '../../pages/Search/Searchitem';
 const Container = () => {
 
 return(
-
-  <div classes='row no-gutters '>
-     <div className="content-wrapper col-10 px-0">
-    <main role="main">
+  <div className='row no-gutters '>
+     <div className="content-wrapper col-sm-10 px-0">
+      <main role="main">
         <div className="main">
-      
-       
-          <Switch>
-          <Route path={`/dashboard/newsfeed`}>
+               <Switch>
+                  <Route path={`/dashboard/newsfeed`}>
                     <NewFeed />
                   </Route>
                   <Route path={`/dashboard/messages`}>
@@ -45,17 +42,10 @@ return(
                   </Route>
                   <Route path="/dashboard/search">
                     <Searchitem />
-                  </Route>
-                 
-          </Switch>
-         
-       
-               
-              
+                  </Route>      
+              </Switch>
         </div>
       </main>
-
-
     </div>
   </div>
    

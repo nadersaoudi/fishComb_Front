@@ -8,40 +8,28 @@ import { loadUser } from './auth';
 toast.configure();
 export const edit = (
     formdata, history, edit = false) => async dispatch => {
-
         try {
             const config = {
                 headers: {
                     Authorization: 'Bearer ' + Cookies.get('user'),
                     'content-Type': 'application/json'
-
                 }
             };
-
-
             const res = await axios.patch('api/user/profile', formdata, config);
             dispatch({
                 type: UPDATE_PROFILE,
                 payload: res.data,
-
             });
             loadUser()
             toast.success('Profile Updated');
             window.location.reload(false);
-
-
-
         }
         catch (err) {
             toast.error('Email is null ')
-
             dispatch({
                 type: PROFILE_ERROR,
-
-
             });
         }
-
     }
 export const picture =  file => async dispatch => {
     const config = {
@@ -55,13 +43,11 @@ export const picture =  file => async dispatch => {
         console.log(res.data + " res")
         dispatch({
             type: EDIT_PIC,
-            payload: res.data,
+            payload: res.data.data,
         })
-
         toast.success('image uploaded');
         window.location.reload(false);
     } catch (err) {
         toast.error('problem occured');
     }
-
 };
