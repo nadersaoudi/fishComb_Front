@@ -1,11 +1,9 @@
 .main-sidebar {
-    
-    background-color: #343f54 !important;
-    height: 200vh !important;
+   background-color: #343f54 !important;
+   height: 600% !important;
    padding-left: 0 !important;
    padding-right: 0 !important;
-    justify-content: flex-end;
-
+   justify-content: flex-end;
 }
 .wrapper {
     display: flex;
@@ -17,23 +15,12 @@
     padding:  150px 0 ; 
     text-decoration: none;
 }
-.lins {
-
-}
 .lins .row__cont{
-    color: #fff;
+   color: #fff;
    padding: 10%;
    width: 100% ;
-   
    text-decoration: none;
-   
-   
-  
 }
-  
-
-
-
 .lins  .row__cont {
 	letter-spacing: 1.2px;
     font-size: 18px !important;
@@ -41,21 +28,14 @@
     color: #fff;
     display: block;
     letter-spacing: 0.02 !important;    
-   
 }
-
 .active :hover{
     text-decoration: none;
-    
-
 }
-
 .row__cont:hover{
     background: #202c43;
-    border-left: 7px solid #00e2c8;
-    
+    border-left: 7px solid #00e2c8;  
 }
-
 .lins{
     text-decoration: none !important;
 }

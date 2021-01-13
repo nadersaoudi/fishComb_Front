@@ -1,0 +1,26 @@
+.lin_profile{
+    text-decoration: none;
+    cursor: pointer;
+}
+.nav_profile{
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+}
+.nav_profile:active{
+    color: #00E2C8;
+}
+.lin_profile:hover{
+    color: #00E2C8;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    border-bottom: 2px solid #00e2c8;
+    color :#00E2C8
+}
+.nav-item:hover{
+  
+}
+.nav-item{
+   
+}

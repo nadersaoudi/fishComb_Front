@@ -16,7 +16,6 @@ import { getMyinvitations } from './Actions/Friends';
 import { Provider } from 'react-redux';
 import ProtectedRoute from "./ProtectedRoute";
 import  Cookies from 'js-cookie';
-import NavEvents from './components/pages/events/NavEvents';
 
 
 
@@ -26,7 +25,7 @@ const App = () => {
   if (Cookies.user) {
     ProtectedRoute(Cookies.user);
   }
-  useEffect(() => {
+  useEffect(() => { 
     store.dispatch(loadUser());
   }, []);
   useEffect(() => {

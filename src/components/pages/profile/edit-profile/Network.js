@@ -12,9 +12,9 @@ const Network = ({ Post: { posts }, getPosts }) => {
     return (    
         <Fragment>
        <div className='row mt-5'>
-        <div className='col-sm-1'></div>
+        <div className='col-sm-6'></div>
         {posts.length > 0 ? (
-          <div className='col-sm-8'>
+          <div className='col-sm-6'>
             <div className='row'>
 
               {posts && posts.map(posts =>

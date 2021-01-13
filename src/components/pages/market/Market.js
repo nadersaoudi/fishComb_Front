@@ -56,7 +56,7 @@ const Market =() => {
                    
                     <div className='row'>
                         <div className='col-md-3'> <div className='image_holder grid '>
-                     <img src='https://picsum.photos/id/99/200/300' width="200" height="150"/>
+                     <img src='https://picsum.photos/id/99/200/300' width="200" height="150" alt='event'/>
                      <div className='description'>
                      <span>25$</span> <br/>
                      <span>lorem ipsuem</span> <br/>
@@ -67,7 +67,7 @@ const Market =() => {
                         <div className='col-md-3'>
                              <div className='image_holder grid '>
 
-                     <img className='pic' src='https://picsum.photos/id/100/200/300' width="200" height="150" id='img'/>
+                     <img className='pic' src='https://picsum.photos/id/100/200/300' width="200" height="150" id='img' alt='event'/>
                      <div className='icon'> <InfoOutlinedIcon />  </div>    
 
                 
@@ -79,7 +79,7 @@ const Market =() => {
                     </div>
                         <div className='col-md-3'> 
                         <div className='image_holder grid '>
-                     <img src='https://picsum.photos/id/77/200/300' width="200" height="150"/>
+                     <img src='https://picsum.photos/id/77/200/300' width="200" height="150" alt='event'/>
                      <div className='description'>
                      <span>41$</span> <br/>
                      <span>lorem ipsuem</span> <br/>
@@ -88,7 +88,7 @@ const Market =() => {
                     </div>
                     <div className='col-md-3'> 
                         <div className='image_holder grid '>
-                     <img src='https://picsum.photos/id/98/200/300' width="200" height="150"/>
+                     <img src='https://picsum.photos/id/98/200/300' width="200" height="150" alt='event'/>
                      <div className='description'>
                      <span>36$</span> <br/>
                      <span>lorem ipsuem</span> <br/>
@@ -108,7 +108,7 @@ const Market =() => {
                     <div className='row'>
                     <div className='col-md-2'> 
                         <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/14/200/300' width="125" height="100"/>
+                 <img src='https://picsum.photos/id/14/200/300' width="125" height="100" alt='event'/>
                  <div className='description'>
                              <span>74$</span> <br/>
                              <span>lorem ipsuem</span> <br/>
@@ -117,7 +117,7 @@ const Market =() => {
             </div>
             <div className='col-md-2 mb-4'> 
                         <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/10/200/300' width="125" height="100"/>
+                 <img src='https://picsum.photos/id/10/200/300' width="125" height="100" alt='event'/>
                  <div className='description'>
                              <span>16$</span> <br/>
                              <span>lorem ipsuem</span> <br/>
@@ -126,7 +126,7 @@ const Market =() => {
             </div>
             <div className='col-md-2 mb-4'> 
                         <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/7/200/300' width="125" height="100"/>
+                 <img src='https://picsum.photos/id/7/200/300' width="125" height="100" alt='event'/>
                  <div className='description'>
                              <span>156$</span> <br/>
                              <span>lorem ipsuem</span> <br/>
@@ -135,7 +135,7 @@ const Market =() => {
             </div>
             <div className='col-md-2 mb-4'> 
                         <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/6/200/300' width="125" height="100"/>
+                 <img src='https://picsum.photos/id/6/200/300' width="125" height="100" alt='event'/>
                  <div className='description'>
                              <span>36$</span> <br/>
                              <span>lorem ipsuem</span> <br/>
@@ -144,7 +144,7 @@ const Market =() => {
             </div>
             <div className='col-md-2 mb-4'> 
                         <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/32/200/300' width="125" height="100"/>
+                 <img src='https://picsum.photos/id/32/200/300' width="125" height="100" alt='event'/>
                  <div className='description'>
                              <span>33$</span> <br/>
                              <span>lorem ipsuem</span> <br/>
@@ -153,7 +153,7 @@ const Market =() => {
             </div>
             <div className='col-md-2 mb-4'> 
                         <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/4/200/300' width="125" height="100"/>
+                 <img src='https://picsum.photos/id/4/200/300' width="125" height="100" alt='event'/>
                  <div className='description'>
                              <span>77$</span> <br/>
                              <span>lorem ipsuem</span> <br/>
@@ -162,7 +162,7 @@ const Market =() => {
             </div>
             <div className='col-md-2 mb-4'> 
                         <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/16/200/300' width="125" height="100"/>
+                 <img src='https://picsum.photos/id/16/200/300' width="125" height="100" alt='event'/>
                  <div className='description'>
                              <span>53$</span> <br/>
                              <span>lorem ipsuem</span> <br/>
@@ -171,7 +171,7 @@ const Market =() => {
             </div>
             <div className='col-md-2 mb-4'> 
                         <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/12/200/300' width="125" height="100"/>
+                 <img src='https://picsum.photos/id/12/200/300' width="125" height="100" alt='event'/>
                  <div className='description'>
                              <span>1$</span> <br/>
                              <span>lorem ipsuem</span> <br/>
@@ -180,7 +180,7 @@ const Market =() => {
             </div>
             <div className='col-md-2 mb-4'> 
                         <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/17/200/300' width="125" height="100"/>
+                 <img src='https://picsum.photos/id/17/200/300' width="125" height="100" alt='event'/>
                  <div className='description'>
                              <span>65$</span> <br/>
                              <span>lorem ipsuem</span> <br/>
@@ -189,7 +189,7 @@ const Market =() => {
             </div>
             <div className='col-md-2 mb-4'> 
                         <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/24/200/300' width="125" height="100"/>
+                 <img src='https://picsum.photos/id/24/200/300' width="125" height="100" alt='event'/>
                  <div className='description'>
                              <span>30$</span> <br/>
                              <span>lorem ipsuem</span> <br/>
@@ -198,7 +198,7 @@ const Market =() => {
             </div>
             <div className='col-md-2 mb-4'> 
                         <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/41/200/300' width="125" height="100"/>
+                 <img src='https://picsum.photos/id/41/200/300' width="125" height="100" alt='event'/>
                  <div className='description'>
                              <span>62$</span> <br/>
                              <span>lorem ipsuem</span> <br/>
@@ -207,7 +207,7 @@ const Market =() => {
             </div>
             <div className='col-md-2 mb-4'> 
                         <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/52/200/300' width="125" height="100"/>
+                 <img src='https://picsum.photos/id/52/200/300' width="125" height="100" alt='event'/>
                  <div className='description'>
                              <span>100$</span> <br/>
                              <span>lorem ipsuem</span> <br/>

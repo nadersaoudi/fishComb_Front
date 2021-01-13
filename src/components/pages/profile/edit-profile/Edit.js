@@ -48,11 +48,11 @@ return (
             <form className='card ' id='cardpro' onSubmit={e => onSubmit(e)}  >
               <div className='kk' >
              <div className='row'>  
-             <div className='col-sm-10'></div>
+             <div className='col-sm-9'></div>
              <div className='col-sm-2'>
              <div className="btn-group btn-group-toggle col-md-12 ">
                 <Button  type='submit' variant="outlined">
-                  <span  > Save Update </span>
+                  <span className='button__Edit'> Save Update </span>
                 </Button>
                 </div>
              </div>

@@ -44,7 +44,7 @@ const Publication = ({
 
 
   const onclick = () => {
-    setHidden(false);
+    setHidden(hidden === false ? true : false);
   }
 
   const addcomment = async (id, body) => {
@@ -99,7 +99,7 @@ const Publication = ({
               </div>
               <div className="col-sm-10">
                 <span className="nameuser">
-               {posts && posts.user.first_name}{posts && posts.user.last_name}
+                {posts && posts.user.first_name.charAt(0).toUpperCase() + posts.user.first_name.slice(1)} {posts && posts.user.last_name.charAt(0).toUpperCase() + posts.user.last_name.slice(1)}
                 </span>
                 <div className="row">
                   <div className="col-sm-8 datepost">
@@ -114,8 +114,8 @@ const Publication = ({
               </div>
               <div className="col-sm-1" id="pnt">
                 <div className={classes.root}>
-                  <div>
-                    <Button
+                {user && user.id === posts.user_id ? <div>
+                   <Button
                       ref={anchorRef}
                       aria-controls={open ? 'menu-list-grow' : undefined}
                       aria-haspopup="true"
@@ -145,8 +145,8 @@ const Publication = ({
                         </Grow>
                       )}
                     </Popper>
-                  </div>
-                </div>
+                  </div>  
+                  : (<div></div>)}  </div>
               </div>
 
             </div>

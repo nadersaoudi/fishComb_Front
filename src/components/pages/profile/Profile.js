@@ -11,7 +11,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { makeStyles } from '@material-ui/core/styles';
-import Aboute from '../profile/edit-profile/Aboute';
+import Aboute from './edit-profile/Aboute/Aboute';
 import Nav from './navbar/nav';
 import Content from './content/Content';
 
@@ -87,6 +87,7 @@ const Profile = ({ auth: { user, loading }, edit, history, picture }) => {
     setFile(e.target.files[0])
     sethide(false)
   };
+  // eslint-disable-next-line
   const [type, setType] = useState('profile')
 
   const onsubmit1 = e => {
@@ -99,6 +100,7 @@ const Profile = ({ auth: { user, loading }, edit, history, picture }) => {
     sethide(true)
 
   }
+  // eslint-disable-next-line
   const [type1,settype1]=useState('cover')
   const [file2,setFile2]=useState('')
   const [hide1, sethide1] = useState(true)
@@ -128,8 +130,8 @@ const onsubmit2=e=>{
             <Image src={user && user.cover_image} alt='' className='coverture'/>
             <input accept="image/*" className={classes.input} id="icon-button-filee" type="file" onChange={onchange2} />
             <div className='row'>
-              <div className='col-11'></div>
-              <div className='col-1'>
+              <div className='col-sm-11'></div>
+              <div className='col-sm-1'>
               <label htmlFor="icon-button-filee">
               <IconButton className='upload' color="primary" aria-label="upload picture" component="span">
                 <PhotoCamera   />
@@ -182,19 +184,19 @@ const onsubmit2=e=>{
       </div>
       </Col>
       </Row>
-      <Row>
+      <Row className='pb-5'>
         <Col sm={2}></Col>
-        <Col sm={6}>
+        <Col sm={5}>
         <Nav />
         </Col>
         
       </Row>
-      <Row>
+      <Row className='pt-2'>
         <Col sm={1}></Col>
-        <Col sm={8}>
+        <Col sm={9}>
         <Content />
         </Col>
-        <Col sm={2}></Col>
+        <Col sm={1}></Col>
         
       </Row>
     </Fragment>

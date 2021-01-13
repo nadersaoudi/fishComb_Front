@@ -9,7 +9,7 @@ import Board from '../../pages/board/Board';
 import Message from '../../pages/messages/Messages';
 import NewFeed from '../../pages/newsfeed/Newfeed';
 import Searchitem from '../../pages/Search/Searchitem';
-
+import SingleEvent from '../../pages/events/SingleEvent';
 
 const Container = () => {
 
@@ -31,7 +31,7 @@ return(
                   <Route path={`/dashboard/watch`}>
                     <Watch />
                   </Route>
-                  <Route path={`/dashboard/events`}>
+                  <Route path="/dashboard/events/">
                     <Events />
                   </Route>
                   <Route path={`/dashboard/board`}>
@@ -42,6 +42,9 @@ return(
                   </Route>
                   <Route path="/dashboard/search">
                     <Searchitem />
+                  </Route>
+                  <Route path="/dashboard/single">
+                    <SingleEvent />
                   </Route>      
               </Switch>
         </div>
