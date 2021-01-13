@@ -61,7 +61,6 @@ export const getMyinvitations = () => async  dispatch => {
     }
     try{
       const res = await axios.post('/api/user/friends/myinvitations',{},config)
-      console.log(res.data.users);
         dispatch({
             type:GET_INV,
             payload: res.data.users

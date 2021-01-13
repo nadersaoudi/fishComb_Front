@@ -1,4 +1,4 @@
-import { ADD_EVENT, EVENT_ERROR ,GET_EVENTS} from './types'
+import { ADD_EVENT, EVENT_ERROR ,GET_EVENTS,GET_EVENT} from './types'
 import axios from 'axios'
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -29,10 +29,10 @@ export const addEvent = ({ name,
                 cover,
                 video_link,
                 status }, config)
-            console.log(res.data)
+           
             dispatch({
                 type: ADD_EVENT,
-                payload: res.data,
+                payload: res.data.data,
             })
             toast.success('Event added');
         } catch (error) {
@@ -61,6 +61,29 @@ export const getevents = () => async dispatch => {
         })
     } catch (error) {
         toast.error('Error happened when fetching events');
+        dispatch({
+            type: EVENT_ERROR,
+        });
+    }
+
+}
+//show single event
+export const getevent = (eventID) => async dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.get(`/api/events/${eventID}`, config)
+        
+        dispatch({
+            type: GET_EVENT,
+            payload: res.data.data
+        })
+    } catch (error) {
+        toast.error('Error happened when fetching event');
         dispatch({
             type: EVENT_ERROR,
         });
