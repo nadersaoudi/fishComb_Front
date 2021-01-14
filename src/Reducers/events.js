@@ -1,4 +1,4 @@
-import {ADD_EVENT,GET_EVENTS,GET_EVENT, GET_CATEGORIES} from  '../Actions/types'
+import {ADD_EVENT,GET_EVENTS,GET_EVENT, GET_CATEGORIES, DELETE_EVENT, FILTER_EVENT} from  '../Actions/types'
 const initialState = {
 
     events: [],
@@ -9,6 +9,16 @@ const initialState = {
 export default function (state = initialState, action) {
     const { type, payload } = action
     switch (type) {
+        case FILTER_EVENT:
+            return {
+                ...state,
+                 events:payload
+            }
+        case DELETE_EVENT:
+            return {
+                ...state,
+                events: state.events.filter(event => event.id !== payload),
+            }
         case GET_CATEGORIES:
             return {
                 ...state,
