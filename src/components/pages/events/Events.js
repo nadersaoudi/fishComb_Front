@@ -239,7 +239,8 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
                             <div className='col-md-3'> <div className='image_holder grid '>
                                 <img src='https://picsum.photos/id/99/200/300' width="200" height="150" alt='event' />
                                 <div className='description'>
-                                    <span>lorem ipsuem</span> <br />
+                                <NavLink to={`/dashboard/events/single`}><span>lorem ipsuem</span> <br /></NavLink>  
+                                    
                                     <span>lorem ipsuem</span> <br />
 
                                 </div>

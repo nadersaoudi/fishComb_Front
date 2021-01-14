@@ -35,7 +35,6 @@ const Post = ({ auth: { user }, addPost,  }) => {
     e.target.reset();
   }
 
-
   const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -72,9 +71,9 @@ const Post = ({ auth: { user }, addPost,  }) => {
   }
   return (
 
-    <div className="pub">
+    <div className="pub px-0 ">
       <form onSubmit={e => Onsubmit(e)}>
-        <div className="pub__top">
+        <div className=" pub__top">
           <Avatar src={user && user.profile_image} className={classes.large} />
           <div className='post'>
 
@@ -87,7 +86,7 @@ const Post = ({ auth: { user }, addPost,  }) => {
 
         </div>
         <div className='row ' id='pub-bot' >
-          <div className='col-3 px-0'>
+          <div className='col-sm-3 px-0'>
             <div className="pub__option">
               <svg width="26px" height="22px" version="1.1" xmlns="http://www.w3.org/1999/xlink" >
                 <g id="fishcomb-product-icons-12">
@@ -95,12 +94,12 @@ const Post = ({ auth: { user }, addPost,  }) => {
                   <path d="M3.01982 4.65956e-05C4.67662 0.0109945 6.01086 1.36296 5.99993 3.01977C5.98901 4.67658 4.63706 6.01083 2.98026 5.99993C1.32346 5.98903 -0.01081 4.6371 6.60203e-05 2.9803C0.0127526 1.32419 1.3637 -0.00908181 3.01982 4.65956e-05L3.01982 4.65956e-05Z" transform="translate(16 3)" id="Path" fill="#00ABEE" fill-rule="evenodd" stroke="none" />
                 </g>
               </svg>
-              <div className='col-5 px-0 pub__option'>
+              <div className='col-sm-5 px-0 pub__option'>
                 <span className='postPv '>Photo/Video</span>
               </div>
             </div>
           </div>
-          <div className='col-3 px-0'>
+          <div className='col-sm-4 px-0'>
             <div className="pub__option">
               <svg width="22px" height="22px" version="1.1" xmlns="http://www.w3.org/1999/xlink" >
                 <g id="fishcomb-product-icons-13">
@@ -108,15 +107,15 @@ const Post = ({ auth: { user }, addPost,  }) => {
                   <path d="M5.51577 0C6.1071 0.319019 6.15145 0.735515 5.67839 1.20814L1.10747 5.76892C0.94125 5.96942 0.669781 6.04891 0.421532 5.96979C0.190486 5.91958 0.019805 5.72384 0.00169272 5.4883C-0.0110694 5.28529 0.0486454 5.08433 0.17022 4.92116C1.73722 3.33197 3.31901 1.75756 4.9008 0.194956C4.97775 0.128055 5.05871 0.0659079 5.14324 0.00886163L5.51577 0Z" transform="translate(16 0)" id="Path" fill="#FF9D72" fill-rule="evenodd" stroke="none" />
                 </g>
               </svg>
-              <div className='col-5 px-0 pub__option'>
+              <div className='col-sm-5 px-0 pub__option'>
                 <span className='postPv'>Tag Friends</span>
               </div>
 
             </div>
           </div>
-          <div className='col-4'>
+          <div className='col-sm-4'>
           </div>
-          <div className='col-1' id="pnt">
+          <div className='col-sm-1' id="pnt">
             <svg width="26px" height="7px" version="1.1" xmlns="http://www.w3.org/1999/xlink" >
               <g id="Group" transform="translate(0.5 0.5)">
                 <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" id="Oval" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />

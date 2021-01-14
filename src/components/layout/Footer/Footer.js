@@ -15,7 +15,7 @@ const Footer = () => {
                             <p className="text-justify">Fishcomb.com <i>CODE WANTS TO BE SIMPLE </i>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown specimen book.</p>
                         </div>
 
-                        <div className="col-xs-6 col-md-3">
+                        <div className="col-sm-6 col-sm-3">
                             <h6>For Individuals</h6>
                             <ul className="footer-links">
                                 <li><a href="/register">Signup</a></li>
@@ -27,7 +27,7 @@ const Footer = () => {
                             </ul>
                         </div>
 
-                        <div className="col-xs-6 col-md-3">
+                        <div className="col-sm-6 col-sm-3">
                             <h6>Quick Links</h6>
                             <ul className="footer-links">
                                 <li><a href="/">About Us</a></li>
@@ -43,13 +43,13 @@ const Footer = () => {
                 </div>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-8 col-sm-6 col-xs-12">
+                        <div className="col-sm-8 col-sm-6 col-sm-12">
                             <p className="copyright-text">Copyright &copy; 2021 All Rights Reserved by 
          <a href="/"> FishComb</a>.
             </p>
                         </div>
 
-                        <div className="col-md-4 col-sm-6 col-xs-12">
+                        <div className="col-sm-4 col-sm-6 col-xs-12">
                             <ul className="social-icons">
                                 <li><a className="facebook" href="/"><i className="fa fa-facebook"></i></a></li>
                                 <li><a className="twitter" href="/"><i className="fa fa-twitter"></i></a></li>

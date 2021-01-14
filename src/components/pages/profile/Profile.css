@@ -51,29 +51,6 @@ h2 >p {
     display: none;
 }
 
-.m{
- text-decoration: none;
- cursor: pointer;
-}
-.n{
-    font-weight: 500;
-    font-size: 15px;
-}
-.n:hover{
-    color: #00E2C8;
-    font-weight: 500;
-    font-size: 15px;
-}
-.nav-item:hover{
-    border-bottom: 5px solid #00e2c8;
-    color :#00E2C8;
-}
-.nav-item{
-    padding-bottom: 5%;
-}
-.m:hover {
-    color :#00E2C8;
-}
 .upload{
     position: relative;
     top: -460px;
@@ -87,7 +64,7 @@ h2 >p {
 .upload1{
     position: relative;
     top: -50px;
-    right: 60px;
+    right: 65px;
     color: #343f54;
     background-color:#343f54 ;
 }
@@ -100,7 +77,7 @@ h2 >p {
 #vali2{
     position: relative;
     top: -30px;
-    left: 30px;
+    left: 50px;
     background-color: #00E2C8;
 }
 .upload1:hover{

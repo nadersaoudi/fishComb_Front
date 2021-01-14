@@ -36,14 +36,14 @@ const Notification = ({users ,acceptInv}) => {
         <Fragment>
           
             <div className='row pt-2 pb-2'>
-                <div className='col-1'>
+                <div className='col-sm-1'>
                     <Avatar className={classes.large} />
                 </div>
-                <div className='col-1'></div>
-                <div className='col-7 pt-1'>
+                <div className='col-sm-1'></div>
+                <div className='col-sm-7 pt-1'>
                 <h6><b>{users.data.attributes.name}</b></h6>
                      <div className='row '>
-                        <div className='col-5 '>
+                        <div className='col-sm-5 '>
                         <span className='abouts'>
                          {users.data.attributes.about}
                         </span>  
@@ -51,7 +51,7 @@ const Notification = ({users ,acceptInv}) => {
                      </div>
                 </div>
                 <input type='hidden' value={users.data.user_id} />
-                <div className='col-3'>
+                <div className='col-sm-3'>
                     <Button><PersonAddIcon onClick={(e) =>acceptinv()} className='add'/></Button>
                     <Button><MdCancel onClick={(e) =>deletinv()}  className='add'/></Button>
                 </div>

@@ -67,8 +67,7 @@ const App = () => {
     </React.Suspense>
     </HashRouter>
     </Provider>
-    
- 
+
   </div>
   );
 }

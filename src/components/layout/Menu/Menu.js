@@ -1,6 +1,6 @@
 import React from 'react';
 import './menu.css';
-import {  NavLink} from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 
 const Menu = () => {
 
@@ -79,6 +79,7 @@ return(
                 </svg>
                  Board</p>
                  </NavLink>
+                
               </li>
               <li className="push-right">
             

@@ -4,12 +4,9 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types'
 
 
-const Single =({  event})=> {
-  
+const Single =({  event })=> {
     return (
      
-    
-      
         <div className='col-md-2'>
               
         <div className='image_holder grid '>

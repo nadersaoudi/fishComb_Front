@@ -1,0 +1,8 @@
+.button__Edit{
+    text-decoration: none;
+    color: black;
+}
+.button__Edit:hover{
+    text-decoration: none !important;
+    color: black;
+}
