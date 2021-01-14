@@ -5,26 +5,32 @@ import './Events.css';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { addEvent, getevents } from '../../../Actions/events'
+import { addEvent, getevents, getcategories } from '../../../Actions/events'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Single from './Single'
 import FormControl from 'react-bootstrap/FormControl'
 import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+
+import Select from '@material-ui/core/Select';
+
 const useStyles = makeStyles({
     root: {
-      //  maxWidth: '2200px'
-     // width:'2200px',
-      
-    
-    
+        //  maxWidth: '2200px'
+        // width:'2200px',
+
+
+
     },
-  });
-const Events = ({ addEvent, getevents, events: { events } }) => {
+});
+const Events = ({ addEvent, getevents, events: { events, categories }, getcategories }) => {
     useEffect(() => {
         getevents()
     }, [getevents])
-    const classes = useStyles();
+    useEffect(() => {
+        getcategories()
+    }, [getcategories])
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -37,14 +43,22 @@ const Events = ({ addEvent, getevents, events: { events } }) => {
     const [formData, setFormData] = useState({
         name: '',
         description: '',
-        category_id: '2',
+        category_id: '',
         location: '',
         date: '',
         cover: 'non',
         video_link: '',
         status: '1'
     })
+    const [open1, setOpen1] = React.useState(false);
+    const handleClose1 = () => {
+        setOpen1(false);
+    };
 
+    const handleOpen1 = () => {
+        setOpen1(true);
+    };
+    
     // eslint-disable-next-line
     const { name, description, category_id, location, date, cover, video_link, status } = formData;
     const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -53,7 +67,7 @@ const Events = ({ addEvent, getevents, events: { events } }) => {
         addEvent({
             name,
             description,
-            category_id: '2',
+            category_id,
             location,
             date,
             cover: 'non',
@@ -129,21 +143,32 @@ const Events = ({ addEvent, getevents, events: { events } }) => {
                                                 id="Date"
                                                 type="Date"
 
-                                                 name="date" value={date} onChange={e => onchange(e)}
+                                                name="date" value={date} onChange={e => onchange(e)}
                                             />
 
                                         </div>
                                         <div className='col-6'>
-                                            <FormControl
-                                                placeholder="Time"
-                                                className='input_event'
-                                                margin="dense"
-                                                id="Time"
-                                                label="Time"
-                                                type="text"
-
-                                                name="category_id" value={category_id} onChange={e => onchange(e)}
-                                            />
+                                    
+                                                
+                                            <Select
+                                                labelId="demo-controlled-open-select-label"
+                                                id="demo-controlled-open-select"
+                                                open={open1}
+                                                onClose={handleClose1}
+                                                onOpen={handleOpen1}
+                                                value={category_id}
+                                                name="category_id"
+                                                onChange={e => onchange(e)}
+                                            >  
+                                            
+                                            {categories && categories.map(c=> 
+                                               (<MenuItem  key={c.id} value={c.id} >{c.name} </MenuItem>) 
+                                                
+                                            )}
+                                                
+                                            </Select>
+                                           
+                                          
                                         </div>
                                     </div>
                                     <div className="row pt-3">
@@ -273,10 +298,13 @@ const Events = ({ addEvent, getevents, events: { events } }) => {
 Events.prototype = {
     addEvent: PropTypes.func.isRequired,
     getevents: PropTypes.func.isRequired,
+    getcategories: PropTypes.func.isRequired,
+    categories:PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
 
     addEvent: state.addEvent,
-    events: state.events
+    events: state.events,
+    categories: state.categories
 })
-export default connect(mapStateToProps, { addEvent, getevents })(Events);
+export default connect(mapStateToProps, { addEvent, getevents, getcategories })(Events);

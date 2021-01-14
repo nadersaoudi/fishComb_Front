@@ -1,4 +1,4 @@
-import { ADD_EVENT, EVENT_ERROR ,GET_EVENTS,GET_EVENT} from './types'
+import { ADD_EVENT, EVENT_ERROR ,GET_EVENTS,GET_EVENT, GET_CATEGORIES} from './types'
 import axios from 'axios'
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -80,6 +80,29 @@ export const getevent = (eventID) => async dispatch => {
         
         dispatch({
             type: GET_EVENT,
+            payload: res.data.data
+        })
+    } catch (error) {
+        toast.error('Error happened when fetching event');
+        dispatch({
+            type: EVENT_ERROR,
+        });
+    }
+
+}
+///get categories
+export const getcategories = () => async dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.post(`api/events/categories`,{}, config)
+       
+        dispatch({
+            type: GET_CATEGORIES,
             payload: res.data.data
         })
     } catch (error) {
