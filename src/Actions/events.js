@@ -161,3 +161,26 @@ export const sortEvents = ({location1,asc}) => async dispatch => {
     }
 
 }
+///api/events/myevents
+export const myevents = () => async dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.post(`api/events/myevents`,{}, config)
+       
+        dispatch({
+            type: GET_EVENTS,
+            payload: res.data
+        })
+    } catch (error) {
+        toast.error('Error happened when fetching event');
+        dispatch({
+            type: EVENT_ERROR,
+        });
+    }
+
+}

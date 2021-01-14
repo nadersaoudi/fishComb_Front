@@ -1,11 +1,12 @@
 
 import React, { useEffect, useState,useCallback } from 'react'
-import { getevent } from '../../../Actions/events'
+import {Link} from 'react-router-dom'
+import { getevent,deleteEvent } from '../../../Actions/events'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Events.css'
 
-const Eventitem = ({ match, getevent, events: { event } }) => {
+const Eventitem = ({ match, getevent, events: { event },deleteEvent,auth:{user} }) => {
     useEffect(() => {
         getevent(match.params.id);
     }, [getevent, match.params.id]
@@ -29,7 +30,10 @@ const Eventitem = ({ match, getevent, events: { event } }) => {
         
         <div className='row pt-5 pb-2'>
         <div className='col-sm-10'></div>
-        <div className='col-sm-2'> <button onClick={increment}>Next</button> -<button onClick={decrement}>Preview</button> </div>
+        <div className='col-sm-2'> <button onClick={increment}>Next</button> -<button onClick={decrement}>Preview</button>
+       {user && user.id === event &&  event.user.data.user_id ? <Link to='/dashboard/events'> <button onClick={e=>deleteEvent(match.params.id)}>delete</button>
+       </Link>:<div></div>}
+         </div>
 
         </div>
         <div className='row pt-5'>
@@ -45,6 +49,8 @@ const Eventitem = ({ match, getevent, events: { event } }) => {
                   
                     <div className='row'><div className='col-sm-6'>{event && event.description}
                     </div></div>
+                    <div className='row'><div className='col-sm-6'>participants {event && event.opted_people} 
+                    </div></div>
                     <div className='row pt-4'><div className='col-sm-2 '><button>attend</button></div>
                     <div className='col-sm-2'>Cancel</div>
                     </div>
@@ -58,9 +64,11 @@ const Eventitem = ({ match, getevent, events: { event } }) => {
 Eventitem.propTypes = {
     events: PropTypes.object.isRequired,
     getevent: PropTypes.func.isRequired,
+    deleteEvent:PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     events: state.events,
+    auth:state.auth
 
 })
-export default connect(mapStateToProps, { getevent })(Eventitem)
+export default connect(mapStateToProps, { getevent,deleteEvent })(Eventitem)
