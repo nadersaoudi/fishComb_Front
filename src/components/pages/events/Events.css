@@ -1,9 +1,22 @@
 .side_min_bar{
     height: fit-content;
 }
+.add__event{
+    width: 550px;
+    min-height: 420px;
+    height: 500px;
+
+}
+
+
+#btn_event{
+
+
+    text-align: left;
+}
 #body{
-    border-left: solid 1px;
-    color:rgb(206, 206, 206)
+    border-left: solid 1px rgb(206, 206, 206);
+    
 }
 .h66{
     color: black;
@@ -14,7 +27,34 @@
     justify-content: center;
 
 }
+.col-sm-6{
+    max-height: 143px;
+    min-height: 143px;
+}
+
 .input_event{
     background-color:#f2f3f3 !important;
     border-radius: 0 !important;
+}
+.Top__section > button{
+    border: 0;
+    background-color: #F7F8FA;
+}
+
+.col-sm-2 > button{
+    width: 100px;
+    height: 50px;
+    border-radius: 1px;
+    background-color: white;
+    
+    
+}
+#attend :hover{
+    background-color: #202C43;
+    color: white;
+}
+
+#cancel:hover{
+    background-color: #202C43;
+    color: white;
 }

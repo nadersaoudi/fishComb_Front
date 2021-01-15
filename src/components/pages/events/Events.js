@@ -112,19 +112,19 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
                                 </svg>
                             </button>
                         </div>
-                        <Button className="event">My Events</Button><br />
+                        <Button className="event pt-2 mt-4 mb-2" id='btn_event'>My Events</Button><br />
 
 
 
                         <Button className="event" onClick={handleClickOpen}>
                             Add Events
                                  </Button>
-                        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title"    >
-                            <form onSubmit={e => submit(e)}>
+                        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" className='dialogForm'   >
+                            <form className='add__event'onSubmit={e => submit(e)}>
                                 <DialogTitle id="form-dialog-title">Add event</DialogTitle>
                                 <DialogContent>
-                                    <div className="row pt-1">
-                                        <div className=' col-sm-12'>
+                                    <div className="row pt-3">
+                                        <div className=' col-md-12'>
                                             <FormControl
                                                 className='input_event'
                                                 placeholder="Title"
@@ -136,7 +136,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
                                                 name="name" value={name} onChange={e => onchange(e)}
                                             /></div></div>
                                     <div className="row pt-3">
-                                        <div className='col-6'>
+                                        <div className='col-9'>
                                             <FormControl
                                                 className='input_event'
                                                 margin="dense"
@@ -147,7 +147,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
                                             />
 
                                         </div>
-                                        <div className='col-6'>
+                                        <div className='col-3'>
                                     
                                                 
                                             <Select
@@ -181,7 +181,9 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
                                                 type="text"
                                                 fullWidth
                                                 name="location" value={location} onChange={e => onchange(e)}
-                                            /></div></div>
+                                            />
+                                            </div>
+                                        </div>
                                     <div className="row pt-3">
                                         <div className='col-sm-12'>
                                             <FormControl
@@ -216,7 +218,12 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
                                                 fullWidth
                                                 name="video_link" value={video_link} onChange={e => onchange(e)}
                                             /></div></div>
-                                    <div className='row pt-3'><div className='col-sm-8'></div><div className='col-sm-4'><Button type='submit' style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} onClick={handleClose}>
+                                    <div className='row pt-2 px-0'>
+                                        <div className='col-md-9'></div>
+                                        <div className='col-md-3'>
+                                        <Button type='submit'
+                                         style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
+                                         onClick={handleClose}>
                                         Add Event
           </Button></div></div>
                                 </DialogContent>
@@ -239,7 +246,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
                             <div className='col-md-3'> <div className='image_holder grid '>
                                 <img src='https://picsum.photos/id/99/200/300' width="200" height="150" alt='event' />
                                 <div className='description'>
-                                <NavLink to={`/dashboard/events/single`}><span>lorem ipsuem</span> <br /></NavLink>  
+                              <span>lorem ipsuem</span> <br /> 
                                     
                                     <span>lorem ipsuem</span> <br />
 

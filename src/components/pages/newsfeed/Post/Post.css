@@ -8,6 +8,9 @@
 	
 
 }
+.row {
+	--bs-gutter-x:0rem;
+}
 .post{
     width: 100%;
 }
@@ -102,7 +105,10 @@
     display: flex;
 }
 #pub-bot{
-    padding: 1%;
+	padding: 1%;
+	--bs-gutter-x : 0rem;
+
+	
 }
 #lik{
     font-size:50px;
