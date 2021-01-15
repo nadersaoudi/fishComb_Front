@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState,useCallback } from 'react'
 import {Link} from 'react-router-dom'
-import { getevent,deleteEvent } from '../../../Actions/events'
+import { getevent,deleteEvent,subscribEevent } from '../../../Actions/events'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Events.css'
@@ -24,6 +24,8 @@ const Eventitem = ({ match, getevent, events: { event },deleteEvent,auth:{user} 
        //console.log(x)
         getevent(x)
       }, [x])
+    //  const participants= event.participants.data;
+     // const count = Object.keys(participants).length
     return (
         <div>
 
@@ -49,9 +51,9 @@ const Eventitem = ({ match, getevent, events: { event },deleteEvent,auth:{user} 
                   
                     <div className='row'><div className='col-sm-6'>{event && event.description}
                     </div></div>
-                    <div className='row'><div className='col-sm-6'>participants {event && event.opted_people} 
-                    </div></div>
-                    <div className='row pt-4'><div className='col-sm-2 '><button>attend</button></div>
+                    <div className='row'><div className='col-sm-6'>participants {event && event.participants.length}
+                    </div></div> 
+                    <div className='row pt-4'><div className='col-sm-2 '><button onClick={subscribEevent(x,1)}>attend</button></div>
                     <div className='col-sm-2'>Cancel</div>
                     </div>
                 </div>
@@ -64,11 +66,12 @@ const Eventitem = ({ match, getevent, events: { event },deleteEvent,auth:{user} 
 Eventitem.propTypes = {
     events: PropTypes.object.isRequired,
     getevent: PropTypes.func.isRequired,
-    deleteEvent:PropTypes.func.isRequired
+    deleteEvent:PropTypes.func.isRequired,
+    subscribEevent:PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     events: state.events,
     auth:state.auth
 
 })
-export default connect(mapStateToProps, { getevent,deleteEvent })(Eventitem)
+export default connect(mapStateToProps, { getevent,deleteEvent,subscribEevent })(Eventitem)
