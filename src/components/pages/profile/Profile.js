@@ -205,7 +205,7 @@ const onsubmit2=e=>{
 }
 Profile.propTypes = {
   auth: PropTypes.object.isRequired,
-  editt: PropTypes.func.isRequired,
+  edit: PropTypes.func.isRequired,
   picture: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => ({

@@ -5,10 +5,10 @@ import './Events.css';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { addEvent, getevents, getcategories } from '../../../Actions/events'
+import { addEvent, getevents, getcategories, sortEvents,myevents } from '../../../Actions/events'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Single from './Single'
+import Single from './single'
 import FormControl from 'react-bootstrap/FormControl'
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 
     },
 });
-const Events = ({ addEvent, getevents, events: { events, categories }, getcategories }) => {
+const Events = ({ addEvent, getevents, events: { events, categories }, getcategories, sortEvents,myevents }) => {
     useEffect(() => {
         getevents()
     }, [getevents])
@@ -58,7 +58,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
     const handleOpen1 = () => {
         setOpen1(true);
     };
-    
+
     // eslint-disable-next-line
     const { name, description, category_id, location, date, cover, video_link, status } = formData;
     const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -75,6 +75,18 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
             status: '1'
         })
         e.target.reset();
+    }
+    /****************************************** */
+    const [loc,setlocation]=useState({
+        location1:'location',
+        asc:'asc'
+    })
+    const {location1 ,asc}=loc;
+    const onchange1 = e => setlocation({ ...loc, [e.target.name]: e.target.value });
+    const submit1 = e => {
+        e.preventDefault();
+        console.log(location1+'*****'+asc)
+        sortEvents(loc);
     }
     return (
         <div>
@@ -94,7 +106,42 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
                             <li className="nav-item">
                                 <NavLink to={`/invited`} className="m"><span className="n">Invited Webinars</span></NavLink>
                             </li>
+                            <li className="nav-item">
+                                <span className="filter">Filter</span>
+                                <form onSubmit={e=>submit1(e)}>
+                                <div className='row'>
+                                <div className='col-sm-1'>
 
+                                    <div className='col-sm-1 filtre'>
+
+                                       <div className='col-xs-2 mr-2'> <select  value={location1}
+
+                                                name="location1"
+                                                onChange={e => onchange1(e)} >
+                                            <option value='location'>
+                                                                      Location
+                                    </option>
+                                            <option value='category'>
+                                                Categories
+                                    </option>
+                                        </select></div>
+                                   <div className='col-xs-2 mr-2'> <select value={asc}
+
+                                                name="asc"
+                                                onChange={e => onchange1(e)} >
+                                        <option value='asc'>asc</option>
+                                        <option value='desc'>desc</option>
+                                    </select></div>
+                                    <div className='col-xs-3'><button type='submit' id='button_sort'>Sort event</button></div>
+                                </div>
+                                </div>
+                                </div>
+                                
+                                
+                                </form>
+                                        
+
+                            </li>
                         </ul>
 
                     </div>
@@ -112,7 +159,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
                                 </svg>
                             </button>
                         </div>
-                        <Button className="event pt-2 mt-4 mb-2" id='btn_event'>My Events</Button><br />
+                        <Button className="event" onClick={myevents}>My Events</Button><br />
 
 
 
@@ -147,9 +194,9 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
                                             />
 
                                         </div>
-                                        <div className='col-3'>
-                                    
-                                                
+                                        <div className='col-6'>
+
+
                                             <Select
                                                 labelId="demo-controlled-open-select-label"
                                                 id="demo-controlled-open-select"
@@ -159,16 +206,16 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
                                                 value={category_id}
                                                 name="category_id"
                                                 onChange={e => onchange(e)}
-                                            >  
-                                            
-                                            {categories && categories.map(c=> 
-                                               (<MenuItem  key={c.id} value={c.id} >{c.name} </MenuItem>) 
-                                                
-                                            )}
-                                                
+                                            >
+
+                                                {categories && categories.map(c =>
+                                                    (<MenuItem key={c.id} value={c.id} >{c.name} </MenuItem>)
+
+                                                )}
+
                                             </Select>
-                                           
-                                          
+
+
                                         </div>
                                     </div>
                                     <div className="row pt-3">
@@ -246,8 +293,8 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
                             <div className='col-md-3'> <div className='image_holder grid '>
                                 <img src='https://picsum.photos/id/99/200/300' width="200" height="150" alt='event' />
                                 <div className='description'>
-                              <span>lorem ipsuem</span> <br /> 
-                                    
+                                    <NavLink to={`/dashboard/events/single`}><span>lorem ipsuem</span> <br /></NavLink>
+
                                     <span>lorem ipsuem</span> <br />
 
                                 </div>
@@ -307,12 +354,15 @@ Events.prototype = {
     addEvent: PropTypes.func.isRequired,
     getevents: PropTypes.func.isRequired,
     getcategories: PropTypes.func.isRequired,
-    categories:PropTypes.object.isRequired
+    categories: PropTypes.object.isRequired,
+    sortEvents: PropTypes.func.isRequired,
+    myevents: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => ({
 
     addEvent: state.addEvent,
     events: state.events,
-    categories: state.categories
+    categories: state.categories,
+
 })
-export default connect(mapStateToProps, { addEvent, getevents, getcategories })(Events);
+export default connect(mapStateToProps, { addEvent, getevents, getcategories, sortEvents,myevents })(Events);

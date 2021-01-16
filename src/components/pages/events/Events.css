@@ -1,13 +1,24 @@
 .side_min_bar{
     height: fit-content;
 }
+#button_sort{
+    width: max-content;
+    background-color: #F7F8FA;
+    
+}
 .add__event{
     width: 550px;
     min-height: 420px;
     height: 500px;
 
 }
+.filtre{
+    display: flex;
 
+}
+.Top__section{
+color: #F7F8FA;
+}
 
 #btn_event{
 
@@ -28,8 +39,8 @@
 
 }
 .col-sm-6{
-    max-height: 143px;
-    min-height: 143px;
+    max-height: 100px;
+    min-height: 100px;
 }
 
 .input_event{
@@ -45,7 +56,7 @@
     width: 100px;
     height: 50px;
     border-radius: 1px;
-    background-color: white;
+
     
     
 }
@@ -55,6 +66,10 @@
 }
 
 #cancel:hover{
+    background-color: #202C43;
+    color: white;
+}
+#Invite :hover{
     background-color: #202C43;
     color: white;
 }

@@ -13,9 +13,9 @@ const Single =({  event })=> {
         <NavLink to={`/dashboard/singleevent/${event.id}`} > 
         <img src='https://picsum.photos/id/14/200/300' width="125" height="100" alt='event' /></NavLink>
             <div className='description'>
-        <span>{event.name}</span> <br /> 
+        <span>{event && event.name}</span> <br /> 
                 <Moment
-                      date={event.date}
+                      date={event && event.date}
                       format="YYYY-MM-DD"
                       trim
 
