@@ -13,6 +13,7 @@ import {
 import store from "./store";
 import { loadUser  } from "./Actions/auth";
 import { getMyinvitations } from './Actions/Friends'; 
+import { getcategories } from './Actions/events'; 
 import { Provider } from 'react-redux';
 import ProtectedRoute from "./ProtectedRoute";
 import  Cookies from 'js-cookie';
@@ -30,6 +31,9 @@ const App = () => {
   }, []);
   useEffect(() => {
     store.dispatch(getMyinvitations());
+  }, []);
+  useEffect(() => {
+    store.dispatch(getcategories());
   }, []);
  
 

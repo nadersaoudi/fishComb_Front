@@ -5,7 +5,7 @@ import './Events.css';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { addEvent, getevents, getcategories, sortEvents,myevents } from '../../../Actions/events'
+import { addEvent, getevents, sortEvents,myevents } from '../../../Actions/events'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Single from './single'
@@ -24,13 +24,11 @@ const useStyles = makeStyles({
 
     },
 });
-const Events = ({ addEvent, getevents, events: { events, categories }, getcategories, sortEvents,myevents }) => {
+const Events = ({ addEvent, getevents, events: { events, categories },sortEvents,myevents }) => {
     useEffect(() => {
         getevents()
     }, [getevents])
-    useEffect(() => {
-        getcategories()
-    }, [getcategories])
+    
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -340,7 +338,6 @@ const Events = ({ addEvent, getevents, events: { events, categories }, getcatego
 Events.prototype = {
     addEvent: PropTypes.func.isRequired,
     getevents: PropTypes.func.isRequired,
-    getcategories: PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
     sortEvents: PropTypes.func.isRequired,
     myevents: PropTypes.func.isRequired,
@@ -352,4 +349,4 @@ const mapStateToProps = state => ({
     categories: state.categories,
 
 })
-export default connect(mapStateToProps, { addEvent, getevents, getcategories, sortEvents,myevents })(Events);
+export default connect(mapStateToProps, { addEvent, getevents, sortEvents,myevents })(Events);

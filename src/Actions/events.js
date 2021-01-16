@@ -1,4 +1,4 @@
-import { ADD_EVENT, EVENT_ERROR ,GET_EVENTS,GET_EVENT, GET_CATEGORIES, DELETE_EVENT,FILTER_EVENT, GET_FRIENDS, INVITE_FRIENDS} from './types'
+import { ADD_EVENT, EVENT_ERROR ,GET_EVENTS,GET_EVENT, GET_CATEGORIES, DELETE_EVENT,FILTER_EVENT, GET_FRIENDS, INVITE_FRIENDS,UPDATE_EVENT} from './types'
 import axios from 'axios'
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -252,3 +252,43 @@ export const getfriends = (user_id,event_id) => async dispatch => {
     }
 
 }
+//update
+export const update = ({ name,
+    description,
+    category_id,
+    location,
+    date,
+    cover,
+    video_link,
+    status },event_id) => async dispatch => {
+
+        const config = {
+            headers: {
+                Authorization: 'Bearer ' + Cookies.get('user'),
+                'content-Type': 'application/json'
+            }
+        }
+        try {
+
+            const res = await axios.patch(`/api/events/${event_id}`, { name,
+                description,
+                category_id,
+                location,
+                date,
+                cover,
+                video_link,
+                status }, config)
+           
+            dispatch({
+                type: UPDATE_EVENT,
+                payload: res.data.data,
+            })
+            toast.success('Event updated');
+        } catch (error) {
+            toast.error('Error happened when adding event');
+            dispatch({
+                type: EVENT_ERROR,
+            });
+        }
+
+    }
