@@ -5,14 +5,17 @@ import './Events.css';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { addEvent, getevents, sortEvents,myevents } from '../../../Actions/events'
+import { addEvent, getevents, sortEvents,myevents,search } from '../../../Actions/events'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Single from './single'
 import FormControl from 'react-bootstrap/FormControl'
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
 import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles({
@@ -24,7 +27,7 @@ const useStyles = makeStyles({
 
     },
 });
-const Events = ({ addEvent, getevents, events: { events, categories },sortEvents,myevents }) => {
+const Events = ({ addEvent, getevents, events: { events, categories },sortEvents,myevents,search }) => {
     useEffect(() => {
         getevents()
     }, [getevents])
@@ -86,6 +89,19 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
         console.log(location1+'*****'+asc)
         sortEvents(loc);
     }
+    const [filter, setFilter] = React.useState('username');
+    const [value,setValue] =React.useState('');
+    const handleChange = (event) => {
+      setFilter(event.target.value);
+    };
+    const handleChange1 =e=>{
+        setValue(e.target.value)
+    }
+    const onsubmit1=e=>{
+        e.preventDefault();
+        console.log(filter)
+        search(filter,value)
+    }
     return (
         <div>
             <div className='row'>
@@ -140,9 +156,16 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                 </div>
                 <div className='row'>
                     <div className='col-md-3  side_min_bar'>
+                    <form onSubmit={e => onsubmit1(e)}>
+      <RadioGroup aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
+        <FormControlLabel value="username" control={<Radio />} label="username" />
+        <FormControlLabel value="name" control={<Radio />} label="event name" />
+      </RadioGroup>
                         <div className="col header__input" >
-
-                            <input type="text" placeholder='Search Fishcomb' aria-label="Search" height='25px' />
+                        
+     
+    
+                            <input type="text" placeholder='Search Fishcomb' aria-label="Search" height='25px' value={value} onChange={handleChange1}/>
                             <button className="col-1  header__button" >
                                 <svg width="19px" height="19px" version="1.1" xmlns="http://www.w3.org/1999/xlink">
                                     <g id="fishcomb-product-icons-14">
@@ -150,7 +173,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                     </g>
                                 </svg>
                             </button>
-                        </div>
+                        </div></form>
                         <Button className="event" onClick={myevents}>My Events</Button><br />
 
 
@@ -341,6 +364,7 @@ Events.prototype = {
     categories: PropTypes.object.isRequired,
     sortEvents: PropTypes.func.isRequired,
     myevents: PropTypes.func.isRequired,
+    search:PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
 
@@ -349,4 +373,4 @@ const mapStateToProps = state => ({
     categories: state.categories,
 
 })
-export default connect(mapStateToProps, { addEvent, getevents, sortEvents,myevents })(Events);
+export default connect(mapStateToProps, { addEvent, getevents, sortEvents,myevents,search })(Events);
