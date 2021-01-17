@@ -1,4 +1,4 @@
-import { ADD_EVENT, EVENT_ERROR ,GET_EVENTS,GET_EVENT, GET_CATEGORIES, DELETE_EVENT,FILTER_EVENT, GET_FRIENDS, INVITE_FRIENDS,UPDATE_EVENT, SEARCH_EVENT} from './types'
+import { ADD_EVENT, EVENT_ERROR ,GET_EVENTS,GET_EVENT, GET_CATEGORIES, DELETE_EVENT,FILTER_EVENT, GET_FRIENDS, INVITE_FRIENDS,UPDATE_EVENT, SEARCH_EVENT,GET_INV1} from './types'
 import axios from 'axios'
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -310,6 +310,52 @@ export const search = (filter,value) => async dispatch => {
         })
     } catch (error) {
         toast.error('Error happened when fetching event');
+        dispatch({
+            type: EVENT_ERROR,
+        });
+    }
+
+}
+///api/events/invitations
+export const Myinvitations = () => async dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.post(`api/events/invitations`,{}, config) 
+        console.log(res.data)
+        dispatch({
+            type: GET_INV1,
+            payload: res.data
+        })
+    } catch (error) {
+       // toast.error('Error happened when fetching event');
+        dispatch({
+            type: EVENT_ERROR,
+        });
+    }
+
+}
+///invite/accept
+export const acceptinv = (event_id) => async dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.post(`api/events/invite/accept`,{event_id}, config) 
+        console.log(res.data)
+       /* dispatch({
+            type: GET_INV1,
+            payload: res.data
+        })*/
+    } catch (error) {
+       // toast.error('Error happened when fetching event');
         dispatch({
             type: EVENT_ERROR,
         });

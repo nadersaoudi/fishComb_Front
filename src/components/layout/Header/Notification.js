@@ -41,16 +41,16 @@ const Notification = ({users ,acceptInv}) => {
                 </div>
                 <div className='col-sm-1'></div>
                 <div className='col-sm-7 pt-1'>
-                <h6><b>{users.data.attributes.name}</b></h6>
+                <h6><b>{users && users.data.attributes.name}</b></h6>
                      <div className='row '>
                         <div className='col-sm-5 '>
                         <span className='abouts'>
-                         {users.data.attributes.about}
+                         {users && users.data.attributes.about}
                         </span>  
                         </div>
                      </div>
                 </div>
-                <input type='hidden' value={users.data.user_id} />
+                <input type='hidden' value={users && users.data.user_id} />
                 <div className='col-sm-3'>
                     <Button><PersonAddIcon onClick={(e) =>acceptinv()} className='add'/></Button>
                     <Button><MdCancel onClick={(e) =>deletinv()}  className='add'/></Button>

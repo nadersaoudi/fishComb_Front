@@ -44,3 +44,5 @@ export const GET_FRIENDS ='GET_FRIENDS'
 export const INVITE_FRIENDS ='INVITE_FRIENDS'
 export const UPDATE_EVENT ='UPDATE_EVENT'
 export const SEARCH_EVENT ='SEARCH_EVENT'
+export const GET_INV1 = 'GET_INV1'
+

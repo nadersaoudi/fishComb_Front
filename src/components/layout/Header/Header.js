@@ -9,17 +9,13 @@ import PropTypes from 'prop-types';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Searchfriend} from '../../../Actions/Friends';
+import {acceptinv} from '../../../Actions/events';
+
 import { useHistory } from 'react-router-dom';
 import Notification from './Notification';
 import Toast from 'react-bootstrap/Toast'
-const Header =  ({ auth: {  user }, logout,Searchfriend , Friends:{ users } }) => {
-
-    useEffect(() => {
-        getuser();
-      }, [])
-      const getuser =()=> {
-        
-      }
+const Header =  ({ auth: {  user }, logout,Searchfriend , Friends:{ users },events:{inv},acceptinv }) => {
+  
 
       const [visible, setvisible] = useState(false);
       const [visible2, setvisible2] = useState(false);
@@ -178,7 +174,21 @@ return(
                 <strong className="mr-auto">Message</strong>
                 <small>just now</small>
                   </Toast.Header>
-              <Toast.Body><Avatar/> your message goes here</Toast.Body>
+                          {inv && inv.map(e=>
+                          <div key={e.id}>
+                             <Toast.Body >Name:{e.name}
+                             <br/>
+                             Location: {e.location}
+                             <button onClick={x=>
+                                 acceptinv(e.id)
+                                 //console.log(e.id)
+                             
+                            
+                              }>accept</button>
+                             
+                             </Toast.Body></div>
+                            )}
+             
 
           </Toast>
               </div>
@@ -275,10 +285,14 @@ Header.propTypes = {
      logout: PropTypes.func.isRequired,
      auth: PropTypes.object.isRequired,
      Friends: PropTypes.object.isRequired,
-     Searchfriend: PropTypes.func.isRequired
+     Searchfriend: PropTypes.func.isRequired,
+     events:PropTypes.object.isRequired,
+     acceptinv: PropTypes.func.isRequired,
+ 
 };
 const mapStateToProps = state => ({
       auth: state.auth,  
-      Friends : state.Friends    
+      Friends : state.Friends,
+      events:state.events
 })
-export default connect(mapStateToProps,{logout,Searchfriend})(Header);
+export default connect(mapStateToProps,{logout,Searchfriend,acceptinv})(Header);
