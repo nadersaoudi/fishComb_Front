@@ -1,3 +1,4 @@
+import Single from './single'
 
 import React, { useEffect, useState,useCallback } from 'react'
 import {Link} from 'react-router-dom'
@@ -11,11 +12,14 @@ import { FormControl } from 'react-bootstrap'
 import Button from '@material-ui/core/Button';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Select from '@material-ui/core/Select';
+import { Searchfriend } from '../../../Actions/Friends';
 
+import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined';
+import { INVITE_FRIENDS } from '../../../Actions/types'
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
-const Eventitem = ({ match, getevent, events: { event,friends },deleteEvent,auth:{user},getfriends,invite }) => {
+const Eventitem = ({ Searchfriend, match, getevent, events: { event,friends,events,catigories },deleteEvent,auth:{user},getfriends,invite }) => {
     useEffect(() => {
         getevent(match.params.id);
     }, [getevent, match.params.id]
@@ -65,6 +69,7 @@ const Eventitem = ({ match, getevent, events: { event,friends },deleteEvent,auth
         console.log(event.id)
         invite(user_id,event.id)
      }
+     const [uid,setText]=useState('');
     return (
         <div>
 
@@ -91,7 +96,7 @@ const Eventitem = ({ match, getevent, events: { event,friends },deleteEvent,auth
                          </div><div className='col-sm-4'><IoShareSocialOutline/></div></div>
                   <div className='row'> 
                   <div className='col-sm-3 '>  {event && event.location} </div>
-                  <div className='col-sm-2 '></div>
+                  
                <div className='col-sm-4 '>  {event && event.date} </div></div>
                   
                     <div className='row'><div className='col-sm-6'>{event && event.description}
@@ -121,51 +126,55 @@ const Eventitem = ({ match, getevent, events: { event,friends },deleteEvent,auth
         
         <DialogContent>
 <div className='row'>
-<FormControl
+
+<FormControl onsubmit={e=>{
+    e.preventDefault();
+    Searchfriend({ uid });
+    setText('')   
+}}
                                             className='input_name'
                                             placeholder='Name'
                                             margin='dense'
                                             type='text'
+                                            value={uid} 
                                             
-                                            /></div>
+                                            
+                                                                       /></div>
 <div className='row pt-2'>
-   <div className='col-md-2 'id='user_data'><Avatar  src={user && user.profile_image} className='user_data'/>
-    {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}
-</div>
+  
+   <div className='col-md-7 'id='user_data'>
+   
+   {friends && friends.map((c,index) =>
+           (
+        <div className='col-md-5'>       
+           <form onsubmit={e=>{
+               e.preventDefault();
+               invite(user_id,event.id);
+       
+       }}>
+               <div className='col-md-2 pb-2 mt-3 friends'>
+                   <Avatar className='mr-2 pr-1' src={c.data.attributes.profile_image}/>
+                   {c.data.attributes.name} <AddCircleOutlinedIcon/> 
+                
+                </div>
+            </form>
+                <div className='col-md-1'>
+                 
+        </div>
+         </div>
+         )
+               )} 
     
-    </div>
-    <div className='row pt-2'>
-   <div className='col-md-2 'id='user_data'><Avatar  src={user && user.profile_image} className='user_data'/>
-    {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}
-</div>
-    
-    </div>
-<div className='row pt-2'>
-   <div className='col-md-2 'id='user_data'><Avatar  src={user && user.profile_image} className='user_data'/>
-    {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}
 </div>
     
     </div>
 
-<div></div>
+
+<div>
+
+</div>
       
         
-        <Select
-
-                                                labelId="demo-controlled-open-select-label"
-                                                id="demo-controlled-open-select"
-                                                open={open1}
-                                                onClose={handleClose1}
-                                                onOpen={handleOpen1}
-                                                value={user_id}
-                                                name="user_id"
-                                                onChange={e=>setUser(e.target.value)}
-                                            >
-
-                                                {friends && friends.map((c,index) =>
-                                                    (<MenuItem key={index} value={c.data.user_id}>{c.data.attributes.name} </MenuItem>)
-
-                                                )}   </Select>
 
         </DialogContent>
         <DialogActions>
@@ -189,38 +198,11 @@ const Eventitem = ({ match, getevent, events: { event,friends },deleteEvent,auth
                 <div className='mt-2'>
                     <h6><b>Similar Events</b></h6>
                     <div className='row '>
-                <div className='col-sm-2 mt-2'>
-                     <img src='https://picsum.photos/id/55/200/300' width="130" height="120" alt='event' />
-                     <div className='description'>
-                         hello <br/>
-                         time 19:25:22
-                        
-                     </div>
-                </div>
-                <div className='col-sm-2 mt-2'>
-                     <img src='https://picsum.photos/id/55/200/300' width="130" height="120" alt='event' />
-                     <div className='description'>
-                         hello <br/>
-                         time 19:25:22
-                        
-                     </div>
-                </div>
-                <div className='col-sm-2 mt-2'>
-                     <img src='https://picsum.photos/id/55/200/300' width="130" height="120" alt='event' />
-                     <div className='description'>
-                         hello <br/>
-                         time 19:25:22
-                        
-                     </div>
-                </div>
-                <div className='col-sm-2 mt-2'>
-                     <img src='https://picsum.photos/id/55/200/300' width="130" height="120" alt='event' />
-                     <div className='description'>
-                         hello <br/>
-                         time 19:25:22
-                        
-                     </div>
-                </div>
+                    {events && events.map((event) =>
+                                (
+                                    <Single key={event.id} event={event} />)
+                                )}
+
 
                      </div>
                 </div>

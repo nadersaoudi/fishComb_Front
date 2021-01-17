@@ -9,6 +9,9 @@
     background-color: #F7F8FA;
     
 }
+.friends{
+    display: flex;
+}
 .add__event{
     width: 550px;
     min-height: 420px;

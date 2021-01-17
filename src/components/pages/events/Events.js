@@ -17,6 +17,9 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Select from '@material-ui/core/Select';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+
 import SortIcon from '@material-ui/icons/Sort';
 const useStyles = makeStyles({
     root: {
@@ -143,8 +146,8 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
 
                                                 name="asc"
                                                 onChange={e => onchange1(e)} >
-                                        <option value='asc'>asc</option>
-                                        <option value='desc'>desc</option>
+                                        <option value='asc'>&#8593;</option>
+                                        <option value='desc'>&#8595;</option>
                                     </select></div>
                                     <div className='col-xs-3'><button type='submit' id='button_sort'> <SortIcon/> Sort Event</button></div>
                                 </div>
@@ -206,7 +209,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                                 name="name" value={name} onChange={e => onchange(e)}
                                             /></div></div>
                                     <div className="row pt-3">
-                                        <div className='col-10'>
+                                        <div className='col-8'>
                                             <FormControl
                                                 className='input_event'
                                                 margin="dense"
