@@ -102,7 +102,7 @@ const Eventitem = ({ match, getevent, events: { event,friends },deleteEvent,auth
                     <div className="bot__section">
                     <div className='row'>
                         <div className='col-sm-2' id='attend'>
-                            <button>Attend</button>
+                            <button onClick={subscribEevent(x, 1)}>Attend</button>
                         </div>
                         
                         <div className='col-sm-2' id='Invite'>
