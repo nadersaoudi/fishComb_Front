@@ -140,7 +140,7 @@ const Eventitem = ({ match, getevent, events: { event,friends },deleteEvent,auth
 </div>
     
     </div>
-    <div className='row pt-2'>
+<div className='row pt-2'>
    <div className='col-md-2 'id='user_data'><Avatar  src={user && user.profile_image} className='user_data'/>
     {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}
 </div>
