@@ -140,7 +140,7 @@ return(
     </div>
     
     <div className="col-sm-4 pt-3">
-    <Link to={`/dashboard/profile`}  className='lin' >
+    <Link to={`/dashboard/profile/about`}  className='lin' >
          {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}
     </Link>
     </div>
