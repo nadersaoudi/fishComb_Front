@@ -164,7 +164,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                     <div className='col-md-3  side_min_bar'>
                     <form onSubmit={e => onsubmit1(e)}>
       <RadioGroup aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
-        <FormControlLabel value="username" control={<Radio />} label="username" />
+        <FormControlLabel value="username" control={<Radio />} label="user name" />
         <FormControlLabel value="name" control={<Radio />} label="event name" />
       </RadioGroup>
                         <div className="col header__input" >

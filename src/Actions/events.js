@@ -106,7 +106,7 @@ export const getcategories = () => async dispatch => {
             payload: res.data.data
         })
     } catch (error) {
-        toast.error('Error happened when fetching event');
+       
         dispatch({
             type: EVENT_ERROR,
         });
@@ -223,6 +223,7 @@ export const invite = (user_id,event_id) => async dispatch => {
             type: INVITE_FRIENDS,
             payload: res.data
         })
+      
         toast.error(res.data.status);
     } catch (error) {
         toast.error('Error happened when fetching event');
