@@ -38,10 +38,10 @@ color: #F7F8FA;
     justify-content: center;
 
 }
-.col-sm-6{
+/*.col-sm-6{
     max-height: 100px;
     min-height: 100px;
-}
+}*/
 
 .input_event{
     background-color:#f2f3f3 !important;

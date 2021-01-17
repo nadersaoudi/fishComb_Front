@@ -192,13 +192,14 @@ export const subscribEevent = (event_id,status) => async dispatch => {
         }
     }
     try {
-        const res = await axios.post(`api/events/subscribe`,{event_id,status}, config)
+       await axios.post(`api/events/subscribe`,{event_id,status}, config)
        
        /* dispatch({
             type: GET_EVENTS,
             payload: res.data
         })*/
-    } catch (error) {
+        toast.info('subscribe success')
+        } catch (error) {
         toast.error('Error happened when fetching event');
         dispatch({
             type: EVENT_ERROR,
