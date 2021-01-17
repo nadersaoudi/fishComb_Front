@@ -56,9 +56,10 @@ color: #F7F8FA;
     width: 100px;
     height: 50px;
     border-radius: 1px;
-
-    
-    
+}
+#user_data{
+    display: contents;
+    justify-items: self-start;
 }
 #attend :hover{
     background-color: #202C43;
