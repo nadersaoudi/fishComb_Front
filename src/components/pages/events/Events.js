@@ -17,7 +17,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Select from '@material-ui/core/Select';
-
+import SortIcon from '@material-ui/icons/Sort';
 const useStyles = makeStyles({
     root: {
         //  maxWidth: '2200px'
@@ -109,7 +109,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                 </div>
                 <div className='row'>
                     <div className='col-md-3'></div>
-                    <div className="col-6 pb-3">
+                    <div className="col-8 pb-4">
                         <ul className="nav nav-pills nav-justified " id='navprofil'>
                             <li className="nav-item">
                                 <NavLink to={`/NavEvents`} className="m"><span className="n">All Webinars</span></NavLink>
@@ -146,7 +146,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                         <option value='asc'>asc</option>
                                         <option value='desc'>desc</option>
                                     </select></div>
-                                    <div className='col-xs-3'><button type='submit' id='button_sort'>Sort event</button></div>
+                                    <div className='col-xs-3'><button type='submit' id='button_sort'> <SortIcon/> Sort Event</button></div>
                                 </div>
                                 </div>
                                 </div>
@@ -162,11 +162,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                 </div>
                 <div className='row'>
                     <div className='col-md-3  side_min_bar'>
-                    <form onSubmit={e => onsubmit1(e)}>
-      <RadioGroup aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
-        <FormControlLabel value="username" control={<Radio />} label="user name" />
-        <FormControlLabel value="name" control={<Radio />} label="event name" />
-      </RadioGroup>
+                    
                         <div className="col header__input" >
                         
      
@@ -179,7 +175,13 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                     </g>
                                 </svg>
                             </button>
-                        </div></form>
+                        </div>
+                        <form onSubmit={e => onsubmit1(e)} >
+                        <RadioGroup  className="radio_input" aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
+                                     <FormControlLabel value="username" control={<Radio />} label="username" />
+                                     <FormControlLabel value="name" control={<Radio />} label="event name" />
+                        </RadioGroup>
+                        </form>
                         <Button className="event" onClick={myevents}>My Events</Button><br />
 
 
@@ -204,7 +206,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                                 name="name" value={name} onChange={e => onchange(e)}
                                             /></div></div>
                                     <div className="row pt-3">
-                                        <div className='col-9'>
+                                        <div className='col-10'>
                                             <FormControl
                                                 className='input_event'
                                                 margin="dense"
@@ -215,7 +217,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                             />
 
                                         </div>
-                                        <div className='col-6'>
+                                        <div className='col-2'>
 
 
                                             <Select
@@ -314,7 +316,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                             <div className='col-md-3'> <div className='image_holder grid '>
                                 <img src='https://picsum.photos/id/99/200/300' width="200" height="150" alt='event' />
                                 <div className='description'>
-                                    <NavLink to={`/dashboard/events/single`}><span>lorem ipsuem</span> <br /></NavLink>
+                                   <span>lorem ipsuem</span> <br />
 
                                     <span>lorem ipsuem</span> <br />
 

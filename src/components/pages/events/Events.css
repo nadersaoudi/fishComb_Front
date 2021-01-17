@@ -3,6 +3,9 @@
 }
 #button_sort{
     width: max-content;
+    
+    height: 28px;
+    border: none;
     background-color: #F7F8FA;
     
 }
@@ -14,6 +17,7 @@
 }
 .filtre{
     display: flex;
+    
 
 }
 .Top__section{
@@ -21,7 +25,6 @@ color: #F7F8FA;
 }
 
 #btn_event{
-
 
     text-align: left;
 }
@@ -56,6 +59,11 @@ color: #F7F8FA;
     width: 100px;
     height: 50px;
     border-radius: 1px;
+}
+.radio_input{
+    display: inline !important;
+    margin-left: 20px;
+    color: royalblue;
 }
 #user_data{
     display: contents;
