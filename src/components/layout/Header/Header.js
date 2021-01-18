@@ -9,17 +9,13 @@ import PropTypes from 'prop-types';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Searchfriend} from '../../../Actions/Friends';
+import {acceptinv} from '../../../Actions/events';
+
 import { useHistory } from 'react-router-dom';
 import Notification from './Notification';
 import Toast from 'react-bootstrap/Toast'
-const Header =  ({ auth: {  user }, logout,Searchfriend , Friends:{ users } }) => {
-
-    useEffect(() => {
-        getuser();
-      }, [])
-      const getuser =()=> {
-        
-      }
+const Header =  ({ auth: {  user }, logout,Searchfriend , Friends:{ users },events:{inv},acceptinv }) => {
+  
 
       const [visible, setvisible] = useState(false);
       const [visible2, setvisible2] = useState(false);
@@ -140,7 +136,7 @@ return(
     </div>
     
     <div className="col-sm-4 pt-3">
-    <Link to={`/dashboard/profile`}  className='lin' >
+    <Link to={`/dashboard/profile/about`}  className='lin' >
          {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}
     </Link>
     </div>
@@ -175,10 +171,26 @@ return(
                           }}
                         >
           <Toast.Header>
-                <strong className="mr-auto">Message</strong>
+                <strong className="mr-auto">Events Invitations </strong>
                 <small>just now</small>
                   </Toast.Header>
-              <Toast.Body><Avatar/> your message goes here</Toast.Body>
+                          {inv && inv.map(e=>
+                          <div key={e.id}>
+                             <Toast.Body >
+                              <div className='col-md-12'><b>Name: </b>{e.name}</div> 
+                             
+                             <div className='col-md-12'> <b>Location: </b> {e.location}</div>
+                               
+                             <div className='col-md-12'><b>Date : </b> {e.date}</div> 
+
+                             <button onClick= {x =>
+                                 acceptinv(e.id)} id='invitaion'>&#10004;</button>
+                             
+                             </Toast.Body>
+                             <hr/>
+                             </div>
+                            )}
+             
 
           </Toast>
               </div>
@@ -200,15 +212,15 @@ return(
                         display:visible ? 'block': 'none'
                       }}
                       >
-                        <Toast
-                          style={{
-                            position: 'fixed',
-                            top: 140,
-                            right: 40,
-                            width:'425px',
-                            height:' 800px',
+                         <Toast
+                            style={{
+                             position: 'fixed',
+                             top: 140,
+                             right: 40,
+                             width:'425px',
+                             height:' 800px',
                             
-                          }}
+                           }}
                         >
                           <Toast.Body>
                           <div className='row pt-3 pb-5 pl-3 '>
@@ -275,10 +287,14 @@ Header.propTypes = {
      logout: PropTypes.func.isRequired,
      auth: PropTypes.object.isRequired,
      Friends: PropTypes.object.isRequired,
-     Searchfriend: PropTypes.func.isRequired
+     Searchfriend: PropTypes.func.isRequired,
+     events:PropTypes.object.isRequired,
+     acceptinv: PropTypes.func.isRequired,
+ 
 };
 const mapStateToProps = state => ({
       auth: state.auth,  
-      Friends : state.Friends    
+      Friends : state.Friends,
+      events:state.events
 })
-export default connect(mapStateToProps,{logout,Searchfriend})(Header);
+export default connect(mapStateToProps,{logout,Searchfriend,acceptinv})(Header);
