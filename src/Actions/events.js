@@ -123,7 +123,7 @@ export const deleteEvent = (eventID) => async dispatch => {
         }
     }
     try {
-        const res = await axios.delete(`/api/events/${eventID}`, config)
+        await axios.delete(`/api/events/${eventID}`, config)
         
         dispatch({
             type: DELETE_EVENT,

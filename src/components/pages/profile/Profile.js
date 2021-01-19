@@ -1,17 +1,17 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Image from 'react-bootstrap/Image';
 import { Col, Row } from 'react-bootstrap';
 import './Profile.css'
 import $ from "jquery";
-import Button from 'react-bootstrap/Button';
+
 import { edit, picture } from '../../../Actions/profile';
-import { NavLink, withRouter } from 'react-router-dom';
+import {  withRouter } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { makeStyles } from '@material-ui/core/styles';
-import Aboute from './edit-profile/Aboute/Aboute';
+
 import Nav from './navbar/nav';
 import Content from './content/Content';
 
@@ -33,41 +33,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Profile = ({ auth: { user, loading }, edit, history, picture }) => {
   const [file1, setFile] = useState('');
-  const [formdata, setFormData] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    birth_date: '',
-    phone: '',
-    about: '',
-    username: '',
-    // eslint-disable-next-line
-    profile_image: '',
-  });
+ 
 
-  const {
-    first_name,
-    last_name,
-    email,
-    birth_date,
-    phone,
-    about,
-    // eslint-disable-next-line
-    profile_image,
-    username
 
-  } = formdata;
-  useEffect(() => {
-    setFormData({
-    })
-  }, [loading])
-
-  const onchange = e => setFormData({ ...formdata, [e.target.name]: e.target.value });
-  const onSubmit = e => {
-    e.preventDefault();
-
-    edit(formdata, history, true);
-  }
+ 
   $('#editprofile').click(function (event) {
     event.preventDefault();
     $('.show').each(function () {

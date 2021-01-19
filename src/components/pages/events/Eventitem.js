@@ -10,15 +10,14 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { Avatar, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Slide } from '@material-ui/core'
 import { FormControl } from 'react-bootstrap'
 import Button from '@material-ui/core/Button';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import Select from '@material-ui/core/Select';
-import { Searchfriend } from '../../../Actions/Friends';
 
-import { INVITE_FRIENDS } from '../../../Actions/types'
+import Select from '@material-ui/core/Select';
+
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
-const Eventitem = ({ Searchfriend, match, getevent, events: { event,friends,events,categories,loading },deleteEvent,auth:{user},getfriends,invite,update }) => {
+const Eventitem = ({  match, getevent, events: { event,friends,events,categories,loading },deleteEvent,auth:{user},getfriends,invite,update }) => {
     useEffect(() => {
         getevent(match.params.id);
     }, [getevent, match.params.id]
@@ -272,8 +271,6 @@ const Eventitem = ({ Searchfriend, match, getevent, events: { event,friends,even
         <div className='row pt-5 pb-2'>
         <div className='col-sm-10'></div>
         <div className='col-sm-2 Top__section'> <button onClick={increment}>Next {'>>'} </button> -<button onClick={decrement}>{'<<'} Preview</button>
-       {event && user && user.id ===   event.user.data.user_id ? <Link to='/dashboard/events'> <button onClick={e=>deleteEvent(match.params.id)}>delete</button>
-       </Link>:<div></div>}
          </div>
          
       
@@ -305,11 +302,11 @@ const Eventitem = ({ Searchfriend, match, getevent, events: { event,friends,even
                             <button onClick={subscribEevent(x, 1)}>Attend</button>
                         </div>
                         
-                        <div className='col-sm-2'> 
+                        {event && user && user.id ===   event.user.data.user_id ? <div className='col-sm-2'> 
                             <button className="event" onClick={handleClickOpen2} id='update'>
                         Update 
                                  </button>
-                            </div>
+                            </div>:<div></div>}
                        
                         
                         <div className='col-sm-2' id='Invite'>
@@ -377,8 +374,9 @@ const Eventitem = ({ Searchfriend, match, getevent, events: { event,friends,even
         </DialogActions>
         </form>
       </Dialog>
-    
-                               
+     
+      {event && user && user.id ===   event.user.data.user_id ? <Link to='/dashboard/events'> <div className='col-sm-2' > <button  id='cancel' onClick={e=>deleteEvent(match.params.id)}>delete</button></div>    
+       </Link>:<div></div>}      
                     <div className='col-sm-2' >
                         <button id='cancel'>Cancel</button>
                         </div>

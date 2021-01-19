@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { Redirect } from "react-router-dom";
-import Cookies from 'js-cookie';
+
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { log } from "../../../Actions/auth";
@@ -25,7 +25,7 @@ const Login = ({ log, isAuthenticated }) => {
     log(login, password);
     
   }
-  if (Cookies.get('user')) {
+  if (isAuthenticated) {
 
     return <Redirect to="/dashboard/newsfeed" />;
   };
@@ -98,7 +98,7 @@ const Login = ({ log, isAuthenticated }) => {
 
 Login.propTypes = {
   log: propTypes.func.isRequired,
-  isAuthenticated: propTypes.bool
+  isAuthenticated: propTypes.bool.isRequired
 }
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated

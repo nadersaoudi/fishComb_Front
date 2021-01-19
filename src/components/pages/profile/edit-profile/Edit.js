@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import { edit } from '../../../../Actions/profile';
-import { NavLink, withRouter } from 'react-router-dom';
+import {  withRouter } from 'react-router-dom';
 export const Edit = ( { auth: {user}, edit , loading , history}) => {
     const [formdata, setFormData] = useState({
         first_name: '',

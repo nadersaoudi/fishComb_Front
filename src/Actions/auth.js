@@ -19,7 +19,7 @@ export const log = (    login,    password,) => async dispatch => {
 
     try {
         //const res = await 
-        axios.post('api/user/login', data, config).then((res) => {
+       await axios.post('api/user/login', data, config).then((res) => {
             Cookies.set('user', res.data.token);
             //3adna token 
             //ma3adnash profile
@@ -30,7 +30,7 @@ export const log = (    login,    password,) => async dispatch => {
 
                 }
             };
-            axios.post('api/user/profile', {}, config2).then((res2) => {
+              axios.post('api/user/profile', {}, config2).then((res2) => {
                 Cookies.get('profile', res2.data.data);
                 dispatch({
                     type: LOGIN_SUCCESS,
