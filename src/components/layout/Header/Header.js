@@ -10,7 +10,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Searchfriend} from '../../../Actions/Friends';
 import {acceptinv} from '../../../Actions/events';
-
 import { useHistory } from 'react-router-dom';
 import Notification from './Notification';
 import Toast from 'react-bootstrap/Toast'
@@ -19,23 +18,19 @@ const Header =  ({ auth: {  user }, logout,Searchfriend , Friends:{ users },even
 
       const [visible, setvisible] = useState(false);
       const [visible2, setvisible2] = useState(false);
-      
+      const [visible3, setvisible3] = useState(false);
       const  handleClick2=e=> {
         setvisible2(visible2 === false ? true : false);
         }
-
-
-
-      
-
      const  handleClick1=e=> {
       setvisible(visible === false ? true : false);
       }
+      const  handleClick3=e=> {
+        setvisible3(visible3 === false ? true : false);
+        }
 
-      
       const [anchorEl, setAnchorEl] = React.useState(null);
       
-  
 
       const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -167,7 +162,7 @@ return(
                             position: 'fixed',
                             top: 100,
                             right: 50,
-                            
+                            borderRadius: '0'
                           }}
                         >
           <Toast.Header>
@@ -218,7 +213,8 @@ return(
                              top: 140,
                              right: 40,
                              width:'425px',
-                             height:' 800px',
+                             height:' 500px',
+                             borderRadius: '0'
                             
                            }}
                         >
@@ -238,34 +234,40 @@ return(
         </div>
         
         <div className='col-sm-4 '>
-        <svg width="14px" height="13px"  version="1.1" xmlns="http://www.w3.org/2000/svg"   aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}  className="icon">
+        <svg width="14px" height="13px"  version="1.1" xmlns="http://www.w3.org/2000/svg"   aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick3}  className="icon">
                       <path d="M6.5 0L13 12L0 12L6.5 0Z" transform="matrix(-1 -8.742278E-08 8.742278E-08 -1 13.5 12.5)" id="Triangle"  fill-rule="evenodd" stroke="none" />
                     </svg>
-
-                    
-                    <Menu
-                        id="menu-list-grow"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                        anchorOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'center',
-                        }}
-                        
-                        transformOrigin={{
-                          vertical: 'bottom',
-                          horizontal: 'center',
-                        }}
+                    <div 
+                      aria-live="polite"
+                      aria-atomic="true"
+                      style={{
+                        position: 'relative',
+                        minHeight: '100px',
+                        display:visible3 ? 'block': 'none'
+                      }}
                       >
-                         
-                         <MenuItem >Settings</MenuItem>
-                         <MenuItem>Password</MenuItem>
-                         <Link to='/home'onClick={logout} className='rea'>
-                         <MenuItem onClick={handleClose}>Logout</MenuItem>
-                         </Link>
-                      </Menu>
+                         <Toast
+                            style={{
+                             position: 'fixed',
+                             top: 140,
+                             right: 40,
+                             width:'200px',
+                             height:' 130px',
+                             borderRadius: '0'
+                            
+                           }}
+                        >
+                          <Toast.Body>
+                              
+                            <MenuItem >Settings</MenuItem>
+                            <MenuItem>Password</MenuItem>
+                            <Link to='/home'onClick={logout} className='rea'>
+                            <MenuItem onClick={handleClose}>Logout</MenuItem>
+                            </Link>
+                            </Toast.Body>
+                      </Toast>
+                    
+                   </div>
 
 
         </div>

@@ -5,13 +5,11 @@ import Image from 'react-bootstrap/Image';
 import { Col, Row } from 'react-bootstrap';
 import './Profile.css'
 import $ from "jquery";
-
 import { edit, picture } from '../../../Actions/profile';
 import {  withRouter } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { makeStyles } from '@material-ui/core/styles';
-
 import Nav from './navbar/nav';
 import Content from './content/Content';
 
@@ -90,10 +88,8 @@ const onsubmit2=e=>{
   const classes = useStyles();
   return (
     <Fragment>
-    
     <Row>
     <Col sm={12}>
-    
     <form onSubmit={e=>onsubmit2(e)}>
     <div className='Top___header px-0'>
             <Image src={user && user.cover_image} alt='' className='coverture'/>
@@ -104,7 +100,6 @@ const onsubmit2=e=>{
               <label htmlFor="icon-button-filee">
               <IconButton className='upload' color="primary" aria-label="upload picture" component="span">
                 <PhotoCamera   />
-
               </IconButton>
               <input
                 type='submit'
@@ -115,7 +110,6 @@ const onsubmit2=e=>{
               />
             </label>
               </div>
-            
             </div>
             </div>
             </form>
@@ -123,8 +117,7 @@ const onsubmit2=e=>{
             <form onSubmit={e => onsubmit1(e)}>
             <div className='info' >
             <Image  className="profile_img" src= {user && user.profile_image} alt='' roundedCircle  />
-            <input accept="image/*" className={classes.input} id="icon-button-file" type="file" onChange={onchange1} />
-            
+            <input accept="image/*" className={classes.input} id="icon-button-file" type="file" onChange={onchange1} /> 
             <label htmlFor="icon-button-file">
               <IconButton className='upload1' color="primary" aria-label="upload picture" component="span">
                 <PhotoCamera />
@@ -138,14 +131,10 @@ const onsubmit2=e=>{
                 hidden={hide}
               />
               </div>
-           
             </label>
           </div>
           </form>
           </div>
-            
-      
-      
       <div>
         <h2>
           <p>{user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}  {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}</p>
@@ -158,7 +147,6 @@ const onsubmit2=e=>{
         <Col sm={5}>
         <Nav />
         </Col>
-        
       </Row>
       <Row className='pt-2'>
         <Col sm={1}></Col>
@@ -166,7 +154,6 @@ const onsubmit2=e=>{
         <Content />
         </Col>
         <Col sm={1}></Col>
-        
       </Row>
     </Fragment>
   )

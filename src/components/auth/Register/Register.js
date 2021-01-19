@@ -10,7 +10,6 @@ export default class Register extends Component {
     handleSubmit = e => {
         e.preventDefault();
         toast.configure();
-
         const data = {
             first_name: this.firstname,
             last_name: this.lastname,
@@ -44,15 +43,12 @@ export default class Register extends Component {
             return <Redirect to={'/login'}/>;
         }
 
-
         return (
             <div className="Register">
                 <div className="row">
                 <a href="/" className="img">
           <img src="../../../../dist/img/logofish.png" alt="" /></a>
-
-      </div>
-                  
+      </div>   
                 <div className="row">
                     <div className='col-sm-3'></div>
                     <div className='col-sm-6'>
@@ -64,12 +60,11 @@ export default class Register extends Component {
                             </div>
                             <div className="form-group">
                                 <div className="row">
-                                    <div className="col-sm-5 mb-3 ">
+                                    <div className="col-sm-6 mb-3 ">
                                         <input type="text" className="form-control reg__input" placeholder="First Name"
                                                onChange={e => this.firstname = e.target.value}/>
                                     </div>
-                                    <div className='col-sm-2'></div>
-                                    <div className="col-sm-5 mb-3 ">
+                                    <div className="col-sm-6 mb-3 ">
                                         <input type="text" className="form-control reg__input" placeholder="Last Name"
                                                onChange={e => this.lastname = e.target.value}/>
                                     </div>
@@ -99,10 +94,7 @@ export default class Register extends Component {
                                                placeholder="New Password"
                                                onChange={e => this.password = e.target.value}/>
                                     </div>
-                                    
-                                
                                 </div>
-                              
                                 <label>Birthday</label>
                                 <div className="row">
                                     <div className="col-sm-4 mt-2">

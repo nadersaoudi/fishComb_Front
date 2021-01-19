@@ -4,30 +4,24 @@ import { LOGIN_FAIL, LOGIN_SUCCESS, REGISTER_SUCCESS, USER_LOADED, AUTH_ERROR, L
 import { toast } from 'react-toastify';
 //Login User
 toast.configure();
-export const log = (    login,    password,) => async dispatch => {
-
+export const log = ( login, password) => async dispatch => {
     const config = {
         headers: {
             'content-Type': 'application/json'
         }
     }
-
     const data = JSON.stringify({
         login,
         password,
     });
-
     try {
         //const res = await 
        await axios.post('api/user/login', data, config).then((res) => {
             Cookies.set('user', res.data.token);
-            //3adna token 
-            //ma3adnash profile
             const config2 = {
                 headers: {
                     Authorization: 'Bearer ' + Cookies.get('user'),
                     'content-Type': 'application/json'
-
                 }
             };
               axios.post('api/user/profile', {}, config2).then((res2) => {
@@ -35,13 +29,10 @@ export const log = (    login,    password,) => async dispatch => {
                 dispatch({
                     type: LOGIN_SUCCESS,
                     payload: res2.data.data
-                    //7achto b profile playload == null 
                 });
                 toast.success('succesfully logged in')
-
             });
             dispatch( loadUser())
-           
         }).catch((err)=>{
             toast.error('Invalid Credentials')
             dispatch({
@@ -54,8 +45,6 @@ export const log = (    login,    password,) => async dispatch => {
         dispatch({
             type: LOGIN_FAIL,
         })*/
-
-
     }
 }
 // Register  User

@@ -1,9 +1,9 @@
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST, GET_POST, ADD_COMMENT, REMOVE_COMMENT ,UPDATE_COMMENT } from '../Actions/types'
+import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST, GET_POST, ADD_COMMENT, REMOVE_COMMENT ,UPDATE_COMMENT, UPDATE_POST } from '../Actions/types'
 
 
 const initialState = {
     posts: [],
-    post: null,
+    post: [],
     loading: true,
     isAuthenticated: false,
     error: {}
@@ -14,7 +14,6 @@ export default function (state = initialState, action) {
   
     switch (type) {
         case GET_POSTS:
-          
             return {
                 ...state,
                 posts: payload,
@@ -38,6 +37,11 @@ export default function (state = initialState, action) {
                 ...state,
                // posts: state.posts.map(post => post.id === payload[0].pivot.post_id ? { ...post,likes: null  } : post), loading: false
             }
+        case UPDATE_POST:
+            return{
+                ...state,
+                loading:false
+            } 
         case UPDATE_LIKES:
             return {
                 ...state,

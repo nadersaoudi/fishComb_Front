@@ -30,7 +30,6 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
     const handleClickOpen = () => {
         setOpen(true);
     };
-
     const handleClose = () => {
         setOpen(false);
     };

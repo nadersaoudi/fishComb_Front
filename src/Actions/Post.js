@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST ,UPDATE_COMMENT ,ERROR_UPDATE } from './types';
+import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST ,GET_POST ,UPDATE_COMMENT ,ERROR_UPDATE, UPDATE_POST } from './types';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 toast.configure();
-
 //get posts
 export const getPosts = () => async dispatch => {
     const config = {
@@ -14,7 +13,6 @@ export const getPosts = () => async dispatch => {
     }
     try {
         const res = await axios.post('/api/posts/getaLlposts', {}, config)
-        
         dispatch({
             type: GET_POSTS,
             payload: res.data.data
@@ -25,11 +23,9 @@ export const getPosts = () => async dispatch => {
             type: POST_ERROR,
         });
     }
-
 }
 //Add like
 export const addLike = (post_id) => async dispatch => {
-   
     const config = {
         headers: {
             Authorization: 'Bearer ' + Cookies.get('user'),
@@ -37,7 +33,6 @@ export const addLike = (post_id) => async dispatch => {
         }
     }
     try {
-
         const res = await axios.post(`/api/posts/like`, { post_id }, config)
         console.log(res.data.data)
         dispatch({
@@ -47,13 +42,9 @@ export const addLike = (post_id) => async dispatch => {
     } catch (error) {
         dispatch({
             type: POST_ERROR,
-
-
         });
     }
-
 }
-
 //delete post 
 export const deletePost = id => async dispatch => {
     if (window.confirm('Are you sure? this can not be undone')) {
@@ -69,18 +60,16 @@ export const deletePost = id => async dispatch => {
                 type: DELETE_POST,
                 payload: id
             })
-            toast.success('Delete success');
+            toast.info('Delete success');
         } catch (error) {
             dispatch({
                 type: POST_ERROR,
             });
             toast.error('Error happened');
         }
-
     }
 }
 //Add post 
-
 export const addPost = formData => async dispatch => {
     const config = {
         headers: {
@@ -94,32 +83,55 @@ export const addPost = formData => async dispatch => {
             type: ADD_POST,
             payload: res.data.data.data
         })
-      
         // save post id 
         // create function 
-        getPost(res.data.data);
-        
-        toast.success('Post Created');
+        toast.info('Post Created');
         // 1 call get post function params post id 
         // 2 update layout ==> show post 
     } catch (error) {
-
         toast.error('Error occured');
         dispatch({
             type: POST_ERROR
         });
     }
-
-
 }
 //get post
-export function getPost(post) {
-
-    //console.log(idpost);
-
-    //show post
+export const getPost = (post_id) =>async dispatch=> {
+  const config = {
+    headers : {
+         Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.post(`/api/posts/post`,{"post_id":post_id},config);
+        dispatch({
+            type: GET_POST,
+            payload : res.data
+        })
+        console.log(res)
+    }catch{   
+    }  
 }
+// Update Post 
+export const updatePost  = (formData ,post_id) => async dispatch  => {
+    const config = {
+        headers : {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'Content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.patch(`/api/posts/${post_id}`,formData,config)
+        dispatch ({
+            type: UPDATE_POST,
+            payload: res.data.data
+        })
+    }catch{
 
+    }
+}
+//Add comment
 export const addComment = (idpost, formData) => async (dispatch,getState) => {
    // console.log(getState().Post.posts)
     const config = {
@@ -148,7 +160,6 @@ export const addComment = (idpost, formData) => async (dispatch,getState) => {
 
 }
 //delete Comment 
-
 export const deleteComment = id => async dispatch => {
     if (window.confirm('Are you sure? this can not be undone')) {
         try {
