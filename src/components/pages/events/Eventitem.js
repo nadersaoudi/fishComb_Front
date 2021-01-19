@@ -1,5 +1,4 @@
 import Single from './single'
-
 import React, { useEffect, useState,useCallback } from 'react'
 import {Link} from 'react-router-dom'
 import { getevent,deleteEvent,subscribEevent,invite,getfriends,update } from '../../../Actions/events'
@@ -10,7 +9,6 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { Avatar, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Slide } from '@material-ui/core'
 import { FormControl } from 'react-bootstrap'
 import Button from '@material-ui/core/Button';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import Select from '@material-ui/core/Select';
 import { Searchfriend } from '../../../Actions/Friends';
 

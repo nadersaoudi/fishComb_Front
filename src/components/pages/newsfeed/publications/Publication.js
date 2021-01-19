@@ -18,9 +18,13 @@ import {
   addLike,
   addComment,
 } from "../../../../Actions/Post";
-import { deletePost } from "../../../../Actions/Post";
+import { deletePost , getPost } from "../../../../Actions/Post";
 import SingleComm from "./SingleComm";
-
+import UpdatePost from "../Post/UpdatePost";
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+/*********************************/
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -29,52 +33,54 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
 }));
-
+/********************************/
 const Publication = ({
   auth: { user },
   posts,
   deletePost,
   addLike,
-  addComment
+  addComment,
+  getPost
 }) => {
-
-
+  /******************************************/
   const [hidden, setHidden] = useState(true);
   const [body, setText] = useState("");
-
-
   const onclick = () => {
     setHidden(hidden === false ? true : false);
   }
-
   const addcomment = async (id, body) => {
     addComment(id, body);
-    
   };
+  /*************************************/
+  const getpost = async (post_id) =>{
+    getPost(post_id)
+  }
   /******************************/
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
-
+  const [open1, setOpen1] = React.useState(false);
+  const handleClickOpen1 = () => {
+      setOpen1(true);
+  };
+  const handleClose1 = () => {
+      setOpen1(false);
+  };
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
-
   function handleListKeyDown(event) {
     if (event.key === 'Tab') {
       event.preventDefault();
       setOpen(false);
     }
   }
-
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
@@ -133,12 +139,13 @@ const Publication = ({
                       {({ TransitionProps, placement }) => (
                         <Grow
                           {...TransitionProps}
-                          style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                          style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' ,borderRadius:'0'}}
                         >
                           <Paper>
                             <ClickAwayListener onClickAway={handleClose}>
                               <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                <MenuItem onClick={(e) => deletePost(posts.id)}>Delete My Post</MenuItem>
+                              <MenuItem onClick={handleClickOpen1}  > <span onClick={(e) => getpost(posts.id)}>Update My Post</span></MenuItem>
+                              <MenuItem onClick={(e) => deletePost(posts.id)}>Delete My Post</MenuItem>
                               </MenuList>
                             </ClickAwayListener>
                           </Paper>
@@ -172,6 +179,14 @@ const Publication = ({
               <div className="col-1"></div>
             </div>
           </form>
+               <Dialog open={open1} onClose={handleClose1} aria-labelledby="form-dialog-title" className='dialogForm'   >
+                            
+                                <DialogTitle id="form-dialog-title">Update Post</DialogTitle>
+                                <DialogContent>
+                                    <UpdatePost />
+                                </DialogContent>
+                           
+                </Dialog>
           <div className="row"></div>
           <div className="row pt-2 pb-4">
             <div className="col-sm-2">
@@ -289,6 +304,7 @@ Publication.prototype = {
   auth: PropTypes.object.isRequired,
   Post: PropTypes.object.isRequired,
   deletePost: PropTypes.func.isRequired,
+  getPost: PropTypes.func.isRequired,
   addComment: PropTypes.func.isRequired,
   getPosts: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
@@ -297,6 +313,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
   Post: state.Post,
 });
-export default connect(mapStateToProps, { deletePost, addComment, getPosts, addLike })(
+export default connect(mapStateToProps, { deletePost, getPost, addComment, getPosts, addLike })(
   Publication
 );

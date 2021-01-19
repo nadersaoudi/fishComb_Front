@@ -11,7 +11,6 @@ import $ from 'jquery';
 const Post = ({ auth: { user }, addPost,  }) => {
   // eslint-disable-next-line
   const [show, setShow] = useState(false);
- 
   const handleShow = () => setShow(true);
   const [url, setUrl] = useState(null);
   const inputEl = useRef(null);
@@ -21,11 +20,8 @@ const Post = ({ auth: { user }, addPost,  }) => {
     description: '',
     type: ''
   })
- 
 // eslint-disable-next-line
   const { link, description, type } = formData;
-
-
   const Onsubmit = e => {
     e.preventDefault();
     var link = $('#linkurl').val();
@@ -34,7 +30,6 @@ const Post = ({ auth: { user }, addPost,  }) => {
     addPost({ link, description });
     e.target.reset();
   }
-
   const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -52,7 +47,6 @@ const Post = ({ auth: { user }, addPost,  }) => {
     },
   }));
   const classes = useStyles();
-
   function validURL(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
@@ -76,14 +70,11 @@ const Post = ({ auth: { user }, addPost,  }) => {
         <div className=" pub__top">
           <Avatar src={user && user.profile_image} className={classes.large} />
           <div className='post'>
-
             <input ref={inputEl} id="description" placeholder={`What's on your mind?`} onChange={preview} className='pub__input'  />
             {url && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={url}  />}
             <input type="text" id="linkurl" />
-
           </div>
           <button id='sub' type="submit" onClick={handleShow}>submit</button>
-
         </div>
         <div className='row ' id='pub-bot' >
           <div className='col-sm-3 px-0'>
@@ -132,7 +123,6 @@ const Post = ({ auth: { user }, addPost,  }) => {
 Post.prototype = {
   auth: PropTypes.object.isRequired,
   addPost: PropTypes.func.isRequired,
- 
 };
 const mapStateToProps = state => ({
   auth: state.auth,

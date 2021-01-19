@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import { edit } from '../../../../Actions/profile';
-import { NavLink, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 export const Edit = ( { auth: {user}, edit , loading , history}) => {
     const [formdata, setFormData] = useState({
         first_name: '',
         last_name: '',
-        email: '',
+        email: '', 
         birth_date: '',
         phone: '',
         about: '',
@@ -57,14 +57,27 @@ return (
                 </div>
              </div>
              </div>
-             <div className='row pt-4 pb-3'></div>
-             <input className="form-control mb-4"  placeholder={user && user.first_name} autoComplete="first_name" name="first_name" value={first_name} onChange={e => onchange(e)} />
-             <input className="form-control mb-4"  placeholder={user && user.last_name} autoComplete="last_name" name="last_name" value={last_name} onChange={e => onchange(e)} />
-             <input className="form-control mb-4"  placeholder={user && user.username} autoComplete="username" name="username" value={username} onChange={e => onchange(e)} />
-             <input className="form-control mb-4 "  placeholder={user && user.email} autoComplete="email" name="email" value={email} onChange={e => onchange(e)} />
-             <input className="form-control mb-4 "  placeholder={user && user.birth_date} autoComplete="birth_date" name="birth_date" value={birth_date} onChange={e => onchange(e)} />
-             <input className="form-control mb-4 "  placeholder={user && user.phone} autoComplete="phone" name="phone" value={phone} onChange={e => onchange(e)} />  
-             <textarea className="form-control mb-4" placeholder={user && user.about} autoComplete="about" name="about" value={about} onChange={e => onchange(e)}/>
+             <div className='row pt-4 pb-3'>
+             <div className='row'>
+              <div className='col-sm-6'>
+                <input className="form-control mb-4"  placeholder={user && user.first_name} autoComplete="first_name" name="first_name" value={first_name} onChange={e => onchange(e)} />
+                
+              </div>
+              <div className='col-sm-6'>
+                <input className="form-control mb-4"  placeholder={user && user.last_name} autoComplete="last_name" name="last_name" value={last_name} onChange={e => onchange(e)} />
+              </div>
+             </div>
+              <div className='row'>
+                <div className='col-sm-12'>
+                        <input className="form-control mb-4"  placeholder={user && user.username} autoComplete="username" name="username" value={username} onChange={e => onchange(e)} />
+                        <input className="form-control mb-4 "  placeholder={user && user.email} autoComplete="email" name="email" value={email} onChange={e => onchange(e)} />
+                        <input className="form-control mb-4 "  placeholder={user && user.birth_date} autoComplete="birth_date" name="birth_date" value={birth_date} onChange={e => onchange(e)} />
+                        <input className="form-control mb-4 "  placeholder={user && user.phone} autoComplete="phone" name="phone" value={phone} onChange={e => onchange(e)} />  
+                        <textarea className="form-control mb-4" placeholder={user && user.about} autoComplete="about" name="about" value={about} onChange={e => onchange(e)}/>
+                </div>
+                </div>
+              </div>
+           
              </div>
             </form>
           </div>

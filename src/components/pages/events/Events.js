@@ -15,21 +15,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
 import Select from '@material-ui/core/Select';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-
 import SortIcon from '@material-ui/icons/Sort';
-const useStyles = makeStyles({
-    root: {
-        //  maxWidth: '2200px'
-        // width:'2200px',
 
-
-
-    },
-});
 const Events = ({ addEvent, getevents, events: { events, categories },sortEvents,myevents,search }) => {
     useEffect(() => {
         getevents()
@@ -40,7 +28,6 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
     const handleClickOpen = () => {
         setOpen(true);
     };
-
     const handleClose = () => {
         setOpen(false);
     };

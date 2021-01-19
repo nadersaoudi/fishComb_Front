@@ -1,17 +1,15 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Image from 'react-bootstrap/Image';
 import { Col, Row } from 'react-bootstrap';
 import './Profile.css'
 import $ from "jquery";
-import Button from 'react-bootstrap/Button';
 import { edit, picture } from '../../../Actions/profile';
-import { NavLink, withRouter } from 'react-router-dom';
+import {  withRouter } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import { makeStyles } from '@material-ui/core/styles';
-import Aboute from './edit-profile/Aboute/Aboute';
 import Nav from './navbar/nav';
 import Content from './content/Content';
 
@@ -33,41 +31,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Profile = ({ auth: { user, loading }, edit, history, picture }) => {
   const [file1, setFile] = useState('');
-  const [formdata, setFormData] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    birth_date: '',
-    phone: '',
-    about: '',
-    username: '',
-    // eslint-disable-next-line
-    profile_image: '',
-  });
+  
 
-  const {
-    first_name,
-    last_name,
-    email,
-    birth_date,
-    phone,
-    about,
-    // eslint-disable-next-line
-    profile_image,
-    username
-
-  } = formdata;
-  useEffect(() => {
-    setFormData({
-    })
-  }, [loading])
-
-  const onchange = e => setFormData({ ...formdata, [e.target.name]: e.target.value });
-  const onSubmit = e => {
-    e.preventDefault();
-
-    edit(formdata, history, true);
-  }
   $('#editprofile').click(function (event) {
     event.preventDefault();
     $('.show').each(function () {
@@ -121,10 +86,8 @@ const onsubmit2=e=>{
   const classes = useStyles();
   return (
     <Fragment>
-    
     <Row>
     <Col sm={12}>
-    
     <form onSubmit={e=>onsubmit2(e)}>
     <div className='Top___header px-0'>
             <Image src={user && user.cover_image} alt='' className='coverture'/>
@@ -135,7 +98,6 @@ const onsubmit2=e=>{
               <label htmlFor="icon-button-filee">
               <IconButton className='upload' color="primary" aria-label="upload picture" component="span">
                 <PhotoCamera   />
-
               </IconButton>
               <input
                 type='submit'
@@ -146,7 +108,6 @@ const onsubmit2=e=>{
               />
             </label>
               </div>
-            
             </div>
             </div>
             </form>
@@ -154,8 +115,7 @@ const onsubmit2=e=>{
             <form onSubmit={e => onsubmit1(e)}>
             <div className='info' >
             <Image  className="profile_img" src= {user && user.profile_image} alt='' roundedCircle  />
-            <input accept="image/*" className={classes.input} id="icon-button-file" type="file" onChange={onchange1} />
-            
+            <input accept="image/*" className={classes.input} id="icon-button-file" type="file" onChange={onchange1} /> 
             <label htmlFor="icon-button-file">
               <IconButton className='upload1' color="primary" aria-label="upload picture" component="span">
                 <PhotoCamera />
@@ -169,14 +129,10 @@ const onsubmit2=e=>{
                 hidden={hide}
               />
               </div>
-           
             </label>
           </div>
           </form>
           </div>
-            
-      
-      
       <div>
         <h2>
           <p>{user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}  {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}</p>
@@ -189,7 +145,6 @@ const onsubmit2=e=>{
         <Col sm={5}>
         <Nav />
         </Col>
-        
       </Row>
       <Row className='pt-2'>
         <Col sm={1}></Col>
@@ -197,7 +152,6 @@ const onsubmit2=e=>{
         <Content />
         </Col>
         <Col sm={1}></Col>
-        
       </Row>
     </Fragment>
   )

@@ -26,8 +26,7 @@ const Login = ({ log, isAuthenticated }) => {
     
   }
   if (Cookies.get('user')) {
-
-    return <Redirect to="/dashboard/newsfeed" />;
+    return <Redirect to="/#/dashboard/newsfeed" />;
   };
 
 
