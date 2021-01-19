@@ -171,22 +171,24 @@ return(
                           }}
                         >
           <Toast.Header>
-                <strong className="mr-auto">Message</strong>
+                <strong className="mr-auto">Events Invitations </strong>
                 <small>just now</small>
                   </Toast.Header>
                           {inv && inv.map(e=>
                           <div key={e.id}>
-                             <Toast.Body >Name:{e.name}
-                             <br/>
-                             Location: {e.location}
-                             <button onClick={x=>
-                                 acceptinv(e.id)
-                                 //console.log(e.id)
+                             <Toast.Body >
+                              <div className='col-md-12'><b>Name: </b>{e.name}</div> 
                              
-                            
-                              }>accept</button>
+                             <div className='col-md-12'> <b>Location: </b> {e.location}</div>
+                               
+                             <div className='col-md-12'><b>Date : </b> {e.date}</div> 
+
+                             <button onClick= {x =>
+                                 acceptinv(e.id)} id='invitaion'>&#10004;</button>
                              
-                             </Toast.Body></div>
+                             </Toast.Body>
+                             <hr/>
+                             </div>
                             )}
              
 
@@ -210,15 +212,15 @@ return(
                         display:visible ? 'block': 'none'
                       }}
                       >
-                        <Toast
-                          style={{
-                            position: 'fixed',
-                            top: 140,
-                            right: 40,
-                            width:'425px',
-                            height:' 800px',
+                         <Toast
+                            style={{
+                             position: 'fixed',
+                             top: 140,
+                             right: 40,
+                             width:'425px',
+                             height:' 800px',
                             
-                          }}
+                           }}
                         >
                           <Toast.Body>
                           <div className='row pt-3 pb-5 pl-3 '>

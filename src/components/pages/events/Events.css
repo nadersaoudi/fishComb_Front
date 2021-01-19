@@ -9,6 +9,9 @@
     background-color: #F7F8FA;
     
 }
+.friends{
+    display: flex;
+}
 .add__event{
     width: 550px;
     min-height: 420px;
@@ -65,6 +68,11 @@ color: #F7F8FA;
     margin-left: 20px;
     color: royalblue;
 }
+#invite_form{
+    border: none;
+     border-radius: 25px;
+     position: relative;
+}
 #user_data{
     display: contents;
     justify-items: self-start;
@@ -81,4 +89,9 @@ color: #F7F8FA;
 #Invite :hover{
     background-color: #202C43;
     color: white;
+}
+#update:hover{
+    background-color: #202C43;
+    color: white;
+
 }

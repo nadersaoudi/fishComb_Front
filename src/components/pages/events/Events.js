@@ -17,6 +17,9 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Select from '@material-ui/core/Select';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+
 import SortIcon from '@material-ui/icons/Sort';
 const useStyles = makeStyles({
     root: {
@@ -143,8 +146,8 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
 
                                                 name="asc"
                                                 onChange={e => onchange1(e)} >
-                                        <option value='asc'>asc</option>
-                                        <option value='desc'>desc</option>
+                                        <option value='asc'>&#8593;</option>
+                                        <option value='desc'>&#8595;</option>
                                     </select></div>
                                     <div className='col-xs-3'><button type='submit' id='button_sort'> <SortIcon/> Sort Event</button></div>
                                 </div>
@@ -163,12 +166,12 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                 <div className='row'>
                     <div className='col-md-3  side_min_bar'>
                     <form onSubmit={e => onsubmit1(e)} >
-                        <div className="col header__input" >
+                        <div className="col-md-12 header__input" >
                         
      
     
                             <input type="text" placeholder='Search Fishcomb' aria-label="Search" height='25px' value={value} onChange={handleChange1}/>
-                            <RadioGroup  className="radio_input" aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
+                            <RadioGroup  className="radio_input col-md-5" aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
                                      <FormControlLabel value="username" control={<Radio />} label="By user" />
                         </RadioGroup>
                             <button className="col-1  header__button" >
@@ -207,7 +210,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                                 name="name" value={name} onChange={e => onchange(e)}
                                             /></div></div>
                                     <div className="row pt-3">
-                                        <div className='col-10'>
+                                        <div className='col-8'>
                                             <FormControl
                                                 className='input_event'
                                                 margin="dense"
@@ -272,7 +275,6 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
 
                                         <div className="btn-group btn-group-toggle col-md-12  ">
                                             <Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-
                                                 <span  >Upload Video </span>
 
                                             </Button>
@@ -296,7 +298,9 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                          style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
                                          onClick={handleClose}>
                                         Add Event
-          </Button></div></div>
+          </Button>
+        </div>
+   </div>
                                 </DialogContent>
 
 
