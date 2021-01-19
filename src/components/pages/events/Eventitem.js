@@ -272,7 +272,7 @@ const Eventitem = ({ Searchfriend, match, getevent, events: { event,friends,even
         <div className='row pt-5 pb-2'>
         <div className='col-sm-10'></div>
         <div className='col-sm-2 Top__section'> <button onClick={increment}>Next {'>>'} </button> -<button onClick={decrement}>{'<<'} Preview</button>
-       {user && user.id === event &&  event.user.data.user_id ? <Link to='/dashboard/events'> <button onClick={e=>deleteEvent(match.params.id)}>delete</button>
+       {event && user && user.id ===   event.user.data.user_id ? <Link to='/dashboard/events'> <button onClick={e=>deleteEvent(match.params.id)}>delete</button>
        </Link>:<div></div>}
          </div>
          
@@ -304,6 +304,7 @@ const Eventitem = ({ Searchfriend, match, getevent, events: { event,friends,even
                         <div className='col-sm-2' id='attend'>
                             <button onClick={subscribEevent(x, 1)}>Attend</button>
                         </div>
+                        
                         <div className='col-sm-2'> 
                             <button className="event" onClick={handleClickOpen2} id='update'>
                         Update 
@@ -413,6 +414,7 @@ Eventitem.propTypes = {
     invite:PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
     update: PropTypes.func.isRequired,
+    auth:PropTypes.object.isRequired
 
 }
 const mapStateToProps = state => ({
