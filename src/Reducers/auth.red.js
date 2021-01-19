@@ -19,14 +19,11 @@ export default function (state = initialState, action) {
                 loading: false,
                 user:payload,
                 isAuthenticated: true,
-
             }
             case USER_LOADED:
                 return {
                     user:payload,
-                    success: true,
-                    loading: true,
-                    isAuthenticated: true,
+                   
                 }    
         case LOGIN_FAIL:
         case LOGOUT:

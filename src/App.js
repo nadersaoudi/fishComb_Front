@@ -39,12 +39,8 @@ const App = () => {
     store.dispatch(Myinvitations());
   }, []);
  
- 
-
-
   return (
     <div className="container-fluid">
-    
     <Provider store={store}>
     <HashRouter>
     <React.Suspense fallback={loading()}>
@@ -70,12 +66,10 @@ const App = () => {
       <Route path="*">
         <Redirect from="/" to="/dashboard" />
       </Route>
-     
     </Switch>
     </React.Suspense>
     </HashRouter>
     </Provider>
-
   </div>
   );
 }

@@ -6,7 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { logout }  from './../../../Actions/auth';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Searchfriend} from '../../../Actions/Friends';
 import {acceptinv} from '../../../Actions/events';
@@ -28,14 +27,10 @@ const Header =  ({ auth: {  user }, logout,Searchfriend , Friends:{ users },even
       const  handleClick3=e=> {
         setvisible3(visible3 === false ? true : false);
         }
-
       const [anchorEl, setAnchorEl] = React.useState(null);
-      
-
       const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
       };
-    
       const handleClose = () => {
         setAnchorEl(null);
       };

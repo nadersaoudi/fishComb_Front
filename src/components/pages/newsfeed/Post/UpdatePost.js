@@ -7,11 +7,11 @@ import PropTypes from 'prop-types';
 
 const UpdatePost  = ({ auth: { user }, getPosts, updatePost ,loading, history, Post:{ post }  }) => {
     const [formdata, setFormData] = useState({
-        link: '',
+       // link: '',
         description: '',
       });
       const {
-       link,
+     //  link,
        description
       } = formdata;
       const onchange = e => setFormData({ ...formdata, [e.target.name]: e.target.value });

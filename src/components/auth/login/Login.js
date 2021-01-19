@@ -28,8 +28,6 @@ const Login = ({ log, isAuthenticated }) => {
   if (Cookies.get('user')) {
     return <Redirect to="/#/dashboard/newsfeed" />;
   };
-
-
   return (
     <div className="Login">
       <div className="row">
