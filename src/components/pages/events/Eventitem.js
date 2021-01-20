@@ -1,7 +1,7 @@
 import Single from './single'
-import React, { useEffect, useState,useCallback } from 'react'
-import {Link} from 'react-router-dom'
-import { getevent,deleteEvent,subscribEevent,invite,getfriends,update } from '../../../Actions/events'
+import React, { useEffect, useState, useCallback } from 'react'
+import { Link } from 'react-router-dom'
+import { getevent, deleteEvent, subscribEevent, invite, getfriends, update } from '../../../Actions/events'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Events.css'
@@ -10,12 +10,12 @@ import { Avatar, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Sl
 import { FormControl } from 'react-bootstrap'
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
-
+import { ReactTinyLink } from 'react-tiny-link';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
-  });
-const Eventitem = ({  match, getevent, events: { event,friends,events,categories,loading },deleteEvent,auth:{user},getfriends,invite,update }) => {
+});
+const Eventitem = ({ match, getevent, events: { event, friends, events, categories, loading }, deleteEvent, auth: { user }, getfriends, invite, update }) => {
     useEffect(() => {
         getevent(match.params.id);
     }, [getevent, match.params.id]
@@ -24,31 +24,31 @@ const Eventitem = ({  match, getevent, events: { event,friends,events,categories
         getfriends()
     }, [getfriends]
     )
-    var [x,setX]=useState(parseInt(match.params.id))
+    var [x, setX] = useState(parseInt(match.params.id))
     const increment = useCallback(() => {
-        var y =parseInt(match.params.id)+1;
-        setX (y)
-       x=x+1
-       //console.log(x)
+        var y = parseInt(match.params.id) + 1;
+        setX(y)
+        x = x + 1
+        //console.log(x)
         getevent(x)
-      }, [x])
-      
-      const decrement  = useCallback(() => {
-       x=x-1
-       //console.log(x)
+    }, [x])
+
+    const decrement = useCallback(() => {
+        x = x - 1
+        //console.log(x)
         getevent(x)
-      }, [x])
-      
-      
+    }, [x])
+
+
     //  const participants= event.participants.data;
-     // const count = Object.keys(participants).length
-     
-     
-     
-     
+    // const count = Object.keys(participants).length
+
+
+
+
     const [open1, setOpen1] = React.useState(false);
 
-  
+
     const [open2, setOpen2] = React.useState(false);
     const handleClose2 = () => {
         setOpen2(false);
@@ -68,36 +68,36 @@ const Eventitem = ({  match, getevent, events: { event,friends,events,categories
     const handleOpen3 = () => {
         setOpen3(true);
     };
-     const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
 
 
 
 
 
 
-     const handleClickOpen = () => {
-       setOpen(true);
-     };
-   
-     const handleClose = () => {
-       setOpen(false);
-     };
-     const handleClose1 = () => {
-         setOpen1(false);
-     };
- 
-     const handleOpen1 = () => {
-         setOpen1(true);
-     };
-     const [user_id,setUser]=useState('');
-  
-     const onsubmit =e=> {
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const handleClose1 = () => {
+        setOpen1(false);
+    };
+
+    const handleOpen1 = () => {
+        setOpen1(true);
+    };
+    const [user_id, setUser] = useState('');
+
+    const onsubmit = e => {
         e.preventDefault();
-        invite(user_id,event.id)
-     }
+        invite(user_id, event.id)
+    }
 
-     const [uid,setText]=useState('');
-     const [formData, setFormData] = useState({
+    const [uid, setText] = useState('');
+    const [formData, setFormData] = useState({
         name: '',
         description: '',
         location: '',
@@ -123,298 +123,299 @@ const Eventitem = ({  match, getevent, events: { event,friends,events,categories
     const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const submit = e => {
         e.preventDefault();
-       // console.log(formData)
-         update({
-             name,
-             description,
-             category_id,
-             location,
-             date,
-             cover: 'non',
-             video_link,
-             status,
-             
-         },event.id)
+        // console.log(formData)
+        update({
+            name,
+            description,
+            category_id,
+            location,
+            date,
+            cover: 'non',
+            video_link,
+            status,
+
+        }, event.id)
         e.target.reset();
     }
     return (
         <div>
 
-<div>
-                    <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title1"    >
-                        <form onSubmit={e => submit(e)}>
-                            <DialogTitle id="form-dialog-title1">update event</DialogTitle>
-                            <DialogContent>
-                                <div className="row pt-1">
-                                    <div className=' col-sm-12'>
-                                        <FormControl
-                                            className='input_event'
-                                            placeholder={event && event.name}
-                                            margin="dense"
-                                            id="Title"
-                                            label="Title"
-                                            type="text"
+            <div>
+                <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title1"    >
+                    <form onSubmit={e => submit(e)}>
+                        <DialogTitle id="form-dialog-title1">update event</DialogTitle>
+                        <DialogContent>
+                            <div className="row pt-1">
+                                <div className=' col-sm-12'>
+                                    <FormControl
+                                        className='input_event'
+                                        placeholder={event && event.name}
+                                        margin="dense"
+                                        id="Title"
+                                        label="Title"
+                                        type="text"
 
-                                            name="name" value={name} onChange={e => onchange(e)}
-                                        /></div></div>
-                                <div className="row pt-3">
-                                    <div className='col-6'>
-                                        <FormControl
-                                            className='input_event'
-                                            margin="dense"
-                                            id="Date"
-                                            type="Date"
+                                        name="name" value={name} onChange={e => onchange(e)}
+                                    /></div></div>
+                            <div className="row pt-3">
+                                <div className='col-6'>
+                                    <FormControl
+                                        className='input_event'
+                                        margin="dense"
+                                        id="Date"
+                                        type="Date"
 
-                                            name="date" value={date} onChange={e => onchange(e)}
-                                        />
+                                        name="date" value={date} onChange={e => onchange(e)}
+                                    />
 
-                                    </div>
-                                    <div className='col-6'>
-
-
-                                        <Select
-                                            labelId="demo-controlled-open-select-label1"
-                                            id="demo-controlled-open-select1"
-                                            open={open3}
-                                            onClose={handleClose3}
-                                            onOpen={handleOpen3}
-                                            value={category_id}
-                                            onChange={e => setCategory_id(e.target.value)}>
-
-                                            {categories && categories.map(c =>
-                                                (<MenuItem key={c.id} value={c.id} >{c.name} </MenuItem>)
-
-                                            )}
-
-                                        </Select>
-
-
-                                    </div>
                                 </div>
-                                <div className="row pt-3">
-                                    <div className='col-sm-12'>
-                                        <FormControl
-                                            placeholder={event && event.location}
-                                            margin="dense"
-                                            id="Location"
-                                            className='input_event'
-                                            type="text"
-                                            fullWidth
-                                            name="location" value={location} onChange={e => onchange(e)}
-                                        /></div></div>
-                                <div className="row pt-3">
-                                    <div className='col-sm-12'>
-                                        <FormControl
-                                            placeholder={event && event.description}
-                                            className='input_event'
-                                            margin="dense"
-                                            id="Description"
-                                            as="textarea" aria-label="With textarea"
-                                            type="textarea"
-
-                                            name="description" value={description} onChange={e => onchange(e)}
-                                        /></div></div>
-                                <div className='row pt-3'>
+                                <div className='col-6'>
 
 
-                                    <div className="btn-group btn-group-toggle col-md-12  ">
-                                        <Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+                                    <Select
+                                        labelId="demo-controlled-open-select-label1"
+                                        id="demo-controlled-open-select1"
+                                        open={open3}
+                                        onClose={handleClose3}
+                                        onOpen={handleOpen3}
+                                        value={category_id}
+                                        onChange={e => setCategory_id(e.target.value)}>
 
-                                            <span  >Upload Video </span>
+                                        {categories && categories.map(c =>
+                                            (<MenuItem key={c.id} value={c.id} >{c.name} </MenuItem>)
 
-                                        </Button>
-                                    </div>  </div>
-                                <div className="row pt-3">
-                                    <div className='col-sm-12'>
-                                        <FormControl
-                                            placeholder={event && event.video_link}
-                                            className='input_event'
-                                            margin="dense"
-                                            id="video"
+                                        )}
 
-                                            type="textarea"
-                                            fullWidth
-                                            name="video_link" value={video_link} onChange={e => onchange(e)}
-                                        />
-                                        <FormControl
-                                            placeholder={event && event.status}
-                                            className='input_event'
-                                            margin="dense"
-                                            id="status"
-
-                                            type="textarea"
-                                            fullWidth
-                                            name="status" value={status} onChange={e => onchange(e)}
-                                        />
+                                    </Select>
 
 
-                                    </div></div>
-                                <div className='row pt-3'><div className='col-sm-8'></div><div className='col-sm-4'>
-                                   <Button type='submit' style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} onClick={handleClose}>
+                                </div>
+                            </div>
+                            <div className="row pt-3">
+                                <div className='col-sm-12'>
+                                    <FormControl
+                                        placeholder={event && event.location}
+                                        margin="dense"
+                                        id="Location"
+                                        className='input_event'
+                                        type="text"
+                                        fullWidth
+                                        name="location" value={location} onChange={e => onchange(e)}
+                                    /></div></div>
+                            <div className="row pt-3">
+                                <div className='col-sm-12'>
+                                    <FormControl
+                                        placeholder={event && event.description}
+                                        className='input_event'
+                                        margin="dense"
+                                        id="Description"
+                                        as="textarea" aria-label="With textarea"
+                                        type="textarea"
+
+                                        name="description" value={description} onChange={e => onchange(e)}
+                                    /></div></div>
+                            <div className='row pt-3'>
+
+
+                                <div className="btn-group btn-group-toggle col-md-12  ">
+                                    <Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+
+                                        <span  >Upload Video </span>
+
+                                    </Button>
+                                </div>  </div>
+                            <div className="row pt-3">
+                                <div className='col-sm-12'>
+                                    <FormControl
+                                        placeholder={event && event.video_link}
+                                        className='input_event'
+                                        margin="dense"
+                                        id="video"
+
+                                        type="textarea"
+                                        fullWidth
+                                        name="video_link" value={video_link} onChange={e => onchange(e)}
+                                    />
+                                    <FormControl
+                                        placeholder={event && event.status}
+                                        className='input_event'
+                                        margin="dense"
+                                        id="status"
+
+                                        type="textarea"
+                                        fullWidth
+                                        name="status" value={status} onChange={e => onchange(e)}
+                                    />
+
+
+                                </div></div>
+                            <div className='row pt-3'><div className='col-sm-8'></div><div className='col-sm-4'>
+                                <Button type='submit' style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} onClick={handleClose}>
                                     update Event
           </Button></div></div>
-                            </DialogContent>
+                        </DialogContent>
 
 
 
-                        </form>
-                    </Dialog>
+                    </form>
+                </Dialog>
 
 
 
+            </div>
+
+            <div className='row pt-5 pb-2'>
+                <div className='col-sm-10'></div>
+                <div className='col-sm-2 Top__section'> <button onClick={increment}>Next {'>>'} </button> -<button onClick={decrement}>{'<<'} Preview</button>
                 </div>
-        
-        <div className='row pt-5 pb-2'>
-        <div className='col-sm-10'></div>
-        <div className='col-sm-2 Top__section'> <button onClick={increment}>Next {'>>'} </button> -<button onClick={decrement}>{'<<'} Preview</button>
-         </div>
-         
-      
 
-        </div>
-        <div className='row pt-5'>
-            <div className="col-sm-1"></div>
-            <div className='col-sm-9'>
-            <div className='row '>
-                <div className='col-sm-4'> <img src='https://picsum.photos/id/77/200/300' width="400" height="300" alt='event' /></div>
-                <div className='col-sm-1'></div>
-                <div className='col-sm-7'>
-                    <div className='row'>
-                         <div className='col-sm-8'> <h4><b>{event && event.name}</b></h4>
-                         </div><div className='col-sm-4'><IoShareSocialOutline/></div></div>
-                  <div className='row'> 
-                  <div className='col-sm-3 '>  {event && event.location} </div>
-                  
-               <div className='col-sm-4 '>  {event && event.date} </div></div>
-                  
-                    <div className='row'><div className='col-sm-6'>{event && event.description}
-                    </div></div>
-                    <div className='row'><div className='col-sm-6'>participants {event && event.participants.length}
-                    </div></div>
 
-                    <div className="bot__section">
+
+            </div>
+            <div className='row pt-5'>
+                <div className="col-sm-1"></div>
+                <div className='col-sm-9'>
                     <div className='row'>
-                        <div className='col-sm-2' id='attend'>
-                            <button onClick={subscribEevent(x, 1)}>Attend</button>
-                        </div>
-                        
-                        {event && user && user.id ===   event.user.data.user_id ? <div className='col-sm-2'> 
-                            <button className="event" onClick={handleClickOpen2} id='update'>
-                        Update 
+                        <div className='col-sm-4'>  {event && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} />}</div>
+                        <div className='col-sm-1'></div>
+                        <div className='col-sm-7'>
+                            <div className='row'>
+                                <div className='col-sm-8'> <h4><b>{event && event.name}</b></h4>
+                                </div><div className='col-sm-4'><IoShareSocialOutline /></div></div>
+                            <div className='row'>
+                                <div className='col-sm-3 '>  {event && event.location} </div>
+
+                                <div className='col-sm-4 '>  {event && event.date} </div></div>
+
+                            <div className='row'><div className='col-sm-6'>{event && event.description}
+                            </div></div>
+                            <div className='row'><div className='col-sm-6'>participants {event && event.participants.length}
+                            </div></div>
+
+                            <div className="bot__section">
+                                <div className='row '>
+                                    <div className='col-sm-2' id='attend'>
+                                        <button onClick={subscribEevent(x, 1)}>Attend</button>
+                                    </div>
+
+                                    {event && user && user.id === event.user.data.user_id ? <div className='col-sm-2'>
+                                        <button className="event" onClick={handleClickOpen2} id='update'>
+                                            Update
                                  </button>
-                            </div>:<div></div>}
-                       
-                        
-                        <div className='col-sm-2' id='Invite'>
-                        <button  onClick={handleClickOpen}>Invite</button>
+                                    </div> : <div></div>}
+
+
+                                    <div className='col-sm-2' id='Invite'>
+                                        <button onClick={handleClickOpen}>Invite</button>
+                                    </div>
+                                    {event && user && user.id === event.user.data.user_id ? <Link to='/dashboard/events'> <div className='col-sm-2' > <button id='invite' onClick={e => deleteEvent(match.params.id)}>delete</button></div>
+                                    </Link> : <div></div>}
+                                    <Dialog className='invite_form'
+                                        open={open}
+                                        TransitionComponent={Transition}
+                                        keepMounted
+                                        onClose={handleClose}
+                                        aria-labelledby="alert-dialog-slide-title"
+                                        aria-describedby="alert-dialog-slide-description"
+                                    >
+
+                                        <form onSubmit={e => onsubmit(e)}>
+                                            <DialogTitle id="alert-dialog-slide-title">{"invite"}</DialogTitle>
+
+                                            <DialogContent>
+                                                <div className='row'>
+
+                                                    <FormControl
+                                                        className='input_name'
+                                                        placeholder='Name'
+                                                        margin='dense'
+                                                        type='text'
+                                                        value={uid}
+
+
+                                                    /></div>
+                                                <div className='row pt-2'>
+
+                                                    <div className='col-md-7 ' id='user_data'>
+
+                                                        {friends && friends.map((c, index) =>
+                                                        (
+                                                            <div className='col-md-6'>
+                                                                <form onSubmit={e => onsubmit(e)}>
+                                                                    <div className='col-md-8 pb-2 mt-3 friends'>
+                                                                        <div className='col-md-10 '><Avatar className='mr-2 pr-1 pb-2' src={c.data.attributes.profile_image} />{c.data.attributes.name}</div>
+                                                                        <div className='col-md-2'><button onClick={e => invite(c.data.user_id, event.id)} id='invite_form'>Invite</button></div>
+
+                                                                    </div>
+                                                                </form>
+                                                                <div className='col-md-1'>
+
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                        )}
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div>
+
+                                                </div>
+
+
+
+                                            </DialogContent>
+                                            <DialogActions>
+
+                                            </DialogActions>
+                                        </form>
+                                    </Dialog>
+
+
+                                    <div className='col-sm-2' >
+                                        <button id='cancel'>Cancel</button>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                        <Dialog className='invite_form'
-                                open={open}
-                                TransitionComponent={Transition}
-                                keepMounted
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"
-      >
-          
-            <form onSubmit={e => onsubmit(e)}>
-        <DialogTitle id="alert-dialog-slide-title">{"invite"}</DialogTitle>
-        
-        <DialogContent>
-<div className='row'>
-
-<FormControl 
-                                            className='input_name'
-                                            placeholder='Name'
-                                            margin='dense'
-                                            type='text'
-                                            value={uid} 
-                                            
-                                            
-                                                                       /></div>
-<div className='row pt-2'>
-  
-   <div className='col-md-7 'id='user_data'>
-   
-   {friends && friends.map((c,index) =>
-           (
-        <div className='col-md-6'>       
-           <form onSubmit={e => onsubmit(e)}>
-               <div className='col-md-8 pb-2 mt-3 friends'>
-                   <div className='col-md-10 '><Avatar className='mr-2 pr-1 pb-2' src={c.data.attributes.profile_image}/>{c.data.attributes.name}</div> 
-                   <div className='col-md-2'><button onClick={e=>invite(c.data.user_id,event.id)} id='invite_form'>Invite</button></div>
-                
-                </div>
-            </form>
-                <div className='col-md-1'>
-                 
-        </div>
-         </div>
-         )
-               )} 
-    
-</div>
-    
-    </div>
-
-
-<div>
-
-</div>
-      
-        
-
-        </DialogContent>
-        <DialogActions>
-         
-        </DialogActions>
-        </form>
-      </Dialog>
-     
-      {event && user && user.id ===   event.user.data.user_id ? <Link to='/dashboard/events'> <div className='col-sm-2' > <button  id='cancel' onClick={e=>deleteEvent(match.params.id)}>delete</button></div>    
-       </Link>:<div></div>}      
-                    <div className='col-sm-2' >
-                        <button id='cancel'>Cancel</button>
-                        </div>
-                    </div>
-                    
-                    </div>
-                </div>
-                <div className='mt-4 mb-2'><hr/></div>
-                <div className='mt-2'>
-                    <h6><b>Similar Events</b></h6>
-                    <div className='row '>
-                    {events && events.map((event) =>
+                        <div className='mt-4 mb-2'><hr /></div>
+                        <div className='mt-2'>
+                            <h6><b>Similar Events</b></h6>
+                            <div className='row '>
+                                {events && events.map((event) =>
                                 (
                                     <Single key={event.id} event={event} />)
                                 )}
 
 
-                     </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                
             </div>
-            </div>
-            </div>
-            </div>
+        </div>
     )
 }
 Eventitem.propTypes = {
     events: PropTypes.object.isRequired,
     getevent: PropTypes.func.isRequired,
-    deleteEvent:PropTypes.func.isRequired,
-    subscribEevent:PropTypes.func.isRequired,
-    getfriends:PropTypes.func.isRequired,
-    invite:PropTypes.func.isRequired,
+    deleteEvent: PropTypes.func.isRequired,
+    subscribEevent: PropTypes.func.isRequired,
+    getfriends: PropTypes.func.isRequired,
+    invite: PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
     update: PropTypes.func.isRequired,
-    auth:PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired
 
 }
 const mapStateToProps = state => ({
     events: state.events,
-    auth:state.auth,
+    auth: state.auth,
     categories: state.categories,
 
 })
-export default connect(mapStateToProps, {update, getevent,deleteEvent,subscribEevent,getfriends,invite })(Eventitem)
+export default connect(mapStateToProps, { update, getevent, deleteEvent, subscribEevent, getfriends, invite })(Eventitem)
