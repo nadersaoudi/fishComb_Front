@@ -28,11 +28,12 @@ export const log = ( login, password) => async dispatch => {
                 Cookies.get('profile', res2.data.data);
                 dispatch({
                     type: LOGIN_SUCCESS,
-                    payload: res2.data.data
+                    payload: res2.data.data,  
                 });
+                Cookies.get('profile', res2.data.data);
                 toast.success('succesfully logged in')
             });
-            dispatch( loadUser())
+            
         }).catch((err)=>{
             toast.error('Invalid Credentials')
             dispatch({
@@ -91,12 +92,12 @@ export const loadUser = () => async dispatch => {
 
     try {
         const res = await axios.post('api/user/profile', {}, config);
-        Cookies.set('profile', res.data.data)
+        
         dispatch({
             type: USER_LOADED,
             payload: res.data.data
         })
-
+        Cookies.set('profile', res.data.data)
     } catch (err) {
         dispatch({
             type: AUTH_ERROR
@@ -114,7 +115,6 @@ export const loadUser = () => async dispatch => {
                 'content-Type': 'application/json'
             }
         }
-
         const data = JSON.stringify({
             email
         });
@@ -133,7 +133,6 @@ export const loadUser = () => async dispatch => {
     }
  //logout
     export const logout = () => dispatch => {
-
         dispatch({
             type: CLEAR_PROFILE
         });

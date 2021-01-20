@@ -29,8 +29,6 @@ const Login = ({ log, isAuthenticated }) => {
 
     return <Redirect to="/dashboard/newsfeed" />;
   };
-
-
   return (
     <div className="Login">
       <div className="row">

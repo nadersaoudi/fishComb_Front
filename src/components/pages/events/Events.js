@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 import './Events.css';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { addEvent, getevents, sortEvents,myevents,search } from '../../../Actions/events'
+import { addEvent, getevents, sortEvents,myevents,search } from '../../../Actions/events';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Single from './single'
@@ -18,9 +18,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
     useEffect(() => {
         getevents()
     }, [getevents])
-    
     const [open, setOpen] = React.useState(false);
-
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -178,7 +176,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
 
                         <Button className="event" onClick={handleClickOpen}>
                             Add Events
-                                 </Button>
+                        </Button>
                         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" className='dialogForm'   >
                             <form className='add__event'onSubmit={e => submit(e)}>
                                 <DialogTitle id="form-dialog-title">Add event</DialogTitle>

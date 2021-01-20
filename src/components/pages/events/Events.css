@@ -3,7 +3,6 @@
 }
 #button_sort{
     width: max-content;
-    
     height: 28px;
     border: none;
     background-color: #F7F8FA;
@@ -16,19 +15,15 @@
     width: 550px;
     min-height: 420px;
     height: 500px;
-
 }
 .filtre{
     display: flex;
-    
-
 }
 .Top__section{
 color: #F7F8FA;
 }
 
 #btn_event{
-
     text-align: left;
 }
 #body{
@@ -93,5 +88,4 @@ color: #F7F8FA;
 #update:hover{
     background-color: #202C43;
     color: white;
-
 }
