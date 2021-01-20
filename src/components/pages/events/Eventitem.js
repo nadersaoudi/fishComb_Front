@@ -308,8 +308,8 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                     <div className='col-sm-2' id='Invite'>
                                         <button onClick={handleClickOpen}>Invite</button>
                                     </div>
-                                    {event && user && user.id === event.user.data.user_id ? <Link to='/dashboard/events'> <div className='col-sm-2' > <button id='invite' onClick={e => deleteEvent(match.params.id)}>delete</button></div>
-                                    </Link> : <div></div>}
+                                    {event && user && user.id === event.user.data.user_id ? <div className='col-sm-2' ><Link to='/dashboard/events'>  <button id='invite' onClick={e => deleteEvent(match.params.id)}>delete</button>
+                                    </Link></div> : <div></div>}
                                     <Dialog className='invite_form'
                                         open={open}
                                         TransitionComponent={Transition}
