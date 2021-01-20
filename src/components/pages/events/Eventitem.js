@@ -11,7 +11,9 @@ import { FormControl } from 'react-bootstrap'
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import { ReactTinyLink } from 'react-tiny-link';
-
+import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -281,35 +283,42 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                         <div className='col-sm-7'>
                             <div className='row'>
                                 <div className='col-sm-8'> <h4><b>{event && event.name}</b></h4>
-                                </div><div className='col-sm-4'><IoShareSocialOutline /></div></div>
-                            <div className='row'>
+                                <div className='row'>
                                 <div className='col-sm-3 '>  {event && event.location} </div>
 
                                 <div className='col-sm-4 '>  {event && event.date} </div></div>
 
-                            <div className='row'><div className='col-sm-6'>{event && event.description}
+                                <div className='row'><div className='col-sm-10 pb-3 pt-2'>{event && event.description}
                             </div></div>
+                            
+                                </div><div className='col-sm-1'><IoShareSocialOutline />
+                                <div>  <AddBoxIcon onClick={handleClickOpen}/></div>
+
+                                      <div>
+                                    {event && user && user.id === event.user.data.user_id ? 
+
+                                    <UpdateRoundedIcon  onClick={handleClickOpen2}/>
+                                     : <div></div>} </div>
+                                      <div>{event && user && user.id === event.user.data.user_id ? <Link to='/dashboard/events'><DeleteOutlineRoundedIcon  onClick={e => deleteEvent(match.params.id)} style={{color:'#212529'}}/>
+                                    </Link> : <div></div>}</div>
+                                </div></div>
+                            
                             <div className='row'><div className='col-sm-6'>participants {event && event.participants.length}
                             </div></div>
 
                             <div className="bot__section">
                                 <div className='row '>
-                                    <div className='col-sm-2' id='attend'>
+                                    <div className='col-sm-2 pt-5' id='attend'>
                                         <button onClick={subscribEevent(x, 1)}>Attend</button>
                                     </div>
 
-                                    {event && user && user.id === event.user.data.user_id ? <div className='col-sm-2'>
-                                        <button className="event" onClick={handleClickOpen2} id='update'>
-                                            Update
-                                 </button>
-                                    </div> : <div></div>}
 
-
+                                    
                                     <div className='col-sm-2' id='Invite'>
-                                        <button onClick={handleClickOpen}>Invite</button>
+                                      
+                                        
                                     </div>
-                                    {event && user && user.id === event.user.data.user_id ? <div className='col-sm-2' ><Link to='/dashboard/events'>  <button id='invite' onClick={e => deleteEvent(match.params.id)}>delete</button>
-                                    </Link></div> : <div></div>}
+                                    
                                     <Dialog className='invite_form'
                                         open={open}
                                         TransitionComponent={Transition}
@@ -342,9 +351,9 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                                         (
                                                             <div className='col-md-6'>
                                                                 <form onSubmit={e => onsubmit(e)}>
-                                                                    <div className='col-md-8 pb-2 mt-3 friends'>
-                                                                        <div className='col-md-10 '><Avatar className='mr-2 pr-1 pb-2' src={c.data.attributes.profile_image} />{c.data.attributes.name}</div>
-                                                                        <div className='col-md-2'><button onClick={e => invite(c.data.user_id, event.id)} id='invite_form'>Invite</button></div>
+                                                                    <div className='col-md-12 pb-2 mt-3 friends'>
+                                                                        <div className='col-md-2 '><Avatar className='mr-2 pr-1 pb-2' src={c.data.attributes.profile_image} /></div> <div className='col-md-8'> {c.data.attributes.name}</div>
+                                                                        <div className='col-md-2'> <AddBoxIcon onClick={e => invite(c.data.user_id, event.id)}/></div>
 
                                                                     </div>
                                                                 </form>
@@ -374,7 +383,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                     </Dialog>
 
 
-                                    <div className='col-sm-2' >
+                                    <div className='col-sm-2 pt-5' >
                                         <button id='cancel'>Cancel</button>
                                     </div>
                                 </div>
