@@ -23,8 +23,7 @@ export default function (state = initialState, action) {
             case USER_LOADED:
                 return {
                     user:payload,
-                   
-                }    
+                }   
         case LOGIN_FAIL:
         case LOGOUT:
             Cookies.remove('user');

@@ -15,7 +15,8 @@ export const log = ( login, password) => async dispatch => {
         password,
     });
     try {
-        axios.post('api/user/login', data, config).then((res) => {
+        //const res = await 
+       await axios.post('api/user/login', data, config).then((res) => {
             Cookies.set('user', res.data.token);
             const config2 = {
                 headers: {
@@ -23,12 +24,11 @@ export const log = ( login, password) => async dispatch => {
                     'content-Type': 'application/json'
                 }
             };
-            axios.post('api/user/profile', {}, config2).then((res2) => {
-                
+              axios.post('api/user/profile', {}, config2).then((res2) => {
+                Cookies.get('profile', res2.data.data);
                 dispatch({
                     type: LOGIN_SUCCESS,
-                    payload: res2.data.data,
-                    
+                    payload: res2.data.data,  
                 });
                 Cookies.get('profile', res2.data.data);
                 toast.success('succesfully logged in')
@@ -115,7 +115,6 @@ export const loadUser = () => async dispatch => {
                 'content-Type': 'application/json'
             }
         }
-
         const data = JSON.stringify({
             email
         });

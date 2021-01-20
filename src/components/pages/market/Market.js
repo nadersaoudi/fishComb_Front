@@ -22,6 +22,14 @@ const Market =( {auth : {user}}) => {
     const handleClose = () => {
         setOpen(false);
     };
+/*****************************/    
+    const [open1, setOpen1] = React.useState(false);
+    const handleClickOpen1 = () => {
+        setOpen1(true);
+    };
+    const handleClose1 = () => {
+        setOpen1(false);
+    };
 /*********************************/    
     return (
         <div>
@@ -59,97 +67,131 @@ const Market =( {auth : {user}}) => {
           </svg>
          </button>
       </div>
-                <Button>Your Account</Button><br/>
+                <Button onClick={handleClickOpen1}>Your Account</Button><br/>
                 <Button onClick={handleClickOpen}>Add Product</Button>
                     </div>
-                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                            <form >
-                                <DialogTitle id="form-dialog-title">
-                                    <Avatar />
-                                </DialogTitle>
+                    <Dialog open={open1} onClose={handleClose1} className='addProduct'>
+                            <form className='addProduct'>
                                 <DialogContent>
-                                    <div className="row pt-3">
-                                        <div className=' col-md-12'>
-                                            <FormControl
-                                                className='input_event'
-                                                placeholder="Title"
-                                                margin="dense"
-                                                id="Title"
-                                                label="Title"
-                                                type="text"/>
+                                <div className='row pt-1 pb-2'>
+                                    <div className='col-6'>
+                                    <img src='https://picsum.photos/id/77/200/300' width="250" height="300" alt='event' />
+                                    </div>
+                                    <div className='col-6'>
+                                        <div className='row pt-1 pb-1'>
+                                            <div className='col-sm-12'>
+                                               <b> Board</b>
                                             </div>
-                                            </div>
-                                    <div className="row pt-3">
-                                        <div className='col-8'>
-                                            <FormControl
-                                                className='input_event'
-                                                margin="dense"
-                                                id="Date"
-                                                type="Date"/>
                                         </div>
-                                        <div className='col-2'>
-                                            <Select
-                                                labelId="demo-controlled-open-select-label"
-                                                id="demo-controlled-open-select"
-                                                name="category_id"
-                                                >
-                                            </Select>
+                                        <div className='row pt-2'>
+                                            <div className='col-sm-12'>
+                                               <h6>£50</h6> 
+                                            </div>
+                                        </div>
+                                        <div className='row pt-1'>
+                                            <div className='col-sm-12'>
+                                               <p> <h6>qlhqkjhqksjh qh lkqshdkqsdhjlkqshd kqsjh qklsjdhq jhqsdkjhq kd hq sd 
+                                                qso dqh dqjdmo q fjqhsdj hqshd qsd lqkshf qf q</h6></p>  
+                                            </div>
+                                        </div>
+                                        <div className='row pt-1'>
+                                            <div className='col-sm-12'>
+                                               Quantity
+                                            </div>
+                                        </div>
+                                        <div className='row pt-1'>
+                                            <div className='col-sm-12'>
+                                               
+                                            </div>
+                                        </div>
+                                        <div className='row pt-5 '>
+                                            <div className='col-sm-6'>
+                                                  <Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+                                                            <span><h6>Add to Basket</h6></span>
+                                                  </Button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="row pt-3">
-                                        <div className='col-sm-12'>
-                                            <FormControl
-                                                placeholder="Location"
-                                                margin="dense"
-                                                id="Location"
-                                                className='input_event'
-                                                type="text"
-                                                fullWidth />
+                                </div> 
+                            </DialogContent>
+                            </form>
+                        </Dialog>                    
+                <Dialog open={open} onClose={handleClose} className='addProduct'>
+                            <form  className='addProduct' >
+                                <DialogContent>
+                                <div className='row'>
+                                        <div className='col-sm-1 mr-2'>
+                                            <Avatar src={user && user.profile_image}/>
+                                        </div>
+                                        <div className='col-sm-10 pt-3'>
+                                            <div className='row'>
+                                                <div className='row'>
+                                                    <div className='col-sm-12'>
+                                                      <h6> {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}  {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}</h6>
+                                                    </div>
+                                                </div>
+                                                <div className='row'>
+                                                  <div className='row pt-3'>
+                                                      <div className='col-sm-12'>
+                                                        <FormControl
+                                                            className='input_event'
+                                                            placeholder="Product Name"
+                                                            margin="dense"
+                                                            label="Product_name"
+                                                            type="text"/>
+                                                      </div>
+                                                  </div>
+                                                    <div className='row pt-3'>
+                                                    <div className='col-sm-6'>
+                                                        <FormControl
+                                                            className='input_event'
+                                                            placeholder="Product Name"
+                                                            margin="dense"
+                                                            label="Product_name"
+                                                            type="text"/>
+                                                    </div>
+                                                    <div className='col-6'>
+                                                        <FormControl
+                                                            className='input_event'
+                                                            placeholder="Product Name"
+                                                            margin="dense"
+                                                            label="Product_name"
+                                                            type="text"/>
+                                                    </div>
+                                                    </div>
+                                                    <div className='row pt-3'>
+                                                        <div className='col-12'>
+                                                        <FormControl
+                                                            placeholder="Description"
+                                                            className='input_event'
+                                                            margin="dense"
+                                                            id="Description"
+                                                            as="textarea" aria-label="With textarea"
+                                                            type="textarea"/>
+                                                        </div>
+                                                    </div>
+                                                    <div className='row pt-3 pb-2'>
+                                                        <div className='col-4'>
+                                                        <Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+                                                            <span>Upload Image </span>
+                                                        </Button>
+                                                        </div>
+                                                        <div className='col-4'>
+                                                        </div>
+                                                        <div className='col-md-4'>
+                                                        <Button type='submit'
+                                                        style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
+                                                        onClick={handleClose}>
+                                                            Save Product
+                                                        </Button>
+                                                        </div>  
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    <div className="row pt-3">
-                                        <div className='col-sm-12'>
-                                            <FormControl
-                                                placeholder="Description"
-                                                className='input_event'
-                                                margin="dense"
-                                                id="Description"
-                                                as="textarea" aria-label="With textarea"
-                                                type="textarea"
-                                            /></div></div>
-                                    <div className='row pt-3'>
-                                        <div className="btn-group btn-group-toggle col-md-12  ">
-                                            <Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-                                                <span  >Upload Video </span>
-
-                                            </Button>
-                                        </div>  </div>
-                                    <div className="row pt-3">
-                                        <div className='col-sm-12'>
-                                            <FormControl
-                                                placeholder="Video Link"
-                                                className='input_event'
-                                                margin="dense"
-                                                id="video"
-
-                                                type="textarea"
-                                                fullWidth
-                                                name="video_link" 
-                                            /></div></div>
-                                    <div className='row pt-2 px-0'>
-                                        <div className='col-md-9'></div>
-                                        <div className='col-md-3'>
-                                        <Button type='submit'
-                                         style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
-                                         onClick={handleClose}>
-                                        Add Event
-                                        </Button>
-                                        </div>
-                                </div>
+                                    </div>
+                              
                             </DialogContent>
-
-
-
                             </form>
                         </Dialog>
 

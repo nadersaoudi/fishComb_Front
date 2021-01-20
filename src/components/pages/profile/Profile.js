@@ -31,8 +31,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Profile = ({ auth: { user, loading }, edit, history, picture }) => {
   const [file1, setFile] = useState('');
-  
+ 
 
+
+ 
   $('#editprofile').click(function (event) {
     event.preventDefault();
     $('.show').each(function () {

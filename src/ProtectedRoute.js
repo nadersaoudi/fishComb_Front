@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import Cookies from 'js-cookie';
 
-const ProtectedRoute = ({ children, ...rest }) => {
+const ProtectedRoute = ({component:Component, children, ...rest }) => {
   return (
     <Route
       {...rest}
