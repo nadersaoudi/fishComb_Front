@@ -57,7 +57,7 @@ const Search = ({ friend, addFriend }) => {
               </div>
             </div>
               <div className='col-sm-1 mr-2 pt-4'>
-                <Button variant="outlined" type="submit" disabled={disable}>Add<AiOutlineUserAdd className='add' /></Button>
+                <Button variant="outlined" type="submit" disabled={friend.data.attributes.is_friend}>Add<AiOutlineUserAdd className='add' /></Button>
               </div>
           </div>
           </form>
