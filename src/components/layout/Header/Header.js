@@ -12,8 +12,9 @@ import {acceptinv} from '../../../Actions/events';
 import { useHistory } from 'react-router-dom';
 import Notification from './Notification';
 import Toast from 'react-bootstrap/Toast'
+
 const Header =  ({ auth: {  user }, logout,Searchfriend , Friends:{ users },events:{inv},acceptinv }) => {
-  
+ 
 
       const [visible, setvisible] = useState(false);
       const [visible2, setvisible2] = useState(false);

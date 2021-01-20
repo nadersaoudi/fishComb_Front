@@ -14,6 +14,7 @@ import { ReactTinyLink } from 'react-tiny-link';
 import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
+import { NavLink } from 'react-bootstrap';
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -141,8 +142,24 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     }
     return (
         <div>
+                <div className='row'>
+                    <div className='col-sm-3'></div>
+                    <div className="col-8 ">
+                        <ul className="nav nav-pills nav-justified" id='navprofil'>
+                            <li className="nav-item">
+                                <NavLink to={`/NavEvents`} className="m"><span className="n">General event</span></NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to={`/MyStream`} className="m"><span className="n">My Streams</span></NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to={`/invited`} className="m"><span className="n">Invited Webinars</span></NavLink>
+                            </li>
+                            
+                        </ul>
 
-            <div>
+                    </div>
+          
                 <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title1"    >
                     <form onSubmit={e => submit(e)}>
                         <DialogTitle id="form-dialog-title1">update event</DialogTitle>
@@ -266,7 +283,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
             </div>
 
-            <div className='row pt-5 pb-2'>
+            <div className='row pt-2 pb-2'>
                 <div className='col-sm-10'></div>
                 <div className='col-sm-2 Top__section'> <button onClick={increment}>Next {'>>'} </button> -<button onClick={decrement}>{'<<'} Preview</button>
                 </div>
