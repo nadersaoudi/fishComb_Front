@@ -11,7 +11,6 @@ import { FormControl } from 'react-bootstrap'
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 
-
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
@@ -321,7 +320,7 @@ const Eventitem = ({  match, getevent, events: { event,friends,events,categories
         <DialogTitle id="alert-dialog-slide-title">{"invite"}</DialogTitle>
         
         <DialogContent>
-<div className='row'>
+<div className='row'>   
 
 <FormControl 
                                             className='input_name'

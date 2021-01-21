@@ -1,4 +1,10 @@
 .MuiPaper-rounded{
     border-radius:  0px !important;
 }
+.delete_prod{
+    text-decoration: none;
+}
+.delete_prod :hover{
+    text-decoration: none;
+}
 

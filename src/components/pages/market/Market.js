@@ -1,35 +1,49 @@
-import React from 'react';
+import React ,{ useEffect, useState } from 'react';
 import { NavLink } from 'react-bootstrap';
-import { Avatar } from "@material-ui/core";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Select from '@material-ui/core/Select';
-import FormControl from 'react-bootstrap/FormControl';
+import { getMarket, addProduct, myProduct } from '../../../Actions/Market';
 import "./Market.css"
-const Market =( {auth : {user}}) => {
-/****************************/    
-    const [open, setOpen] = React.useState(false);
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
+import YourAccount from './YourAccount';
+import AddProduct from './products/AddProduct';
+import SingleProduct from './products/SingleProduct';
+import market from '../../../Reducers/market';
+const Market =( {auth : {user}, getMarket, addProduct ,events: { categories } , myProduct , markets:{ markets } } ) => {
+/******************************/
+useEffect(() => {
+    getMarket()
+}, [getMarket]) 
+useEffect(() => {
+    myProduct()
+}, [myProduct]) 
+/**************************/
+const [open2, setOpen2] = React.useState(false);
+const handleClose2 = () => {
+    setOpen1(false);
+};
+const handleOpen2 = () => {
+    setOpen1(true);
+};
+/*******************************/  
+const [open, setOpen] = React.useState(false);
+const handleClickOpen = () => {
+    setOpen(true);
+};
+const handleClose = () => {
+    setOpen(false);
+};
 /*****************************/    
-    const [open1, setOpen1] = React.useState(false);
-    const handleClickOpen1 = () => {
-        setOpen1(true);
-    };
-    const handleClose1 = () => {
-        setOpen1(false);
-    };
+const [open1, setOpen1] = React.useState(false);
+const handleClickOpen1 = () => {
+    setOpen1(true);
+};
+const handleClose1 = () => {
+    setOpen1(false);
+};
 /*********************************/    
     return (
         <div>
@@ -70,130 +84,12 @@ const Market =( {auth : {user}}) => {
                 <Button onClick={handleClickOpen1}>Your Account</Button><br/>
                 <Button onClick={handleClickOpen}>Add Product</Button>
                     </div>
-                    <Dialog open={open1} onClose={handleClose1} className='addProduct'>
-                            <form className='addProduct'>
-                                <DialogContent>
-                                <div className='row pt-1 pb-2'>
-                                    <div className='col-6'>
-                                    <img src='https://picsum.photos/id/77/200/300' width="250" height="300" alt='event' />
-                                    </div>
-                                    <div className='col-6'>
-                                        <div className='row pt-1 pb-1'>
-                                            <div className='col-sm-12'>
-                                               <b> Board</b>
-                                            </div>
-                                        </div>
-                                        <div className='row pt-2'>
-                                            <div className='col-sm-12'>
-                                               <h6>£50</h6> 
-                                            </div>
-                                        </div>
-                                        <div className='row pt-1'>
-                                            <div className='col-sm-12'>
-                                               <p> <h6>qlhqkjhqksjh qh lkqshdkqsdhjlkqshd kqsjh qklsjdhq jhqsdkjhq kd hq sd 
-                                                qso dqh dqjdmo q fjqhsdj hqshd qsd lqkshf qf q</h6></p>  
-                                            </div>
-                                        </div>
-                                        <div className='row pt-1'>
-                                            <div className='col-sm-12'>
-                                               Quantity
-                                            </div>
-                                        </div>
-                                        <div className='row pt-1'>
-                                            <div className='col-sm-12'>
-                                               
-                                            </div>
-                                        </div>
-                                        <div className='row pt-5 '>
-                                            <div className='col-sm-6'>
-                                                  <Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-                                                            <span><h6>Add to Basket</h6></span>
-                                                  </Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                            </DialogContent>
-                            </form>
+                        <Dialog open={open1} onClose={handleClose1} className='addProduct'>
+                            <YourAccount />
                         </Dialog>                    
                 <Dialog open={open} onClose={handleClose} className='addProduct'>
-                            <form  className='addProduct' >
-                                <DialogContent>
-                                <div className='row'>
-                                        <div className='col-sm-1 mr-2'>
-                                            <Avatar src={user && user.profile_image}/>
-                                        </div>
-                                        <div className='col-sm-10 pt-3'>
-                                            <div className='row'>
-                                                <div className='row'>
-                                                    <div className='col-sm-12'>
-                                                      <h6> {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}  {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}</h6>
-                                                    </div>
-                                                </div>
-                                                <div className='row'>
-                                                  <div className='row pt-3'>
-                                                      <div className='col-sm-12'>
-                                                        <FormControl
-                                                            className='input_event'
-                                                            placeholder="Product Name"
-                                                            margin="dense"
-                                                            label="Product_name"
-                                                            type="text"/>
-                                                      </div>
-                                                  </div>
-                                                    <div className='row pt-3'>
-                                                    <div className='col-sm-6'>
-                                                        <FormControl
-                                                            className='input_event'
-                                                            placeholder="Product Name"
-                                                            margin="dense"
-                                                            label="Product_name"
-                                                            type="text"/>
-                                                    </div>
-                                                    <div className='col-6'>
-                                                        <FormControl
-                                                            className='input_event'
-                                                            placeholder="Product Name"
-                                                            margin="dense"
-                                                            label="Product_name"
-                                                            type="text"/>
-                                                    </div>
-                                                    </div>
-                                                    <div className='row pt-3'>
-                                                        <div className='col-12'>
-                                                        <FormControl
-                                                            placeholder="Description"
-                                                            className='input_event'
-                                                            margin="dense"
-                                                            id="Description"
-                                                            as="textarea" aria-label="With textarea"
-                                                            type="textarea"/>
-                                                        </div>
-                                                    </div>
-                                                    <div className='row pt-3 pb-2'>
-                                                        <div className='col-4'>
-                                                        <Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-                                                            <span>Upload Image </span>
-                                                        </Button>
-                                                        </div>
-                                                        <div className='col-4'>
-                                                        </div>
-                                                        <div className='col-md-4'>
-                                                        <Button type='submit'
-                                                        style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
-                                                        onClick={handleClose}>
-                                                            Save Product
-                                                        </Button>
-                                                        </div>  
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                              
-                            </DialogContent>
-                            </form>
-                        </Dialog>
+                     <AddProduct />    
+                </Dialog>
 
 
                 <div className='col-md-9 'id='body'>
@@ -242,144 +138,38 @@ const Market =( {auth : {user}}) => {
                     </div>
                     </div>
                     </div>
-               
-                   
-                    
-                        
-               
-                 
-
                     </div>
                     <div className='row'>
                         <div className='col-md-12 mt-5 mb-3'> <h6><b>All products</b></h6></div>
-                    <div className='row'>
-                    <div className='col-md-2'> 
-                        <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/14/200/300' width="125" height="100" alt='event'/>
-                 <div className='description'>
-                             <span>74$</span> <br/>
-                             <span>lorem ipsuem</span> <br/>
-                    </div>
-                 </div>
-            </div>
-            <div className='col-md-2 mb-4'> 
-                        <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/10/200/300' width="125" height="100" alt='event'/>
-                 <div className='description'>
-                             <span>16$</span> <br/>
-                             <span>lorem ipsuem</span> <br/>
-                    </div>
-                 </div>
-            </div>
-            <div className='col-md-2 mb-4'> 
-                        <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/7/200/300' width="125" height="100" alt='event'/>
-                 <div className='description'>
-                             <span>156$</span> <br/>
-                             <span>lorem ipsuem</span> <br/>
-                    </div>
-                 </div>
-            </div>
-            <div className='col-md-2 mb-4'> 
-                        <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/6/200/300' width="125" height="100" alt='event'/>
-                 <div className='description'>
-                             <span>36$</span> <br/>
-                             <span>lorem ipsuem</span> <br/>
-                    </div>
-                 </div>
-            </div>
-            <div className='col-md-2 mb-4'> 
-                        <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/32/200/300' width="125" height="100" alt='event'/>
-                 <div className='description'>
-                             <span>33$</span> <br/>
-                             <span>lorem ipsuem</span> <br/>
-                    </div>
-                 </div>
-            </div>
-            <div className='col-md-2 mb-4'> 
-                        <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/4/200/300' width="125" height="100" alt='event'/>
-                 <div className='description'>
-                             <span>77$</span> <br/>
-                             <span>lorem ipsuem</span> <br/>
-                    </div>
-                 </div>
-            </div>
-            <div className='col-md-2 mb-4'> 
-                        <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/16/200/300' width="125" height="100" alt='event'/>
-                 <div className='description'>
-                             <span>53$</span> <br/>
-                             <span>lorem ipsuem</span> <br/>
-                    </div>
-                 </div>
-            </div>
-            <div className='col-md-2 mb-4'> 
-                        <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/12/200/300' width="125" height="100" alt='event'/>
-                 <div className='description'>
-                             <span>1$</span> <br/>
-                             <span>lorem ipsuem</span> <br/>
-                    </div>
-                 </div>
-            </div>
-            <div className='col-md-2 mb-4'> 
-                        <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/17/200/300' width="125" height="100" alt='event'/>
-                 <div className='description'>
-                             <span>65$</span> <br/>
-                             <span>lorem ipsuem</span> <br/>
-                    </div>
-                 </div>
-            </div>
-            <div className='col-md-2 mb-4'> 
-                        <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/24/200/300' width="125" height="100" alt='event'/>
-                 <div className='description'>
-                             <span>30$</span> <br/>
-                             <span>lorem ipsuem</span> <br/>
-                    </div>
-                 </div>
-            </div>
-            <div className='col-md-2 mb-4'> 
-                        <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/41/200/300' width="125" height="100" alt='event'/>
-                 <div className='description'>
-                             <span>62$</span> <br/>
-                             <span>lorem ipsuem</span> <br/>
-                    </div>
-                 </div>
-            </div>
-            <div className='col-md-2 mb-4'> 
-                        <div className='image_holder grid '>
-                 <img src='https://picsum.photos/id/52/200/300' width="125" height="100" alt='event'/>
-                 <div className='description'>
-                             <span>100$</span> <br/>
-                             <span>lorem ipsuem</span> <br/>
-                    </div>
-                 </div>
-            </div>
-                    </div>
-                    </div>
+                        <div className='row'>
+                        {markets && markets.map((markets) =>
+                                (
+                                    <SingleProduct key={markets.id} markets={markets} />)
+                                )}
 
+                        </div>
+                    </div>
+                    </div>
+                    </div>
                      </div>
-                
-
             </div>
-    </div>
-
-            
-               
-        </div>
-        </div>
+            </div>       
+         
     )
 }
 Market.prototype = {
     auth: PropTypes.object.isRequired,
+    getMarket : PropTypes.func.isRequired,
+    myProduct : PropTypes.func.isRequired,
+    addProduct : PropTypes.func.isRequired,
+    categories: PropTypes.object.isRequired,
 }
 const mapStateToProps = state => ({
-    auth: state.auth,  
+    auth: state.auth, 
+    markets: state.market,
+    myProduct : state.markets,
+    addProduct: state.markets,
+    events: state.events,
+    categories: state.categories,
 })
-export default connect(mapStateToProps)(Market);
+export default connect(mapStateToProps , { getMarket ,addProduct , myProduct })(Market);
