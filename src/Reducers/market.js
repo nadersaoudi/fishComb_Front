@@ -1,4 +1,4 @@
-import { GET_MARKETS, GET_MY_PRODUCTS, GET_PRODUCT, ADD_PRODUCT, DELETE_PRODUCT } from '../Actions/types';
+import { GET_MARKETS, GET_MY_PRODUCTS, GET_PRODUCT, ADD_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT } from '../Actions/types';
 const initialState = {
    markets:null,
    myproducts:null,
@@ -28,11 +28,18 @@ export default function (state = initialState, action){
             return{
                 ...state,
                 product:payload,
+                loading:false
             }
         case DELETE_PRODUCT:
             return{
                 ...state,
                 markest: state.markets.filter(product => product.id !== payload),
+            }
+        case UPDATE_PRODUCT:
+            return{
+                ...state,
+                product: payload,
+                loading:false
             }
             default:
                 return state;

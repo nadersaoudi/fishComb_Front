@@ -72,7 +72,7 @@ export const updateProduct = (formdata, productID) => async dispatch => {
         const res = await axios.patch(`/api/marketplace/product/${productID}`,formdata,config)
         dispatch({
             type: UPDATE_PRODUCT,
-            payload: res.data
+            payload: res.data.data
         })
         toast.info('Product Updated');
     }catch{
@@ -110,6 +110,7 @@ export const deleteProduct = (productID) => async dispatch => {
              type: DELETE_PRODUCT,
              payload: productID
          })
+         toast.error('Product Delete');
     }catch {
 
     }

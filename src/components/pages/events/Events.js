@@ -282,9 +282,9 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                          style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
                                          onClick={handleClose}>
                                         Add Event
-          </Button>
-        </div>
-   </div>
+                                            </Button>
+                                            </div>
+                                    </div>
                                 </DialogContent>
 
 
