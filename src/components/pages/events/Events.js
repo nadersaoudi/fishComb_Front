@@ -11,12 +11,7 @@ import PropTypes from 'prop-types';
 import Single from './single'
 import FormControl from 'react-bootstrap/FormControl'
 import MenuItem from '@material-ui/core/MenuItem';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Select from '@material-ui/core/Select';
-
-
 import SortIcon from '@material-ui/icons/Sort';
 
 const Events = ({ addEvent, getevents, events: { events, categories },sortEvents,myevents,search }) => {
@@ -82,6 +77,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
     const [value,setValue] =React.useState('');
     const handleChange = (event) => {
       setFilter(event.target.value);
+      
     };
     const handleChange1 =e=>{
         setValue(e.target.value)
@@ -89,6 +85,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
     const onsubmit1=e=>{
         e.preventDefault();
         console.log(filter)
+        console.log(value)
         search(filter,value)
     }
     return (
@@ -159,9 +156,10 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
      
     
                             <input type="text" placeholder='Search Fishcomb' aria-label="Search" height='25px' value={value} onChange={handleChange1}/>
-                            <RadioGroup  className="radio_input col-md-5" aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
+                            <input  type="checkbox" value="username" onChange={handleChange} /> by user
+                            {/*<RadioGroup  className="radio_input col-md-5" aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
                                      <FormControlLabel value="username" control={<Radio />} label="By user" />
-                        </RadioGroup>
+    </RadioGroup>*/}
                             <button className="col-1  header__button" >
                                 <svg width="19px" height="19px" version="1.1" xmlns="http://www.w3.org/1999/xlink">
                                     <g id="fishcomb-product-icons-14">

@@ -122,6 +122,7 @@ export const deleteEvent = (eventID) => async dispatch => {
             'content-Type': 'application/json'
         }
     }
+    if (window.confirm('Are you sure? this can not be undone')) {
     try {
         await axios.delete(`/api/events/${eventID}`, config)
         
@@ -129,13 +130,14 @@ export const deleteEvent = (eventID) => async dispatch => {
             type: DELETE_EVENT,
             payload:eventID
         })
+        toast.success('delete success')
     } catch (error) {
-        toast.error('Error happened when fetching event');
+        toast.error('delete error');
         dispatch({
             type: EVENT_ERROR,
         });
     }
-
+    }
 }
 //127.0.0.1:8000/api/event/filter?sort[by]=name&sort[order]=asc
 export const sortEvents = ({location1,asc}) => async dispatch => {
