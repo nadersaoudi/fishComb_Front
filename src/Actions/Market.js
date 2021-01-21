@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { GET_MARKETS } from './types';
+import { GET_MARKETS, ADD_PRODUCT, GET_MY_PRODUCTS, GET_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT} from './types';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 toast.configure();
-//Get Market
+//Get Products
 export const getMarket = () => async dispatch => {
     const config = {
         headers:{
@@ -12,13 +12,105 @@ export const getMarket = () => async dispatch => {
         }
     }
     try{
-        const res = await axios.get(`/api/marketplace/`,{},config)
+        const res = await axios.get(`/api/marketplace`,config)
+        console.log(res);
         dispatch({
             type:GET_MARKETS,
-            payload: res
+            payload: res.data
+        })
+    }catch{
+        
+    }
+}
+//Add Product
+export const addProduct = (formdata) => async dispatch => {
+    const config = {
+        headers:{
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.post(`/api/marketplace`,formdata,config)
+        console.log(res);
+        dispatch({
+            type: ADD_PRODUCT,
+            payload: res.data
+        })
+        toast.info('Product Added');
+    }catch{
+    }
+}
+//Get Product
+export const getProduct = (productID) => async dispatch => {
+    const config ={
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.get(`/api/marketplace/product/${productID}`, config)
+        dispatch({
+            type:GET_PRODUCT,
+            payload: res.data.data
         })
     }catch{
 
     }
+}
 
+//Update Product 
+export const updateProduct = (formdata, productID) => async dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.patch(`/api/marketplace/product/${productID}`,formdata,config)
+        dispatch({
+            type: UPDATE_PRODUCT,
+            payload: res.data
+        })
+        toast.info('Product Updated');
+    }catch{
+
+    }
+}
+//My Product
+export const myProduct = () => async dispatch => {
+    const config = {
+        headers:{
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.post(`/api/marketplace/my_products`,{},config)
+        dispatch({
+            type: GET_MY_PRODUCTS,
+            payload: res.data
+        })
+    }catch{
+    }
+}
+//Delete Product 
+export const deleteProduct = (productID) => async dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try{
+         await axios.delete(`/api/marketplace/product/${productID}` ,config)
+         dispatch ({
+             type: DELETE_PRODUCT,
+             payload: productID
+         })
+    }catch {
+
+    }
 }

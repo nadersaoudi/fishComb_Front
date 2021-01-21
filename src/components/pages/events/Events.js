@@ -114,17 +114,19 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
 
                                     <div className='col-sm-1 filtre'>
 
-                                       <div className='col-xs-2 mr-2'> <select  value={location1}
+                                       <div className='col-xs-2 mr-2'> 
+                                       <select  value={location1}
 
                                                 name="location1"
                                                 onChange={e => onchange1(e)} >
                                             <option value='location'>
-                                                                      Location
-                                    </option>
+                                                    Location
+                                             </option>
                                             <option value='category'>
                                                 Categories
-                                    </option>
-                                        </select></div>
+                                            </option>
+                                        </select>
+                                        </div>
                                    <div className='col-xs-2 mr-2'> <select value={asc}
 
                                                 name="asc"
@@ -190,7 +192,6 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                                 id="Title"
                                                 label="Title"
                                                 type="text"
-
                                                 name="name" value={name} onChange={e => onchange(e)}
                                             /></div></div>
                                     <div className="row pt-3">
@@ -218,7 +219,6 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                                 name="category_id"
                                                 onChange={e => onchange(e)}
                                             >
-
                                                 {categories && categories.map(c =>
                                                     (<MenuItem key={c.id} value={c.id} >{c.name} </MenuItem>)
 
@@ -371,10 +371,8 @@ Events.prototype = {
     search:PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
-
     addEvent: state.addEvent,
     events: state.events,
     categories: state.categories,
-
 })
 export default connect(mapStateToProps, { addEvent, getevents, sortEvents,myevents,search })(Events);
