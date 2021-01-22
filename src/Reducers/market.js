@@ -1,9 +1,10 @@
-import { GET_MARKETS, GET_MY_PRODUCTS, GET_PRODUCT, ADD_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT } from '../Actions/types';
+import { GET_MARKETS, GET_MY_PRODUCTS, GET_PRODUCT, ADD_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT, GATEGORIES_MARKET } from '../Actions/types';
 const initialState = {
    markets:null,
    myproducts:null,
+   categories:null,
    product: null,
-   loading:false
+   loading: true
 }
 export default function (state = initialState, action){
     const { type, payload } = action;
@@ -40,6 +41,11 @@ export default function (state = initialState, action){
                 ...state,
                 product: payload,
                 loading:false
+            }
+        case GATEGORIES_MARKET:
+            return {
+                ...state,
+                categories:payload
             }
             default:
                 return state;

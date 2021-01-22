@@ -17,6 +17,7 @@ import { getcategories,Myinvitations } from './Actions/events';
 import { Provider } from 'react-redux';
 import ProtectedRoute from "./ProtectedRoute";
 import  Cookies from 'js-cookie';
+import { getCategories } from './Actions/Market';
 
 
 
@@ -34,6 +35,9 @@ const App = () => {
   }, []);
   useEffect(() => {
     store.dispatch(getcategories());
+  }, []);
+  useEffect(() => {
+    store.dispatch(getCategories());
   }, []);
   useEffect(() => {
     store.dispatch(Myinvitations());

@@ -6,17 +6,16 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Dialog from '@material-ui/core/Dialog';
-import { getMarket, addProduct, myProduct } from '../../../Actions/Market';
+import { getMarket, myProduct, getCategories } from '../../../Actions/Market';
 import "./Market.css"
 import YourAccount from './YourAccount';
 import AddProduct from './products/AddProduct';
 import SingleProduct from './products/SingleProduct';
-import market from '../../../Reducers/market';
-const Market =( {auth : {user}, getMarket, addProduct ,events: { categories } , myProduct , markets:{ markets } } ) => {
+const Market =( {auth : {user}, getMarket  , myProduct , markets:{ markets , categories } } ) => {
 /******************************/
 useEffect(() => {
     getMarket()
-}, [getMarket]) 
+}, [getMarket])
 useEffect(() => {
     myProduct()
 }, [myProduct]) 
@@ -161,15 +160,12 @@ Market.prototype = {
     auth: PropTypes.object.isRequired,
     getMarket : PropTypes.func.isRequired,
     myProduct : PropTypes.func.isRequired,
-    addProduct : PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
 }
 const mapStateToProps = state => ({
     auth: state.auth, 
     markets: state.market,
     myProduct : state.markets,
-    addProduct: state.markets,
-    events: state.events,
     categories: state.categories,
 })
-export default connect(mapStateToProps , { getMarket ,addProduct , myProduct })(Market);
+export default connect(mapStateToProps , { getMarket, myProduct })(Market);
