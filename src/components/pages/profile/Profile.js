@@ -62,7 +62,8 @@ const Profile = ({ auth: { user, loading }, edit, history, picture }) => {
     const file = new FormData();
     file.append('file', file1, file1.name);
     file.append('type', type)
-    console.log(type)
+    file.append('id', user.id)
+ // console.log(user.id)
     picture(file)
     sethide(true)
 
@@ -80,6 +81,7 @@ const onsubmit2=e=>{
   const file = new FormData();
   file.append('file', file2, file2.name);
   file.append('type', type1)
+  file.append('id', user.id)
   picture(file)
   sethide1(true)
 }
