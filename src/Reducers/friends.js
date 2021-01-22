@@ -37,7 +37,8 @@ export default function (state = initialState, action) {
             case ACC_INV:
                 return {
                    ...state,
-                   inv: payload,
+                  // inv: payload,
+                   users: state.users.filter(inv => inv.data.user_id !== payload.data.attributes.user_id),
                 }
         default:
             return state;

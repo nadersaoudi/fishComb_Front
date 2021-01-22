@@ -55,7 +55,7 @@ const handleClose = () => {
                     <div className='row pt-5'>
                     <div className='col-sm-6 pt-5'>
                         <Button onClick={handleClickOpen} style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} >
-                           Update Product
+                           Update Product 
                         </Button>
                         <Dialog open={open} onClose={handleClose} className='updateProd'>
                             <UpdateProduct />    
@@ -65,7 +65,7 @@ const handleClose = () => {
                         <Link className='delete_prod' to='/dashboard/marketplace' >
                             <Button  style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }}  onClick={e=>deleteProduct(match.params.id)}>
                                  Delete Product
-                            </Button> 
+                            </Button>
                         </Link> 
                     </div>
                 </div>

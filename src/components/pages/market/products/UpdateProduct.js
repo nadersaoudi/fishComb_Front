@@ -155,7 +155,7 @@ const handleClose = () => {
                                 <Button type='submit'
                                     style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
                                     onClick={handleClose}>
-                                    Update Product
+                                    Update Product 
                                 </Button>
                             </div>  
                         </div>
