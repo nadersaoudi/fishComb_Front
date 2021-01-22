@@ -9,7 +9,7 @@ import UpdateProduct from './UpdateProduct';
 import Dialog from '@material-ui/core/Dialog';
 import '../Market.css';
 
-const ProductItem = ( { match , getProduct,deleteProduct, market :{ product }} ) => {
+const ProductItem = ( { match, getProduct, deleteProduct, market :{ product }} ) => {
 /****************************/
 useEffect(() => {
     getProduct(match.params.id);

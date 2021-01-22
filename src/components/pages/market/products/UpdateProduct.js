@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Avatar } from "@material-ui/core";
 import { updateProduct } from '../../../../Actions/Market';
-const UpdateProduct = ({ auth :{ user } ,updateProduct ,events: { categories }, market:{ product }}) => {
+const UpdateProduct = ({ updateProduct ,events: { categories }, market:{ product }}) => {
 /**********************************/
 const [formData, setFormData] = useState({
     category_id: '',
@@ -24,7 +24,7 @@ const {  category_id, name, description, price, stock, status,image} = formData;
 const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 const submit = e => {
     e.preventDefault();
-    UpdateProduct({
+    updateProduct({
         category_id,
         description,
         name,
