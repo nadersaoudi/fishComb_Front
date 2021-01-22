@@ -30,18 +30,7 @@ const App = () => {
   useEffect(() => { 
     store.dispatch(loadUser());
   }, []);
-  useEffect(() => {
-    store.dispatch(getMyinvitations());
-  }, []);
-  useEffect(() => {
-    store.dispatch(getcategories());
-  }, []);
-  useEffect(() => {
-    store.dispatch(getCategories());
-  }, []);
-  useEffect(() => {
-    store.dispatch(Myinvitations());
-  }, []);
+  
  
   return (
     <div className="container-fluid">

@@ -12,16 +12,24 @@ import {acceptinv} from '../../../Actions/events';
 import { useHistory } from 'react-router-dom';
 import Notification from './Notification';
 import Toast from 'react-bootstrap/Toast'
+
 const Header =  ({ auth: {  user }, logout,Searchfriend , Friends:{ users },events:{inv},acceptinv }) => {
-  
+ 
 
       const [visible, setvisible] = useState(false);
       const [visible2, setvisible2] = useState(false);
       const [visible3, setvisible3] = useState(false);
       const  handleClick2=e=> {
+        if(visible=== true){
+          setvisible(visible===false);
+        }
         setvisible2(visible2 === false ? true : false);
+      
         }
      const  handleClick1=e=> {
+       if(visible2=== true){
+         setvisible2(visible2===false);
+       }
       setvisible(visible === false ? true : false);
       }
       const  handleClick3=e=> {

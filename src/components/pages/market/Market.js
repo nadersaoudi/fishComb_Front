@@ -11,14 +11,11 @@ import "./Market.css"
 import YourAccount from './YourAccount';
 import AddProduct from './products/AddProduct';
 import SingleProduct from './products/SingleProduct';
-const Market =( {auth : {user}, getMarket  , myProduct , markets:{ markets , categories } } ) => {
+const Market =( {auth : {user}, getMarket  , markets:{ markets , categories  } ,myProduct } ) => {
 /******************************/
 useEffect(() => {
     getMarket()
 }, [getMarket])
-useEffect(() => {
-    myProduct()
-}, [myProduct]) 
 /**************************/
 const [open2, setOpen2] = React.useState(false);
 const handleClose2 = () => {
@@ -82,6 +79,8 @@ const handleClose1 = () => {
       </div>
                 <Button onClick={handleClickOpen1}>Your Account</Button><br/>
                 <Button onClick={handleClickOpen}>Add Product</Button>
+                <br/>
+                <Button onClick={myProduct} >My Product</Button>
                     </div>
                         <Dialog open={open1} onClose={handleClose1} className='addProduct'>
                             <YourAccount />
@@ -165,7 +164,6 @@ Market.prototype = {
 const mapStateToProps = state => ({
     auth: state.auth, 
     markets: state.market,
-    myProduct : state.markets,
     categories: state.categories,
 })
 export default connect(mapStateToProps , { getMarket, myProduct })(Market);

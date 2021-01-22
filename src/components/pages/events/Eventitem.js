@@ -14,6 +14,7 @@ import { ReactTinyLink } from 'react-tiny-link';
 import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
+import { NavLink } from 'react-bootstrap';
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -26,26 +27,16 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         getfriends()
     }, [getfriends]
     )
-    var [x, setX] = useState(parseInt(match.params.id))
+   
     const increment = useCallback(() => {
-        var y = parseInt(match.params.id) + 1;
-        setX(y)
-        x = x + 1
-        //console.log(x)
-        getevent(x)
-    }, [x])
+     
+        getevent(event.next_event)
+    }, [event && event.next_event])
 
     const decrement = useCallback(() => {
-        x = x - 1
-        //console.log(x)
-        getevent(x)
-    }, [x])
-
-
-    //  const participants= event.participants.data;
-    // const count = Object.keys(participants).length
-
-
+      
+        getevent(event.previous_event)
+    }, [event && event.previous_event])
 
 
     const [open1, setOpen1] = React.useState(false);
@@ -139,10 +130,27 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         }, event.id)
         e.target.reset();
     }
+    const [disable,setdisable]=useState(false);
     return (
         <div>
+                <div className='row'>
+                    <div className='col-sm-3'></div>
+                    <div className="col-8 ">
+                        <ul className="nav nav-pills nav-justified" id='navprofil'>
+                            <li className="nav-item">
+                                <NavLink to={`/NavEvents`} className="m"><span className="n">General event</span></NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to={`/MyStream`} className="m"><span className="n">My Streams</span></NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to={`/invited`} className="m"><span className="n">Invited Webinars</span></NavLink>
+                            </li>
+                            
+                        </ul>
 
-            <div>
+                    </div>
+          
                 <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title1"    >
                     <form onSubmit={e => submit(e)}>
                         <DialogTitle id="form-dialog-title1">update event</DialogTitle>
@@ -266,7 +274,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
             </div>
 
-            <div className='row pt-5 pb-2'>
+            <div className='row pt-2 pb-2'>
                 <div className='col-sm-10'></div>
                 <div className='col-sm-2 Top__section'> <button onClick={increment}>Next {'>>'} </button> -<button onClick={decrement}>{'<<'} Preview</button>
                 </div>
@@ -278,7 +286,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                 <div className="col-sm-1"></div>
                 <div className='col-sm-9'>
                     <div className='row'>
-                        <div className='col-sm-4'>  {event && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} />}</div>
+                        <div className='col-sm-4'>  {event && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1}  url={event.video_link}  />}</div>
                         <div className='col-sm-1'></div>
                         <div className='col-sm-7'>
                             <div className='row'>
@@ -308,9 +316,11 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
                             <div className="bot__section">
                                 <div className='row '>
-                                    <div className='col-sm-2 pt-5' id='attend'>
-                                        <button onClick={subscribEevent(x, 1)}>Attend</button>
-                                    </div>
+                                    {event && event.is_subscribed===false ?<div className='col-sm-2 pt-5' id='attend'>
+                                        <button onClick={subscribEevent(event.id, 1)}  >Attend</button>
+                                    </div>:<div className='col-sm-2 pt-5' id='attend'>
+                                        <button disabled={true}>Already subscribed</button>
+                                    </div>}
 
 
                                     

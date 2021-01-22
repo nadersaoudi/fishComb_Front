@@ -1,6 +1,6 @@
 import { Avatar } from '@material-ui/core';
 import React, { useState } from 'react';
-import { AiOutlineUserAdd } from 'react-icons/ai';
+import { AiOutlineUserAdd,AiOutlineTeam } from 'react-icons/ai';
 import './Search.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from 'react-bootstrap/Button';
@@ -57,29 +57,19 @@ const Search = ({ friend, addFriend }) => {
               </div>
             </div>
               <div className='col-sm-1 mr-2 pt-4'>
-                <Button variant="outlined" type="submit" disabled={friend.data.attributes.is_friend}>Add<AiOutlineUserAdd className='add' /></Button>
+               {friend && friend.data.attributes.is_friend ===false ? <Button variant="outlined" type="submit" disabled={friend.data.attributes.is_friend}>Add<AiOutlineUserAdd className='add' /></Button>
+               :<Button style={{backgroundColor:'white',border:'none'}}><AiOutlineTeam style={{color:'black'}}  /><p style={{color:'black'}}>Already Friends</p></Button>}
               </div>
           </div>
           </form>
           </div>
-       
-              
-          
            </div>
-      
       </div>
-   
-
     </div>
-
-
-
-  )
-
+)
 }
 Search.propTypes = {
   friend: PropTypes.object.isRequired,
   addFriend: PropTypes.func.isRequired
 };
-
 export default connect(null, { addFriend })(Search);

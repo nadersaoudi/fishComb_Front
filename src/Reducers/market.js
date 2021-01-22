@@ -17,14 +17,16 @@ export default function (state = initialState, action){
         case GET_MY_PRODUCTS:
             return{
                 ...state,
-                myproducts:payload,
+                markets :payload,
+                loading:false
             }
         case ADD_PRODUCT:
             return{
                 ...state,
-                markets :[ payload, ...state.markets],
+                markets :[payload,...state.markets],
                 loading:false
             }
+
         case GET_PRODUCT:
             return{
                 ...state,

@@ -13,7 +13,6 @@ const UpdateProduct = ({ updateProduct , market:{ product, categories }, loading
 /**********************************/
 const [category_id, setCategory_id] = useState('')
 const [formData, setFormData] = useState({
- 
     description: '',
     name: '',
     price: '',
@@ -21,7 +20,7 @@ const [formData, setFormData] = useState({
     status:'1',
     image: 'jaw'
 })
-const {   name, description, price, stock, status,image} = formData;
+const { name,description, price, stock, status, image } = formData;
 useEffect(() => {
     setFormData({
         name: loading || !product.name ? '' : product.name,
@@ -35,9 +34,9 @@ useEffect(() => {
 const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 const submit = e => {
     e.preventDefault();
-    updateProduct({
-        
+    updateProduct({ 
         description,
+        category_id,
         name,
         price,
         stock,
@@ -107,7 +106,7 @@ const handleClose = () => {
                                             onOpen={handleOpen2}
                                             value={category_id}
                                             name="category_id"
-                                            onChange={e => onchange(e)}>
+                                            onChange={e => setCategory_id(e.target.value)}>
                                             {categories && categories.map(c =>
                                             (<MenuItem key={c.id} value={c.id} >{c.name}</MenuItem>)
                                             )}

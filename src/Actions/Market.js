@@ -35,7 +35,7 @@ export const addProduct = (formdata) => async dispatch => {
         console.log(res);
         dispatch({
             type: ADD_PRODUCT,
-            payload: res.data
+            payload: res.data.data
         })
         toast.info('Product Added');
     }catch{
@@ -90,7 +90,7 @@ export const myProduct = () => async dispatch => {
     try{
         const res = await axios.post(`/api/marketplace/my_products`,{},config)
         dispatch({
-            type: GET_MY_PRODUCTS,
+            type: GET_MARKETS,
             payload: res.data.data
         })
     }catch{
