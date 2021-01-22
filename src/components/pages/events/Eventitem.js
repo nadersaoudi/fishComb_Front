@@ -27,26 +27,16 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         getfriends()
     }, [getfriends]
     )
-    var [x, setX] = useState(parseInt(match.params.id))
+   
     const increment = useCallback(() => {
-        var y = parseInt(match.params.id) + 1;
-        setX(y)
-        x = x + 1
-        //console.log(x)
-        getevent(x)
-    }, [x])
+     
+        getevent(event.next_event)
+    }, [event && event.next_event])
 
     const decrement = useCallback(() => {
-        x = x - 1
-        //console.log(x)
-        getevent(x)
-    }, [x])
-
-
-    //  const participants= event.participants.data;
-    // const count = Object.keys(participants).length
-
-
+      
+        getevent(event.previous_event)
+    }, [event && event.previous_event])
 
 
     const [open1, setOpen1] = React.useState(false);
@@ -140,6 +130,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         }, event.id)
         e.target.reset();
     }
+    const [disable,setdisable]=useState(false);
     return (
         <div>
                 <div className='row'>
@@ -295,7 +286,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                 <div className="col-sm-1"></div>
                 <div className='col-sm-9'>
                     <div className='row'>
-                        <div className='col-sm-4'>  {event && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} />}</div>
+                        <div className='col-sm-4'>  {event && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1}  url={event.video_link}  />}</div>
                         <div className='col-sm-1'></div>
                         <div className='col-sm-7'>
                             <div className='row'>
@@ -325,9 +316,11 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
                             <div className="bot__section">
                                 <div className='row '>
-                                    <div className='col-sm-2 pt-5' id='attend'>
-                                        <button onClick={subscribEevent(x, 1)}>Attend</button>
-                                    </div>
+                                    {event && event.is_subscribed===false ?<div className='col-sm-2 pt-5' id='attend'>
+                                        <button onClick={subscribEevent(event.id, 1)}  >Attend</button>
+                                    </div>:<div className='col-sm-2 pt-5' id='attend'>
+                                        <button disabled={true}>Already subscribed</button>
+                                    </div>}
 
 
                                     
