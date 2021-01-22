@@ -17,9 +17,7 @@ const Single =({  event })=> {
                 <Moment
                       date={event && event.date}
                       format="YYYY-MM-DD"
-                      trim
-
-                />
+                      trim/>
                  
             </div>
         </div>

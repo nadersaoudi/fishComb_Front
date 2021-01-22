@@ -1,4 +1,4 @@
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST, GET_POST, ADD_COMMENT, REMOVE_COMMENT ,UPDATE_COMMENT, UPDATE_POST } from '../Actions/types'
+import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST, GET_POST, ADD_COMMENT, REMOVE_COMMENT ,UPDATE_COMMENT, UPDATE_POST,LOGOUT } from '../Actions/types'
 
 
 const initialState = {
@@ -82,6 +82,12 @@ export default function (state = initialState, action) {
                     comments:[...state.posts[0].comments.filter(c=> c.id !== payload)]
                 }],*/
                 
+            }
+            case LOGOUT:
+            return {
+                ...state, 
+                post:null,
+                posts:[], 
             }
         default:
             return state;

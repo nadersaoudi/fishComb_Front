@@ -179,13 +179,11 @@ const Publication = ({
               <div className="col-1"></div>
             </div>
           </form>
-               <Dialog open={open1} onClose={handleClose1} aria-labelledby="form-dialog-title" className='dialogForm'   >
-                            
+               <Dialog open={open1} onClose={handleClose1} aria-labelledby="form-dialog-title" className='dialogForm'>
                                 <DialogTitle id="form-dialog-title">Update Post</DialogTitle>
                                 <DialogContent>
                                     <UpdatePost />
-                                </DialogContent>
-                           
+                                </DialogContent>                
                 </Dialog>
           <div className="row"></div>
           <div className="row pt-2 pb-4">
