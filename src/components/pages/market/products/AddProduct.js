@@ -9,18 +9,19 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-const AddProduct = ( { auth: { user }, addProduct ,events: { categories }} ) => {
-/****************************/ 
+const AddProduct = ( { auth: { user }, addProduct ,market: { categories }} ) => {
+/****************************/
+
 const [formData, setFormData] = useState({
-    category_id: '',
     description: '',
+    category_id: '',
     name: '',
     price: '',
     stock: '',
     status:'1',
     image: 'jaw'
 })
-const {  category_id, name, description, price, stock, status,image} = formData;
+const { name, category_id, description, price, stock, status,image } = formData;
 const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 const submit = e => {
     e.preventDefault();
@@ -98,7 +99,7 @@ const handleClose = () => {
                                         name="category_id"
                                         onChange={e => onchange(e)}>
                                         {categories && categories.map(c =>
-                                        (<MenuItem key={c.id} value={c.id} >{c.name} </MenuItem>)
+                                        (<MenuItem key={c.id} value={c.id} >{c.name}</MenuItem>)
                                         )}
                                     </Select>
                                 <div className='col-6'>
@@ -161,12 +162,13 @@ const handleClose = () => {
 AddProduct.prototype = {
     auth: PropTypes.object.isRequired,
     addProduct : PropTypes.func.isRequired,
-    categories: PropTypes.object.isRequired
+    ccategories: PropTypes.object.isRequired,
+    market:PropTypes.object.isRequired
 }
 const mapStateToProps = state => ({
     auth: state.auth,
-    events: state.events,
-    addProduct: state.markets,
-    categories: state.categories
+    market: state.market,
+    addProduct: state.market,
+    categories: state.market
 })
 export default connect(mapStateToProps , { addProduct })(AddProduct);

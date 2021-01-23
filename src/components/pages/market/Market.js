@@ -6,20 +6,16 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Dialog from '@material-ui/core/Dialog';
-import { getMarket, addProduct, myProduct } from '../../../Actions/Market';
+import { getMarket, myProduct, getCategories } from '../../../Actions/Market';
 import "./Market.css"
 import YourAccount from './YourAccount';
 import AddProduct from './products/AddProduct';
 import SingleProduct from './products/SingleProduct';
-import market from '../../../Reducers/market';
-const Market =( {auth : {user}, getMarket, addProduct ,events: { categories } , myProduct , markets:{ markets } } ) => {
+const Market =( {auth : {user}, getMarket  , markets:{ markets , categories  } ,myProduct } ) => {
 /******************************/
 useEffect(() => {
     getMarket()
-}, [getMarket]) 
-useEffect(() => {
-    myProduct()
-}, [myProduct]) 
+}, [getMarket])
 /**************************/
 const [open2, setOpen2] = React.useState(false);
 const handleClose2 = () => {
@@ -83,6 +79,8 @@ const handleClose1 = () => {
       </div>
                 <Button onClick={handleClickOpen1}>Your Account</Button><br/>
                 <Button onClick={handleClickOpen}>Add Product</Button>
+                <br/>
+                <Button onClick={myProduct} >My Product</Button>
                     </div>
                         <Dialog open={open1} onClose={handleClose1} className='addProduct'>
                             <YourAccount />
@@ -161,15 +159,11 @@ Market.prototype = {
     auth: PropTypes.object.isRequired,
     getMarket : PropTypes.func.isRequired,
     myProduct : PropTypes.func.isRequired,
-    addProduct : PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
 }
 const mapStateToProps = state => ({
     auth: state.auth, 
     markets: state.market,
-    myProduct : state.markets,
-    addProduct: state.markets,
-    events: state.events,
     categories: state.categories,
 })
-export default connect(mapStateToProps , { getMarket ,addProduct , myProduct })(Market);
+export default connect(mapStateToProps , { getMarket, myProduct })(Market);

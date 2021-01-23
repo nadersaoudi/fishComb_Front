@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { UPDATE_PROFILE, PROFILE_ERROR, EDIT_PIC } from './types';
+import { UPDATE_PROFILE, PROFILE_ERROR, EDIT_PIC, GET_USER } from './types';
 import { toast } from 'react-toastify';
 import { loadUser } from './auth';
 
@@ -51,3 +51,22 @@ export const picture =  file => async dispatch => {
         toast.error('problem occured');
     }
 };
+//Get Users
+export const getUsers =( user_id )=> async dispatch => {
+    const config = {
+        headers :{
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'Content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.post(`/api/user/user-profile`,{user_id},config) 
+        dispatch ({
+            type:GET_USER,
+            payload: res.data
+        })
+
+    }catch{
+
+    }
+}

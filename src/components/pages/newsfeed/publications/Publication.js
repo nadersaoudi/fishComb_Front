@@ -19,11 +19,13 @@ import {
   addComment,
 } from "../../../../Actions/Post";
 import { deletePost , getPost } from "../../../../Actions/Post";
+import { getUsers } from '../../../../Actions/profile';
 import SingleComm from "./SingleComm";
 import UpdatePost from "../Post/UpdatePost";
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { Link, NavLink } from "react-router-dom";
 /*********************************/
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,7 +42,8 @@ const Publication = ({
   deletePost,
   addLike,
   addComment,
-  getPost
+  getPost,
+  getUsers
 }) => {
   /******************************************/
   const [hidden, setHidden] = useState(true);
@@ -52,9 +55,12 @@ const Publication = ({
     addComment(id, body);
   };
   /*************************************/
+
   const getpost = async (post_id) =>{
     getPost(post_id)
   }
+  /******************************/
+ 
   /******************************/
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -87,10 +93,8 @@ const Publication = ({
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
-
     prevOpen.current = open;
   }, [open]);
-
   /*****************************/
   return (
     <div className="row pb-5">
@@ -99,9 +103,11 @@ const Publication = ({
           <form id="lo">
             <div className="row" id="pub-top1">
               <div className="col-sm-1">
+                <NavLink to={`/dashboard/profileuser/${posts.user.id}`} >
                 <Avatar
                   src={posts && posts.user.profile_image}
-                />
+                  onClick={(e) => getUsers(posts.user.id)}
+                /></NavLink>
               </div>
               <div className="col-sm-10">
                 <span className="nameuser">
@@ -237,10 +243,7 @@ const Publication = ({
                       </g>
                     </svg>
                   </button>
-
-
                 </div>
-
                 <div className="col-sm-3 datepost">{posts.comments.length} </div>
               </div>
             </div>
@@ -261,9 +264,11 @@ const Publication = ({
               <div className="row pt-1" >
                 <div className='col-sm-1'></div>
                 <div className="col-sm-1">
+                <NavLink to={`/dashboard/profile/about`} >
                   <Avatar
                     src={user && user.profile_image}
                   />
+                  </NavLink>
                 </div>
 
                 <div className="col-sm-9 pp" >
@@ -288,13 +293,11 @@ const Publication = ({
                   )
                 )}
               </div>
-
-
             </div>
-
-
           </div>
-        </div></div></div>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -306,11 +309,12 @@ Publication.prototype = {
   addComment: PropTypes.func.isRequired,
   getPosts: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
+  getUsers : PropTypes.func.isRequired
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,
   Post: state.Post,
 });
-export default connect(mapStateToProps, { deletePost, getPost, addComment, getPosts, addLike })(
+export default connect(mapStateToProps, { deletePost, getPost, addComment, getPosts, addLike, getUsers })(
   Publication
 );

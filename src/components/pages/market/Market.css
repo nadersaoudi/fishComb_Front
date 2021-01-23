@@ -7,4 +7,7 @@
 .delete_prod :hover{
     text-decoration: none;
 }
+.MuiButton-root{
+    text-transform: none !important;
+}
 

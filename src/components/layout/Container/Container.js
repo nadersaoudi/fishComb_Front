@@ -11,6 +11,7 @@ import NewFeed from '../../pages/newsfeed/Newfeed';
 import Searchitem from '../../pages/Search/Searchitem';
 import Eventitem from '../../pages/events/Eventitem'
 import ProductItem from '../../pages/market/products/ProductItem';
+import Userprofile from '../../pages/profile/Userprofile';
 
 const Container = () => {
 
@@ -45,6 +46,8 @@ const Container = () => {
               </Route>
               <Route path={`/dashboard/board`}>
                 <Board />
+              </Route>
+              <Route path={`/dashboard/profileuser`} render={props => <Userprofile {...props} />}>
               </Route>
               <Route path="/dashboard/profile">
                 <Profile />
