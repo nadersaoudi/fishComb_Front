@@ -15,6 +15,7 @@ import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
 import { NavLink } from 'react-bootstrap';
+import Switch from '@material-ui/core/Switch';
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -27,14 +28,19 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         getfriends()
     }, [getfriends]
     )
-   
+    const [state, setState] = React.useState({
+        checkedA: true
+
+    });
+
+
     const increment = useCallback(() => {
-     
+
         getevent(event.next_event)
     }, [event && event.next_event])
 
     const decrement = useCallback(() => {
-      
+
         getevent(event.previous_event)
     }, [event && event.previous_event])
 
@@ -102,6 +108,14 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     })
     const [category_id, setCategory_id] = useState('')
     const { name, description, location, date, cover, video_link, status } = formData;
+    const handleswitch = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked });
+        if (event.target.checked === true) {
+            setFormData({ status: true })
+        }
+        else { setFormData({ status: false }) }
+        console.log(status)
+    };
     useEffect(() => {
         setFormData({
             location: loading || !event.location ? '' : event.location,
@@ -113,6 +127,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
             date: loading || !event.date ? '' : event.date,
         })
     }, [loading])
+
     const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const submit = e => {
         e.preventDefault();
@@ -130,27 +145,27 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         }, event.id)
         e.target.reset();
     }
-    const [disable,setdisable]=useState(false);
+    const [disable, setdisable] = useState(false);
     return (
         <div>
-                <div className='row'>
-                    <div className='col-sm-3'></div>
-                    <div className="col-8 ">
-                        <ul className="nav nav-pills nav-justified" id='navprofil'>
-                            <li className="nav-item">
-                                <NavLink to={`/NavEvents`} className="m"><span className="n">General event</span></NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to={`/MyStream`} className="m"><span className="n">My Streams</span></NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to={`/invited`} className="m"><span className="n">Invited Webinars</span></NavLink>
-                            </li>
-                            
-                        </ul>
+            <div className='row'>
+                <div className='col-sm-3'></div>
+                <div className="col-8 ">
+                    <ul className="nav nav-pills nav-justified" id='navprofil'>
+                        <li className="nav-item">
+                            <NavLink to={`/NavEvents`} className="m"><span className="n">General event</span></NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to={`/MyStream`} className="m"><span className="n">My Streams</span></NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to={`/invited`} className="m"><span className="n">Invited Webinars</span></NavLink>
+                        </li>
 
-                    </div>
-          
+                    </ul>
+
+                </div>
+
                 <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title1"    >
                     <form onSubmit={e => submit(e)}>
                         <DialogTitle id="form-dialog-title1">update event</DialogTitle>
@@ -251,12 +266,18 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         className='input_event'
                                         margin="dense"
                                         id="status"
-
+                                            hidden='true'
                                         type="textarea"
                                         fullWidth
                                         name="status" value={status} onChange={e => onchange(e)}
                                     />
-
+                                    disable event
+                                    <Switch
+                                        checked={state.checkedA}
+                                        onChange={handleswitch}
+                                        name="checkedA"
+                                        inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                    /> enable event
 
                                 </div></div>
                             <div className='row pt-3'><div className='col-sm-8'></div><div className='col-sm-4'>
@@ -286,49 +307,49 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                 <div className="col-sm-1"></div>
                 <div className='col-sm-9'>
                     <div className='row'>
-                        <div className='col-sm-4'>  {event && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1}  url={event.video_link}  />}</div>
+                        <div className='col-sm-4'>  {event && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} />}</div>
                         <div className='col-sm-1'></div>
                         <div className='col-sm-7'>
                             <div className='row'>
                                 <div className='col-sm-8'> <h4><b>{event && event.name}</b></h4>
-                                <div className='row'>
-                                <div className='col-sm-3 '>  {event && event.location} </div>
+                                    <div className='row'>
+                                        <div className='col-sm-3 '>  {event && event.location} </div>
 
-                                <div className='col-sm-4 '>  {event && event.date} </div></div>
+                                        <div className='col-sm-4 '>  {event && event.date} </div></div>
 
-                                <div className='row'><div className='col-sm-10 pb-3 pt-2'>{event && event.description}
-                            </div></div>
-                            
+                                    <div className='row'><div className='col-sm-10 pb-3 pt-2'>{event && event.description}
+                                    </div></div>
+
                                 </div><div className='col-sm-1'><IoShareSocialOutline />
-                                <div>  <AddBoxIcon onClick={handleClickOpen}/></div>
+                                    <div>  <AddBoxIcon onClick={handleClickOpen} /></div>
 
-                                      <div>
-                                    {event && user && user.id === event.user.data.user_id ? 
+                                    <div>
+                                        {event && user && user.id === event.user.data.user_id ?
 
-                                    <UpdateRoundedIcon  onClick={handleClickOpen2}/>
-                                     : <div></div>} </div>
-                                      <div>{event && user && user.id === event.user.data.user_id ? <Link to='/dashboard/events'><DeleteOutlineRoundedIcon  onClick={e => deleteEvent(match.params.id)} style={{color:'#212529'}}/>
+                                            <UpdateRoundedIcon onClick={handleClickOpen2} />
+                                            : <div></div>} </div>
+                                    <div>{event && user && user.id === event.user.data.user_id ? <Link to='/dashboard/events'><DeleteOutlineRoundedIcon onClick={e => deleteEvent(match.params.id)} style={{ color: '#212529' }} />
                                     </Link> : <div></div>}</div>
                                 </div></div>
-                            
+
                             <div className='row'><div className='col-sm-6'>participants {event && event.participants.length}
                             </div></div>
 
                             <div className="bot__section">
                                 <div className='row '>
-                                    {event && event.is_subscribed===false ?<div className='col-sm-2 pt-5' id='attend'>
+                                    {event && event.is_subscribed === false ? <div className='col-sm-2 pt-5' id='attend'>
                                         <button onClick={subscribEevent(event.id, 1)}  >Attend</button>
-                                    </div>:<div className='col-sm-2 pt-5' id='attend'>
-                                        <button disabled={true}>Already subscribed</button>
-                                    </div>}
+                                    </div> : <div className='col-sm-2 pt-5' id='attend'>
+                                            <button disabled={true}>Already subscribed</button>
+                                        </div>}
 
 
-                                    
+
                                     <div className='col-sm-2' id='Invite'>
-                                      
-                                        
+
+
                                     </div>
-                                    
+
                                     <Dialog className='invite_form'
                                         open={open}
                                         TransitionComponent={Transition}
@@ -363,7 +384,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                                                 <form onSubmit={e => onsubmit(e)}>
                                                                     <div className='col-md-12 pb-2 mt-3 friends'>
                                                                         <div className='col-md-2 '><Avatar className='mr-2 pr-1 pb-2' src={c.data.attributes.profile_image} /></div> <div className='col-md-8'> {c.data.attributes.name}</div>
-                                                                        <div className='col-md-2'> <AddBoxIcon onClick={e => invite(c.data.user_id, event.id)}/></div>
+                                                                        <div className='col-md-2'> <AddBoxIcon onClick={e => invite(c.data.user_id, event.id)} /></div>
 
                                                                     </div>
                                                                 </form>

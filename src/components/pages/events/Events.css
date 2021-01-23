@@ -113,3 +113,8 @@ color: #F7F8FA;
   color: #00E2C8;
   border-bottom: 2px solid #00e2c8;
 }
+.dropdown .dropdown-toggle {
+    background-color: transparent !important;
+    border: none !important;
+   
+}
