@@ -316,7 +316,6 @@ export const search = (filter,value) => async dispatch => {
             type: EVENT_ERROR,
         });
     }
-
 }
 ///api/events/invitations
 export const Myinvitations = () => async dispatch => {

@@ -112,7 +112,7 @@ export const deleteProduct = (productID) => async dispatch => {
          })
          toast.error('Product Delete');
     }catch {
-
+        
     }
 }
 //Categories Market
@@ -135,5 +135,19 @@ export const getCategories = () => async dispatch => {
         dispatch({
             type: MARKET_CATERROR,
         });
+    }
+}
+//Search Product
+export const searchProduct = () => async dispatch => {
+    const config = {
+        headers:{
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try{
+
+    }catch{
+
     }
 }

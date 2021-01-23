@@ -208,8 +208,7 @@ return(
                         position: 'relative',
                         minHeight: '100px',
                         display:visible ? 'block': 'none'
-                      }}
-                      >
+                      }}>
                          <Toast
                             style={{
                              position: 'fixed',
@@ -218,24 +217,20 @@ return(
                              width:'425px',
                              height:' 500px',
                              borderRadius: '0'
-                            
-                           }}
-                        >
+                           }}>
                           <Toast.Body>
-                          <div className='row pt-3 pb-5 pl-3 '>
-                           <h5><b>Notification</b></h5> 
-                          </div>
-                          {users && users.map(  users=> 
+                            <div className='row pt-3 pb-5 pl-3 '>
+                              <h5><b>Notification</b></h5> 
+                            </div>
+                              {users && users.map(  users=> 
                                   (
                                     <Notification className='notification_row' key={users.id} users={users} />
                                   )
                                   )}
                             </Toast.Body>
-                      </Toast>
+                          </Toast>
               </div>
-
         </div>
-        
         <div className='col-sm-4 '>
         <svg width="14px" height="13px"  version="1.1" xmlns="http://www.w3.org/2000/svg"   aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick3}  className="icon">
                       <path d="M6.5 0L13 12L0 12L6.5 0Z" transform="matrix(-1 -8.742278E-08 8.742278E-08 -1 13.5 12.5)" id="Triangle"  fill-rule="evenodd" stroke="none" />

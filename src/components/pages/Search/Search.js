@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addFriend } from '../../../Actions/Friends'
+import { NavLink } from 'react-router-dom';
 
 const Search = ({ friend, addFriend }) => {
   const useStyles = makeStyles((theme) => ({
@@ -46,7 +47,7 @@ const Search = ({ friend, addFriend }) => {
             }}>
           <div className='row '>
            <div className='col-sm-1 pt-4'>
-              <Avatar src={friend.data.attributes.profile_image} className={classes.large} />
+             <Avatar src={friend.data.attributes.profile_image} className={classes.large} />
               </div>
               <div className='col-sm-8 '>
               <div className='row'>
