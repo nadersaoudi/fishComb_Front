@@ -217,13 +217,9 @@ return(
                              width:'425px',
                              height:'auto',
                              borderRadius: '0'
-<<<<<<< HEAD
                             
                            }} 
                         >
-=======
-                           }}>
->>>>>>> 65066ef89a95f6d3d8c134b80f7ecb1861fb17de
                           <Toast.Body>
                             <div className='row pt-3 pb-5 pl-3 '>
                               <h5><b>Notification</b></h5> 
