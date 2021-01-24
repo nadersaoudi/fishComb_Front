@@ -15,6 +15,7 @@ import Select from '@material-ui/core/Select';
 import SortIcon from '@material-ui/icons/Sort';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
+
 const Events = ({ addEvent, getevents, events: { events, categories }, sortEvents, myevents, search }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -89,7 +90,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const onsubmit1 = e => {
         e.preventDefault();
         console.log(filter)
-       // console.log(value)
+        // console.log(value)
         search(filter, value)
     }
     return (
@@ -168,15 +169,15 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                     </svg>
 
                                 </button>
-                               {/* <input type="checkbox" value="username" onChange={handleChange} /> by user*/}
+                                {/* <input type="checkbox" value="username" onChange={handleChange} /> by user*/}
                                 <Dropdown isOpen={dropdownOpen} toggle={toggle} >
-                                    <DropdownToggle caret style={{color:'black'}}>
-                                        
-                                      </DropdownToggle>
-                                    <DropdownMenu  onChange={handleChange}>
-                                        <DropdownItem onClick={e=>setFilter('username')}>By user</DropdownItem>
-                                        <DropdownItem onClick={e=>setFilter('name')}>By event title</DropdownItem>
-                                      
+                                    <DropdownToggle caret style={{ color: 'black' }}>
+
+                                    </DropdownToggle>
+                                    <DropdownMenu onChange={handleChange}>
+                                        <DropdownItem onClick={e => setFilter('username')}>By user</DropdownItem>
+                                        <DropdownItem onClick={e => setFilter('name')}>By event title</DropdownItem>
+
                                     </DropdownMenu>
                                 </Dropdown>
                                 {/*<RadioGroup  className="radio_input col-md-5" aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
@@ -330,6 +331,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             <div className='col-md-3'> <div className='image_holder grid '>
                                 <img src='https://picsum.photos/id/100/200/300' width="200" height="150" alt='event' />
                                 <div className='description'>
+
                                     <span>lorem ipsuem</span> <br />
                                     <span>lorem ipsuem</span> <br />
                                 </div>
@@ -370,15 +372,14 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
 
                 </div>
             </div>
-
-
-
-        </div>
+          
+</div>
+                  
     )
 }
 
 Events.prototype = {
-    addEvent: PropTypes.func.isRequired,
+                        addEvent: PropTypes.func.isRequired,
     getevents: PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
     sortEvents: PropTypes.func.isRequired,
@@ -386,8 +387,8 @@ Events.prototype = {
     search: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
-    addEvent: state.addEvent,
+                        addEvent: state.addEvent,
     events: state.events,
     categories: state.categories,
 })
-export default connect(mapStateToProps, { addEvent, getevents, sortEvents, myevents, search })(Events);
+export default connect(mapStateToProps, {addEvent, getevents, sortEvents, myevents, search})(Events);

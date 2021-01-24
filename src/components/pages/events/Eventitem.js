@@ -1,7 +1,7 @@
 import Single from './single'
 import React, { useEffect, useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import { getevent, deleteEvent, subscribEevent, invite, getfriends, update } from '../../../Actions/events'
+import { getevent, deleteEvent, subscribEevent, invite, getfriends, update,getevents } from '../../../Actions/events'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Events.css'
@@ -16,10 +16,11 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
 import { NavLink } from 'react-bootstrap';
 import Switch from '@material-ui/core/Switch';
+import Carousel from 'react-bootstrap/Carousel'
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
-const Eventitem = ({ match, getevent, events: { event, friends, events, categories, loading }, deleteEvent, auth: { user }, getfriends, invite, update }) => {
+const Eventitem = ({ match, getevent, events: { event, friends, events, categories, loading }, deleteEvent, auth: { user }, getfriends, invite, update,getevents }) => {
     useEffect(() => {
         getevent(match.params.id);
     }, [getevent, match.params.id]
@@ -28,6 +29,9 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         getfriends()
     }, [getfriends]
     )
+    useEffect(()=>{
+        getevents()
+    },[getevents])
     const [state, setState] = React.useState({
         checkedA: true
 
@@ -43,6 +47,11 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
         getevent(event.previous_event)
     }, [event && event.previous_event])
+    const [index, setIndex] = useState(0);
+
+    const handleSelect = (selectedIndex, e) => {
+        setIndex(selectedIndex);
+    };
 
 
     const [open1, setOpen1] = React.useState(false);
@@ -266,7 +275,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         className='input_event'
                                         margin="dense"
                                         id="status"
-                                            hidden='true'
+                                        hidden='true'
                                         type="textarea"
                                         fullWidth
                                         name="status" value={status} onChange={e => onchange(e)}
@@ -425,18 +434,41 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                         <div className='mt-2'>
                             <h6><b>Similar Events</b></h6>
                             <div className='row '>
-                                {events && events.map((event) =>
+                                {/*events && events.map((event) =>
                                 (
                                     <Single key={event.id} event={event} />)
-                                )}
+                                )*/
+                                }
 
-
+                                <Carousel activeIndex={index} onSelect={handleSelect} >
+                                { events && events.map((event) =>
+                                (
+                                    <Carousel.Item key={event.id} interval={4000}>
+                                    <img
+                                        className="d-block w-100"
+                                        src="https://picsum.photos/id/98/200/300"
+                                        alt="First slide"
+                                        width="500" height="400"
+                                        style={{borderRadius:'10px'}}
+                                    />
+                                    <Carousel.Caption>
+                                        <h3>{event.name}</h3>
+                                        <p>{event.description}</p>
+                                        <p>{event.date}</p>
+                                    </Carousel.Caption>
+                                </Carousel.Item>
+                                ))}
+                                    
+                                    
+                                </Carousel>
                             </div>
                         </div>
 
                     </div>
                 </div>
             </div>
+
+
         </div>
     )
 }
@@ -449,7 +481,8 @@ Eventitem.propTypes = {
     invite: PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
     update: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    getevents: PropTypes.func.isRequired,
 
 }
 const mapStateToProps = state => ({
@@ -458,4 +491,4 @@ const mapStateToProps = state => ({
     categories: state.categories,
 
 })
-export default connect(mapStateToProps, { update, getevent, deleteEvent, subscribEevent, getfriends, invite })(Eventitem)
+export default connect(mapStateToProps, { update, getevent, deleteEvent, subscribEevent, getfriends, invite,getevents })(Eventitem)

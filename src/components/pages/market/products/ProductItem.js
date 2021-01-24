@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import UpdateProduct from './UpdateProduct';
 import Dialog from '@material-ui/core/Dialog';
+import { MdAddShoppingCart } from 'react-icons/md';
+
 import '../Market.css';
 
 const ProductItem = ( { match, getProduct, deleteProduct, market :{ product }} ) => {
@@ -61,12 +63,18 @@ const handleClose = () => {
                             <UpdateProduct />    
                         </Dialog> 
                     </div>
-                    <div className='col-sm-6 pt-5'>
+                    <div className='col-sm-4 pt-5'>
                         <Link className='delete_prod' to='/dashboard/marketplace' >
                             <Button  style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }}  onClick={e=>deleteProduct(match.params.id)}>
                                  Delete Product
                             </Button>
                         </Link> 
+                    </div>
+                    <div className='col-sm-1 pt-5'>
+                        <Button  >
+                            <MdAddShoppingCart />
+                        </Button>
+                        
                     </div>
                 </div>
                 </div>
