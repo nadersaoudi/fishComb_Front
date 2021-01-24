@@ -127,6 +127,7 @@ export const updatePost  = (formData ,post_id) => async dispatch  => {
             type: UPDATE_POST,
             payload: res.data.data
         })
+        toast.info('Post Updated');
     }catch{
 
     }

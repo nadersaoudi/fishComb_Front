@@ -1,44 +1,35 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Image from 'react-bootstrap/Image';
 import { getUsers } from '../../../Actions/profile';
 import { Col, Row } from 'react-bootstrap';
 import Nav from './navbar/nav';
-import { makeStyles } from '@material-ui/core/styles';
+
 import './Profile.css'
 import ContentUser from './content/ContentUser';
-const useStyles = makeStyles((theme) => ({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-      },
-    },
-    input: {
-      display: 'none',
-    },
-  }));
+
 
 const Userprofile = ( { getUsers, Profile:{profile}}) => {
     return (
         <Fragment>
     <Row>
-    <Col sm={12}>
-    <form >
-    <div className='Top___header px-0'>
+      <Col sm={12}>
+        <form >
+         <div className='Top___header px-0'>
             <Image src={profile && profile.data.attributes.cover_image} alt='' className='coverture'/>
-            <div className='row'>
-              <div className='col-sm-11'></div>
-            </div>
-            </div>
-            </form>
-            <div>
-            <form >
-            <div className='info' >
-            <Image  className="profile_img" src={profile && profile.data.attributes.profile_image}  alt='' roundedCircle  />
-            <label htmlFor="icon-button-file">
               <div className='row'>
+                <div className='col-sm-11'></div>
               </div>
+          </div>
+        </form>
+        <div>
+          <form >
+            <div className='info' >
+              <Image  className="profile_img" src={profile && profile.data.attributes.profile_image}  alt='' roundedCircle  />
+                <label htmlFor="icon-button-file">
+                  <div className='row'>
+                  </div>
             </label>
           </div>
           </form>
