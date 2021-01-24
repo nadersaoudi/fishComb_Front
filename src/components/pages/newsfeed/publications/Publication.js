@@ -176,6 +176,7 @@ const Publication = ({
                   <ReactTinyLink
                     cardSize="large"
                     showGraphic={true}
+                    
                     maxLine={2}
                     minLine={1}
                     url={posts.link}

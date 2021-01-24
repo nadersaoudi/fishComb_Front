@@ -1,7 +1,7 @@
 import Single from './single'
 import React, { useEffect, useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import { getevent, deleteEvent, subscribEevent, invite, getfriends, update,getevents } from '../../../Actions/events'
+import { getevent, deleteEvent, subscribEevent, invite, getfriends, update, getevents } from '../../../Actions/events'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Events.css'
@@ -20,7 +20,7 @@ import Carousel from 'react-bootstrap/Carousel'
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
-const Eventitem = ({ match, getevent, events: { event, friends, events, categories, loading }, deleteEvent, auth: { user }, getfriends, invite, update,getevents }) => {
+const Eventitem = ({ match, getevent, events: { event, friends, events, categories, loading }, deleteEvent, auth: { user }, getfriends, invite, update, getevents }) => {
     useEffect(() => {
         getevent(match.params.id);
     }, [getevent, match.params.id]
@@ -29,9 +29,9 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         getfriends()
     }, [getfriends]
     )
-    useEffect(()=>{
+    useEffect(() => {
         getevents()
-    },[getevents])
+    }, [getevents])
     const [state, setState] = React.useState({
         checkedA: true
 
@@ -117,6 +117,18 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     })
     const [category_id, setCategory_id] = useState('')
     const { name, description, location, date, cover, video_link, status } = formData;
+
+    useEffect(() => {
+        setFormData({
+            location: loading || !event.location ? '' : event.location,
+            name: loading || !event.name ? '' : event.name,
+            description: loading || !event.description ? '' : event.description,
+            cover: loading || !event.cover ? '' : event.cover,
+            video_link: loading || !event.video_link ? '' : event.video_link,
+            status: loading || !event.status ? true : event.status,
+            date: loading || !event.date ? '' : event.date,
+        })
+    }, [loading])
     const handleswitch = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
         if (event.target.checked === true) {
@@ -125,22 +137,9 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         else { setFormData({ status: false }) }
         console.log(status)
     };
-    useEffect(() => {
-        setFormData({
-            location: loading || !event.location ? '' : event.location,
-            name: loading || !event.name ? '' : event.name,
-            description: loading || !event.description ? '' : event.description,
-            cover: loading || !event.cover ? '' : event.cover,
-            video_link: loading || !event.video_link ? '' : event.video_link,
-            status: loading || !event.status ? '' : event.status,
-            date: loading || !event.date ? '' : event.date,
-        })
-    }, [loading])
-
     const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const submit = e => {
         e.preventDefault();
-        // console.log(formData)
         update({
             name,
             description,
@@ -271,18 +270,19 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         name="video_link" value={video_link} onChange={e => onchange(e)}
                                     />
                                     <FormControl
-                                        placeholder={event && event.status}
+                                        // placeholder={event && event.status}
                                         className='input_event'
-                                        margin="dense"
-                                        id="status"
                                         hidden='true'
+                                        id="status"
+                                        name="status" value={status.toString()}
                                         type="textarea"
                                         fullWidth
-                                        name="status" value={status} onChange={e => onchange(e)}
+                                        onChange={e => onchange(e)}
                                     />
                                     disable event
                                     <Switch
                                         checked={state.checkedA}
+
                                         onChange={handleswitch}
                                         name="checkedA"
                                         inputProps={{ 'aria-label': 'secondary checkbox' }}
@@ -316,7 +316,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                 <div className="col-sm-1"></div>
                 <div className='col-sm-9'>
                     <div className='row'>
-                        <div className='col-sm-4'>  {event && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} />}</div>
+                        <div className='col-sm-4'>  {event && !event.video_link===null ? <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} /> : <div></div>}</div>
                         <div className='col-sm-1'></div>
                         <div className='col-sm-7'>
                             <div className='row'>
@@ -441,25 +441,25 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                 }
 
                                 <Carousel activeIndex={index} onSelect={handleSelect} >
-                                { events && events.map((event) =>
-                                (
-                                    <Carousel.Item key={event.id} interval={4000}>
-                                    <img
-                                        className="d-block w-100"
-                                        src="https://picsum.photos/id/98/200/300"
-                                        alt="First slide"
-                                        width="500" height="400"
-                                        style={{borderRadius:'10px'}}
-                                    />
-                                    <Carousel.Caption>
-                                        <h3>{event.name}</h3>
-                                        <p>{event.description}</p>
-                                        <p>{event.date}</p>
-                                    </Carousel.Caption>
-                                </Carousel.Item>
-                                ))}
-                                    
-                                    
+                                    {events && events.map((event) =>
+                                    (
+                                        <Carousel.Item key={event.id} interval={4000}>
+                                            <img
+                                                className="d-block w-100"
+                                                src="https://picsum.photos/id/98/200/300"
+                                                alt="First slide"
+                                                width="500" height="400"
+                                                style={{ borderRadius: '10px' }}
+                                            />
+                                            <Carousel.Caption>
+                                                <h3>{event.name}</h3>
+                                                <p>{event.description}</p>
+                                                <p>{event.date}</p>
+                                            </Carousel.Caption>
+                                        </Carousel.Item>
+                                    ))}
+
+
                                 </Carousel>
                             </div>
                         </div>
@@ -491,4 +491,4 @@ const mapStateToProps = state => ({
     categories: state.categories,
 
 })
-export default connect(mapStateToProps, { update, getevent, deleteEvent, subscribEevent, getfriends, invite,getevents })(Eventitem)
+export default connect(mapStateToProps, { update, getevent, deleteEvent, subscribEevent, getfriends, invite, getevents })(Eventitem)
