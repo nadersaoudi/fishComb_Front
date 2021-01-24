@@ -215,9 +215,11 @@ return(
                              top: 140,
                              right: 40,
                              width:'425px',
-                             height:' 500px',
+                             height:'auto',
                              borderRadius: '0'
-                           }}>
+                            
+                           }} 
+                        >
                           <Toast.Body>
                             <div className='row pt-3 pb-5 pl-3 '>
                               <h5><b>Notification</b></h5> 

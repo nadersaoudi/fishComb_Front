@@ -36,7 +36,7 @@ const Userprofile = ( { getUsers, Profile:{profile}}) => {
           </div>
       <div>
         <h2>
-        {profile && profile.data.attributes.first_name} {profile && profile.data.attributes.last_name}
+          {profile && profile.data.attributes.first_name} {profile && profile.data.attributes.last_name}
         </h2>
       </div>
       </Col>
