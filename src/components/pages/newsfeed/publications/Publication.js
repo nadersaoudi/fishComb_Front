@@ -43,6 +43,7 @@ const Publication = ({
   getPost
 }) => {
   /******************************************/
+
   const [hidden, setHidden] = useState(true);
   const [body, setText] = useState("");
   const onclick = () => {
@@ -90,6 +91,7 @@ const Publication = ({
 
     prevOpen.current = open;
   }, [open]);
+  
 
   /*****************************/
   return (
@@ -166,6 +168,7 @@ const Publication = ({
               <div className="row pt-3"></div>
               <div className="col-sm-1"></div>
               <div className="col-sm-10">
+
                 {posts && posts.link && (
                   <ReactTinyLink
                     cardSize="large"

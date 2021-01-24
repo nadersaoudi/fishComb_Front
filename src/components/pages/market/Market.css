@@ -7,4 +7,9 @@
 .delete_prod :hover{
     text-decoration: none;
 }
-
+.prod_details{
+    font-weight: 600;
+}
+.Sim_products{
+    display: flex;
+}

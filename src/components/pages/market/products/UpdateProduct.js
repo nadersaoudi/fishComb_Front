@@ -87,7 +87,7 @@ const handleClose = () => {
                                                 type="text"/>
                                         </div>
                                     </div>
-                                <div className='row pt-3'>
+                                <div className='row pt-3 pb-3'>
                                     <Select
                                         labelId="demo-controlled-open-select-label"
                                         id="demo-controlled-open-select"
@@ -101,7 +101,7 @@ const handleClose = () => {
                                         (<MenuItem key={c.id} value={c.id} >{c.name}</MenuItem>)
                                         )}
                                     </Select>
-                                <div className='col-6'>
+                                <div className='col-6 pt-3'>
                                     <FormControl
                                         className='input_event'
                                         placeholder="Price"
@@ -110,7 +110,7 @@ const handleClose = () => {
                                         type="text"/>
                                 </div>
                             </div>
-                        <div className='row pt-3'>
+                        <div className='row '>
                             <div className='col-12'>
                                 <FormControl
                                     placeholder="Stock"
