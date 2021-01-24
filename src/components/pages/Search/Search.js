@@ -8,8 +8,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addFriend } from '../../../Actions/Friends'
 import { NavLink } from 'react-router-dom';
+import { getUsers } from '../../../Actions/profile';
 
-const Search = ({ friend, addFriend }) => {
+const Search = ({ friend, addFriend ,getUsers }) => {
   const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -47,7 +48,9 @@ const Search = ({ friend, addFriend }) => {
             }}>
           <div className='row '>
            <div className='col-sm-1 pt-4'>
-             <Avatar src={friend.data.attributes.profile_image} className={classes.large} />
+             <NavLink to={`/dashboard/profileuser/${friend.data.user_id}`}>
+             <Avatar src={friend.data.attributes.profile_image} onClick={(e) => getUsers(friend.data.user_id)}  className={classes.large} />
+             </NavLink>
               </div>
               <div className='col-sm-8 '>
               <div className='row'>
@@ -71,6 +74,10 @@ const Search = ({ friend, addFriend }) => {
 }
 Search.propTypes = {
   friend: PropTypes.object.isRequired,
-  addFriend: PropTypes.func.isRequired
+  addFriend: PropTypes.func.isRequired,
+  getUsers :PropTypes.func.isRequired
 };
-export default connect(null, { addFriend })(Search);
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+export default connect(mapStateToProps, { addFriend ,getUsers })(Search);

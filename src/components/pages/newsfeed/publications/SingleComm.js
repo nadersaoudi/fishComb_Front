@@ -9,12 +9,14 @@ import {
 } from "../../../../Actions/Post";
 import EditIcon from '@material-ui/icons/Edit';
 import { Button } from 'react-bootstrap';
+import { getUsers } from '../../../../Actions/profile';
+import { NavLink } from 'react-router-dom';
 
 
 const SingleComm = (
 
-  { getPosts, auth: { user }
-    , updateComment, deleteComment, comments
+  { getPosts, auth: { user } , Post: { posts }
+    , updateComment, deleteComment, comments,getUsers
   }) => {
 
   const [hidden, setHidden] = useState(true);
@@ -29,7 +31,10 @@ const SingleComm = (
   return (
     <div className="row pt-1 pb-3" >
       <div className="col-1 mr-4">
-        <Avatar src={comments.user.profile_image} />
+        <NavLink to={`/dashboard/profileuser/${comments.user.id}`} >
+        <Avatar src={comments.user.profile_image}
+         onClick={(e) => getUsers(comments.user.id)} />
+         </NavLink>
       </div>
       <div className="col-7" id="comment" >
         {comments.body}
@@ -83,9 +88,10 @@ SingleComm.prototype = {
   updateComment: PropTypes.func.isRequired,
   Post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
+  getUsers: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,
   Post: state.Post,
 });
-export default connect(mapStateToProps, { deleteComment, getPosts, updateComment })(SingleComm);
+export default connect(mapStateToProps, { deleteComment, getPosts, updateComment ,getUsers})(SingleComm);
