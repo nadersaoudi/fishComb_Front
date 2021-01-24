@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_MARKETS, ADD_PRODUCT, GET_MY_PRODUCTS, GET_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT, MARKET_CATERROR, GATEGORIES_MARKET} from './types';
+import { GET_MARKETS, ADD_PRODUCT, GET_MY_PRODUCTS, GET_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT, MARKET_CATERROR, GATEGORIES_MARKET, SEARCH_PRODUCT} from './types';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 toast.configure();
@@ -138,7 +138,7 @@ export const getCategories = () => async dispatch => {
     }
 }
 //Search Product
-export const searchProduct = () => async dispatch => {
+export const search = (filter,value) => async dispatch => {
     const config = {
         headers:{
             Authorization: 'Bearer ' + Cookies.get('user'),
@@ -146,7 +146,11 @@ export const searchProduct = () => async dispatch => {
         }
     }
     try{
-
+        const res = await axios.post(`/api/marketplace/search`,{filter,value},config)
+        dispatch({
+            type: SEARCH_PRODUCT,
+            payload:res.data.data
+        })
     }catch{
 
     }
