@@ -48,7 +48,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const [video_link,setvideolink]=useState('')
     const [cover,setcover]=useState('')
     const onnamechange =e=>{
-        setname(e.target.name)
+        setname(e.target.value)
     }
    
     const ondescchange =e=>{
