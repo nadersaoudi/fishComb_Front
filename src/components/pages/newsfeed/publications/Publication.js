@@ -176,6 +176,7 @@ const Publication = ({
                   <ReactTinyLink
                     cardSize="large"
                     showGraphic={true}
+                    
                     maxLine={2}
                     minLine={1}
                     url={posts.link}
@@ -203,8 +204,7 @@ const Publication = ({
                       height="21px"
                       version="1.1"
                       xmlns="http://www.w3.org/1999/xlink"
-                      id="like"
-                    >
+                      id="like">
                       <g id="like">
                         <g id="like">
                           <path

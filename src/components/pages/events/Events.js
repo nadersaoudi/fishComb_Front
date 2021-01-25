@@ -319,7 +319,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
 
                         <div className='row'>
                             <div className='col-md-3'> <div className='image_holder grid '>
-                                <img src='https://picsum.photos/id/99/200/300' width="200" height="150" alt='event' />
+                                <img src='https://picsum.photos/id/99/200/300' width="250" height="200" alt='event' style={{borderRadius:'10px'}}/>
                                 <div className='description'>
                                     <span>lorem ipsuem</span> <br />
 
@@ -329,7 +329,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             </div>
                             </div>
                             <div className='col-md-3'> <div className='image_holder grid '>
-                                <img src='https://picsum.photos/id/100/200/300' width="200" height="150" alt='event' />
+                                <img src='https://picsum.photos/id/100/200/300' width="250" height="200" alt='event' style={{borderRadius:'10px'}}/>
                                 <div className='description'>
 
                                     <span>lorem ipsuem</span> <br />
@@ -338,7 +338,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             </div></div>
                             <div className='col-md-3'>
                                 <div className='image_holder grid '>
-                                    <img src='https://picsum.photos/id/77/200/300' width="200" height="150" alt='event' />
+                                    <img src='https://picsum.photos/id/77/200/300' width="250" height="200" alt='event' style={{borderRadius:'10px'}}/>
                                     <div className='description'>
                                         <span>lorem ipsuem</span> <br />
                                         <span>lorem ipsuem</span> <br />
@@ -347,7 +347,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             </div>
                             <div className='col-md-3'>
                                 <div className='image_holder grid '>
-                                    <img src='https://picsum.photos/id/98/200/300' width="200" height="150" alt='event' />
+                                    <img src='https://picsum.photos/id/98/200/300' width="250" height="200" alt='event' style={{borderRadius:'10px'}} />
                                     <div className='description'>
                                         <span>lorem ipsuem</span> <br />
                                         <span>lorem ipsuem</span> <br />

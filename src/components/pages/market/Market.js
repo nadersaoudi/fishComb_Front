@@ -1,5 +1,5 @@
 import React ,{ useEffect, useState } from 'react';
-import { NavLink } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -76,7 +76,7 @@ const onsubmit1 = e => {
                     <li className="col-7 ">
                 </li>
                 <li className='nav-item'>
-                  <NavLink to={`/dashboard/profile/order`} className="m"><span className='n'>Basket<ShoppingCartIcon/> </span></NavLink> 
+                  <NavLink to={'/dashboard/cart'} className="m"><span className='n'>Basket<ShoppingCartIcon/></span></NavLink> 
                 </li>
                 </ul>
                 </div>

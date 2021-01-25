@@ -12,6 +12,7 @@ import Searchitem from '../../pages/Search/Searchitem';
 import Eventitem from '../../pages/events/Eventitem'
 import ProductItem from '../../pages/market/products/ProductItem';
 import Userprofile from '../../pages/profile/Userprofile';
+import Cart from '../../pages/market/Cart/Cart';
 
 const Container = () => {
 
@@ -33,6 +34,9 @@ const Container = () => {
               <Route path={`/dashboard/marketplace`}>
                 <Market />
               </Route>
+              <Route path={"/dashboard/cart"}  render={props => <Cart {...props} />}>
+               
+              </Route>
               <Route path={`/dashboard/watch`}>
                 <Watch />
               </Route>
@@ -40,7 +44,6 @@ const Container = () => {
                 <Events />
               </Route>
                 <Route path={'/dashboard/singleevent/:id'} render={props => <Eventitem {...props} />}>
-                  
                 </Route>
                   <Route path={'/dashboard/singleproduct/:id'} render={props => <ProductItem {...props} />}>
               </Route>
@@ -55,7 +58,7 @@ const Container = () => {
               <Route path="/dashboard/search">
                 <Searchitem />
               </Route>
-
+             
             </Switch>
 
 
