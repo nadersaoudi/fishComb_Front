@@ -5,7 +5,7 @@ import './Events.css';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { addEvent, getevents, sortEvents,myevents,search } from '../../../Actions/events';
+import { addEvent, getevents, sortEvents, myevents, search } from '../../../Actions/events';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Single from './single'
@@ -13,8 +13,13 @@ import FormControl from 'react-bootstrap/FormControl'
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import SortIcon from '@material-ui/icons/Sort';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-const Events = ({ addEvent, getevents, events: { events, categories },sortEvents,myevents,search }) => {
+
+const Events = ({ addEvent, getevents, events: { events, categories }, sortEvents, myevents, search }) => {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggle = () => setDropdownOpen(prevState => !prevState);
     useEffect(() => {
         getevents()
     }, [getevents])
@@ -33,7 +38,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
         date: '',
         cover: 'non',
         video_link: '',
-        status: '1'
+        status: true
     })
     const [open1, setOpen1] = React.useState(false);
     const handleClose1 = () => {
@@ -57,36 +62,36 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
             date,
             cover: 'non',
             video_link,
-            status: '1'
+            status: true
         })
         e.target.reset();
     }
     /****************************************** */
-    const [loc,setlocation]=useState({
-        location1:'location',
-        asc:'asc'
+    const [loc, setlocation] = useState({
+        location1: 'location',
+        asc: 'asc'
     })
-    const {location1 ,asc}=loc;
+    const { location1, asc } = loc;
     const onchange1 = e => setlocation({ ...loc, [e.target.name]: e.target.value });
     const submit1 = e => {
         e.preventDefault();
-        console.log(location1+'*****'+asc)
+        console.log(location1 + '*****' + asc)
         sortEvents(loc);
     }
     const [filter, setFilter] = React.useState('name');
-    const [value,setValue] =React.useState('');
+    const [value, setValue] = React.useState('');
     const handleChange = (event) => {
-      setFilter(event.target.value);
-      
+        setFilter(event.target.value);
+
     };
-    const handleChange1 =e=>{
+    const handleChange1 = e => {
         setValue(e.target.value)
     }
-    const onsubmit1=e=>{
+    const onsubmit1 = e => {
         e.preventDefault();
         console.log(filter)
-        console.log(value)
-        search(filter,value)
+        // console.log(value)
+        search(filter, value)
     }
     return (
         <div>
@@ -108,40 +113,40 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                             </li>
                             <li className="nav-item">
                                 <span className="filter">Filter</span>
-                                <form onSubmit={e=>submit1(e)}>
-                                <div className='row'>
-                                <div className='col-sm-1'>
+                                <form onSubmit={e => submit1(e)}>
+                                    <div className='row'>
+                                        <div className='col-sm-1'>
 
-                                    <div className='col-sm-1 filtre'>
+                                            <div className='col-sm-1 filtre'>
 
-                                       <div className='col-xs-2 mr-2'> 
-                                       <select  value={location1}
+                                                <div className='col-xs-2 mr-2'>
+                                                    <select value={location1}
 
-                                                name="location1"
-                                                onChange={e => onchange1(e)} >
-                                            <option value='location'>
-                                                    Location
+                                                        name="location1"
+                                                        onChange={e => onchange1(e)} >
+                                                        <option value='location'>
+                                                            Location
                                              </option>
-                                            <option value='category'>
-                                                Categories
+                                                        <option value='category'>
+                                                            Categories
                                             </option>
-                                        </select>
-                                        </div>
-                                   <div className='col-xs-2 mr-2'> <select value={asc}
+                                                    </select>
+                                                </div>
+                                                <div className='col-xs-2 mr-2'> <select value={asc}
 
-                                                name="asc"
-                                                onChange={e => onchange1(e)} >
-                                        <option value='asc'>&#8593;</option>
-                                        <option value='desc'>&#8595;</option>
-                                    </select></div>
-                                    <div className='col-xs-3'><button type='submit' id='button_sort'> <SortIcon/> Sort Event</button></div>
-                                </div>
-                                </div>
-                                </div>
-                                
-                                
+                                                    name="asc"
+                                                    onChange={e => onchange1(e)} >
+                                                    <option value='asc'>&#8593;</option>
+                                                    <option value='desc'>&#8595;</option>
+                                                </select></div>
+                                                <div className='col-xs-3'><button type='submit' id='button_sort'> <SortIcon /> Sort Event</button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </form>
-                                        
+
 
                             </li>
                         </ul>
@@ -150,27 +155,38 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                 </div>
                 <div className='row'>
                     <div className='col-md-3  side_min_bar'>
-                    <form onSubmit={e => onsubmit1(e)} >
-                        <div className="col-md-12 header__input" >
-                        
-     
-    
-                            <input type="text" placeholder='Search Fishcomb' aria-label="Search" height='25px' value={value} onChange={handleChange1}/>
-                            <input  type="checkbox" value="username" onChange={handleChange} /> by user
-                            {/*<RadioGroup  className="radio_input col-md-5" aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
-                                     <FormControlLabel value="username" control={<Radio />} label="By user" />
-    </RadioGroup>*/}
-                            <button className="col-1  header__button" >
-                                <svg width="19px" height="19px" version="1.1" xmlns="http://www.w3.org/1999/xlink">
-                                    <g id="fishcomb-product-icons-14">
-                                        <path d="M12.2518 1.61932e-15C12.3328 0.0283492 12.4155 0.051191 12.4995 0.0683699C15.6293 0.480702 18.1632 2.82089 18.8306 5.91537C19.498 9.00985 18.1549 12.1912 15.4749 13.8641C12.7948 15.5369 9.35588 15.3404 6.88257 13.3732C6.81668 13.3207 6.74396 13.2752 6.63263 13.1977L0.840723 19L0 18.1978L5.82371 12.3658C5.74646 12.2656 5.68965 12.1858 5.6283 12.106C4.09022 10.1285 3.64051 7.51038 4.43017 5.13067C5.21984 2.75096 7.14415 0.925279 9.55698 0.266643C9.95007 0.157251 10.3545 0.0866019 10.7522 0L12.2518 1.61932e-15ZM11.4884 13.7948C14.0295 13.8077 16.3277 12.2829 17.3102 9.93242C18.2926 7.58189 17.7654 4.86919 15.9748 3.06078C14.1841 1.25238 11.4832 0.704965 9.13291 1.67411C6.78265 2.64325 5.24665 4.93781 5.24202 7.48651C5.24318 10.9531 8.03216 13.7697 11.4884 13.7948L11.4884 13.7948Z" id="Shape" fill="#CDCDCD" stroke="none" />
-                                    </g>
-                                </svg>
-                               
-                            </button>
-                        </div>
-                       
-                       
+                        <form onSubmit={e => onsubmit1(e)} >
+                            <div className="col-md-12 header__input" >
+
+
+
+                                <input type="text" placeholder='Search Fishcomb' aria-label="Search" height='25px' value={value} onChange={handleChange1} />
+                                <button className="col-1  header__button" >
+                                    <svg width="19px" height="19px" version="1.1" xmlns="http://www.w3.org/1999/xlink">
+                                        <g id="fishcomb-product-icons-14">
+                                            <path d="M12.2518 1.61932e-15C12.3328 0.0283492 12.4155 0.051191 12.4995 0.0683699C15.6293 0.480702 18.1632 2.82089 18.8306 5.91537C19.498 9.00985 18.1549 12.1912 15.4749 13.8641C12.7948 15.5369 9.35588 15.3404 6.88257 13.3732C6.81668 13.3207 6.74396 13.2752 6.63263 13.1977L0.840723 19L0 18.1978L5.82371 12.3658C5.74646 12.2656 5.68965 12.1858 5.6283 12.106C4.09022 10.1285 3.64051 7.51038 4.43017 5.13067C5.21984 2.75096 7.14415 0.925279 9.55698 0.266643C9.95007 0.157251 10.3545 0.0866019 10.7522 0L12.2518 1.61932e-15ZM11.4884 13.7948C14.0295 13.8077 16.3277 12.2829 17.3102 9.93242C18.2926 7.58189 17.7654 4.86919 15.9748 3.06078C14.1841 1.25238 11.4832 0.704965 9.13291 1.67411C6.78265 2.64325 5.24665 4.93781 5.24202 7.48651C5.24318 10.9531 8.03216 13.7697 11.4884 13.7948L11.4884 13.7948Z" id="Shape" fill="#CDCDCD" stroke="none" />
+                                        </g>
+                                    </svg>
+
+                                </button>
+                                {/* <input type="checkbox" value="username" onChange={handleChange} /> by user*/}
+                                <Dropdown isOpen={dropdownOpen} toggle={toggle} >
+                                    <DropdownToggle caret style={{ color: 'black' }}>
+
+                                    </DropdownToggle>
+                                    <DropdownMenu onChange={handleChange}>
+                                        <DropdownItem onClick={e => setFilter('username')}>By user</DropdownItem>
+                                        <DropdownItem onClick={e => setFilter('name')}>By event title</DropdownItem>
+
+                                    </DropdownMenu>
+                                </Dropdown>
+                                {/*<RadioGroup  className="radio_input col-md-5" aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
+                                               <FormControlLabel value="username" control={<Radio />} label="By user" />
+                                             </RadioGroup>*/}
+
+                            </div>
+
+
                         </form>
                         <Button className="event" onClick={myevents}>My Events</Button><br />
 
@@ -180,10 +196,10 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                             Add Events
                         </Button>
                         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" className='dialogForm'   >
-                            <form className='add__event'onSubmit={e => submit(e)}>
+                            <form className='add__event' onSubmit={e => submit(e)}>
                                 <DialogTitle id="form-dialog-title">Add event</DialogTitle>
                                 <DialogContent>
-                                    <div className="row pt-3">
+                                    <div className="row pt-1">
                                         <div className=' col-md-12'>
                                             <FormControl
                                                 className='input_event'
@@ -206,7 +222,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                             />
 
                                         </div>
-                                        <div className='col-12'>
+                                        <div className='col-12 pt-3'>
 
 
                                             <Select
@@ -218,7 +234,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                                 value={category_id}
                                                 name="category_id"
                                                 onChange={e => onchange(e)}
-                                            >
+                                                className="form-control reg__input">
                                                 {categories && categories.map(c =>
                                                     (<MenuItem key={c.id} value={c.id} >{c.name} </MenuItem>)
 
@@ -232,7 +248,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                     <div className="row pt-3">
                                         <div className='col-sm-12'>
                                             <Select
-                                                 
+                                                 className="form-control reg__input"
                                                 name="location" value={location} onChange={e => onchange(e)}
                                             >
                                                 <option value='default'>Location</option>
@@ -487,6 +503,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
 
                                             </div>
                                         </div>
+                                    
                                     <div className="row pt-3">
                                         <div className='col-sm-12'>
                                             <FormControl
@@ -523,12 +540,12 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                                     <div className='row pt-2 px-0'>
                                         <div className='col-md-9'></div>
                                         <div className='col-md-3'>
-                                        <Button type='submit'
-                                         style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
-                                         onClick={handleClose}>
-                                        Add Event
+                                            <Button type='submit'
+                                                style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }}
+                                                onClick={handleClose}>
+                                                Add Event
                                             </Button>
-                                            </div>
+                                        </div>
                                     </div>
                                 </DialogContent>
 
@@ -548,9 +565,9 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
 
                         <div className='row'>
                             <div className='col-md-3'> <div className='image_holder grid '>
-                                <img src='https://picsum.photos/id/99/200/300' width="200" height="150" alt='event' />
+                                <img src='https://picsum.photos/id/99/200/300' width="250" height="200" alt='event' style={{borderRadius:'10px'}}/>
                                 <div className='description'>
-                                   <span>lorem ipsuem</span> <br />
+                                    <span>lorem ipsuem</span> <br />
 
                                     <span>lorem ipsuem</span> <br />
 
@@ -558,15 +575,16 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                             </div>
                             </div>
                             <div className='col-md-3'> <div className='image_holder grid '>
-                                <img src='https://picsum.photos/id/100/200/300' width="200" height="150" alt='event' />
+                                <img src='https://picsum.photos/id/100/200/300' width="250" height="200" alt='event' style={{borderRadius:'10px'}}/>
                                 <div className='description'>
+
                                     <span>lorem ipsuem</span> <br />
                                     <span>lorem ipsuem</span> <br />
                                 </div>
                             </div></div>
                             <div className='col-md-3'>
                                 <div className='image_holder grid '>
-                                    <img src='https://picsum.photos/id/77/200/300' width="200" height="150" alt='event' />
+                                    <img src='https://picsum.photos/id/77/200/300' width="250" height="200" alt='event' style={{borderRadius:'10px'}}/>
                                     <div className='description'>
                                         <span>lorem ipsuem</span> <br />
                                         <span>lorem ipsuem</span> <br />
@@ -575,7 +593,7 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
                             </div>
                             <div className='col-md-3'>
                                 <div className='image_holder grid '>
-                                    <img src='https://picsum.photos/id/98/200/300' width="200" height="150" alt='event' />
+                                    <img src='https://picsum.photos/id/98/200/300' width="250" height="200" alt='event' style={{borderRadius:'10px'}} />
                                     <div className='description'>
                                         <span>lorem ipsuem</span> <br />
                                         <span>lorem ipsuem</span> <br />
@@ -600,24 +618,23 @@ const Events = ({ addEvent, getevents, events: { events, categories },sortEvents
 
                 </div>
             </div>
-
-
-
-        </div>
+          
+</div>
+                  
     )
 }
 
 Events.prototype = {
-    addEvent: PropTypes.func.isRequired,
+                        addEvent: PropTypes.func.isRequired,
     getevents: PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
     sortEvents: PropTypes.func.isRequired,
     myevents: PropTypes.func.isRequired,
-    search:PropTypes.func.isRequired
+    search: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
-    addEvent: state.addEvent,
+                        addEvent: state.addEvent,
     events: state.events,
     categories: state.categories,
 })
-export default connect(mapStateToProps, { addEvent, getevents, sortEvents,myevents,search })(Events);
+export default connect(mapStateToProps, {addEvent, getevents, sortEvents, myevents, search})(Events);

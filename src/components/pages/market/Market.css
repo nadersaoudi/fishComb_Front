@@ -13,3 +13,7 @@
 .Sim_products{
     display: flex;
 }
+.MuiButton-root{
+    text-transform: none !important;
+}
+

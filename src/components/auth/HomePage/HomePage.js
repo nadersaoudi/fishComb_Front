@@ -8,15 +8,15 @@ import Footer from '../../layout/Footer/Footer';
 const HomePage = () => {
     return (
       <div>
-        <div className='row pt-5 pb-5 header'>
+        <div className='row  pt-5 pb-5 header'>
         <div className='col-sm-1'></div>
-          <div className='col-sm-1'>
+          <div className='col-sm-1 '>
         
           <img src="../../../../dist/img/logofish.png" alt="" />
         
           </div>
-          <div className='col-sm-8'></div>
-          <div className='col-sm-1 '>
+          <div className='col-sm-6'></div>
+          <div className='col-sm-2 '>
           <NavLink className='login' to="/login">Login</NavLink>
           </div>
           <div className='col-sm-1 '>
@@ -27,7 +27,7 @@ const HomePage = () => {
           
           </div>
          
-        <div className=' pt-5'>  <Footer  /></div>
+        <div className=' pt-5' >  <Footer  /></div>
          
    
       </div>

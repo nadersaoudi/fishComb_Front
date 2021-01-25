@@ -1,7 +1,7 @@
 import Single from './single'
 import React, { useEffect, useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import { getevent, deleteEvent, subscribEevent, invite, getfriends, update } from '../../../Actions/events'
+import { getevent, deleteEvent, subscribEevent, invite, getfriends, update, getevents } from '../../../Actions/events'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Events.css'
@@ -15,10 +15,12 @@ import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
 import { NavLink } from 'react-bootstrap';
+import Switch from '@material-ui/core/Switch';
+import Carousel from 'react-bootstrap/Carousel'
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
-const Eventitem = ({ match, getevent, events: { event, friends, events, categories, loading }, deleteEvent, auth: { user }, getfriends, invite, update }) => {
+const Eventitem = ({ match, getevent, events: { event, friends, events, categories, loading }, deleteEvent, auth: { user }, getfriends, invite, update, getevents }) => {
     useEffect(() => {
         getevent(match.params.id);
     }, [getevent, match.params.id]
@@ -27,16 +29,29 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         getfriends()
     }, [getfriends]
     )
-   
+    useEffect(() => {
+        getevents()
+    }, [getevents])
+    const [state, setState] = React.useState({
+        checkedA: true
+
+    });
+
+
     const increment = useCallback(() => {
-     
+
         getevent(event.next_event)
     }, [event && event.next_event])
 
     const decrement = useCallback(() => {
-      
+
         getevent(event.previous_event)
     }, [event && event.previous_event])
+    const [index, setIndex] = useState(0);
+
+    const handleSelect = (selectedIndex, e) => {
+        setIndex(selectedIndex);
+    };
 
 
     const [open1, setOpen1] = React.useState(false);
@@ -102,6 +117,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     })
     const [category_id, setCategory_id] = useState('')
     const { name, description, location, date, cover, video_link, status } = formData;
+
     useEffect(() => {
         setFormData({
             location: loading || !event.location ? '' : event.location,
@@ -109,14 +125,21 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
             description: loading || !event.description ? '' : event.description,
             cover: loading || !event.cover ? '' : event.cover,
             video_link: loading || !event.video_link ? '' : event.video_link,
-            status: loading || !event.status ? '' : event.status,
+            status: loading || !event.status ? true : event.status,
             date: loading || !event.date ? '' : event.date,
         })
     }, [loading])
+    const handleswitch = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked });
+        if (event.target.checked === true) {
+            setFormData({ status: true })
+        }
+        else { setFormData({ status: false }) }
+        console.log(status)
+    };
     const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const submit = e => {
         e.preventDefault();
-        // console.log(formData)
         update({
             name,
             description,
@@ -130,27 +153,27 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         }, event.id)
         e.target.reset();
     }
-    const [disable,setdisable]=useState(false);
+    const [disable, setdisable] = useState(false);
     return (
         <div>
-                <div className='row'>
-                    <div className='col-sm-3'></div>
-                    <div className="col-8 ">
-                        <ul className="nav nav-pills nav-justified" id='navprofil'>
-                            <li className="nav-item">
-                                <NavLink to={`/NavEvents`} className="m"><span className="n">General event</span></NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to={`/MyStream`} className="m"><span className="n">My Streams</span></NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to={`/invited`} className="m"><span className="n">Invited Webinars</span></NavLink>
-                            </li>
-                            
-                        </ul>
+            <div className='row'>
+                <div className='col-sm-3'></div>
+                <div className="col-8 ">
+                    <ul className="nav nav-pills nav-justified" id='navprofil'>
+                        <li className="nav-item">
+                            <NavLink to={`/NavEvents`} className="m"><span className="n">General event</span></NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to={`/MyStream`} className="m"><span className="n">My Streams</span></NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to={`/invited`} className="m"><span className="n">Invited Webinars</span></NavLink>
+                        </li>
 
-                    </div>
-          
+                    </ul>
+
+                </div>
+
                 <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title1"    >
                     <form onSubmit={e => submit(e)}>
                         <DialogTitle id="form-dialog-title1">update event</DialogTitle>
@@ -179,7 +202,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                     />
 
                                 </div>
-                                <div className='col-6'>
+                                <div className='col-md-12'>
 
 
                                     <Select
@@ -247,16 +270,23 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         name="video_link" value={video_link} onChange={e => onchange(e)}
                                     />
                                     <FormControl
-                                        placeholder={event && event.status}
+                                        // placeholder={event && event.status}
                                         className='input_event'
-                                        margin="dense"
+                                        hidden='true'
                                         id="status"
-
+                                        name="status" value={status.toString()}
                                         type="textarea"
                                         fullWidth
-                                        name="status" value={status} onChange={e => onchange(e)}
+                                        onChange={e => onchange(e)}
                                     />
+                                    disable event
+                                    <Switch
+                                        checked={state.checkedA}
 
+                                        onChange={handleswitch}
+                                        name="checkedA"
+                                        inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                    /> enable event
 
                                 </div></div>
                             <div className='row pt-3'><div className='col-sm-8'></div><div className='col-sm-4'>
@@ -286,49 +316,49 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                 <div className="col-sm-1"></div>
                 <div className='col-sm-9'>
                     <div className='row'>
-                        <div className='col-sm-4'>  {event && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1}  url={event.video_link}  />}</div>
+                        <div className='col-sm-4'>  {event && !event.video_link===null ? <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} /> : <div></div>}</div>
                         <div className='col-sm-1'></div>
                         <div className='col-sm-7'>
                             <div className='row'>
                                 <div className='col-sm-8'> <h4><b>{event && event.name}</b></h4>
-                                <div className='row'>
-                                <div className='col-sm-3 '>  {event && event.location} </div>
+                                    <div className='row'>
+                                        <div className='col-sm-3 '>  {event && event.location} </div>
 
-                                <div className='col-sm-4 '>  {event && event.date} </div></div>
+                                        <div className='col-sm-4 '>  {event && event.date} </div></div>
 
-                                <div className='row'><div className='col-sm-10 pb-3 pt-2'>{event && event.description}
-                            </div></div>
-                            
+                                    <div className='row'><div className='col-sm-10 pb-3 pt-2'>{event && event.description}
+                                    </div></div>
+
                                 </div><div className='col-sm-1'><IoShareSocialOutline />
-                                <div>  <AddBoxIcon onClick={handleClickOpen}/></div>
+                                    <div>  <AddBoxIcon onClick={handleClickOpen} /></div>
 
-                                      <div>
-                                    {event && user && user.id === event.user.data.user_id ? 
+                                    <div>
+                                        {event && user && user.id === event.user.data.user_id ?
 
-                                    <UpdateRoundedIcon  onClick={handleClickOpen2}/>
-                                     : <div></div>} </div>
-                                      <div>{event && user && user.id === event.user.data.user_id ? <Link to='/dashboard/events'><DeleteOutlineRoundedIcon  onClick={e => deleteEvent(match.params.id)} style={{color:'#212529'}}/>
+                                            <UpdateRoundedIcon onClick={handleClickOpen2} />
+                                            : <div></div>} </div>
+                                    <div>{event && user && user.id === event.user.data.user_id ? <Link to='/dashboard/events'><DeleteOutlineRoundedIcon onClick={e => deleteEvent(match.params.id)} style={{ color: '#212529' }} />
                                     </Link> : <div></div>}</div>
                                 </div></div>
-                            
+
                             <div className='row'><div className='col-sm-6'>participants {event && event.participants.length}
                             </div></div>
 
                             <div className="bot__section">
                                 <div className='row '>
-                                    {event && event.is_subscribed===false ?<div className='col-sm-2 pt-5' id='attend'>
+                                    {event && event.is_subscribed === false ? <div className='col-sm-2 pt-5' id='attend'>
                                         <button onClick={subscribEevent(event.id, 1)}  >Attend</button>
-                                    </div>:<div className='col-sm-2 pt-5' id='attend'>
-                                        <button disabled={true}>Already subscribed</button>
-                                    </div>}
+                                    </div> : <div className='col-sm-2 pt-5' id='attend'>
+                                            <button disabled={true}>Already subscribed</button>
+                                        </div>}
 
 
-                                    
+
                                     <div className='col-sm-2' id='Invite'>
-                                      
-                                        
+
+
                                     </div>
-                                    
+
                                     <Dialog className='invite_form'
                                         open={open}
                                         TransitionComponent={Transition}
@@ -363,7 +393,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                                                 <form onSubmit={e => onsubmit(e)}>
                                                                     <div className='col-md-12 pb-2 mt-3 friends'>
                                                                         <div className='col-md-2 '><Avatar className='mr-2 pr-1 pb-2' src={c.data.attributes.profile_image} /></div> <div className='col-md-8'> {c.data.attributes.name}</div>
-                                                                        <div className='col-md-2'> <AddBoxIcon onClick={e => invite(c.data.user_id, event.id)}/></div>
+                                                                        <div className='col-md-2'> <AddBoxIcon onClick={e => invite(c.data.user_id, event.id)} /></div>
 
                                                                     </div>
                                                                 </form>
@@ -404,18 +434,41 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                         <div className='mt-2'>
                             <h6><b>Similar Events</b></h6>
                             <div className='row '>
-                                {events && events.map((event) =>
+                                {/*events && events.map((event) =>
                                 (
                                     <Single key={event.id} event={event} />)
-                                )}
+                                )*/
+                                }
+
+                                <Carousel activeIndex={index} onSelect={handleSelect} >
+                                    {events && events.map((event) =>
+                                    (
+                                        <Carousel.Item key={event.id} interval={4000}>
+                                            <img
+                                                className="d-block w-100"
+                                                src="https://picsum.photos/id/98/200/300"
+                                                alt="First slide"
+                                                width="500" height="400"
+                                                style={{ borderRadius: '10px' }}
+                                            />
+                                            <Carousel.Caption>
+                                                <h3>{event.name}</h3>
+                                                <p>{event.description}</p>
+                                                <p>{event.date}</p>
+                                            </Carousel.Caption>
+                                        </Carousel.Item>
+                                    ))}
 
 
+                                </Carousel>
                             </div>
                         </div>
 
                     </div>
                 </div>
             </div>
+
+
         </div>
     )
 }
@@ -428,7 +481,8 @@ Eventitem.propTypes = {
     invite: PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
     update: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    getevents: PropTypes.func.isRequired,
 
 }
 const mapStateToProps = state => ({
@@ -437,4 +491,4 @@ const mapStateToProps = state => ({
     categories: state.categories,
 
 })
-export default connect(mapStateToProps, { update, getevent, deleteEvent, subscribEevent, getfriends, invite })(Eventitem)
+export default connect(mapStateToProps, { update, getevent, deleteEvent, subscribEevent, getfriends, invite, getevents })(Eventitem)

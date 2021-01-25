@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_MARKETS, ADD_PRODUCT, GET_MY_PRODUCTS, GET_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT} from './types';
+import { GET_MARKETS, ADD_PRODUCT, GET_MY_PRODUCTS, GET_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT, MARKET_CATERROR, GATEGORIES_MARKET, SEARCH_PRODUCT} from './types';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 toast.configure();
@@ -35,7 +35,7 @@ export const addProduct = (formdata) => async dispatch => {
         console.log(res);
         dispatch({
             type: ADD_PRODUCT,
-            payload: res.data
+            payload: res.data.data
         })
         toast.info('Product Added');
     }catch{
@@ -90,8 +90,8 @@ export const myProduct = () => async dispatch => {
     try{
         const res = await axios.post(`/api/marketplace/my_products`,{},config)
         dispatch({
-            type: GET_MY_PRODUCTS,
-            payload: res.data
+            type: GET_MARKETS,
+            payload: res.data.data
         })
     }catch{
     }
@@ -112,6 +112,46 @@ export const deleteProduct = (productID) => async dispatch => {
          })
          toast.error('Product Delete');
     }catch {
+        
+    }
+}
+//Categories Market
+export const getCategories = () => async dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.post(`/api/marketplace/categories`,{}, config)
+       
+        dispatch({
+            type: GATEGORIES_MARKET,
+            payload: res.data.data
+        })
+    } catch (error) {
+       
+        dispatch({
+            type: MARKET_CATERROR,
+        });
+    }
+}
+//Search Product
+export const search = (filter,value) => async dispatch => {
+    const config = {
+        headers:{
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.post(`/api/marketplace/search`,{filter,value},config)
+        dispatch({
+            type: SEARCH_PRODUCT,
+            payload:res.data.data
+        })
+    }catch{
 
     }
 }

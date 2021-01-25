@@ -30,21 +30,16 @@ const UpdatePost  = ({ auth: { user }, getPosts, updatePost ,loading, history, P
         <Fragment>
             
                 <div className="pub px-0 ">
-                
-                        <div className=" pub__top">
-                            
+                        <div className=" ">   
                         <Avatar src={user && user.profile_image} />
-                        <div className='post'>
+                        <div className='pub__top'>
                         <form  onSubmit={(e) => onSubmit(e)} >
                             <input id="description" placeholder={post && post.description}  autoComplete="description" className='pub__input' name="description" value={description} onChange={e => onchange(e)}  />
                             <input type="text" id="linkurl" />
                             <button  type="submit1" >submit</button>
                         </form>
-                        </div>
-                        
+                        </div>  
                 </div>
-                
-                
                 </div>
                
         </Fragment>

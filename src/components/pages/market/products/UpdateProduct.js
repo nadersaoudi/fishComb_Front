@@ -1,5 +1,5 @@
 import React from 'react' ;
-import { Fragment ,useState} from 'react';
+import { Fragment ,useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import DialogContent from '@material-ui/core/DialogContent';
 import FormControl from 'react-bootstrap/FormControl';
@@ -9,10 +9,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Avatar } from "@material-ui/core";
 import { updateProduct } from '../../../../Actions/Market';
-const UpdateProduct = ({ updateProduct ,events: { categories }, market:{ product }}) => {
+const UpdateProduct = ({ updateProduct , market:{ product, categories }, loading}) => {
 /**********************************/
+const [category_id, setCategory_id] = useState('')
 const [formData, setFormData] = useState({
-    category_id: '',
     description: '',
     name: '',
     price: '',
@@ -20,13 +20,23 @@ const [formData, setFormData] = useState({
     status:'1',
     image: 'jaw'
 })
-const {  category_id, name, description, price, stock, status,image} = formData;
+const { name,description, price, stock, status, image } = formData;
+useEffect(() => {
+    setFormData({
+        name: loading || !product.name ? '' : product.name,
+        category_id: loading || !product.category_id ? '' : product.category_id,
+        description: loading || !product.description ? '' : product.description,
+        price: loading || !product.price ? '' : product.price,
+        stock: loading || !product.stock ? '' : product.stock,
+        status: loading || !product.status ? '' : product.status,
+    })
+}, [loading])
 const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 const submit = e => {
     e.preventDefault();
-    updateProduct({
-        category_id,
+    updateProduct({ 
         description,
+        category_id,
         name,
         price,
         stock,
@@ -81,7 +91,6 @@ const handleClose = () => {
                                             <FormControl
                                                 className='input_event'
                                                 placeholder="Product Name"
-                                                margin="dense"
                                                 label="Product_name"
                                                 name="name" value={name} onChange={e => onchange(e)}
                                                 type="text"/>
@@ -144,7 +153,7 @@ const handleClose = () => {
                                 <Button type='submit'
                                     style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
                                     onClick={handleClose}>
-                                    Update Product
+                                    Update Product 
                                 </Button>
                             </div>  
                         </div>
@@ -161,13 +170,14 @@ const handleClose = () => {
 UpdateProduct.prototype= {
     auth: PropTypes.object.isRequired,
     updateProduct : PropTypes.func.isRequired,
-    categories: PropTypes.object.isRequired
+    categories: PropTypes.object.isRequired,
+    market:PropTypes.object.isRequired
 }
 const mapStateToProps = state => ({
     auth: state.auth,
     events: state.events,
     market: state.market,
-    updateProduct: state.markets,
-    categories: state.categories
+    updateProduct: state.market,
+    categories: state.market
 })
 export default connect(mapStateToProps, { updateProduct }) (UpdateProduct) ;

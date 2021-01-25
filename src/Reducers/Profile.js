@@ -1,4 +1,4 @@
-import {PROFILE_ERROR, EDIT_PIC } from "../Actions/types";
+import {PROFILE_ERROR, EDIT_PIC ,GET_USER } from "../Actions/types";
 
 
 
@@ -22,6 +22,12 @@ export default function (state = initialState, action) {
             }
         case PROFILE_ERROR:
             return { ...state }
+        
+        case GET_USER:
+            return {
+                profile: payload,
+                loading: false
+            }
 
         default:
             return state;
