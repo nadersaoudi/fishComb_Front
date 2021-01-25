@@ -11,7 +11,7 @@ const Single =({  event })=> {
               
         <div className='image_holder grid '>
         <NavLink to={`/dashboard/singleevent/${event.id}`} > 
-        <img src='https://picsum.photos/id/14/200/300' width="125" height="100" alt='event' /></NavLink>
+        <img src={event && event.cover} width="150" height="125" alt='event'  style={{borderRadius:'5px'}} /></NavLink>
             <div className='description'>
         <span>{event && event.name}</span> <br /> 
                 <Moment

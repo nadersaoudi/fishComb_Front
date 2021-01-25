@@ -316,7 +316,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                 <div className="col-sm-1"></div>
                 <div className='col-sm-9'>
                     <div className='row'>
-                        <div className='col-sm-4'>  {event && !event.video_link===null ? <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} /> : <div></div>}</div>
+                        <div className='col-sm-4'>  {event && !event.video_link===null ? <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} /> : <div><img src={event && event.cover}  width="400" height="300" alt='event'  style={{borderRadius:'5px'}}/></div>}</div>
                         <div className='col-sm-1'></div>
                         <div className='col-sm-7'>
                             <div className='row'>
@@ -324,13 +324,13 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                     <div className='row'>
                                         <div className='col-sm-2 '>{event && event.location} </div>
 
-                                        <div className='col-sm-4 '>  {event && event.date} </div></div>
+                                        <div className='col-sm-4 '>  {event && event.date} </div>
+                                    </div>
 
                                     <div className='row'>
-                                        <div className='col-sm-9 pb-3 pt-2'>
-                                           <p>{event && event.description}</p>
-                                          
-                                        </div>
+                                        <div className='col-sm-6 pb-3 pt-2'>
+                                            <span>{event && event.description}</span>
+                                         </div>
                                     </div>
 
                                 </div><div className='col-sm-1'><IoShareSocialOutline />
@@ -445,14 +445,14 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                 }
 
                                 <Carousel activeIndex={index} onSelect={handleSelect} >
-                                    {events && events.map((event) =>
+                                    {events && events.slice(0,3).map((event) =>
                                     (
                                         <Carousel.Item key={event.id} interval={4000}>
                                             <img
                                                 className="d-block w-100"
-                                                src="https://picsum.photos/id/98/200/300"
+                                                src={event.cover}
                                                 alt="First slide"
-                                                width="500" height="400"
+                                                width="500" height="500"
                                                 style={{ borderRadius: '10px' }}
                                             />
                                             <Carousel.Caption>
