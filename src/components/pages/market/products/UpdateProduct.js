@@ -50,6 +50,7 @@ const [open1, setOpen1] = React.useState(false);
 const handleClickOpen1 = () => {
     setOpen1(true);
 };
+
 const handleClose1 = () => {
     setOpen1(false);
 };
@@ -142,17 +143,17 @@ const handleClose = () => {
                              </div>
                         </div>
                         <div className='row pt-3 pb-2'>
-                            <div className='col-4'>
+                            <div className='col-md-5'>
                                 <Button  variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                     <span>Upload Image </span>
                                 </Button>
                             </div>
-                            <div className='col-4'>
+                            <div className='col-2'>
                             </div>
-                            <div className='col-md-4'>
+                            <div className='col-md-5'>
                                 <Button type='submit'
-                                    style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
-                                    onClick={handleClose}>
+                                    style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0', width :'-webkit-fill-available' }} 
+                                    onClick={handleClose2}>
                                     Update Product 
                                 </Button>
                             </div>  

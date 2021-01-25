@@ -50,9 +50,11 @@ const handleClose = () => {
                       <label className='prod_details'>Product Name :</label> { product && product.name }
                  </div>
                  <div className='col-sm-1'>
-                        <BiEditAlt onClick={handleClickOpen}/>  
-                        <Dialog open={open} onClose={handleClose} className='updateProd'>
-                            <BiEditAlt />    
+                       <Button onClick={handleClickOpen} >  <BiEditAlt  /> </Button> 
+                        <Dialog open={open}
+                         onClose={handleClose}
+                          className='updateProd'>
+                          <UpdateProduct />  
                         </Dialog> 
                         </div>
                         </div>
@@ -61,9 +63,9 @@ const handleClose = () => {
                          <label className='prod_details'>Price : </label>{ product && product.price }
                          </div>
                          
-                    <div className='col-sm-1'>
+                    <div className='col-sm-1 '>
                         <Link className='delete_prod' to='/dashboard/marketplace' >
-                            <DeleteOutlineRoundedIcon onClick={e=>deleteProduct(match.params.id)} />                      
+                           <Button className='pt-3'> <DeleteOutlineRoundedIcon onClick={e=>deleteProduct(match.params.id)} /> </Button>                      
                         </Link> 
                     </div>
                     </div>

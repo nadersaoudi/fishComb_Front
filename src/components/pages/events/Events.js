@@ -30,16 +30,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const handleClose = () => {
         setOpen(false);
     };
-    const [formData, setFormData] = useState({
-        name: '',
-        description: '',
-        category_id: '',
-        location: '',
-        date: '',
-        cover: 'non',
-        video_link: '',
-        status: true
-    })
+ 
     const [open1, setOpen1] = React.useState(false);
     const handleClose1 = () => {
         setOpen1(false);
@@ -49,21 +40,55 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
         setOpen1(true);
     };
 
-    // eslint-disable-next-line
-    const { name, description, category_id, location, date, cover, video_link, status } = formData;
-    const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    const [name,setname]=useState('')
+    const [description,setdescription]=useState('')
+    const [category_id,setcategoryid]=useState('')
+    const [location,setlocation1]=useState('')
+    const [date,setdate]=useState('')
+    const [video_link,setvideolink]=useState('')
+    const [cover,setcover]=useState('')
+    const onnamechange =e=>{
+        setname(e.target.name)
+    }
+   
+    const ondescchange =e=>{
+        setdescription(e.target.value)
+    }
+    
+    const oncategorychange =e=>{
+        setcategoryid(e.target.value)
+    }
+    
+    const onlocationchange =e=>{
+        setlocation1(e.target.value)
+    }
+    
+    const ondatechange =e=>{
+        setdate(e.target.value)
+    }
+    const oncoverchange =e=>{
+        setcover(e.target.files[0])
+    }
+    const onlinkchange =e=>{
+        setvideolink(e.target.value)
+    }
+    
+    
+    
+    
     const submit = e => {
         e.preventDefault();
-        addEvent({
-            name,
-            description,
-            category_id,
-            location,
-            date,
-            cover: 'non',
-            video_link,
-            status: true
-        })
+        console.log(description)
+        const file = new FormData();
+        file.append('name',name);
+        file.append('description',description);
+        file.append('category_id',category_id);
+        file.append('location',location);
+        file.append('date',date);
+        file.append('cover',cover);
+        file.append('video_link',video_link);
+        file.append('status',1);
+        addEvent(file)
         e.target.reset();
     }
     /****************************************** */
@@ -87,6 +112,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const handleChange1 = e => {
         setValue(e.target.value)
     }
+   
     const onsubmit1 = e => {
         e.preventDefault();
         console.log(filter)
@@ -208,7 +234,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                 id="Title"
                                                 label="Title"
                                                 type="text"
-                                                name="name" value={name} onChange={e => onchange(e)}
+                                                name="name" value={name} onChange={onnamechange}
                                             /></div></div>
                                     <div className="row pt-3">
                                         <div className='col-8'>
@@ -218,7 +244,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                 id="Date"
                                                 type="Date"
 
-                                                name="date" value={date} onChange={e => onchange(e)}
+                                                name="date" value={date} onChange={ondatechange}
                                             />
 
                                         </div>
@@ -235,6 +261,8 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                 name="category_id"
                                                 onChange={e => onchange(e)}
                                                 className="form-control reg__input">
+                                                onChange={oncategorychange}
+                                            >
                                                 {categories && categories.map(c =>
                                                     (<MenuItem key={c.id} value={c.id} >{c.name} </MenuItem>)
 
@@ -514,16 +542,17 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                 as="textarea" aria-label="With textarea"
                                                 type="textarea"
 
-                                                name="description" value={description} onChange={e => onchange(e)}
+                                                name="description" value={description} onChange={ondescchange}
                                             /></div></div>
                                     <div className='row pt-3'>
 
 
                                         <div className="btn-group btn-group-toggle col-md-12  ">
-                                            <Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+                                        <input accept="image/*" id="icon-button-file" type="file" onChange={oncoverchange} />
+                                           { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                                 <span  >Upload Video </span>
 
-                                            </Button>
+                                                </Button>*/}
                                         </div>  </div>
                                     <div className="row pt-3">
                                         <div className='col-sm-12'>
@@ -535,7 +564,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
 
                                                 type="textarea"
                                                 fullWidth
-                                                name="video_link" value={video_link} onChange={e => onchange(e)}
+                                                name="video_link" value={video_link} onChange={onlinkchange}
                                             /></div></div>
                                     <div className='row pt-2 px-0'>
                                         <div className='col-md-9'></div>

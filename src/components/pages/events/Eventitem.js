@@ -324,10 +324,14 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                     <div className='row'>
                                         <div className='col-sm-3 '>  {event && event.location} </div>
 
-                                        <div className='col-sm-4 '>  {event && event.date} </div></div>
+                                        <div className='col-sm-4 '>  {event && event.date} </div>
+                                    </div>
 
-                                    <div className='row'><div className='col-sm-10 pb-3 pt-2'>{event && event.description}
-                                    </div></div>
+                                    <div className='row'>
+                                        <div className='col-sm-6 pb-3 pt-2'>
+                                            <span>{event && event.description}</span>
+                                         </div>
+                                    </div>
 
                                 </div><div className='col-sm-1'><IoShareSocialOutline />
                                     <div>  <AddBoxIcon onClick={handleClickOpen} /></div>
@@ -441,14 +445,14 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                 }
 
                                 <Carousel activeIndex={index} onSelect={handleSelect} >
-                                    {events && events.map((event) =>
+                                    {events && events.slice(0,3).map((event) =>
                                     (
                                         <Carousel.Item key={event.id} interval={4000}>
                                             <img
                                                 className="d-block w-100"
-                                                src="https://picsum.photos/id/98/200/300"
+                                                src={event.cover}
                                                 alt="First slide"
-                                                width="500" height="400"
+                                                width="500" height="500"
                                                 style={{ borderRadius: '10px' }}
                                             />
                                             <Carousel.Caption>
