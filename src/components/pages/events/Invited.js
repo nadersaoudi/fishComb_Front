@@ -1,4 +1,4 @@
-import react,{ useEffect } from "react";
+import React,{ useEffect } from "react";
 import { Myinvitations,acceptinv } from "../../../Actions/events";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types'
@@ -11,7 +11,7 @@ const Invited =({ events: { inv }, Myinvitations,acceptinv })=>{
 
 return (
     <Container>
-        <Row className='pt-3'> <h2>Received invitations</h2></Row>
+       
         <Row className='pt-5'>
                     <Col md={3} ></Col>
                     <Col md={8}className="pb-4">
@@ -29,6 +29,7 @@ return (
 
                     </Col>
                 </Row>
+                <Row className='pt-3'> <h2>Received invitations</h2></Row>
                 <hr/>
     <Row className='pt-5 '>
     {inv && inv.map((inv) => 
