@@ -40,6 +40,11 @@ return (
                             )} 
                         </Col>
                     </Row>
+                    <Row className='pt-2'>
+                        <Col xs={12}>
+                            Total = 
+                        </Col>
+                    </Row>
                 </Card>             
             </Col>
             <Col sm={2} ></Col>

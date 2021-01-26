@@ -2,7 +2,7 @@ import React, { Fragment,useEffect} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Image from 'react-bootstrap/Image';
-import { getUsers } from '../../../Actions/profile';
+import { getUser } from '../../../Actions/profile';
 import { Col, Row } from 'react-bootstrap';
 import Nav from './navbar/nav';
 
@@ -10,13 +10,13 @@ import './Profile.css'
 import ContentUser from './content/ContentUser';
 
 
-const Userprofile = ( { getUsers, Profile:{profile}}) => {
+const Userprofile = ( { getUser, Profile:{profile}}) => {
   useEffect(() => {
-    getUsers();
-}, [getUsers]
+    getUser();
+}, [getUser]
 )
-    return (
-        <Fragment>
+return (
+    <Fragment>
     <Row>
       <Col sm={12}>
         <form >
@@ -54,7 +54,7 @@ const Userprofile = ( { getUsers, Profile:{profile}}) => {
       <Row className='pt-2'>
         <Col sm={1}></Col>
         <Col sm={9}>
-        <ContentUser/>
+        <ContentUser />
         </Col>
         <Col sm={1}></Col>
       </Row>
@@ -63,10 +63,10 @@ const Userprofile = ( { getUsers, Profile:{profile}}) => {
 }
 
 Userprofile.propTypes = {
-    getUsers: PropTypes.func.isRequired
+    getUser: PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     Profile:state.Profile
 })
-export default connect(mapStateToProps,{getUsers}) (Userprofile);
+export default connect(mapStateToProps,{getUser}) (Userprofile);
 
