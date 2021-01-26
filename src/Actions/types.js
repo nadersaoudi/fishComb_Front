@@ -57,3 +57,4 @@ export const MARKET_CATERROR = 'MARKET_CATERROR';
 export const ACCEPT_EVENT = 'ACCEPT_EVENT';
 export const GET_USER = 'GET_USER';
 export const SEARCH_PRODUCT = 'SEARCH_PRODUCT';
+export const ATTENDED='ATTENDED'

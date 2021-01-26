@@ -14,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import SortIcon from '@material-ui/icons/Sort';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 const Events = ({ addEvent, getevents, events: { events, categories }, sortEvents, myevents, search }) => {
@@ -129,13 +130,13 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                     <div className="col-8 pb-4">
                         <ul className="nav nav-pills nav-justified " id='navprofil'>
                             <li className="nav-item">
-                                <NavLink to={`/NavEvents`} className="m"><span className="n">All Webinars</span></NavLink>
+                                <Link to={`/dashboard/events`} className="m"><span style={{fontFamily:"arial"}}>All Events</span></Link>
                             </li>
                             <li className="nav-item">
-                                <NavLink to={`/MyStream`} className="m"><span className="n">My Streams</span></NavLink>
+                                <Link to={`/dashboard/invited`} className="m"><span style={{fontFamily:"arial"}}>Invited Events</span></Link>
                             </li>
                             <li className="nav-item">
-                                <NavLink to={`/invited`} className="m"><span className="n">Invited Webinars</span></NavLink>
+                                <Link  to={`/dashboard/attendedevent`} className="m"><span style={{fontFamily:"arial"}}>Attending</span></Link>
                             </li>
                             <li className="nav-item">
                                 <span className="filter">Filter</span>

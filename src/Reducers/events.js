@@ -1,4 +1,4 @@
-import {ADD_EVENT,GET_EVENTS,GET_EVENT, GET_CATEGORIES, DELETE_EVENT, FILTER_EVENT, INVITE_FRIENDS,GET_FRIENDS,UPDATE_EVENT, SEARCH_EVENT, GET_INV1,ACCEPT_EVENT} from  '../Actions/types'
+import {ADD_EVENT,GET_EVENTS,GET_EVENT, GET_CATEGORIES, DELETE_EVENT, FILTER_EVENT, INVITE_FRIENDS,GET_FRIENDS,UPDATE_EVENT, SEARCH_EVENT, GET_INV1,ACCEPT_EVENT, ATTENDED} from  '../Actions/types'
 const initialState = {
 
     events: [],
@@ -6,7 +6,8 @@ const initialState = {
     categories:null,
     friends:[],
     loading:true,
-    inv:[]
+    inv:[],
+    opted:[]
     
 }
 // eslint-disable-next-line
@@ -66,6 +67,11 @@ export default function (state = initialState, action) {
             events:[payload,...state.events],
             loading:false
         }
+        case ATTENDED :
+            return {
+                ...state,
+                opted:payload
+            }
         case GET_INV1:
             return {
                 ...state,

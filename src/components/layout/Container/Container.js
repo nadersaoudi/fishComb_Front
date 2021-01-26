@@ -10,9 +10,10 @@ import Message from '../../pages/messages/Messages';
 import NewFeed from '../../pages/newsfeed/Newfeed';
 import Searchitem from '../../pages/Search/Searchitem';
 import Eventitem from '../../pages/events/Eventitem'
+import Attended from '../../pages/events/Attended'
 import ProductItem from '../../pages/market/products/ProductItem';
 import Userprofile from '../../pages/profile/Userprofile';
-
+import Invited  from '../../pages/events/Invited'
 const Container = () => {
 
   return (
@@ -38,6 +39,12 @@ const Container = () => {
               </Route>
               <Route path={`/dashboard/events`}>
                 <Events />
+              </Route>
+              <Route path={`/dashboard/attendedevent`}>
+                <Attended />
+              </Route>
+              <Route path={`/dashboard/invited`}>
+                <Invited />
               </Route>
                 <Route path={'/dashboard/singleevent/:id'} render={props => <Eventitem {...props} />}>
                   
