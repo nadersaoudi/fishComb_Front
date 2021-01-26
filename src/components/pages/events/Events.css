@@ -75,7 +75,9 @@ color: #F7F8FA;
 #attend :hover{
     background-color: #202C43;
     color: white;
+
 }
+
 
 #cancel:hover{
     background-color: #202C43;
@@ -117,6 +119,9 @@ color: #F7F8FA;
     background-color: transparent !important;
     border: none !important;
    
+}
+.img_product{
+    border-radius: 15px;
 }
 .eventslink:hover {
     color: #00E2C8;

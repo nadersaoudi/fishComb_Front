@@ -9,8 +9,14 @@ import UpdateProduct from './UpdateProduct';
 import Dialog from '@material-ui/core/Dialog';
 import { MdAddShoppingCart } from 'react-icons/md';
 import '../Market.css';
+import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
+import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
+import SingleProduct from './SingleProduct';
+import { BiEditAlt } from 'react-icons/bi';
 
-const ProductItem = ( { match, getProduct, deleteProduct, market :{ product } ,addCart} ) => {
+
+
+const ProductItem = ( { match, getProduct, deleteProduct,  market :{ product,markets  }}  ) => {
 /****************************/
 useEffect(() => {
     getProduct(match.params.id);
@@ -26,59 +32,80 @@ const handleClose = () => {
 };
 /****************************/    
     return(
+        
         <Fragment>
-            <div className='row pt-5'>
-                <div className='col-sm-1'></div>
-                <div className='col-sm-5'>
-                    <img src='https://picsum.photos/id/14/400/300'  alt='market' />
-                </div>
-                <div className='col-sm-6'>
-                    <div className='row'>
-                        <div className='col-sm-12'>
-                            { product && product.name }
-                        </div>
-                    </div>
-                    <div className='row'>
-                        <div className='col-sm-12'>
-                            { product && product.description }
-                        </div>
-                    </div>
-                    <div className='row'>
-                        <div className='col-sm-12'>
-                            { product && product.price }
-                        </div> 
-                    </div>
-                    <div className='row'>
-                        <div className='col-sm-12'>
-                            { product && product.stock }
-                        </div>
-                    </div>
-                    <div className='row pt-5'>
-                    <div className='col-sm-6 pt-5'>
-                        <Button onClick={handleClickOpen} style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} >
-                           Update Product 
-                        </Button>
-                        <Dialog open={open} onClose={handleClose} className='updateProd'>
-                            <UpdateProduct />    
+            <div className='pt-5'>
+                <div className='row pt-5'>
+                <div className='col-sm-10 pl-5 ml-5'>
+                    <div className='card'> 
+                        <div className='card-body'>
+                            <div className='row'>
+                            <div className='col-sm-4' >
+                                <img src='https://picsum.photos/id/14/400/300'  alt='market' className='img_product' />
+                            </div>           
+   
+                <div className='col-sm-8'>
+                   <div className='row'>
+                       <div className='row'>
+                        <div className='col-sm-10'>
+                      <label className='prod_details'>Product Name :</label> { product && product.name }
+                 </div>
+                 <div className='col-sm-1'>
+                       <Button onClick={handleClickOpen} >  <BiEditAlt  /> </Button> 
+                        <Dialog open={open}
+                         onClose={handleClose}
+                          className='updateProd'>
+                          <UpdateProduct />  
                         </Dialog> 
-                    </div>
-                    <div className='col-sm-4 pt-5'>
+                        </div>
+                        </div>
+                 <div className='row'>
+                        <div className='col-sm-10'>
+                         <label className='prod_details'>Price : </label>{ product && product.price }
+                         </div>
+                         
+                    <div className='col-sm-1 '>
                         <Link className='delete_prod' to='/dashboard/marketplace' >
-                            <Button  style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }}  onClick={e=>deleteProduct(match.params.id)}>
-                                 Delete Product
-                            </Button>
+                           <Button className='pt-3'> <DeleteOutlineRoundedIcon onClick={e=>deleteProduct(match.params.id)} /> </Button>                      
                         </Link> 
                     </div>
-                    <div className='col-sm-1 pt-5'>
-                        <Button onClick={e=>addCart(product.id)}  >
-                            <MdAddShoppingCart />
-                        </Button>  
                     </div>
+                    
+                    <div className='row'>
+                        <div className='col-sm-8'>
+                           <label className='prod_details'>Quantity : </label> { product && product.stock }
+                           </div>
+                    </div>
+                    <div className='row'>
+                        <div className='col-md-8'>
+                     <label className='prod_details'> Description</label>       { product && product.description }         
+                    </div>
+                    
+                      
+                    </div>    
                 </div>
-                </div>
-            </div>
+                    
+                    </div>
+                   
+                           
+                    </div>
+                    </div>
+                    </div>
+                    
+                                <hr/>
+                <div className='bot_section'>
+                    <div className='row'>
+                        <div className='col-1'></div>
+                        <div className='col-11'><h4>Similar Products</h4></div>      
+                          </div>
+                    </div>            
+              </div>
+        </div> 
+  </div>
+
         </Fragment>
     )
+    
 }
 ProductItem.propTypes = {
     market: PropTypes.object.isRequired,
@@ -88,5 +115,6 @@ ProductItem.propTypes = {
 }
 const mapStateToProps = state => ({
     market: state.market,
+    
 })
 export default connect(mapStateToProps ,{ getProduct ,deleteProduct,addCart })(ProductItem);

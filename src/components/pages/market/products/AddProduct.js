@@ -55,6 +55,7 @@ const [open, setOpen] = React.useState(false);
 const handleClickOpen = () => {
     setOpen(true);
 };
+
 const handleClose = () => {
     setOpen(false);
 };
@@ -87,7 +88,17 @@ const handleClose = () => {
                                                 type="text"/>
                                         </div>
                                     </div>
-                                <div className='row pt-3'>
+                                <div className='row pt-3 '>
+                                   
+                               
+                                    <div className='col-7'>
+                                        <FormControl
+                                        className='input_event'
+                                        placeholder="Price"
+                                        margin="dense"
+                                        name="price" value={price} onChange={e => onchange(e)}
+                                        type="text"/></div>
+                                    <div className='col-5'>
                                     <Select
                                         labelId="demo-controlled-open-select-label"
                                         id="demo-controlled-open-select"
@@ -101,14 +112,9 @@ const handleClose = () => {
                                         (<MenuItem key={c.id} value={c.id} >{c.name}</MenuItem>)
                                         )}
                                     </Select>
-                                <div className='col-6'>
-                                    <FormControl
-                                        className='input_event'
-                                        placeholder="Price"
-                                        margin="dense"
-                                        name="price" value={price} onChange={e => onchange(e)}
-                                        type="text"/>
-                                </div>
+                                    </div>
+                                   
+                                
                             </div>
                         <div className='row pt-3'>
                             <div className='col-12'>
@@ -133,14 +139,14 @@ const handleClose = () => {
                              </div>
                         </div>
                         <div className='row pt-3 pb-2'>
-                            <div className='col-4'>
+                            <div className='col-5'>
                                 <Button  variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                     <span>Upload Image </span>
                                 </Button>
                             </div>
-                            <div className='col-4'>
+                            <div className='col-2'>
                             </div>
-                            <div className='col-md-4'>
+                            <div className='col-md-5'>
                                 <Button type='submit'
                                     style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
                                     onClick={handleClose}>
