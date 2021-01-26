@@ -50,12 +50,13 @@ const [open1, setOpen1] = React.useState(false);
 const handleClickOpen1 = () => {
     setOpen1(true);
 };
+
 const handleClose1 = () => {
     setOpen1(false);
 };
 const [open2, setOpen2] = React.useState(false);
 const handleClose2 = () => {
-    setOpen1(false);
+    setOpen2(false);
 };
 const handleOpen2 = () => {
     setOpen1(true);
@@ -96,23 +97,21 @@ const handleClose = () => {
                                                 type="text"/>
                                         </div>
                                     </div>
-                                <div className='row pt-3'>
-                                   <div className='col-sm-6'>
+                                <div className='row pt-3 pb-3'>
                                     <Select
-                                            labelId="demo-controlled-open-select-label"
-                                            id="demo-controlled-open-select"
-                                            open={open1}
-                                            onClose={handleClose2}
-                                            onOpen={handleOpen2}
-                                            value={category_id}
-                                            name="category_id"
-                                            onChange={e => setCategory_id(e.target.value)}>
-                                            {categories && categories.map(c =>
-                                            (<MenuItem key={c.id} value={c.id} >{c.name}</MenuItem>)
-                                            )}
-                                        </Select>
-                                    </div> 
-                                <div className='col-6'>
+                                        labelId="demo-controlled-open-select-label"
+                                        id="demo-controlled-open-select"
+                                        open={open1}
+                                        onClose={handleClose2}
+                                        onOpen={handleOpen2}
+                                        value={category_id}
+                                        name="category_id"
+                                        onChange={e => onchange(e)}>
+                                        {categories && categories.map(c =>
+                                        (<MenuItem key={c.id} value={c.id} >{c.name}</MenuItem>)
+                                        )}
+                                    </Select>
+                                <div className='col-6 pt-3'>
                                     <FormControl
                                         className='input_event'
                                         placeholder="Price"
@@ -121,7 +120,7 @@ const handleClose = () => {
                                         type="text"/>
                                 </div>
                             </div>
-                        <div className='row pt-3'>
+                        <div className='row '>
                             <div className='col-12'>
                                 <FormControl
                                     placeholder="Stock"
@@ -152,17 +151,17 @@ const handleClose = () => {
                              </div>
                         </div>
                         <div className='row pt-3 pb-2'>
-                            <div className='col-4'>
+                            <div className='col-md-5'>
                                 <Button  variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                     <span>Upload Image </span>
                                 </Button>
                             </div>
-                            <div className='col-4'>
+                            <div className='col-2'>
                             </div>
-                            <div className='col-md-4'>
+                            <div className='col-md-5'>
                                 <Button type='submit'
-                                    style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
-                                    onClick={handleClose}>
+                                    style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0', width :'-webkit-fill-available' }} 
+                                    onClick={handleClose2}>
                                     Update Product 
                                 </Button>
                             </div>  

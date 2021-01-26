@@ -10,29 +10,47 @@ import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 const AddProduct = ( { auth: { user }, addProduct ,market: { categories }} ) => {
-/****************************/
-const [formData, setFormData] = useState({
-    description: '',
-    category_id: '',
-    name: '',
-    price: '',
-    stock: '',
-    status:'1',
-    image: 'jaw'
-})
-const { name, category_id, description, price, stock, status,image } = formData;
-const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+/*****************************/
+const [name, setname] = useState('')
+const [description, setdescription] = useState('')
+const [category_id, setcategoryid] = useState('')
+const [price, setprice] = useState('')
+const [stock, setstock] = useState('')
+const [image, setimage] = useState('')
+const onnamechange = e => {
+    setname(e.target.value)
+}
+
+const ondescchange = e => {
+    setdescription(e.target.value)
+}
+
+const oncategorychange = e => {
+    setcategoryid(e.target.value)
+}
+
+const onpricechange = e => {
+    setprice(e.target.value)
+}
+
+const onstockchange = e => {
+    setstock(e.target.value)
+}
+const onimagechange = e => {
+    setimage(e.target.files[0])
+}
 const submit = e => {
     e.preventDefault();
-    addProduct({
-        category_id,
-        description,
-        name,
-        price,
-        stock,
-        status,
-        image
-    })
+    console.log(description)
+    const file = new FormData();
+    file.append('name', name);
+    file.append('description', description);
+    file.append('category_id', category_id);
+    file.append('price', price);
+    file.append('stock', stock);
+    file.append('image', image);
+    file.append('status', 1);
+    addProduct(file)
     e.target.reset();
 }
 /*****************************/    
@@ -55,6 +73,7 @@ const [open, setOpen] = React.useState(false);
 const handleClickOpen = () => {
     setOpen(true);
 };
+
 const handleClose = () => {
     setOpen(false);
 };
@@ -83,11 +102,21 @@ const handleClose = () => {
                                                 placeholder="Product Name"
                                                 margin="dense"
                                                 label="Product_name"
-                                                name="name" value={name} onChange={e => onchange(e)}
+                                                name="name" value={name} onChange={onnamechange}
                                                 type="text"/>
                                         </div>
                                     </div>
-                                <div className='row pt-3'>
+                                <div className='row pt-3 '>
+                                   
+                               
+                                    <div className='col-7'>
+                                        <FormControl
+                                        className='input_event'
+                                        placeholder="Price"
+                                        margin="dense"
+                                        name="price" value={price} onChange={onpricechange}
+                                        type="text"/></div>
+                                    <div className='col-5'>
                                     <Select
                                         labelId="demo-controlled-open-select-label"
                                         id="demo-controlled-open-select"
@@ -96,19 +125,14 @@ const handleClose = () => {
                                         onOpen={handleOpen2}
                                         value={category_id}
                                         name="category_id"
-                                        onChange={e => onchange(e)}>
+                                        onChange={oncategorychange}>
                                         {categories && categories.map(c =>
                                         (<MenuItem key={c.id} value={c.id} >{c.name}</MenuItem>)
                                         )}
                                     </Select>
-                                <div className='col-6'>
-                                    <FormControl
-                                        className='input_event'
-                                        placeholder="Price"
-                                        margin="dense"
-                                        name="price" value={price} onChange={e => onchange(e)}
-                                        type="text"/>
-                                </div>
+                                    </div>
+                                   
+                                
                             </div>
                         <div className='row pt-3'>
                             <div className='col-12'>
@@ -116,7 +140,7 @@ const handleClose = () => {
                                     placeholder="Stock"
                                     className='input_event'
                                     margin="dense"
-                                    name="stock" value={stock} onChange={e => onchange(e)}
+                                    name="stock" value={stock} onChange={onstockchange}
                                     type="text"/>
                             </div>
                         </div>
@@ -128,19 +152,23 @@ const handleClose = () => {
                                     margin="dense"
                                     id="Description"
                                     as="textarea" aria-label="With textarea"
-                                    name="description" value={description} onChange={e => onchange(e)}
+                                    name="description" value={description} onChange={ondescchange}
                                     type="textarea"/>
                              </div>
                         </div>
                         <div className='row pt-3 pb-2'>
-                            <div className='col-4'>
-                                <Button  variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-                                    <span>Upload Image </span>
-                                </Button>
+                            <div className='col-5'>
+                            <div className='row pt-3'>
+                        <div className="btn-group btn-group-toggle col-md-12  ">
+                            <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
+                            { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+                                <span  >Upload Video </span>
+                                </Button>*/}
+                        </div>  </div>
                             </div>
-                            <div className='col-4'>
+                            <div className='col-2'>
                             </div>
-                            <div className='col-md-4'>
+                            <div className='col-md-5'>
                                 <Button type='submit'
                                     style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
                                     onClick={handleClose}>

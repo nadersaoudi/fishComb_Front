@@ -46,6 +46,7 @@ const Publication = ({
   getUser
 }) => {
   /******************************************/
+
   const [hidden, setHidden] = useState(true);
   const [body, setText] = useState("");
   const onclick = () => {

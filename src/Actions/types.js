@@ -60,4 +60,14 @@ export const SEARCH_PRODUCT = 'SEARCH_PRODUCT';
 export const GET_CART = 'GET_CART';
 export const ADD_CART = 'ADD_CART';
 export const DELETE_PROD_CART = 'DELETE_PROD_CART';
-export const ATTENDED='ATTENDED'
+export const ATTENDED='ATTENDED';
+export const PRODUCT_ERROR = 'PRODUCT_ERROR';
+
+
+//Cart Types
+export const DECREASE = "DECREASE";
+export const INCREASE = "INCREASE";
+export const REMOVE = "REMOVE";
+export const CLEAR_CART = "CLEAR_CART";
+export const GET_TOTALS = "GET_TOTALS";
+export const TOGGLE_AMOUNT = "TOGGLE_AMOUNT";

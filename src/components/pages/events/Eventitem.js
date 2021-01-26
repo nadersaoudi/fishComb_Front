@@ -18,9 +18,13 @@ import { NavLink } from 'react-bootstrap';
 import Switch from '@material-ui/core/Switch';
 import Carousel from 'react-bootstrap/Carousel'
 import { Card, Col, Row} from 'react-bootstrap';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
+
 const Eventitem = ({ match, getevent, events: { event, friends, events, categories, loading }, deleteEvent, auth: { user }, getfriends, invite, update, getevents }) => {
     useEffect(() => {
         getevent(match.params.id);
@@ -37,6 +41,32 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         checkedA: true
 
     });
+    const options = {
+        margin: 30,
+        responsiveClass: true,
+        nav: true,
+        autoplay: false,
+        navText: ["Prev", "Next"],
+        smartSpeed: 1000,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            400: {
+                items: 1,
+            },
+            600: {
+                items: 2,
+            },
+            700: {
+                items: 3,
+            },
+            1000: {
+                items: 5,
+            }
+        },
+      };
+      
 
 
     const increment = useCallback(() => {
@@ -186,7 +216,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                     />
 
                                 </div>
-                                <div className='col-6'>
+                                <div className='col-md-12'>
 
 
                                     <Select
@@ -455,7 +485,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                 )*/
                                 }
 
-                                <Carousel activeIndex={index} onSelect={handleSelect} >
+                              {/*<Carousel activeIndex={index} onSelect={handleSelect} >
                                     {events && events.slice(0, 3).map((event) =>
                                     (
                                         <Carousel.Item key={event.id} interval={4000}>
@@ -475,7 +505,25 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                     ))}
 
 
-                                </Carousel>
+                                </Carousel>*/}  
+
+        <div>
+        
+        <OwlCarousel className="slider-items owl-carousel" >
+        {events && events.map((event) =>
+                                    (
+                                        <div class="item" key={event.id}>
+                                            <Col>
+                                            <img src={event.cover} width='250px' height='300px' style={{borderRadius:'5px'}}/></Col>
+                                            <p>{event.name}</p>
+                                            </div>
+                                       
+                                    ))}
+                           
+                            
+                        </OwlCarousel>
+        </div>
+
                             </Row>
                         </div>
                     </Row>
