@@ -122,11 +122,9 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     }
     return (
         <div>
-            <Row >
-                
-                <Row className='pt-5'>
+              <Row className='pt-5 pb-3'>
                     <Col md={3} ></Col>
-                    <Col md={8}className="pb-4">
+                    <Col md={8} className="pb-4">
                         <ul className="nav nav-pills nav-justified " id='navprofil'>
                             <li className="nav-item">
                                 <Link to={`/dashboard/events`} className="m"><span style={{ fontFamily: "arial" }}>All Events</span></Link>
@@ -141,6 +139,9 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
 
                     </Col>
                 </Row>
+            <Row >
+                
+              
                 <Row >
                    
                     <Col md={5} sm={5} xl={5} className="pb-4">
