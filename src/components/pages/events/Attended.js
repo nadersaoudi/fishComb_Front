@@ -41,7 +41,7 @@ const Attended = ({ events: { opted }, optedevent }) => {
                         <Card.Text>
                         {opted.description}
     </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Link to={`/dashboard/singleevent/${opted.id}`}><Button variant="primary">View details</Button></Link>
                     </Card.Body>
                 </Card>
             )
