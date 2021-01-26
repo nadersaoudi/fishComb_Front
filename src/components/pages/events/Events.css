@@ -123,3 +123,16 @@ color: #F7F8FA;
 .img_product{
     border-radius: 15px;
 }
+.eventslink:hover {
+    color: #00E2C8;
+    border-bottom: 2px solid #00e2c8;   
+    font-family:'Times New Roman', Times, serif;
+    text-decoration: none;
+}
+.eventslink {
+   
+    font-family:Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 300;
+}

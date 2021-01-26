@@ -61,7 +61,8 @@ const Search = ({ friend, addFriend ,getUsers }) => {
               </div>
             </div>
               <div className='col-sm-1 mr-2 pt-4'>
-               {friend && friend.data.attributes.is_friend ===false ? <Button variant="outlined" type="submit" disabled={friend.data.attributes.is_friend}>Add<AiOutlineUserAdd className='add' /></Button>
+               
+               {friend && friend.data.attributes.is_friend ===false ? <Button variant="outlined" type="submit" disabled={disable}>Add<AiOutlineUserAdd className='add' /></Button>
 
                :<NavLink to={`/dashboard/profileuser/${friend.data.user_id}`}>
                  <Button style={{backgroundColor:'white',border:'none'}}><AiOutlineTeam style={{color:'black'}}  /><p style={{color:'black'}}>View Profile</p></Button>

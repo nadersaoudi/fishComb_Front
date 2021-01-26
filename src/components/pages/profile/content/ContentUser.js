@@ -4,6 +4,7 @@ import { getUsers } from '../../../../Actions/profile';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 const ContentUser = ({ Profile: { profile}}) => {
+   
     return (
       <Fragment>
               <form className='card ' id='cardpro'  >
