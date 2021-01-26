@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addFriend } from '../../../Actions/Friends'
 import { NavLink } from 'react-router-dom';
-import { getUser } from '../../../Actions/profile';
+import { getUsers } from '../../../Actions/profile';
 
 const Search = ({ friend, addFriend ,getUser }) => {
   const useStyles = makeStyles((theme) => ({
@@ -49,7 +49,7 @@ const Search = ({ friend, addFriend ,getUser }) => {
           <div className='row '>
            <div className='col-sm-1 pt-4'>
              <NavLink to={`/dashboard/profileuser/${friend.data.user_id}`}>
-             <Avatar src={friend.data.attributes.profile_image} onClick={(e) => getUser(friend.data.user_id)}  className={classes.large} />
+             <Avatar src={friend.data.attributes.profile_image} onClick={(e) => getUsers(friend.data.user_id)}  className={classes.large} />
              </NavLink>
               </div>
               <div className='col-sm-8 '>
@@ -61,7 +61,8 @@ const Search = ({ friend, addFriend ,getUser }) => {
               </div>
             </div>
               <div className='col-sm-1 mr-2 pt-4'>
-               {friend && friend.data.attributes.is_friend ===false ? <Button variant="outlined" type="submit" disabled={friend.data.attributes.is_friend}>Add<AiOutlineUserAdd className='add' /></Button>
+               
+               {friend && friend.data.attributes.is_friend ===false ? <Button variant="outlined" type="submit" disabled={disable}>Add<AiOutlineUserAdd className='add' /></Button>
 
                :<NavLink to={`/dashboard/profileuser/${friend.data.user_id}`}>
                  <Button style={{backgroundColor:'white',border:'none'}}><AiOutlineTeam style={{color:'black'}}  /><p style={{color:'black'}}>View Profile</p></Button>
@@ -79,9 +80,9 @@ const Search = ({ friend, addFriend ,getUser }) => {
 Search.propTypes = {
   friend: PropTypes.object.isRequired,
   addFriend: PropTypes.func.isRequired,
-  getUser :PropTypes.func.isRequired
+  getUsers :PropTypes.func.isRequired
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-export default connect(mapStateToProps, { addFriend ,getUser })(Search);
+export default connect(mapStateToProps, { addFriend ,getUsers })(Search);

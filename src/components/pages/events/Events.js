@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 import './Events.css';
 import Dialog from '@material-ui/core/Dialog';
@@ -31,7 +30,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const handleClose = () => {
         setOpen(false);
     };
- 
+
     const [open1, setOpen1] = React.useState(false);
     const handleClose1 = () => {
         setOpen1(false);
@@ -41,54 +40,54 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
         setOpen1(true);
     };
 
-    const [name,setname]=useState('')
-    const [description,setdescription]=useState('')
-    const [category_id,setcategoryid]=useState('')
-    const [location,setlocation1]=useState('')
-    const [date,setdate]=useState('')
-    const [video_link,setvideolink]=useState('')
-    const [cover,setcover]=useState('')
-    const onnamechange =e=>{
+    const [name, setname] = useState('')
+    const [description, setdescription] = useState('')
+    const [category_id, setcategoryid] = useState('')
+    const [location, setlocation1] = useState('')
+    const [date, setdate] = useState('')
+    const [video_link, setvideolink] = useState('')
+    const [cover, setcover] = useState('')
+    const onnamechange = e => {
         setname(e.target.value)
     }
-   
-    const ondescchange =e=>{
+
+    const ondescchange = e => {
         setdescription(e.target.value)
     }
-    
-    const oncategorychange =e=>{
+
+    const oncategorychange = e => {
         setcategoryid(e.target.value)
     }
-    
-    const onlocationchange =e=>{
+
+    const onlocationchange = e => {
         setlocation1(e.target.value)
     }
-    
-    const ondatechange =e=>{
+
+    const ondatechange = e => {
         setdate(e.target.value)
     }
-    const oncoverchange =e=>{
+    const oncoverchange = e => {
         setcover(e.target.files[0])
     }
-    const onlinkchange =e=>{
+    const onlinkchange = e => {
         setvideolink(e.target.value)
     }
-    
-    
-    
-    
+
+
+
+
     const submit = e => {
         e.preventDefault();
         console.log(description)
         const file = new FormData();
-        file.append('name',name);
-        file.append('description',description);
-        file.append('category_id',category_id);
-        file.append('location',location);
-        file.append('date',date);
-        file.append('cover',cover);
-        file.append('video_link',video_link);
-        file.append('status',1);
+        file.append('name', name);
+        file.append('description', description);
+        file.append('category_id', category_id);
+        file.append('location', location);
+        file.append('date', date);
+        file.append('cover', cover);
+        file.append('video_link', video_link);
+        file.append('status', 1);
         addEvent(file)
         e.target.reset();
     }
@@ -113,7 +112,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const handleChange1 = e => {
         setValue(e.target.value)
     }
-   
+
     const onsubmit1 = e => {
         e.preventDefault();
         console.log(filter)
@@ -130,13 +129,13 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                     <div className="col-8 pb-4">
                         <ul className="nav nav-pills nav-justified " id='navprofil'>
                             <li className="nav-item">
-                                <Link to={`/dashboard/events`} className="m"><span style={{fontFamily:"arial"}}>All Events</span></Link>
+                                <Link to={`/dashboard/events`} className="m"><span style={{ fontFamily: "arial" }}>All Events</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={`/dashboard/invited`} className="m"><span style={{fontFamily:"arial"}}>Invited Events</span></Link>
+                                <Link to={`/dashboard/invited`} className="m"><span style={{ fontFamily: "arial" }}>Invited Events</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link  to={`/dashboard/attendedevent`} className="m"><span style={{fontFamily:"arial"}}>Attending</span></Link>
+                                <Link to={`/dashboard/attendedevent`} className="m"><span style={{ fontFamily: "arial" }}>Attending</span></Link>
                             </li>
                             <li className="nav-item">
                                 <span className="filter">Filter</span>
@@ -280,8 +279,8 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
 
 
                                         <div className="btn-group btn-group-toggle col-md-12  ">
-                                        <input accept="image/*" id="icon-button-file" type="file" onChange={oncoverchange} />
-                                           { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+                                            <input accept="image/*" id="icon-button-file" type="file" onChange={oncoverchange} />
+                                            { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                                 <span  >Upload Video </span>
 
                                                 </Button>*/}
@@ -326,7 +325,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
 
                         <div className='row'>
                             <div className='col-md-3'> <div className='image_holder grid '>
-                                <img src='https://picsum.photos/id/99/200/300' width="250" height="200" alt='event' style={{borderRadius:'10px'}}/>
+                                <img src='https://picsum.photos/id/99/200/300' width="250" height="200" alt='event' style={{ borderRadius: '10px' }} />
                                 <div className='description'>
                                     <span>lorem ipsuem</span> <br />
 
@@ -336,7 +335,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             </div>
                             </div>
                             <div className='col-md-3'> <div className='image_holder grid '>
-                                <img src='https://picsum.photos/id/100/200/300' width="250" height="200" alt='event' style={{borderRadius:'10px'}}/>
+                                <img src='https://picsum.photos/id/100/200/300' width="250" height="200" alt='event' style={{ borderRadius: '10px' }} />
                                 <div className='description'>
 
                                     <span>lorem ipsuem</span> <br />
@@ -345,7 +344,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             </div></div>
                             <div className='col-md-3'>
                                 <div className='image_holder grid '>
-                                    <img src='https://picsum.photos/id/77/200/300' width="250" height="200" alt='event' style={{borderRadius:'10px'}}/>
+                                    <img src='https://picsum.photos/id/77/200/300' width="250" height="200" alt='event' style={{ borderRadius: '10px' }} />
                                     <div className='description'>
                                         <span>lorem ipsuem</span> <br />
                                         <span>lorem ipsuem</span> <br />
@@ -354,7 +353,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             </div>
                             <div className='col-md-3'>
                                 <div className='image_holder grid '>
-                                    <img src='https://picsum.photos/id/98/200/300' width="250" height="200" alt='event' style={{borderRadius:'10px'}} />
+                                    <img src='https://picsum.photos/id/98/200/300' width="250" height="200" alt='event' style={{ borderRadius: '10px' }} />
                                     <div className='description'>
                                         <span>lorem ipsuem</span> <br />
                                         <span>lorem ipsuem</span> <br />
@@ -379,14 +378,12 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
 
                 </div>
             </div>
-          
-</div>
-                  
+
+        </div>
     )
 }
-
 Events.prototype = {
-                        addEvent: PropTypes.func.isRequired,
+    addEvent: PropTypes.func.isRequired,
     getevents: PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
     sortEvents: PropTypes.func.isRequired,
@@ -394,8 +391,8 @@ Events.prototype = {
     search: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
-                        addEvent: state.addEvent,
+    addEvent: state.addEvent,
     events: state.events,
     categories: state.categories,
 })
-export default connect(mapStateToProps, {addEvent, getevents, sortEvents, myevents, search})(Events);
+export default connect(mapStateToProps, { addEvent, getevents, sortEvents, myevents, search })(Events);

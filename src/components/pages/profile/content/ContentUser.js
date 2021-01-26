@@ -1,13 +1,10 @@
 import React from 'react';
 import { Fragment, useEffect } from 'react';
-import { getUser } from '../../../../Actions/profile';
+import { getUsers } from '../../../../Actions/profile';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-const ContentUser = ({ getUsers, Profile: { profile}}) => {
-    useEffect(() => {
-        getUser();
-    }, [getUser]
-    )
+const ContentUser = ({ Profile: { profile}}) => {
+   
     return (
       <Fragment>
               <form className='card ' id='cardpro'  >
@@ -48,9 +45,9 @@ const ContentUser = ({ getUsers, Profile: { profile}}) => {
     )
 }
 ContentUser.propTypes = {
-    getUser: PropTypes.func.isRequired,
+    getUsers: PropTypes.func.isRequired,
 }
 const mapStateToProps = state => ({
     Profile:state.Profile
 })
-export default connect(mapStateToProps ,{getUser}) (ContentUser);
+export default connect(mapStateToProps ,{getUsers}) (ContentUser);

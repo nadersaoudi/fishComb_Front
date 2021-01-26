@@ -12,8 +12,9 @@ const SingleProduct = ( { markets }) => {
                         <img src='https://picsum.photos/id/14/200/300' width="125" height="100" alt='market' />
                     </NavLink>
                 <div className='description'>
-                    <span> {markets && markets.price+'$'}</span><br /> 
-                    <span>{markets && markets.name}</span>
+                    <span>{markets && markets.name}</span><br /> 
+                    <span> {markets && markets.price+'$'}</span>
+                    
                 </div>
             </div>
         </div>

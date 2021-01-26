@@ -6,7 +6,6 @@ import { Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Fragment } from 'react';
 const CartProduct = (  {cart , deleteProd } ) => {
-
 return (
     <Fragment>
         <Row className='pb-5'>

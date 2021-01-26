@@ -19,7 +19,7 @@ import {
   addComment,
 } from "../../../../Actions/Post";
 import { deletePost , getPost } from "../../../../Actions/Post";
-import { getUser } from '../../../../Actions/profile';
+import { getUsers } from '../../../../Actions/profile';
 import SingleComm from "./SingleComm";
 import UpdatePost from "../Post/UpdatePost";
 import Dialog from '@material-ui/core/Dialog';
@@ -106,7 +106,7 @@ const Publication = ({
                 <NavLink to={`/dashboard/profileuser/${posts.user.id}`} >
                 <Avatar
                   src={posts && posts.user.profile_image}
-                  onClick={(e) => getUser(posts.user.id)}
+                  onClick={(e) => getUsers(posts.user.id)}
                 /></NavLink>
               </div>
               <div className="col-lg-10">
@@ -309,12 +309,12 @@ Publication.prototype = {
   addComment: PropTypes.func.isRequired,
   getPosts: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
-  getUser : PropTypes.func.isRequired
+  getUsers : PropTypes.func.isRequired
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,
   Post: state.Post,
 });
-export default connect(mapStateToProps, { deletePost, getPost, addComment, getPosts, addLike, getUser })(
+export default connect(mapStateToProps, { deletePost, getPost, addComment, getPosts, addLike, getUsers })(
   Publication
 );

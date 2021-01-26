@@ -52,7 +52,7 @@ export const picture =  file => async dispatch => {
     }
 };
 //Get Users
-export const getUser =( user_id )=> async dispatch => {
+export const getUsers =( user_id )=> async dispatch => {
     const config = {
         headers :{
             Authorization: 'Bearer ' + Cookies.get('user'),

@@ -16,6 +16,7 @@ import Userprofile from '../../pages/profile/Userprofile';
 import Cart from '../../pages/market/Cart/Cart';
 
 import Invited  from '../../pages/events/Invited'
+import Gallery  from '../../pages/events/Gallery'
 const Container = () => {
 
   return (
@@ -51,6 +52,9 @@ const Container = () => {
               <Route path={`/dashboard/invited`}>
                 <Invited />
               </Route>
+              <Route path={`/dashboard/Gallery`}>
+                <Gallery />
+              </Route>
                 <Route path={'/dashboard/singleevent/:id'} render={props => <Eventitem {...props} />}>
                 </Route>
                   <Route path={'/dashboard/singleproduct/:id'} render={props => <ProductItem {...props} />}>
@@ -58,7 +62,7 @@ const Container = () => {
               <Route path={`/dashboard/board`}>
                 <Board />
               </Route>
-              <Route path={`/dashboard/profileuser`} render={props => <Userprofile {...props} />}>
+              <Route path={`/dashboard/profileuser/:id`} render={props => <Userprofile {...props} />}>
               </Route>
               <Route path="/dashboard/profile">
                 <Profile />
