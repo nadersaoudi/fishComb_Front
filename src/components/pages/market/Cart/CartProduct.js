@@ -4,7 +4,6 @@ import { MdDelete } from 'react-icons/md';
 import { deleteProd } from '../../../../Actions/Market';
 import { Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Button } from 'bootstrap';
 import { Fragment } from 'react';
 const CartProduct = (  {cart , deleteProd } ) => {
 return (
@@ -21,8 +20,8 @@ return (
                         <button>
                             <MdDelete />
                         </button>
-                    </Col> 
-                </Row>      
+                    </Col>
+                </Row>
             </Col>    
         </Row>
     </Fragment>
