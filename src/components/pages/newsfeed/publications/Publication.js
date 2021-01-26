@@ -103,19 +103,19 @@ const Publication = ({
         <div className="form-pu">
           <form id="lo">
             <div className="row" id="pub-top1">
-              <div className="col-sm-1">
+              <div className="col-lg-1">
                 <NavLink to={`/dashboard/profileuser/${posts.user.id}`} >
                 <Avatar
                   src={posts && posts.user.profile_image}
                   onClick={(e) => getUsers(posts.user.id)}
                 /></NavLink>
               </div>
-              <div className="col-sm-10">
+              <div className="col-lg-10">
                 <span className="nameuser">
                 {posts && posts.user.first_name.charAt(0).toUpperCase() + posts.user.first_name.slice(1)} {posts && posts.user.last_name.charAt(0).toUpperCase() + posts.user.last_name.slice(1)}
                 </span>
                 <div className="row">
-                  <div className="col-sm-8 datepost">
+                  <div className="col-lg-8 datepost">
                     Posted on{" "}
                     <Moment
                       date={posts && posts.created_at}
@@ -125,7 +125,7 @@ const Publication = ({
                   </div>
                 </div>
               </div>
-              <div className="col-sm-1" id="pnt">
+              <div className="col-lg-1" id="pnt">
                 <div className={classes.root}>
                 {user && user.id === posts.user_id ? <div>
                    <Button
@@ -165,15 +165,14 @@ const Publication = ({
 
             </div>
             <div className="row pt-2" id="pub-top11">
-              <div className="col-sm-1"></div>
+              <div className="col-lg-1"></div>
               <div className="row pt-5">
-                <div className="col-sm-1"></div>
-                <div className="col-sm-10">{posts && posts.description}</div>
+                <div className="col-lg-1"></div>
+                <div className="col-lg-10">{posts && posts.description}</div>
               </div>
               <div className="row pt-3"></div>
-              <div className="col-sm-1"></div>
-              <div className="col-sm-10">
-
+              <div className="col-lg-1"></div>
+              <div className="col-lg-10">
                 {posts && posts.link && (
                   <ReactTinyLink
                     cardSize="large"
@@ -196,18 +195,17 @@ const Publication = ({
                 </Dialog>
           <div className="row"></div>
           <div className="row pt-2 pb-4">
-            <div className="col-sm-2">
+            <div className="col-lg-2">
               <div className="row" id="lcp">
-                <div className='col-sm-1'></div>
-                <div className="col-sm-4">
+                <div className='col-lg-1'></div>
+                <div className="col-lg-4">
                   <button className="But__Like" onClick={(e) => addLike(posts.id)}>
                     <svg
                       width="25px"
                       height="21px"
                       version="1.1"
                       xmlns="http://www.w3.org/1999/xlink"
-                      id="like"
-                    >
+                      id="like">
                       <g id="like">
                         <g id="like">
                           <path
@@ -221,14 +219,14 @@ const Publication = ({
                   </button>
                 </div>
                 <div className="col-3">
-                { <div className="col-4 datepost">{ posts.likes.length>0 && posts.likes.length} </div>}
+                { <div className="col-lg-4 datepost">{ posts.likes.length>0 && posts.likes.length} </div>}
                 </div>
 
               </div>
             </div>
-            <div className="col-sm-2">
+            <div className="col-lg-2">
               <div className="row" id="lcp">
-                <div className="col-sm-4">
+                <div className="col-lg-4">
                   <button className="ButCom" onClick={onclick}>
                     <svg
                       width="23px"
@@ -247,7 +245,7 @@ const Publication = ({
                     </svg>
                   </button>
                 </div>
-                <div className="col-sm-3 datepost">{posts.comments.length} </div>
+                <div className="col-lg-3 datepost">{posts.comments.length} </div>
               </div>
             </div>
            
@@ -265,8 +263,8 @@ const Publication = ({
 
             >
               <div className="row pt-1" >
-                <div className='col-sm-1'></div>
-                <div className="col-sm-1">
+                <div className='col-lg-1'></div>
+                <div className="col-lg-1">
                 <NavLink to={`/dashboard/profile/about`} >
                   <Avatar
                     src={user && user.profile_image}
@@ -274,9 +272,9 @@ const Publication = ({
                   </NavLink>
                 </div>
 
-                <div className="col-sm-9 pp" >
+                <div className="col-lg-9 pp" >
                   <input
-                    className=" col-sm-11 comm"
+                    className=" col-lg-11 comm"
                     type="text"
                     value={body}
                     onChange={(e) => setText(e.target.value)}
@@ -288,8 +286,8 @@ const Publication = ({
               </div>
             </form>
             <div className="row pt-1">
-              <div className='col-sm-1'></div>
-              <div className='col-sm-11'>
+              <div className='col-lg-1'></div>
+              <div className='col-lg-11'>
                 {posts && posts.comments.map(comments => 
                   (
                     <SingleComm key={comments.id} comments={comments} />

@@ -2,11 +2,12 @@ import React from 'react' ;
 import { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteProduct, getProduct } from '../../../../Actions/Market';
+import { addCart, deleteProduct, getProduct } from '../../../../Actions/Market';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import UpdateProduct from './UpdateProduct';
 import Dialog from '@material-ui/core/Dialog';
+import { MdAddShoppingCart } from 'react-icons/md';
 import '../Market.css';
 import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
@@ -109,12 +110,11 @@ const handleClose = () => {
 ProductItem.propTypes = {
     market: PropTypes.object.isRequired,
     getProduct: PropTypes.func.isRequired,
-    deleteProduct: PropTypes.func.isRequired, 
-      
-
+    deleteProduct: PropTypes.func.isRequired,
+    addCart:PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     market: state.market,
     
 })
-export default connect(mapStateToProps ,{ getProduct ,deleteProduct, })(ProductItem);
+export default connect(mapStateToProps ,{ getProduct ,deleteProduct,addCart })(ProductItem);

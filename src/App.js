@@ -33,7 +33,7 @@ const App = () => {
   
  
   return (
-    <div className="container-fluid">
+    
     <Provider store={store}>
     <HashRouter>
     <React.Suspense fallback={loading()}>
@@ -60,7 +60,7 @@ const App = () => {
     </React.Suspense>
     </HashRouter>
     </Provider>
-  </div>
+
   );
 }
 
