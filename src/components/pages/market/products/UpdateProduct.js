@@ -17,7 +17,7 @@ const [formData, setFormData] = useState({
     name: '',
     price: '',
     stock: '',
-    status:'1',
+    status:'',
     image: 'jaw'
 })
 const { name,description, price, stock, status, image } = formData;
@@ -128,6 +128,14 @@ const handleClose = () => {
                                     className='input_event'
                                     margin="dense"
                                     name="stock" value={stock} onChange={e => onchange(e)}
+                                    type="text"/>
+                            </div>
+                            <div className='col-12'>
+                                <FormControl
+                                    placeholder="1 or 0 "
+                                    className='input_event'
+                                    margin="dense"
+                                    name="status" value={status} onChange={e => onchange(e)}
                                     type="text"/>
                             </div>
                         </div>

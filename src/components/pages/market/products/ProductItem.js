@@ -2,14 +2,15 @@ import React from 'react' ;
 import { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteProduct, getProduct } from '../../../../Actions/Market';
+import { addCart, deleteProduct, getProduct } from '../../../../Actions/Market';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import UpdateProduct from './UpdateProduct';
 import Dialog from '@material-ui/core/Dialog';
+import { MdAddShoppingCart } from 'react-icons/md';
 import '../Market.css';
 
-const ProductItem = ( { match, getProduct, deleteProduct, market :{ product }} ) => {
+const ProductItem = ( { match, getProduct, deleteProduct, market :{ product } ,addCart} ) => {
 /****************************/
 useEffect(() => {
     getProduct(match.params.id);
@@ -61,16 +62,20 @@ const handleClose = () => {
                             <UpdateProduct />    
                         </Dialog> 
                     </div>
-                    <div className='col-sm-6 pt-5'>
+                    <div className='col-sm-4 pt-5'>
                         <Link className='delete_prod' to='/dashboard/marketplace' >
                             <Button  style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }}  onClick={e=>deleteProduct(match.params.id)}>
                                  Delete Product
                             </Button>
                         </Link> 
                     </div>
+                    <div className='col-sm-1 pt-5'>
+                        <Button onClick={e=>addCart(product.id)}  >
+                            <MdAddShoppingCart />
+                        </Button>  
+                    </div>
                 </div>
                 </div>
-              
             </div>
         </Fragment>
     )
@@ -78,9 +83,10 @@ const handleClose = () => {
 ProductItem.propTypes = {
     market: PropTypes.object.isRequired,
     getProduct: PropTypes.func.isRequired,
-    deleteProduct: PropTypes.func.isRequired
+    deleteProduct: PropTypes.func.isRequired,
+    addCart:PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     market: state.market,
 })
-export default connect(mapStateToProps ,{ getProduct ,deleteProduct })(ProductItem);
+export default connect(mapStateToProps ,{ getProduct ,deleteProduct,addCart })(ProductItem);

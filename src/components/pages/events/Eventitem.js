@@ -329,7 +329,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                             <div className='row'>
                                 <div className='col-sm-8'> <h4><b>{event && event.name}</b></h4>
                                     <div className='row'>
-                                        <div className='col-sm-3 '>  {event && event.location} </div>
+                                        <div className='col-sm-2 '>{event && event.location} </div>
 
                                         <div className='col-sm-4 '>  {event && event.date} </div>
                                     </div>

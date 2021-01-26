@@ -13,16 +13,16 @@ const NewFeed = ({ Post: { posts }, getPosts }) => {
 
   return (
     <div className='row mt-5 no-gutters'>
-      <div className='col-1'></div>
-      <div className='col-6 '>
-        <div className='card col-12'>
+      <div className='col-sm-1'></div>
+      <div className='col-sm-6 '>
+        <div className='card col-sm-12'>
           <Post />
         </div>
       </div>
       <div className='row mt-5'>
-        <div className='col-1'></div>
+        <div className='col-sm-1'></div>
         {posts.length > 0 ? (
-          <div className='col-6'>
+          <div className='col-sm-6'>
             <div className='row no-gutters'>
 
               {posts && posts.map(posts =>
