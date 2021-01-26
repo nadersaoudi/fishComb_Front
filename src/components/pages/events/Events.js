@@ -48,7 +48,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const [video_link,setvideolink]=useState('')
     const [cover,setcover]=useState('')
     const onnamechange =e=>{
-        setname(e.target.name)
+        setname(e.target.value)
     }
    
     const ondescchange =e=>{
@@ -259,10 +259,9 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                 onOpen={handleOpen1}
                                                 value={category_id}
                                                 name="category_id"
-                                                onChange={e => onchange(e)}
+                                                
                                                 className="form-control reg__input">
-                                                onChange={oncategorychange}
-                                            >
+                                                onChange={oncategorychange}>
                                                 {categories && categories.map(c =>
                                                     (<MenuItem key={c.id} value={c.id} >{c.name} </MenuItem>)
 
@@ -277,7 +276,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                         <div className='col-sm-12'>
                                             <Select
                                                  className="form-control reg__input"
-                                                name="location" value={location} onChange={e => onchange(e)}
+                                                name="location" value={location}
                                             >
                                                 <option value='default'>Location</option>
                                         <option value="Afganistan" className='reg__input'>Afghanistan</option>
