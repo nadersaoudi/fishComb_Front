@@ -114,7 +114,7 @@ export const deleteEvent = (eventID) => async dispatch => {
         
         dispatch({
             type: DELETE_EVENT,
-            payload:eventID
+            payload:parseInt(eventID)
         })
         toast.success('delete success')
     } catch (error) {

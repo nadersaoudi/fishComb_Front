@@ -193,7 +193,7 @@ export const addCart = (product_id) => async dispatch => {
     }
 }
 // Delete Product in cart 
-export const deleteProd = (productID) =>  async dispatch =>{
+export const deleteProd = (product_id) =>  async dispatch =>{
     const config = {
         headers: {
             Authorization: 'Bearer ' + Cookies.get('user'),
@@ -201,7 +201,7 @@ export const deleteProd = (productID) =>  async dispatch =>{
         }
     }
     try {   
-        const res = await axios.delete('/api/cart',{productID},config)
+        const res = await axios.delete('/api/cart',{product_id},config)
         dispatch ({
             type: DELETE_PROD_CART,
             payload: res.data

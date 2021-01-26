@@ -1,4 +1,6 @@
-import { GET_MARKETS, GET_MY_PRODUCTS, GET_PRODUCT, ADD_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT, GATEGORIES_MARKET, SEARCH_PRODUCT, GET_CART } from '../Actions/types';
+import { Pause } from '@material-ui/icons';
+import { propTypes } from 'react-bootstrap/esm/Image';
+import { GET_MARKETS, GET_MY_PRODUCTS, GET_PRODUCT, ADD_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT, GATEGORIES_MARKET, SEARCH_PRODUCT, GET_CART, DELETE_PROD_CART} from '../Actions/types';
 const initialState = {
    markets:null,
    myproducts:null,
@@ -55,6 +57,12 @@ export default function (state = initialState, action){
                 ...state,
                 product: payload,
                 loading:false
+            }
+        case DELETE_PROD_CART:
+            return{
+            ...state,
+            cart: state.cart.filter(product => product.id !== payload),
+
             }
         case GATEGORIES_MARKET:
             return {
