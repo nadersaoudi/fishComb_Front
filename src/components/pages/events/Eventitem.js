@@ -295,7 +295,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                         </li>
 
                         <li className="nav-item">
-                            <Link to={`/dashboard/attendedevent`} className="m"><span className="n">Gallery</span></Link>
+                            <Link to={`/dashboard/Gallery`} className="m"><span className="n">Gallery</span></Link>
                         </li>
 
                     </ul>
@@ -310,11 +310,11 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                 <Col md={1} sm={1}></Col>
                 <Col md={9} sm={9}>
                     <Row>
-                        <Card className='pt-2 pb-2'>
+                        <Card className='pt-2 pb-2' style={{backgroundColor:'#f7f8fa',border:'0px'}}>
                             {/*********************NEXT PREVIEW EVENT************************* */}
             <Row className='pb-3'>
                 <Col md={9} sm={9}></Col>
-                <Col md={3} sm={3} className=' Top__section'> <button onClick={increment} style={{backgroundColor:'white'}}>Next {'>>'} </button> -<button onClick={decrement} style={{backgroundColor:'white'}}>{'<<'} Preview</button>
+                <Col md={3} sm={3} className=' Top__section'> <button onClick={increment} style={{backgroundColor:'#f7f8fa'}}>Next {'>>'} </button> -<button onClick={decrement} style={{backgroundColor:'#f7f8fa'}}>{'<<'} Preview</button>
                 </Col>
 
 

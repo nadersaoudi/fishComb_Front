@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment ,useEffect} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Image from 'react-bootstrap/Image';
@@ -10,7 +10,11 @@ import './Profile.css'
 import ContentUser from './content/ContentUser';
 
 
-const Userprofile = ( { getUsers, Profile:{profile}}) => {
+const Userprofile = ( {  match,getUsers, Profile:{profile}}) => {
+  useEffect(() => {
+    getUsers(match.params.id);
+}, [getUsers, match.params.id]
+)
     return (
         <Fragment>
     <Row>

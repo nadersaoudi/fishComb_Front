@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 import './Events.css';
 import Dialog from '@material-ui/core/Dialog';
