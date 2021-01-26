@@ -60,3 +60,4 @@ export const SEARCH_PRODUCT = 'SEARCH_PRODUCT';
 export const GET_CART = 'GET_CART';
 export const ADD_CART = 'ADD_CART';
 export const DELETE_PROD_CART = 'DELETE_PROD_CART';
+export const ATTENDED='ATTENDED'

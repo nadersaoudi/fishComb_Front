@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import UpdateProduct from './UpdateProduct';
 import Dialog from '@material-ui/core/Dialog';
 import { MdAddShoppingCart } from 'react-icons/md';
-
 import '../Market.css';
 
 const ProductItem = ( { match, getProduct, deleteProduct, market :{ product } ,addCart} ) => {
@@ -73,12 +72,10 @@ const handleClose = () => {
                     <div className='col-sm-1 pt-5'>
                         <Button onClick={e=>addCart(product.id)}  >
                             <MdAddShoppingCart />
-                        </Button>
-                        
+                        </Button>  
                     </div>
                 </div>
                 </div>
-              
             </div>
         </Fragment>
     )

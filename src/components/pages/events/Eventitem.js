@@ -17,6 +17,7 @@ import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
 import { NavLink } from 'react-bootstrap';
 import Switch from '@material-ui/core/Switch';
 import Carousel from 'react-bootstrap/Carousel'
+import { Card, Col, Row} from 'react-bootstrap';
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -156,25 +157,8 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     const [disable, setdisable] = useState(false);
     return (
         <div>
-            <div className='row'>
-                <div className='col-sm-3'></div>
-                <div className="col-sm-8 ">
-                    <ul className="nav nav-pills nav-justified" id='navprofil'>
-                        <li className="nav-item">
-                            <NavLink to={`/NavEvents`} className="m"><span className="n">General event</span></NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink to={`/MyStream`} className="m"><span className="n">My Streams</span></NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink to={`/invited`} className="m"><span className="n">Invited Webinars</span></NavLink>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title1"    >
+             {/*****************************Update Dialog*********************************** */}
+             <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title1"    >
                     <form onSubmit={e => submit(e)}>
                         <DialogTitle id="form-dialog-title1">update event</DialogTitle>
                         <DialogContent>
@@ -292,35 +276,56 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                             <div className='row pt-3'><div className='col-sm-8'></div><div className='col-sm-4'>
                                 <Button type='submit' style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} onClick={handleClose}>
                                     update Event
-          </Button></div></div>
+                          </Button></div></div>
                         </DialogContent>
 
 
 
                     </form>
                 </Dialog>
+          
+            
+            {/*****************Navlink***************** */}
+            <Row className='pt-3'>
+                <Col md={3} sm={3} ></Col>
+                <Col md={8} sm={8}>
+                    <ul className="nav nav-pills nav-justified" id='navprofil'>
+                        <li className="nav-item">
+                            <Link to={`/dashboard/events`} className="m"><span className="n">General event</span></Link>
+                        </li>
+
+                        <li className="nav-item">
+                            <Link to={`/dashboard/attendedevent`} className="m"><span className="n">Gallery</span></Link>
+                        </li>
+
+                    </ul>
+
+                </Col>
+               
 
 
 
-            </div>
+            </Row>
+            <Row className='pt-5'>
+                <Col md={1} sm={1}></Col>
+                <Col md={9} sm={9}>
+                    <Row>
+                        <Card className='pt-2 pb-2'>
+                            {/*********************NEXT PREVIEW EVENT************************* */}
+            <Row className='pb-3'>
+                <Col md={9} sm={9}></Col>
+                <Col md={3} sm={3} className=' Top__section'> <button onClick={increment} style={{backgroundColor:'white'}}>Next {'>>'} </button> -<button onClick={decrement} style={{backgroundColor:'white'}}>{'<<'} Preview</button>
+                </Col>
 
-            <div className='row pt-2 pb-2'>
-                <div className='col-sm-10'></div>
-                <div className='col-sm-2 Top__section'> <button onClick={increment}>Next {'>>'} </button> -<button onClick={decrement}>{'<<'} Preview</button>
-                </div>
 
 
-
-            </div>
-            <div className='row pt-5'>
-                <div className="col-sm-1"></div>
-                <div className='col-sm-9'>
-                    <div className='row'>
-                        <div className='col-sm-4'>  {event && !event.video_link===null ? <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} /> : <div>
-                        <img src={event && event.cover} width="400" height="300" alt='event' style={{borderRadius:'5px'}}/>
-                            </div>}</div>
-                        <div className='col-sm-1'></div>
-                        <div className='col-sm-7'>
+            </Row>
+                            <Row>
+                        <Col md={3}  >  {event && !event.video_link === null ? <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} /> : <div>
+                            <img src={event && event.cover} width="380" height="300" alt='event' style={{ borderRadius: '5px' }} />
+                        </div>}</Col>
+                        <Col md={2} sm={2}></Col>
+                        <Col md={7} sm={7}>
                             <div className='row'>
                                 <div className='col-sm-8'> <h4><b>{event && event.name}</b></h4>
                                     <div className='row'>
@@ -332,7 +337,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                     <div className='row'>
                                         <div className='col-sm-6 pb-3 pt-2'>
                                             <span>{event && event.description}</span>
-                                         </div>
+                                        </div>
                                     </div>
 
                                 </div><div className='col-sm-1'><IoShareSocialOutline />
@@ -435,11 +440,15 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                 </div>
 
                             </div>
-                        </div>
-                        <div className='mt-4 mb-2'><hr /></div>
+                        </Col>
+                       
+                        </Row>
+                        </Card>
+                        <div className='mt-4 mb-2'></div>
+                        <hr />
                         <div className='mt-2'>
                             <h6><b>Similar Events</b></h6>
-                            <div className='row '>
+                            <Row >
                                 {/*events && events.map((event) =>
                                 (
                                     <Single key={event.id} event={event} />)
@@ -447,7 +456,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                 }
 
                                 <Carousel activeIndex={index} onSelect={handleSelect} >
-                                    {events && events.slice(0,3).map((event) =>
+                                    {events && events.slice(0, 3).map((event) =>
                                     (
                                         <Carousel.Item key={event.id} interval={4000}>
                                             <img
@@ -467,12 +476,11 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
 
                                 </Carousel>
-                            </div>
+                            </Row>
                         </div>
-
-                    </div>
-                </div>
-            </div>
+                    </Row>
+                </Col>
+            </Row>
 
 
         </div>

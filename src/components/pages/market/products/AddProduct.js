@@ -11,7 +11,6 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 const AddProduct = ( { auth: { user }, addProduct ,market: { categories }} ) => {
 /****************************/
-
 const [formData, setFormData] = useState({
     description: '',
     category_id: '',
