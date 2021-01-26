@@ -129,13 +129,13 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                     <Col md={8}className="pb-4">
                         <ul className="nav nav-pills nav-justified " id='navprofil'>
                             <li className="nav-item">
-                                <Link to={`/dashboard/events`} className="m"><span style={{fontFamily:"arial"}}>All Events</span></Link>
+                                <Link to={`/dashboard/events`} className="m"><span style={{ fontFamily: "arial" }}>All Events</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={`/dashboard/invited`} className="m"><span style={{fontFamily:"arial"}}>Invited Events</span></Link>
+                                <Link to={`/dashboard/invited`} className="m"><span style={{ fontFamily: "arial" }}>Invited Events</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link  to={`/dashboard/attendedevent`} className="m"><span style={{fontFamily:"arial"}}>Attending</span></Link>
+                                <Link to={`/dashboard/attendedevent`} className="m"><span style={{ fontFamily: "arial" }}>Attending</span></Link>
                             </li>
                         </ul>
 
@@ -637,7 +637,6 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
 
     )
 }
-
 Events.prototype = {
     addEvent: PropTypes.func.isRequired,
     getevents: PropTypes.func.isRequired,

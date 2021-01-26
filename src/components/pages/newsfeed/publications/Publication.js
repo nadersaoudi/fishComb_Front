@@ -43,7 +43,7 @@ const Publication = ({
   addLike,
   addComment,
   getPost,
-  getUsers
+  getUser
 }) => {
   /******************************************/
 

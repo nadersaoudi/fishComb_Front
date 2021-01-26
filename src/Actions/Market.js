@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_MARKETS, ADD_PRODUCT, GET_MY_PRODUCTS, GET_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT, MARKET_CATERROR, GATEGORIES_MARKET, SEARCH_PRODUCT, GET_CART, ADD_CART, DELETE_PROD_CART} from './types';
+import { GET_MARKETS, ADD_PRODUCT, GET_MY_PRODUCTS, GET_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT, MARKET_CATERROR, GATEGORIES_MARKET, SEARCH_PRODUCT, PRODUCT_ERROR} from './types';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 toast.configure();
@@ -23,22 +23,26 @@ export const getMarket = () => async dispatch => {
     }
 }
 //Add Product
-export const addProduct = (formdata) => async dispatch => {
+export const addProduct = file => async dispatch => {
     const config = {
         headers:{
             Authorization: 'Bearer ' + Cookies.get('user'),
-            'content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         }
     }
     try{
-        const res = await axios.post(`/api/marketplace`,formdata,config)
+        const res = await axios.post(`/api/marketplace`,file,config)
         console.log(res);
         dispatch({
             type: ADD_PRODUCT,
             payload: res.data.data
         })
         toast.info('Product Added');
-    }catch{
+    } catch (error) {
+        toast.error('Error happened when adding event');
+        dispatch({
+            type: PRODUCT_ERROR,
+        });
     }
 }
 //Get Product
@@ -150,61 +154,6 @@ export const search = (filter,value) => async dispatch => {
         dispatch({
             type: SEARCH_PRODUCT,
             payload:res.data.data
-        })
-    }catch{
-
-    }
-}
-//Show your cart 
-export const showCart = () => async dispatch =>{
-    const config = {
-        headers: {
-            Authorization: 'Bearer ' + Cookies.get('user'),
-            'content-Type': 'application/json'
-        }
-    }
-    try{
-        const res =await axios.get('/api/cart',config)
-        dispatch ({
-            type: GET_CART,
-            payload: res.data
-        })
-    }catch {
-
-    }
-}
-//Add Cart
-export const addCart = (product_id) => async dispatch => {
-    const config = {
-        headers: {
-            Authorization: 'Bearer ' + Cookies.get('user'),
-            'content-Type': 'application/json'
-        }
-    }
-    try{
-        const res = await axios.post('/api/cart',{product_id}, config)
-        dispatch ({
-            type: ADD_CART,
-            payload: res.data
-        })
-        toast.info('Product Add to you Basket')
-    }catch{
-
-    }
-}
-// Delete Product in cart 
-export const deleteProd = (product_id) =>  async dispatch =>{
-    const config = {
-        headers: {
-            Authorization: 'Bearer ' + Cookies.get('user'),
-            'content-Type': 'application/json'
-        }
-    }
-    try {   
-        const res = await axios.delete('/api/cart',{product_id},config)
-        dispatch ({
-            type: DELETE_PROD_CART,
-            payload: res.data
         })
     }catch{
 

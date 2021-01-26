@@ -15,8 +15,8 @@ const Userprofile = ( {  match,getUsers, Profile:{profile}}) => {
     getUsers(match.params.id);
 }, [getUsers, match.params.id]
 )
-    return (
-        <Fragment>
+return (
+    <Fragment>
     <Row>
       <Col sm={12}>
         <form >
@@ -54,7 +54,7 @@ const Userprofile = ( {  match,getUsers, Profile:{profile}}) => {
       <Row className='pt-2'>
         <Col sm={1}></Col>
         <Col sm={9}>
-        <ContentUser/>
+        <ContentUser />
         </Col>
         <Col sm={1}></Col>
       </Row>

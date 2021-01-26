@@ -2,7 +2,8 @@ import React from 'react' ;
 import { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addCart, deleteProduct, getProduct } from '../../../../Actions/Market';
+import { addCart } from '../../../../Actions/cart';
+import { addProduct, deleteProduct, getProduct } from '../../../../Actions/Market';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import UpdateProduct from './UpdateProduct';
@@ -16,7 +17,7 @@ import { BiEditAlt } from 'react-icons/bi';
 
 
 
-const ProductItem = ( { match, getProduct, deleteProduct,  market :{ product,markets  }}  ) => {
+const ProductItem = ( { match, getProduct, deleteProduct,  market :{ product,markets  } ,addCart}  ) => {
 /****************************/
 useEffect(() => {
     getProduct(match.params.id);
@@ -67,7 +68,8 @@ const handleClose = () => {
                     <div className='col-sm-1 '>
                         <Link className='delete_prod' to='/dashboard/marketplace' >
                            <Button className='pt-3'> <DeleteOutlineRoundedIcon onClick={e=>deleteProduct(match.params.id)} /> </Button>                      
-                        </Link> 
+                        </Link>
+                           <Button className='pt-3'> <MdAddShoppingCart onClick={e=>addCart(product.id)} /> </Button>                      
                     </div>
                     </div>
                     
