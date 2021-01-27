@@ -40,33 +40,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     const [state, setState] = React.useState({
         checkedA: true
 
-    });
-    const options = {
-        margin: 30,
-        responsiveClass: true,
-        nav: true,
-        autoplay: false,
-        navText: ["Prev", "Next"],
-        smartSpeed: 1000,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            400: {
-                items: 1,
-            },
-            600: {
-                items: 2,
-            },
-            700: {
-                items: 3,
-            },
-            1000: {
-                items: 5,
-            }
-        },
-      };
-      
+    });   
 
 
     const increment = useCallback(() => {
@@ -78,12 +52,9 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
         getevent(event.previous_event)
     }, [event && event.previous_event])
-    const [index, setIndex] = useState(0);
+    
 
-    const handleSelect = (selectedIndex, e) => {
-        setIndex(selectedIndex);
-    };
-
+   
 
     const [open1, setOpen1] = React.useState(false);
 
@@ -121,13 +92,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     const handleClose = () => {
         setOpen(false);
     };
-    const handleClose1 = () => {
-        setOpen1(false);
-    };
-
-    const handleOpen1 = () => {
-        setOpen1(true);
-    };
+   
     const [user_id, setUser] = useState('');
 
     const onsubmit = e => {
@@ -136,14 +101,16 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     }
 
     const [uid, setText] = useState('');
+    const [disable, setdisable] = useState(false);
     const [name, setname] = useState('')
     const [description, setdescription] = useState('')
-    const [category_id, setcategoryid] = useState('')
+    
     const [location, setlocation1] = useState('')
     const [date, setdate] = useState('')
     const [video_link, setvideolink] = useState('')
     const [cover, setcover] = useState('')
     const [status,setStatus]=useState('')
+    const [category_id, setCategory_id] = useState('')
     const onnamechange = e => {
         setname(e.target.value)
     }
@@ -152,9 +119,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         setdescription(e.target.value)
     }
 
-    const oncategorychange = e => {
-        setcategoryid(e.target.value)
-    }
+    
 
     const onlocationchange = e => {
         setlocation1(e.target.value)
@@ -169,40 +134,46 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     const onlinkchange = e => {
         setvideolink(e.target.value)
     }
+ 
+    const onstatuschange =e=>{
+        setStatus(e.target.value)
+    }
+    useEffect(()=>{
+        setlocation1(loading || !event.location ? '' : event.location)
+    },[loading])
+  useEffect(()=>{
+      setname(loading || !event.name ? '' : event.name)
+  },[loading])
+  useEffect(()=>{
+    setdescription(loading || !event.description ? '' : event.description)
+},[loading])
+useEffect(()=>{
 
-    const [formData, setFormData] = useState({
-        name1: '',
-        description1: '',
-        location1: '',
-        date1: '',
-        cover1: 'non',
-        video_link1: '',
-        status1: '',  
+},[loading])
+useEffect(()=>{
+    setvideolink(loading || !event.video_link ? '' : event.video_link)
+},[loading])
+useEffect(()=>{
+    setStatus(loading || !event.status ? 1 : event.status)
+},[loading])
+useEffect(()=>{
+    setdate(loading || !event.date ? '' : event.date)
+},[loading])
+useEffect(()=>{
+    setcover(loading || !event.cover ? '' : event.cover)
 
-    })
-  
-    const { name1, description1, location1, date1, cover1, video_link1, status1 } = formData;
-    useEffect(() => {
-        setFormData({
-            location1: loading || !event.location ? '' : event.location,
-            name1: loading || !event.name ? '' : event.name,
-            description1: loading || !event.description ? '' : event.description,
-            cover1: loading || !event.cover ? '' : event.cover,
-            video_link1: loading || !event.video_link ? '' : event.video_link,
-            status1: loading || !event.status ? true : event.status,
-            date1: loading || !event.date ? '' : event.date,
-        })
-    }, [loading])
+},[loading])
+
     const handleswitch = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
         if (event.target.checked === true) {
-           setStatus(true)
+           setStatus(1)
         }
-        else {   setStatus(false) }
+        else {   setStatus(0) }
         console.log(status)
     };
-  
-    const submit = e => {
+   
+  const submit = e => {
         e.preventDefault();
         console.log(description)
         const file = new FormData();
@@ -213,15 +184,15 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         file.append('date', date);
         file.append('cover', cover);
         file.append('video_link', video_link);
-        file.append('status', 1);
+        file.append('status', status);
         update(file, event.id)
         e.target.reset();
     }
-    const [disable, setdisable] = useState(false);
+  
     return (
         <div>
-             {/*****************************Update Dialog*********************************** */}
-             <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title1"    >
+            {/*****************************Update Dialog*********************************** */}
+            <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title1"    >
                     <form onSubmit={e => submit(e)}>
                         <DialogTitle id="form-dialog-title1">update event</DialogTitle>
                         <DialogContent>
@@ -259,7 +230,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         onClose={handleClose3}
                                         onOpen={handleOpen3}
                                         value={category_id}
-                                        onChange={oncategorychange}>
+                                        onChange={e => setCategory_id(e.target.value)}>
 
                                         {categories && categories.map(c =>
                                             (<MenuItem key={c.id} value={c.id} >{c.name} </MenuItem>)
@@ -294,16 +265,6 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
                                         name="description" value={description} onChange={ondescchange}
                                     /></div></div>
-                                    <Row className=' pt-3'>
-
-
-<Col  sm={12} md={12} xl={12} className="btn-group btn-group-toggle ">
-    <input accept="image/*" id="icon-button-file" type="file" onChange={oncoverchange} />
-    { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-        <span  >Upload Video </span>
-
-        </Button>*/}
-</Col>  </Row>
                             <div className='row pt-3'>
 
 
@@ -314,6 +275,10 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
                                     </Button>
                                 </div>  </div>
+                                <Col  sm={12} md={12} xl={12} className="btn-group btn-group-toggle ">
+                                            <input accept="image/*" id="icon-button-file" type="file" onChange={oncoverchange} name="cover"/>
+                                           
+                                        </Col>
                             <div className="row pt-3">
                                 <div className='col-sm-12'>
                                     <FormControl
@@ -334,7 +299,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         name="status" value={status.toString()}
                                         type="textarea"
                                         fullWidth
-                                        onChange={e => onchange(e)}
+                                        onChange={onstatuschange}
                                     />
                                     disable event
                                     <Switch

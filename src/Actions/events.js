@@ -254,7 +254,7 @@ export const update = (file,event_id) => async dispatch => {
         }
         try {
 
-            const res = await axios.post(`/api/events/${event_id}`, file , config)
+            const res = await axios.post(`/api/events/update/${event_id}`, file , config)
            
             dispatch({
                 type: UPDATE_EVENT,
