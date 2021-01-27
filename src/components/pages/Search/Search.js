@@ -10,7 +10,7 @@ import { addFriend } from '../../../Actions/Friends'
 import { NavLink } from 'react-router-dom';
 import { getUsers } from '../../../Actions/profile';
 
-const Search = ({ friend, addFriend ,getUsers }) => {
+const Search = ({ friend, addFriend ,getUser }) => {
   const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',

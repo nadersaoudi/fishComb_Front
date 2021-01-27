@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { showCart } from '../../../../Actions/Market';
+import { showCart,deleteProd } from '../../../../Actions/cart';
 import { Card, Col, Row } from 'react-bootstrap';
 import { Fragment } from 'react';
 import CartProduct from './CartProduct';
 import './Cart.css';
-const Cart = ( { showCart, market: { cart }} ) => {
+const Cart = ( { showCart, cart :{ cart ,deleteProd } } ) => {
 /******************************/    
 useEffect(() => {
   showCart()
@@ -40,6 +40,11 @@ return (
                             )} 
                         </Col>
                     </Row>
+                    <Row className='pt-2'>
+                        <Col xs={12}>
+                            Total = 
+                        </Col>
+                    </Row>
                 </Card>             
             </Col>
             <Col sm={2} ></Col>
@@ -49,10 +54,11 @@ return (
 }
 Cart.prototype={
     showCart: PropTypes.func.isRequired,
-    market :  PropTypes.object.isRequired
+    deleteProd: PropTypes.func.isRequired,
+    cart :  PropTypes.object.isRequired
+
 }
 const mapStateToProps = state => ({
     cart : state.cart,
-    market : state.market
 })
-export default connect(mapStateToProps, { showCart }) (Cart);
+export default connect(mapStateToProps, { showCart,deleteProd }) (Cart);

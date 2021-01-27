@@ -34,28 +34,21 @@ const Attended = ({ events: { opted }, optedevent }) => {
             (
                 <Card style={{ width: '18rem' }} key={opted.id}  >
                     <Card.Img variant="top" src={opted.cover} width='277px' height='278px'  />
-                    <Card.Subtitle className="mb-2 text-muted pt-3"> Scheduled {opted.date} in  {opted.location}</Card.Subtitle>
-                    
+                    <Card.Subtitle className="mb-2 text-muted pt-3"> Scheduled {opted.date} in  {opted.location}</Card.Subtitle>       
                     <Card.Body>
                         <Card.Title>{opted.name}</Card.Title>
                         <Card.Text>
                         {opted.description}
     </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Link to={`/dashboard/singleevent/${opted.id}`}><Button variant="primary">View details</Button></Link>
                     </Card.Body>
                 </Card>
             )
-
-
-
             )
             }
-</Row>
+    </Row>
 </Container>
-
-    )
-
-
+)
 }
 Attended.propTypes = {
     events: PropTypes.object.isRequired,

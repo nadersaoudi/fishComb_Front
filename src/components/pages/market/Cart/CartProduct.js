@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MdDelete } from 'react-icons/md';
-import { deleteProd } from '../../../../Actions/Market';
+import { deleteProd } from '../../../../Actions/cart';
 import { Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Button } from 'bootstrap';
 import { Fragment } from 'react';
 const CartProduct = (  {cart , deleteProd } ) => {
 return (
@@ -19,10 +18,10 @@ return (
                     <Col xs={3}><input type="number"/></Col>
                     <Col xs={1}>
                         <button>
-                            <MdDelete />
+                            <MdDelete onClick={e=>deleteProd(cart.cart_id)}  />
                         </button>
-                    </Col> 
-                </Row>      
+                    </Col>
+                </Row>
             </Col>    
         </Row>
     </Fragment>
