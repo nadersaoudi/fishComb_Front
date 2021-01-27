@@ -5,7 +5,7 @@ import {  NavLink } from "react-router-dom";
 const Menu = () => {
 
 return(
-    <div className="row ">
+    <div className="row fixed">
 
     
    <aside className="main-sidebar col-2">
