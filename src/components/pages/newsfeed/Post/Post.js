@@ -11,6 +11,7 @@ import $ from 'jquery';
 const Post = ({ auth: { user }, addPost,  }) => {
   // eslint-disable-next-line
   const [show, setShow] = useState(false);
+  const [hidden,sethidden]=useState(false);
   const handleShow = () => setShow(true);
   const [url, setUrl] = useState(null);
   const inputEl = useRef(null);
@@ -26,8 +27,10 @@ const Post = ({ auth: { user }, addPost,  }) => {
     e.preventDefault();
     var link = $('#linkurl').val();
     var description = $('#description').val();
-    console.log(link);
+ 
     addPost({ link, description });
+    sethidden(true)
+    setUrl('')
     e.target.reset();
   }
   const useStyles = makeStyles((theme) => ({
@@ -70,8 +73,8 @@ const Post = ({ auth: { user }, addPost,  }) => {
         <div className=" pub__top">
           <Avatar src={user && user.profile_image} className={classes.large} />
           <div className='post'>
-            <input ref={inputEl} id="description" placeholder={`What's on your mind?`} onChange={preview} className='pub__input'  />
-            {url && <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={url}  />}
+            <input ref={inputEl} id="description" placeholder={`What's on your mind?`} onChange={preview} className='pub__input' onClickCapture={e=>{sethidden(false)}} />
+            {url && <div hidden={hidden} ><ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={url}  /></div>}
             <input type="text" id="linkurl" />
           </div>
           <button id='sub' type="submit" onClick={handleShow}>submit</button>
