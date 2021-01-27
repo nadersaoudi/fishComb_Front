@@ -136,52 +136,85 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     }
 
     const [uid, setText] = useState('');
+    const [name, setname] = useState('')
+    const [description, setdescription] = useState('')
+    const [category_id, setcategoryid] = useState('')
+    const [location, setlocation1] = useState('')
+    const [date, setdate] = useState('')
+    const [video_link, setvideolink] = useState('')
+    const [cover, setcover] = useState('')
+    const [status,setStatus]=useState('')
+    const onnamechange = e => {
+        setname(e.target.value)
+    }
+
+    const ondescchange = e => {
+        setdescription(e.target.value)
+    }
+
+    const oncategorychange = e => {
+        setcategoryid(e.target.value)
+    }
+
+    const onlocationchange = e => {
+        setlocation1(e.target.value)
+    }
+
+    const ondatechange = e => {
+        setdate(e.target.value)
+    }
+    const oncoverchange = e => {
+        setcover(e.target.files[0])
+    }
+    const onlinkchange = e => {
+        setvideolink(e.target.value)
+    }
+
     const [formData, setFormData] = useState({
-        name: '',
-        description: '',
-        location: '',
-        date: '',
-        cover: 'non',
-        video_link: '',
-        status: '',
+        name1: '',
+        description1: '',
+        location1: '',
+        date1: '',
+        cover1: 'non',
+        video_link1: '',
+        status1: '',
 
     })
-    const [category_id, setCategory_id] = useState('')
-    const { name, description, location, date, cover, video_link, status } = formData;
-
+  
+    const { name1, description1, location1, date1, cover1, video_link1, status1 } = formData;
     useEffect(() => {
         setFormData({
-            location: loading || !event.location ? '' : event.location,
-            name: loading || !event.name ? '' : event.name,
-            description: loading || !event.description ? '' : event.description,
-            cover: loading || !event.cover ? '' : event.cover,
-            video_link: loading || !event.video_link ? '' : event.video_link,
-            status: loading || !event.status ? true : event.status,
-            date: loading || !event.date ? '' : event.date,
+            location1: loading || !event.location ? '' : event.location,
+            name1: loading || !event.name ? '' : event.name,
+            description1: loading || !event.description ? '' : event.description,
+            cover1: loading || !event.cover ? '' : event.cover,
+            video_link1: loading || !event.video_link ? '' : event.video_link,
+            status1: loading || !event.status ? true : event.status,
+            date1: loading || !event.date ? '' : event.date,
         })
     }, [loading])
     const handleswitch = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
         if (event.target.checked === true) {
-            setFormData({ status: true })
+           setStatus(true)
         }
-        else { setFormData({ status: false }) }
+        else {   setStatus(false) }
         console.log(status)
     };
-    const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+  
     const submit = e => {
         e.preventDefault();
-        update({
-            name,
-            description,
-            category_id,
-            location,
-            date,
-            cover: 'non',
-            video_link,
-            status,
-
-        }, event.id)
+        console.log(description)
+        const file = new FormData();
+        file.append('name', name);
+        file.append('description', description);
+        file.append('category_id', category_id);
+        file.append('location', location);
+        file.append('date', date);
+        file.append('cover', cover);
+        file.append('video_link', video_link);
+        file.append('status', 1);
+        update(file, event.id)
         e.target.reset();
     }
     const [disable, setdisable] = useState(false);
@@ -202,7 +235,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         label="Title"
                                         type="text"
 
-                                        name="name" value={name} onChange={e => onchange(e)}
+                                        name="name" value={name} onChange={onnamechange}
                                     /></div></div>
                             <div className="row pt-3">
                                 <div className='col-6'>
@@ -212,7 +245,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         id="Date"
                                         type="Date"
 
-                                        name="date" value={date} onChange={e => onchange(e)}
+                                        name="date" value={date} onChange={ondatechange}
                                     />
 
                                 </div>
@@ -226,7 +259,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         onClose={handleClose3}
                                         onOpen={handleOpen3}
                                         value={category_id}
-                                        onChange={e => setCategory_id(e.target.value)}>
+                                        onChange={oncategorychange}>
 
                                         {categories && categories.map(c =>
                                             (<MenuItem key={c.id} value={c.id} >{c.name} </MenuItem>)
@@ -247,7 +280,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         className='input_event'
                                         type="text"
                                         fullWidth
-                                        name="location" value={location} onChange={e => onchange(e)}
+                                        name="location" value={location} onChange={onlocationchange}
                                     /></div></div>
                             <div className="row pt-3">
                                 <div className='col-sm-12'>
@@ -259,8 +292,18 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         as="textarea" aria-label="With textarea"
                                         type="textarea"
 
-                                        name="description" value={description} onChange={e => onchange(e)}
+                                        name="description" value={description} onChange={ondescchange}
                                     /></div></div>
+                                    <Row className=' pt-3'>
+
+
+<Col  sm={12} md={12} xl={12} className="btn-group btn-group-toggle ">
+    <input accept="image/*" id="icon-button-file" type="file" onChange={oncoverchange} />
+    { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+        <span  >Upload Video </span>
+
+        </Button>*/}
+</Col>  </Row>
                             <div className='row pt-3'>
 
 
@@ -281,7 +324,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
                                         type="textarea"
                                         fullWidth
-                                        name="video_link" value={video_link} onChange={e => onchange(e)}
+                                        name="video_link" value={video_link} onChange={onlinkchange}
                                     />
                                     <FormControl
                                         // placeholder={event && event.status}
