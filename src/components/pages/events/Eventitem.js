@@ -177,7 +177,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
         date1: '',
         cover1: 'non',
         video_link1: '',
-        status1: '',
+        status1: '',  
 
     })
   
