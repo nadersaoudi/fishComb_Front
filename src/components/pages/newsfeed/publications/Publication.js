@@ -118,12 +118,12 @@ const Publication = ({
                 </span>
                 <div className="row">
                   <div className="col-lg-8 datepost">
-                    Posted on{" "}
+                   
                     <Moment
                       date={posts && posts.created_at}
-                      format="YYYY-MM-DD HH:mm"
-                      trim
-                    />
+                     // format="YYYY-MM-DD HH:mm"
+                      toNow
+                    /> ago
                   </div>
                 </div>
               </div>
