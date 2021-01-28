@@ -73,3 +73,6 @@ export const REMOVE = "REMOVE";
 export const CLEAR_CART = "CLEAR_CART";
 export const GET_TOTALS = "GET_TOTALS";
 export const TOGGLE_AMOUNT = "TOGGLE_AMOUNT";
+export const UPDATE_QUANTITY = 'UPDATE_QUANTITY';
+export const ERROR_UPDATE_QUANTITY = 'ERROR_UPDATE_QUANTITY';
+export const CART_ERROR = 'CART_ERROR';

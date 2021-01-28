@@ -86,11 +86,9 @@ return (
 Edit.propTypes = {
     auth: PropTypes.object.isRequired,
     editt: PropTypes.func.isRequired,
-
   };
-  const mapStateToProps = state => ({
-    auth: state.auth,
-  
-  })
-  export default connect(mapStateToProps, { edit })(withRouter(Edit));
+const mapStateToProps = state => ({
+  auth: state.auth,
+})
+export default connect(mapStateToProps, { edit })(withRouter(Edit));
 
