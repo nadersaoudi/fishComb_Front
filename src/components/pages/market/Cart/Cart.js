@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { showCart,deleteProd } from '../../../../Actions/cart';
@@ -8,11 +8,13 @@ import CartProduct from './CartProduct';
 import './Cart.css';
 import { IoBagCheckOutline } from 'react-icons/io5';
 import { Button } from '@material-ui/core';
+import Checkout from './Checkout'
 const Cart = ( { showCart, cart :{ cart}   ,deleteProd }  ) => {
 /******************************/    
 useEffect(() => {
   showCart()
 },[showCart])
+const [hidden,sethidden]=useState(true)
 /******************************/ 
 return (
     <Fragment>
@@ -57,6 +59,19 @@ return (
                 </Card>             
             </Col>
             <Col sm={2} ></Col>
+       </Row>
+       <Row>
+           <Col sm={10} md={10}></Col>
+          
+           <Col sm={1} md={1}><Button onClick={e=>sethidden(false)}>Checkout</Button></Col>
+       </Row>
+       <Row hidden={hidden}><Col sm={1} md={1}></Col> <Col sm={5} md={5}><h3>Checkout</h3></Col>
+       <Row>
+       <Col sm={1} md={1}></Col><Col sm={11} md={11}><Checkout/></Col>
+       </Row>
+       
+       
+       
        </Row>
     </Fragment>
 )

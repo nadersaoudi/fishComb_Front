@@ -18,9 +18,9 @@ export const showCart = () => async dispatch =>{
             type: GET_CART,
             payload: res.data
         })
-        console.log(res.data)
+       
     }catch {
-
+        
     }
 }
 //Add Cart
@@ -63,7 +63,7 @@ export const deleteProd = (cart_id) =>  async dispatch =>{
 }
 //checkout
 //api/order
-export const checkout = ({formdata}) =>  async dispatch =>{
+export const checkout = (formdata) =>  async dispatch =>{
     const config = {
         headers: {
             Authorization: 'Bearer ' + Cookies.get('user'),
@@ -71,7 +71,7 @@ export const checkout = ({formdata}) =>  async dispatch =>{
         }
     }
     try {   
-        const res = await axios.post(`/api/order`,{formdata},config)
+        const res = await axios.post(`/api/order`,formdata,config)
         dispatch ({
             type: CHECKOUT,
             payload: res.data
