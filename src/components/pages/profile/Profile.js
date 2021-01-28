@@ -25,16 +25,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
   },
 }));
-
-
-
-
 const Profile = ({ auth: { user, loading }, edit, history, picture }) => {
   const [file1, setFile] = useState('');
- 
-
-
- 
   $('#editprofile').click(function (event) {
     event.preventDefault();
     $('.show').each(function () {
@@ -159,7 +151,6 @@ const onsubmit2=e=>{
       </Row>
     </Fragment>
   )
-
 }
 Profile.propTypes = {
   auth: PropTypes.object.isRequired,
@@ -168,6 +159,5 @@ Profile.propTypes = {
 };
 const mapStateToProps = state => ({
   auth: state.auth,
-
 })
 export default connect(mapStateToProps, { edit, picture })(withRouter(Profile));

@@ -5,7 +5,9 @@ import { deleteProd } from '../../../../Actions/cart';
 import { Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Fragment } from 'react';
-const CartProduct = (  {cart , deleteProd } ) => {
+import { GrAddCircle } from 'react-icons/gr';
+import { Button } from '@material-ui/core';
+const CartProduct = (  {cart  , deleteProd } ) => {
 return (
     <Fragment>
         <Row className='pb-5'>
@@ -14,12 +16,15 @@ return (
                     <Col xs={1}>#</Col>
                     <Col xs={3}>{cart && cart.product.name}</Col> 
                     <Col xs={2}>{cart && cart.product.price}</Col> 
-                    <Col xs={1}>{cart && cart.product.stock}</Col>
-                    <Col xs={3}><input type="number"/></Col>
+                    <Col xs={2}>
+                        <GrAddCircle />
+                        {cart && cart.quantity}
+                        </Col>
+                    <Col xs={1}>{cart && cart.amount}</Col>
                     <Col xs={1}>
-                        <button>
-                            <MdDelete onClick={e=>deleteProd(cart.cart_id)}  />
-                        </button>
+                        <Button>
+                            <MdDelete onClick={e=>deleteProd(cart && cart.cart_id)}  />
+                        </Button>
                     </Col>
                 </Row>
             </Col>    
@@ -28,10 +33,11 @@ return (
 )
 }
 CartProduct.propTypes = {
-    cart : PropTypes.object.isRequired,
-    deleteProd : PropTypes.func.isRequired,
+    cart:PropTypes.object.isRequired,
+    deleteProd:PropTypes.func.isRequired,
 }
 const mapStateToProps = state => ({
     auth: state.auth,
+    carts: state.cart
 })
-export default connect(mapStateToProps , {deleteProd})(CartProduct)
+export default connect(mapStateToProps,{deleteProd})(CartProduct)

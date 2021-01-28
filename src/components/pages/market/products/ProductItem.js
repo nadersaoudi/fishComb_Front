@@ -17,7 +17,7 @@ import { BiEditAlt } from 'react-icons/bi';
 
 
 
-const ProductItem = ( { auth:{user}, match, getProduct, deleteProduct,  market :{ product,markets  } ,addCart}  ) => {
+const ProductItem = ( { auth: { user }, match, getProduct, deleteProduct,  market :{ product,markets  } ,addCart}  ) => {
 /****************************/
 useEffect(() => {
     getProduct(match.params.id);
@@ -51,9 +51,10 @@ const handleClose = () => {
                         <div className='col-sm-10'>
                       <label className='prod_details'>Product Name :</label> { product && product.name }
                  </div>
+                 {user  && product && user.user_id ===   product.user.id?
                  <div className='col-sm-1'>
-                    {user && user.id === product.user_id ?
-                       <Button onClick={handleClickOpen} >  <BiEditAlt  /> </Button> : (<div></div>)}
+                   
+                       <Button onClick={handleClickOpen} >  <BiEditAlt  /> </Button> 
                         <Dialog open={open}
                          onClose={handleClose}
                           className='updateProd'>
@@ -61,23 +62,23 @@ const handleClose = () => {
                         </Dialog> 
                         
                         </div> 
+                        : (<div></div>)}
                         </div>
+                        
                         
                  <div className='row'>
                         <div className='col-sm-10'>
                          <label className='prod_details'>Price : </label>{ product && product.price }
                          </div>
-                         
-                    <div className='col-sm-1 '>
-                    {user && user.id === product.user_id ?
+                    <div className='col-sm-1'>
+                    {user &&  product && user.user_id===   product.user.id ?
                         <Link className='delete_prod' to='/dashboard/marketplace' >
-                           <Button className='pt-3'> <DeleteOutlineRoundedIcon onClick={e=>deleteProduct(match.params.id)} /> </Button>                      
+                           <Button className=''> <DeleteOutlineRoundedIcon onClick={e=>deleteProduct(match.params.id)} /> </Button>                      
                         </Link>
                         : (<div></div>)}
-                           <Button className='pt-3'> <MdAddShoppingCart onClick={e=>addCart(product.id)} /> </Button>                      
+                           <Button className=''> <MdAddShoppingCart onClick={e=>addCart(product.id)} /> </Button>                      
                     </div>
                     </div>
-                    
                     <div className='row'>
                         <div className='col-sm-8'>
                            <label className='prod_details'>Quantity : </label> { product && product.stock }
@@ -85,7 +86,7 @@ const handleClose = () => {
                     </div>
                     <div className='row'>
                         <div className='col-md-8'>
-                     <label className='prod_details'> Description</label>       { product && product.description }         
+                     <label className='prod_details'> Description</label> { product && product.description }         
                     </div>
                     
                       
@@ -116,13 +117,13 @@ const handleClose = () => {
 }
 ProductItem.propTypes = {
     market: PropTypes.object.isRequired,
+    auth :PropTypes.object.isRequired,
     getProduct: PropTypes.func.isRequired,
     deleteProduct: PropTypes.func.isRequired,
     addCart:PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
+    auth : state.auth,
     market: state.market,
-    auth : state.auth
-    
 })
 export default connect(mapStateToProps ,{ getProduct ,deleteProduct,addCart })(ProductItem);

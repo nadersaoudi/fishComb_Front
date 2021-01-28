@@ -71,7 +71,7 @@ const Post = ({ auth: { user }, addPost,  }) => {
     <div className="pub px-0 ">
       <form onSubmit={e => Onsubmit(e)}>
         <div className=" pub__top">
-          <Avatar src={user && user.profile_image} className={classes.large} />
+          <Avatar src={user && user.attributes.profile_image} className={classes.large} />
           <div className='post'>
             <input ref={inputEl} id="description" placeholder={`What's on your mind?`} onChange={preview} className='pub__input' onClickCapture={e=>{sethidden(false)}} />
             {url && <div hidden={hidden} ><ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={url}  /></div>}

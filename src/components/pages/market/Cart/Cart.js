@@ -6,7 +6,9 @@ import { Card, Col, Row } from 'react-bootstrap';
 import { Fragment } from 'react';
 import CartProduct from './CartProduct';
 import './Cart.css';
-const Cart = ( { showCart, cart :{ cart ,deleteProd } } ) => {
+import { IoBagCheckOutline } from 'react-icons/io5';
+import { Button } from '@material-ui/core';
+const Cart = ( { showCart, cart :{ cart}   ,deleteProd }  ) => {
 /******************************/    
 useEffect(() => {
   showCart()
@@ -28,21 +30,28 @@ return (
                         <Col xs={1}>#</Col>
                         <Col xs={3}>Name Product</Col> 
                         <Col xs={2}>Price</Col> 
-                        <Col xs={2}>stock</Col>
-                        <Col xs={2}>Quantity</Col> 
+                        <Col xs={2}>Quantity</Col>
+                        <Col xs={2}>total</Col> 
                     </Row>
                     <hr /> 
                     <Row>
                         <Col xs={12}>
-                            {cart && cart.map((cart) =>
+                            {cart && cart.carts.map((cart) =>
                                 (
                                 <CartProduct key={cart.cart_id} cart={cart} />)
-                            )} 
+                                )}
                         </Col>
                     </Row>
                     <Row className='pt-2'>
                         <Col xs={12}>
-                            Total = 
+                            Total = {cart && cart.total_amount }
+                        </Col>
+                    </Row>
+                    <Row className='pt-2'>
+                        <Col xs={5}>
+                            <Button className='Button_checkout'>
+                                <IoBagCheckOutline />
+                            </Button>
                         </Col>
                     </Row>
                 </Card>             
@@ -55,8 +64,7 @@ return (
 Cart.prototype={
     showCart: PropTypes.func.isRequired,
     deleteProd: PropTypes.func.isRequired,
-    cart :  PropTypes.object.isRequired
-
+    cart: PropTypes.object.isRequired
 }
 const mapStateToProps = state => ({
     cart : state.cart,

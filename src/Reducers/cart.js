@@ -6,10 +6,12 @@ import {
     GET_TOTALS,
     TOGGLE_AMOUNT,
     GET_CART,
+    ADD_CART,
     DELETE_PROD_CART
   } from '../Actions/types';
   
   const initialStore = {
+    basketNumber : 0,
     cart: [],
     total: 0,
     amount: 0
@@ -21,9 +23,16 @@ import {
              cart: action.payload
          }
      }
+     if (action.type === ADD_CART){
+      return {
+          ...state,
+          basketNumber: state.basketNumber + 1,
+      }
+  }
      if (action.type === DELETE_PROD_CART) {
          return {
              ...state,
+             basketNumber: state.basketNumber - 1,
              cart: state.cart.filter(cart => cart.cart_id !== action.payload),
          }
      }

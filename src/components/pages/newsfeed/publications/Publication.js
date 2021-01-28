@@ -43,7 +43,7 @@ const Publication = ({
   addLike,
   addComment,
   getPost,
-  getUser
+  getUsers
 }) => {
   /******************************************/
 
@@ -110,13 +110,12 @@ const Publication = ({
                   onClick={(e) => getUsers(posts.data.user.data.user_id)}
                 /></NavLink>
               </div>
-              <div className="col-lg-10">
+              <div className="col-lg-9">
                 <span className="nameuser">
                 {posts &&posts.data.user.data.attributes.first_name.charAt(0).toUpperCase() +posts.data.user.data.attributes.first_name.slice(1)} {posts && posts.data.user.data.attributes.last_name.charAt(0).toUpperCase() + posts.data.user.data.attributes.last_name.slice(1)}
                 </span>
                 <div className="row">
                   <div className="col-lg-8 datepost">
-                   
                     <Moment
                       date={posts && posts.data.created_at}
                      // format="YYYY-MM-DD HH:mm"
@@ -221,7 +220,6 @@ const Publication = ({
                 <div className="col-3">
                 { <div className="col-lg-4 datepost">{ posts.data.likes.length>0 && posts.data.likes.length} </div>}
                 </div>
-
               </div>
             </div>
             <div className="col-lg-2">
@@ -248,10 +246,7 @@ const Publication = ({
                 <div className="col-lg-3 datepost">{posts.data.comments.length} </div>
               </div>
             </div>
-           
           </div>
-
-
           <div className='row pt-2' hidden={hidden}>
             <div ><hr /></div>
             <form
@@ -301,7 +296,6 @@ const Publication = ({
     </div>
   );
 };
-
 Publication.prototype = {
   auth: PropTypes.object.isRequired,
   Post: PropTypes.object.isRequired,
