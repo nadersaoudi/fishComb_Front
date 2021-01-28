@@ -18,6 +18,7 @@ export const showCart = () => async dispatch =>{
             type: GET_CART,
             payload: res.data
         })
+        console.log(res.data)
     }catch {
 
     }

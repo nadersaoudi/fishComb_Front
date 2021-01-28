@@ -110,12 +110,12 @@ return(
                                     Searchfriend({ uid });
                                     setText('')
                                 }}>
-      <div className="col-sm  header__input" >
+      <div className="col-sm px-0 header__input" >
       
       <input type="text" placeholder='Search Fishcomb' aria-label="Search" value={uid} onChange={e => setText(e.target.value)} />
     
       
-      <button className="col-sm-1  header__button" onClick={() => {history.push('/dashboard/search') }}>
+      <button className="col-sm-1 px-0  header__button" onClick={() => {history.push('/dashboard/search') }}>
 
           <svg width="19px" height="19px"  version="1.1" xmlns="http://www.w3.org/1999/xlink">
             <g id="fishcomb-product-icons-14">
@@ -130,12 +130,12 @@ return(
       </div>
       <div className="col-sm-3  flex">
     <div className="col-sm-2 pt-1">
-    <Avatar  src={user && user.profile_image}  className={classes.large}  />
+    <Avatar  src={user && user.attributes.profile_image}  className={classes.large}  />
     </div>
     
     <div className="col-sm-4 pt-3">
     <Link to={`/dashboard/profile/about`}  className='lin' >
-         {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}
+         {user && user.attributes.first_name.charAt(0).toUpperCase() + user.attributes.first_name.slice(1)} {user && user.attributes.last_name.charAt(0).toUpperCase() + user.attributes.last_name.slice(1)}
     </Link>
     </div>
     <div className="col-sm-2 pt-3">

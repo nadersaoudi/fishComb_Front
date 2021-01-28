@@ -41,7 +41,6 @@ const onimagechange = e => {
 }
 const submit = e => {
     e.preventDefault();
-    console.log(description)
     const file = new FormData();
     file.append('name', name);
     file.append('description', description);
@@ -85,13 +84,13 @@ const handleClose = () => {
                     <DialogContent>
                         <div className='row'>
                             <div className='col-sm-1 mr-2'>
-                                <Avatar src={user && user.profile_image}/>
+                                <Avatar src={user && user.attributes.profile_image}/>
                             </div>
                             <div className='col-sm-10 pt-3'>
                                 <div className='row'>
                                     <div className='row'>
                                         <div className='col-sm-12'>
-                                            <h6> {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}  {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}</h6>
+                                            <h6> {user && user.attributes.first_name.charAt(0).toUpperCase() + user.attributes.first_name.slice(1)}  {user && user.attributes.last_name.charAt(0).toUpperCase() + user.attributes.last_name.slice(1)}</h6>
                                         </div>
                                     </div>
                                 <div className='row'>
@@ -159,12 +158,19 @@ const handleClose = () => {
                         <div className='row pt-3 pb-2'>
                             <div className='col-5'>
                             <div className='row pt-3'>
-                        <div className="btn-group btn-group-toggle col-md-12  ">
+                            <div className="btn-group btn-group-toggle col-md-12  ">
                             <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
                             { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                 <span  >Upload Video </span>
                                 </Button>*/}
-                        </div>  </div>
+                            </div>  </div>
+                            <div className='row pt-3'>
+                            <div className="btn-group btn-group-toggle col-md-12  ">
+                            <input accept="image/*" id="icon-button-file" type="file" placeholder='file product' />
+                            { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+                                <span  >Upload Video </span>
+                                </Button>*/}
+                            </div>  </div>
                             </div>
                             <div className='col-2'>
                             </div>

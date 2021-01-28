@@ -26,25 +26,19 @@ return(
              </div>
              </div> 
                 <div className='pt-4 pb-1'>
-                 {user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}
-                </div>  
-                <div className='pt-4 pb-1'>
-                 {user && user.username}
-                </div>  
-                <div className='pt-4 pb-1'>
-                    {user && user.email} 
-                </div> 
-                <div className='pt-4 pb-1'>
-                    {user && user.birth_date} 
+                 {user && user.attributes.first_name.charAt(0).toUpperCase() + user.attributes.first_name.slice(1)} {user && user.attributes.last_name.charAt(0).toUpperCase() + user.attributes.last_name.slice(1)}
                 </div>
                 <div className='pt-4 pb-1'>
-                    {user && user.phone} 
+                    {user && user.attributes.birthday} 
+                </div>
+                <div className='pt-4 pb-1'>
+                    {user && user.attributes.phone} 
                 </div> 
                 <div className='pt-4 pb-1'>
-                    {user && user.location} 
+                    {user && user.attributes.location} 
                 </div> 
                 <div className='pt-4 pb-1'>
-                    {user && user.about} 
+                    {user && user.attributes.about} 
                 </div>
                  
              </div>

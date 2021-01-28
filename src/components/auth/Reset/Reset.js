@@ -7,7 +7,7 @@ import Footer from "../../layout/Footer/Footer"
 const Reset = ({ reset }) => {
     const [formData, setFormData] = useState({
         email: ''
-   
+
       });
       const { email } = formData;
 

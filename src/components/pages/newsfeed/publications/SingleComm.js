@@ -41,12 +41,12 @@ const SingleComm = (
         <div>
         </div>
       </div>
-      {user &&user.id===comments.user_id ? <div className='col-1 '>
+      {user &&user.user_id===comments.user_id ? <div className='col-1 '>
         <Button variant="light" onClick={onclick} >
           <EditIcon className='butDelCom' />
         </Button>
       </div>: <div></div>} 
-      {user && user.id===comments.user_id ? <div className='col-1 mr-2'>
+      {user && user.user_id===comments.user_id ? <div className='col-1 mr-2'>
         <Button variant="light" onClick={(e) => deleteComment(comments.id)} >
           <DeleteIcon className='butDelCom' />
         </Button>

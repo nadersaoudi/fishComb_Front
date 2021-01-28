@@ -9,40 +9,72 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Avatar } from "@material-ui/core";
 import { updateProduct } from '../../../../Actions/Market';
-const UpdateProduct = ({ updateProduct , market:{ product, categories }, loading}) => {
+const UpdateProduct = ({ auth: {user},updateProduct , market:{ product, categories }, loading}) => {
 /**********************************/
-const [category_id, setCategory_id] = useState('')
-const [formData, setFormData] = useState({
-    description: '',
-    name: '',
-    price: '',
-    stock: '',
-    status:'',
-    image: 'jaw'
-})
-const { name,description, price, stock, status, image } = formData;
-useEffect(() => {
-    setFormData({
-        name: loading || !product.name ? '' : product.name,
-        category_id: loading || !product.category_id ? '' : product.category_id,
-        description: loading || !product.description ? '' : product.description,
-        price: loading || !product.price ? '' : product.price,
-        stock: loading || !product.stock ? '' : product.stock,
-        status: loading || !product.status ? '' : product.status,
-    })
-}, [loading])
-const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+/*************************/
+const [name, setname] = useState('')
+const [description, setdescription] = useState('')
+const [category_id, setcategoryid] = useState('')
+const [price, setprice] = useState('')
+const [stock, setstock] = useState('')
+const [image, setimage] = useState('')
+const [status , setStatus] = useState('')
+
+
+useEffect(()=>{
+  setname(loading || !product.name ? '' : product.name)
+},[loading])
+useEffect(()=>{
+setcategoryid(loading || !product.category_id? '' : product.category_id)
+},[loading])
+useEffect(()=>{
+setdescription(loading || !product.description ? '' : product.description)
+},[loading])
+useEffect(()=>{
+setStatus(loading || !product.status ? 1 : product.status)
+},[loading])
+useEffect(()=>{
+setimage(loading || !product.image ? '' : product.image)
+},[loading])
+useEffect(()=>{
+setstock(loading || !product.stock ? '' : product.stock)
+},[loading])
+useEffect(()=>{
+setprice(loading || !product.price ? '' : product.price)
+},[loading])
+
+const onnamechange = e => {
+    setname(e.target.value)
+}
+const ondescchange = e => {
+    setdescription(e.target.value)
+}
+const oncategorychange = e => {
+    setcategoryid(e.target.value)
+}
+const onpricechange = e => {
+    setprice(e.target.value)
+}
+const onstockchange = e => {
+    setstock(e.target.value)
+}
+const onimagechange = e => {
+    setimage(e.target.files[0])
+}
+const onstatuschange = e => {
+    setStatus(e.target.value)
+}
 const submit = e => {
     e.preventDefault();
-    updateProduct({ 
-        description,
-        category_id,
-        name,
-        price,
-        stock,
-        status,
-        image
-    },product.id)
+    const file = new FormData();
+    file.append('name', name);
+    file.append('description', description);
+    file.append('category_id', category_id);
+    file.append('price', price);
+    file.append('stock', stock);
+    file.append('image', image);
+    file.append('status', status);
+    updateProduct(file,product.id)
     e.target.reset();
 }
 /*****************************/    
@@ -50,7 +82,6 @@ const [open1, setOpen1] = React.useState(false);
 const handleClickOpen1 = () => {
     setOpen1(true);
 };
-
 const handleClose1 = () => {
     setOpen1(false);
 };
@@ -77,7 +108,7 @@ const handleClose = () => {
                     <DialogContent>
                         <div className='row'>
                             <div className='col-sm-1 mr-2'>
-                                
+                              <Avatar  src={user&& user.profile_image}/>  
                             </div>
                             <div className='col-sm-10 pt-3'>
                                 <div className='row'>
@@ -91,70 +122,79 @@ const handleClose = () => {
                                         <div className='col-sm-12'>
                                             <FormControl
                                                 className='input_event'
-                                                placeholder="Product Name"
+                                                placeholder={product && product.name}
                                                 label="Product_name"
-                                                name="name" value={name} onChange={e => onchange(e)}
+                                                name="name" value={name} 
+                                                onChange={onnamechange}
                                                 type="text"/>
                                         </div>
                                     </div>
                                 <div className='row pt-3 pb-3'>
+                                <div className='row pt-3 '>
+                                    <div className='col-7'>
+                                        <FormControl
+                                        className='input_event'
+                                        placeholder={product && product.price}
+                                        margin="dense"
+                                        name="price" value={price} onChange={onpricechange}
+                                        type="text"/></div>
+                                    <div className='col-5'>
                                     <Select
                                         labelId="demo-controlled-open-select-label"
                                         id="demo-controlled-open-select"
                                         open={open1}
-                                        onClose={handleClose2}
-                                        onOpen={handleOpen2}
+                                        onClose={handleClose1}
+                                        onOpen={handleClickOpen1}
                                         value={category_id}
                                         name="category_id"
-                                        onChange={e => onchange(e)}>
+                                        onChange={oncategorychange}>
                                         {categories && categories.map(c =>
                                         (<MenuItem key={c.id} value={c.id} >{c.name}</MenuItem>)
                                         )}
                                     </Select>
-                                <div className='col-6 pt-3'>
-                                    <FormControl
-                                        className='input_event'
-                                        placeholder="Price"
-                                        margin="dense"
-                                        name="price" value={price} onChange={e => onchange(e)}
-                                        type="text"/>
-                                </div>
+                                    </div>
+                            </div>
                             </div>
                         <div className='row '>
                             <div className='col-12'>
                                 <FormControl
-                                    placeholder="Stock"
+                                    placeholder={product && product.stock}
                                     className='input_event'
                                     margin="dense"
-                                    name="stock" value={stock} onChange={e => onchange(e)}
+                                    name="stock" value={stock} onChange={onstockchange}
                                     type="text"/>
                             </div>
                             <div className='col-12'>
                                 <FormControl
-                                    placeholder="1 or 0 "
+                                    placeholder={product && product.status}
                                     className='input_event'
                                     margin="dense"
-                                    name="status" value={status} onChange={e => onchange(e)}
+                                    name="status" value={status} onChange={onstatuschange} 
                                     type="text"/>
                             </div>
                         </div>
                         <div className='row pt-3'>
                             <div className='col-12'>
                                 <FormControl
-                                    placeholder="Description"
+                                    placeholder={product && product.description}
                                     className='input_event'
                                     margin="dense"
                                     id="Description"
                                     as="textarea" aria-label="With textarea"
-                                    name="description" value={description} onChange={e => onchange(e)}
+                                    name="description" value={description} onChange={ondescchange}
                                     type="textarea"/>
                              </div>
                         </div>
                         <div className='row pt-3 pb-2'>
                             <div className='col-md-5'>
-                                <Button  variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-                                    <span>Upload Image </span>
-                                </Button>
+                            <div className='row pt-3'>
+                            <div className="btn-group btn-group-toggle col-md-12  ">
+                            <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
+                            { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+                                <span  >Upload Video </span>
+                                </Button>*/}
+                            </div>  
+                            </div>
                             </div>
                             <div className='col-2'>
                             </div>
@@ -187,6 +227,7 @@ const mapStateToProps = state => ({
     events: state.events,
     market: state.market,
     updateProduct: state.market,
-    categories: state.market
+    categories: state.market,
+    auth: state.auth
 })
 export default connect(mapStateToProps, { updateProduct }) (UpdateProduct) ;

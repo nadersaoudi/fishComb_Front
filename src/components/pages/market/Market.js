@@ -6,16 +6,20 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Dialog from '@material-ui/core/Dialog';
-import { getMarket, myProduct, getCategories ,search } from '../../../Actions/Market';
+import { getMarket, myProduct ,search  } from '../../../Actions/Market';
+import { showCart } from '../../../Actions/cart';
 import "./Market.css"
 import YourAccount from './YourAccount';
 import AddProduct from './products/AddProduct';
 import SingleProduct from './products/SingleProduct';
-const Market =( {auth : {user}, getMarket  , markets:{ markets , categories  } ,myProduct,search } ) => {
+const Market =( { getMarket  , markets:{ markets} ,cart, myProduct, search, showCart } ) => {
 /******************************/
 useEffect(() => {
     getMarket()
 }, [getMarket])
+useEffect(() => {
+    showCart()
+  },[showCart])
 /**************************/
 const [open2, setOpen2] = React.useState(false);
 const handleClose2 = () => {
@@ -76,13 +80,12 @@ const onsubmit1 = e => {
                     <li className="col-7 ">
                 </li>
                 <li className='nav-item'>
-                  <NavLink to={'/dashboard/cart'} className="m"><span className='n'>Basket<ShoppingCartIcon/></span></NavLink> 
+                  <NavLink to={'/dashboard/cart'} className="m"><span className='n'>Basket<ShoppingCartIcon/>{ cart && cart.length}</span></NavLink> 
                 </li>
                 </ul>
                 </div>
                 </div>
             <div className='row'>
-            
                 <div className='col-md-3  side_min_bar'> 
                 <form onSubmit={e => onsubmit1(e)} >
                 <div className="col-sm-12 px-0 header__input" >
@@ -179,11 +182,13 @@ Market.prototype = {
     getMarket : PropTypes.func.isRequired,
     myProduct : PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
-    search : PropTypes.func.isRequired
+    search : PropTypes.func.isRequired,
+    showCart : PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     auth: state.auth, 
     markets: state.market,
+    cart: state.cart,
     categories: state.categories,
 })
-export default connect(mapStateToProps , { getMarket, myProduct , search })(Market);
+export default connect(mapStateToProps , { getMarket, myProduct , search,showCart })(Market);

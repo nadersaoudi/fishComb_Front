@@ -43,7 +43,7 @@ const Publication = ({
   addLike,
   addComment,
   getPost,
-  getUser
+  getUsers
 }) => {
   /******************************************/
 
@@ -110,24 +110,23 @@ const Publication = ({
                   onClick={(e) => getUsers(posts.user.id)}
                 /></NavLink>
               </div>
-              <div className="col-lg-10">
+              <div className="col-lg-9">
                 <span className="nameuser">
                 {posts && posts.user.first_name.charAt(0).toUpperCase() + posts.user.first_name.slice(1)} {posts && posts.user.last_name.charAt(0).toUpperCase() + posts.user.last_name.slice(1)}
                 </span>
                 <div className="row">
                   <div className="col-lg-8 datepost">
-                    Posted on{" "}
                     <Moment
                       date={posts && posts.created_at}
-                      format="YYYY-MM-DD HH:mm"
-                      trim
-                    />
+                     // format="YYYY-MM-DD HH:mm"
+                      toNow
+                    /> ago
                   </div>
                 </div>
               </div>
               <div className="col-lg-1" id="pnt">
                 <div className={classes.root}>
-                {user && user.id === posts.user_id ? <div>
+                {user && user.user_id === posts.user.id ? <div>
                    <Button
                       ref={anchorRef}
                       aria-controls={open ? 'menu-list-grow' : undefined}
@@ -221,7 +220,6 @@ const Publication = ({
                 <div className="col-3">
                 { <div className="col-lg-4 datepost">{ posts.likes.length>0 && posts.likes.length} </div>}
                 </div>
-
               </div>
             </div>
             <div className="col-lg-2">
@@ -248,10 +246,7 @@ const Publication = ({
                 <div className="col-lg-3 datepost">{posts.comments.length} </div>
               </div>
             </div>
-           
           </div>
-
-
           <div className='row pt-2' hidden={hidden}>
             <div ><hr /></div>
             <form
@@ -301,7 +296,6 @@ const Publication = ({
     </div>
   );
 };
-
 Publication.prototype = {
   auth: PropTypes.object.isRequired,
   Post: PropTypes.object.isRequired,

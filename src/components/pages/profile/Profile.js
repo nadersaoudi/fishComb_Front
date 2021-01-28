@@ -91,10 +91,10 @@ const onsubmit2=e=>{
   return (
     <Fragment>
     <Row>
-    <Col sm={12}>
-    <form onSubmit={e=>onsubmit2(e)}>
-    <div className='Top___header px-0'>
-            <Image src={user && user.cover_image} alt='' className='coverture'/>
+      <Col sm={12}>
+        <form onSubmit={e=>onsubmit2(e)}>
+        <div className='Top___header px-0'>
+            <Image src={user && user.attributes.cover_image} alt='Cover' className='coverture'/>
             <input accept="image/*" className={classes.input} id="icon-button-filee" type="file" onChange={onchange2} />
             <div className='row'>
               <div className='col-sm-11'></div>
@@ -118,7 +118,7 @@ const onsubmit2=e=>{
             <div>
             <form onSubmit={e => onsubmit1(e)}>
             <div className='info' >
-            <Image  className="profile_img" src= {user && user.profile_image} alt='' roundedCircle  />
+              <Image  className="profile_img" src={user && user.attributes.profile_image} alt='Profile_image' roundedCircle  />
             <input accept="image/*" className={classes.input} id="icon-button-file" type="file" onChange={onchange1} /> 
             <label htmlFor="icon-button-file">
               <IconButton className='upload1' color="primary" aria-label="upload picture" component="span">
@@ -139,7 +139,7 @@ const onsubmit2=e=>{
           </div>
       <div>
         <h2>
-          <p>{user && user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}  {user && user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}</p>
+          <p>{user && user.attributes.first_name.charAt(0).toUpperCase() + user.attributes.first_name.slice(1)}  {user && user.attributes.last_name.charAt(0).toUpperCase() + user.attributes.last_name.slice(1)}</p>
         </h2>
       </div>
       </Col>
