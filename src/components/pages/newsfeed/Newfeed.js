@@ -43,12 +43,12 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
       </div>
       <div className='row mt-5'>
         <div className='col-sm-1'></div>
-       {/* {posts.length > 0 ? (
+        {posts.length > 0 ? (
           <div className='col-sm-6'>
             <div className='row no-gutters'>
 
               {posts && posts.map(posts =>
-                <Publication key={posts.id} posts={posts} />
+                <Publication key={posts.data.id} posts={posts} />
 
 
               )}
@@ -64,7 +64,7 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
                 No recent Feed
           </div>
             </div>
-              </div>} */}
+              </div>} 
 
 
 

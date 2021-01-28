@@ -25,16 +25,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
   },
 }));
-
-
-
-
 const Profile = ({ auth: { user, loading }, edit, history, picture }) => {
   const [file1, setFile] = useState('');
- 
-
-
- 
   $('#editprofile').click(function (event) {
     event.preventDefault();
     $('.show').each(function () {
@@ -91,10 +83,10 @@ const onsubmit2=e=>{
   return (
     <Fragment>
     <Row>
-      <Col sm={12}>
-        <form onSubmit={e=>onsubmit2(e)}>
-        <div className='Top___header px-0'>
-            <Image src={user && user.attributes.cover_image} alt='Cover' className='coverture'/>
+    <Col sm={12}>
+    <form onSubmit={e=>onsubmit2(e)}>
+    <div className='Top___header px-0'>
+            <Image src={user && user.attributes.cover_image} alt='' className='coverture'/>
             <input accept="image/*" className={classes.input} id="icon-button-filee" type="file" onChange={onchange2} />
             <div className='row'>
               <div className='col-sm-11'></div>
@@ -118,7 +110,7 @@ const onsubmit2=e=>{
             <div>
             <form onSubmit={e => onsubmit1(e)}>
             <div className='info' >
-              <Image  className="profile_img" src={user && user.attributes.profile_image} alt='Profile_image' roundedCircle  />
+            <Image  className="profile_img" src= {user && user.attributes.profile_image} alt='' roundedCircle  />
             <input accept="image/*" className={classes.input} id="icon-button-file" type="file" onChange={onchange1} /> 
             <label htmlFor="icon-button-file">
               <IconButton className='upload1' color="primary" aria-label="upload picture" component="span">
@@ -159,7 +151,6 @@ const onsubmit2=e=>{
       </Row>
     </Fragment>
   )
-
 }
 Profile.propTypes = {
   auth: PropTypes.object.isRequired,
@@ -168,6 +159,5 @@ Profile.propTypes = {
 };
 const mapStateToProps = state => ({
   auth: state.auth,
-
 })
 export default connect(mapStateToProps, { edit, picture })(withRouter(Profile));

@@ -244,31 +244,17 @@ export const getfriends = () => async dispatch => {
 
 }
 //update
-export const update = ({ name,
-    description,
-    category_id,
-    location,
-    date,
-    cover,
-    video_link,
-    status },event_id) => async dispatch => {
+export const update = (file,event_id) => async dispatch => {
 
         const config = {
             headers: {
                 Authorization: 'Bearer ' + Cookies.get('user'),
-                'content-Type': 'application/json'
+                'Content-Type': 'multipart/form-data'
             }
         }
         try {
 
-            const res = await axios.patch(`/api/events/${event_id}`, { name,
-                description,
-                category_id,
-                location,
-                date,
-                cover,
-                video_link,
-                status }, config)
+            const res = await axios.post(`/api/events/update/${event_id}`, file , config)
            
             dispatch({
                 type: UPDATE_EVENT,

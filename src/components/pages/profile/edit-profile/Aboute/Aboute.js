@@ -27,7 +27,13 @@ return(
              </div> 
                 <div className='pt-4 pb-1'>
                  {user && user.attributes.first_name.charAt(0).toUpperCase() + user.attributes.first_name.slice(1)} {user && user.attributes.last_name.charAt(0).toUpperCase() + user.attributes.last_name.slice(1)}
-                </div>
+                </div>  
+                <div className='pt-4 pb-1'>
+                 {user && user.attributes.username}
+                </div>  
+                <div className='pt-4 pb-1'>
+                    {user && user.attributes.email} 
+                </div> 
                 <div className='pt-4 pb-1'>
                     {user && user.attributes.birthday} 
                 </div>
