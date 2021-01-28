@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_CART, ADD_CART, DELETE_PROD_CART} from './types';
+import { GET_CART, ADD_CART, DELETE_PROD_CART,CHECKOUT,CHECKOUT_FAILED} from './types';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 toast.configure();
@@ -58,5 +58,28 @@ export const deleteProd = (cart_id) =>  async dispatch =>{
         toast.info('Product Deleted')
     }catch{
 
+    }
+}
+//checkout
+//api/order
+export const checkout = ({formdata}) =>  async dispatch =>{
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try {   
+        const res = await axios.post(`/api/order`,{formdata},config)
+        dispatch ({
+            type: CHECKOUT,
+            payload: res.data
+        })
+        toast.info('Checkout success')
+    }catch{
+        toast.error('Checkout error')
+        dispatch({
+            type: CHECKOUT_FAILED,
+        });
     }
 }
