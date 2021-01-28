@@ -163,7 +163,7 @@ useEffect(()=>{
     setcover(loading || !event.cover ? '' : event.cover)
 
 },[loading])
-
+    
     const handleswitch = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
         if (event.target.checked === true) {
@@ -186,6 +186,7 @@ useEffect(()=>{
         file.append('video_link', video_link);
         file.append('status', status);
         update(file, event.id)
+       
         e.target.reset();
     }
   
@@ -382,11 +383,11 @@ useEffect(()=>{
                                     <div>  <AddBoxIcon onClick={handleClickOpen} /></div>
 
                                     <div>
-                                        {event && user && user.id === event.user.data.user_id ?
+                                        {event && user && user.user_id === event.user.data.user_id ?
 
                                             <UpdateRoundedIcon onClick={handleClickOpen2} />
                                             : <div></div>} </div>
-                                    <div>{event && user && user.id === event.user.data.user_id ? <Link to='/dashboard/events'><DeleteOutlineRoundedIcon onClick={e => deleteEvent(match.params.id)} style={{ color: '#212529' }} />
+                                    <div>{event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events'><DeleteOutlineRoundedIcon onClick={e => deleteEvent(match.params.id)} style={{ color: '#212529' }} />
                                     </Link> : <div></div>}</div>
                                 </div></div>
 
@@ -396,7 +397,7 @@ useEffect(()=>{
                             <div className="bot__section">
                                 <div className='row '>
                                     {event && event.is_subscribed === false ? <div className='col-sm-2 pt-5' id='attend'>
-                                        <button onClick={subscribEevent(event.id, 1)}  >Attend</button>
+                                        <button onClick={subscribEevent(event.id, 1)} disabled={disable} >Attend</button>
                                     </div> : <div className='col-sm-2 pt-5' id='attend'>
                                             <button disabled={true}>Already subscribed</button>
                                         </div>}

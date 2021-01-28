@@ -104,21 +104,21 @@ const Publication = ({
           <form id="lo">
             <div className="row" id="pub-top1">
               <div className="col-lg-1">
-                <NavLink to={`/dashboard/profileuser/${posts.user.id}`} >
+                <NavLink to={`/dashboard/profileuser/${posts.data.user.data.user_id}`} >
                 <Avatar
-                  src={posts && posts.user.profile_image}
-                  onClick={(e) => getUsers(posts.user.id)}
+                  src={posts && posts.data.user.data.attributes.profile_image}
+                  onClick={(e) => getUsers(posts.data.user.data.user_id)}
                 /></NavLink>
               </div>
               <div className="col-lg-10">
                 <span className="nameuser">
-                {posts && posts.user.first_name.charAt(0).toUpperCase() + posts.user.first_name.slice(1)} {posts && posts.user.last_name.charAt(0).toUpperCase() + posts.user.last_name.slice(1)}
+                {posts &&posts.data.user.data.attributes.first_name.charAt(0).toUpperCase() +posts.data.user.data.attributes.first_name.slice(1)} {posts && posts.data.user.data.attributes.last_name.charAt(0).toUpperCase() + posts.data.user.data.attributes.last_name.slice(1)}
                 </span>
                 <div className="row">
                   <div className="col-lg-8 datepost">
                    
                     <Moment
-                      date={posts && posts.created_at}
+                      date={posts && posts.data.created_at}
                      // format="YYYY-MM-DD HH:mm"
                       toNow
                     /> ago
@@ -127,7 +127,7 @@ const Publication = ({
               </div>
               <div className="col-lg-1" id="pnt">
                 <div className={classes.root}>
-                {user && user.id === posts.user_id ? <div>
+                {user && user.user_id === posts.data.user.data.user_id ? <div>
                    <Button
                       ref={anchorRef}
                       aria-controls={open ? 'menu-list-grow' : undefined}
@@ -151,8 +151,8 @@ const Publication = ({
                           <Paper>
                             <ClickAwayListener onClickAway={handleClose}>
                               <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                              <MenuItem onClick={handleClickOpen1}  > <span onClick={(e) => getpost(posts.id)}>Update My Post</span></MenuItem>
-                              <MenuItem onClick={(e) => deletePost(posts.id)}>Delete My Post</MenuItem>
+                              <MenuItem onClick={handleClickOpen1}  > <span onClick={(e) => getpost(posts.data.id)}>Update My Post</span></MenuItem>
+                              <MenuItem onClick={(e) => deletePost(posts.data.id)}>Delete My Post</MenuItem>
                               </MenuList>
                             </ClickAwayListener>
                           </Paper>
@@ -168,19 +168,19 @@ const Publication = ({
               <div className="col-lg-1"></div>
               <div className="row pt-5">
                 <div className="col-lg-1"></div>
-                <div className="col-lg-10">{posts && posts.description}</div>
+                <div className="col-lg-10">{posts && posts.data.description}</div>
               </div>
               <div className="row pt-3"></div>
               <div className="col-lg-1"></div>
               <div className="col-lg-10">
-                {posts && posts.link && (
+                {posts && posts.data.link && (
                   <ReactTinyLink
                     cardSize="large"
                     showGraphic={true}
                     
                     maxLine={2}
                     minLine={1}
-                    url={posts.link}
+                    url={posts.data.link}
                   />
                 )}
               </div>
@@ -199,7 +199,7 @@ const Publication = ({
               <div className="row" id="lcp">
                 <div className='col-lg-1'></div>
                 <div className="col-lg-4">
-                  <button className="But__Like" onClick={(e) => addLike(posts.id)}>
+                  <button className="But__Like" onClick={(e) => addLike(posts.data.id)}>
                     <svg
                       width="25px"
                       height="21px"
@@ -219,7 +219,7 @@ const Publication = ({
                   </button>
                 </div>
                 <div className="col-3">
-                { <div className="col-lg-4 datepost">{ posts.likes.length>0 && posts.likes.length} </div>}
+                { <div className="col-lg-4 datepost">{ posts.data.likes.length>0 && posts.data.likes.length} </div>}
                 </div>
 
               </div>
@@ -245,7 +245,7 @@ const Publication = ({
                     </svg>
                   </button>
                 </div>
-                <div className="col-lg-3 datepost">{posts.comments.length} </div>
+                <div className="col-lg-3 datepost">{posts.data.comments.length} </div>
               </div>
             </div>
            
@@ -257,7 +257,7 @@ const Publication = ({
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                addcomment(posts.id, { body });
+                addcomment(posts.data.id, { body });
                 setText("");
               }}
 
@@ -267,7 +267,7 @@ const Publication = ({
                 <div className="col-lg-1">
                 <NavLink to={`/dashboard/profile/about`} >
                   <Avatar
-                    src={user && user.profile_image}
+                    src={user && user.attributes.profile_image}
                   />
                   </NavLink>
                 </div>
@@ -288,7 +288,7 @@ const Publication = ({
             <div className="row pt-1">
               <div className='col-lg-1'></div>
               <div className='col-lg-11'>
-                {posts && posts.comments.map(comments => 
+                {posts && posts.data.comments.map(comments => 
                   (
                     <SingleComm key={comments.id} comments={comments} />
                   )

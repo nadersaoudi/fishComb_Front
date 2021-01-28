@@ -48,7 +48,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const [date, setdate] = useState('')
     const [video_link, setvideolink] = useState('')
     const [cover, setcover] = useState('')
-    const [status,setStatus]=useState('')
+    const [status,setStatus]=useState(1)
     const onnamechange = e => {
         setname(e.target.value)
     }

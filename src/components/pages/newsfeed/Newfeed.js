@@ -59,7 +59,7 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
             <div className='row no-gutters'>
 
               {posts && posts.map(posts =>
-                <Publication key={posts.id} posts={posts} />
+                <Publication key={posts.data.id} posts={posts} />
 
 
               )}
