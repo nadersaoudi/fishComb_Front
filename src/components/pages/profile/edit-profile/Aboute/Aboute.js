@@ -46,7 +46,6 @@ return(
                 <div className='pt-4 pb-1'>
                     {user && user.attributes.about} 
                 </div>
-                 
              </div>
             </form>
           </div>

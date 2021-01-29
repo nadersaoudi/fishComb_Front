@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { MdDelete } from 'react-icons/md';
-import { deleteProd, updateQuantity, showCart } from '../../../../Actions/cart';
+import { deleteProd, updateQuantity } from '../../../../Actions/cart';
 import { Col, Form, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Fragment } from 'react';
 import { GrAddCircle } from 'react-icons/gr';
 import { Button } from '@material-ui/core';
-const CartProduct = (  {cart  , deleteProd, loading,updateQuantity ,showCart} ) => {
+const CartProduct = (  {cart  , deleteProd, loading,updateQuantity} ) => {
 /**********************************/
-useEffect(() => {
-    showCart()
-  },[showCart])
 const [formdata, setFormData] = useState({
     quantity: '',
 });
@@ -24,8 +21,15 @@ const {
   }, [loading])
 const onchange = e => setFormData({ ...formdata, [e.target.name]: e.target.value });
 const onSubmit = e => {
- e.preventDefault();
+    e.preventDefault();
     updateQuantity(formdata,cart.cart_id);
+}
+const [total,setTotal]=useState(cart.amount)
+const [total1,setTotal1]=useState(quantity*cart.product.price)
+const handlechange=()=>{
+    setTotal(quantity*cart.product.price)
+    updateQuantity(formdata,cart.cart_id);
+    //setTotal1()
 }
 /**********************************/
 return (
@@ -34,36 +38,36 @@ return (
             <Row className='pb-5'>
                 <Col xs={12}>
                     <Row className='pt-5'>
-                        <Col xs={1}></Col>
+                        <Col xs={1}>#</Col>
                         <Col xs={3}>{cart && cart.product.name}</Col> 
                         <Col xs={2}>{cart && cart.product.price}</Col> 
                         <Col xs={2}>
-                            <GrAddCircle />
-                                <input className='col-6' type='number' min='1' value={quantity}  name="quantity"  onChange={e => onchange(e)} />
-                                <Button className='quantity__Button' type='submit'> submit</Button>
+                                <input className='col-6' value={quantity} type='number' min='1' name="quantity"  onChange={e => onchange(e)} onClick={handlechange}/>  
                             </Col>
-                        <Col xs={1}>{cart && cart.amount}</Col>
+                        <Col xs={1}>{total} </Col>
                         <Col xs={1}>
                             <Button>
                                 <MdDelete onClick={e=>deleteProd(cart && cart.cart_id)}  />
                             </Button>
                         </Col>
-                        <hr />
+                    </Row>
+                    <Row>
+                        {total1}
                     </Row>
                 </Col>    
             </Row>
         </Form>
+    
     </Fragment>
 )
 }
 CartProduct.propTypes = {
     cart:PropTypes.object.isRequired,
     deleteProd:PropTypes.func.isRequired,
-    showCart:PropTypes.func.isRequired,
     updateQuantity:PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     auth: state.auth,
     carts: state.cart
 })
-export default connect(mapStateToProps,{deleteProd, updateQuantity, showCart })(CartProduct)
+export default connect(mapStateToProps,{deleteProd, updateQuantity})(CartProduct)

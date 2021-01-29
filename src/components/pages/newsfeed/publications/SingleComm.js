@@ -32,7 +32,7 @@ const SingleComm = (
     <div className="row pt-1 pb-3" >
       <div className="col-1 mr-4">
         <NavLink to={`/dashboard/profileuser/${comments.user.id}`} >
-        <Avatar src={comments.user.profile_image}
+        <Avatar src={ 'http://77.68.24.35/storage/'+comments.user.profile_image.slice(6)}
          onClick={(e) => getUsers(comments.user.id)} />
          </NavLink>
       </div>

@@ -1,4 +1,4 @@
-import {ADD_EVENT,GET_EVENTS,GET_EVENT, GET_CATEGORIES, DELETE_EVENT, FILTER_EVENT, INVITE_FRIENDS,GET_FRIENDS,UPDATE_EVENT, SEARCH_EVENT, GET_INV1,ACCEPT_EVENT, ATTENDED} from  '../Actions/types'
+import {ADD_EVENT,GET_EVENTS,GET_EVENT, GET_CATEGORIES, DELETE_EVENT, FILTER_EVENT, INVITE_FRIENDS,GET_FRIENDS,UPDATE_EVENT, SEARCH_EVENT, GET_INV1,ACCEPT_EVENT, ATTENDED, SUBSCRIBE} from  '../Actions/types'
 const initialState = {
 
     events: [],
@@ -61,6 +61,12 @@ export default function (state = initialState, action) {
                     event:payload,
                     loading: false
                 }
+                case SUBSCRIBE:
+                    return {
+                        ...state,
+                        event:payload,
+                        loading:false
+                    }
        case  ADD_EVENT:
         return{
             ...state,

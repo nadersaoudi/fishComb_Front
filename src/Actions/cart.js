@@ -55,12 +55,13 @@ export const deleteProd = (cart_id) =>  async dispatch =>{
         }
     }
     try {   
-        const res = await axios.delete(`/api/cart/${cart_id}`,config)
+        await axios.delete(`/api/cart/${cart_id}`,config)
+        const res =await axios.get('/api/cart',config)
         dispatch ({
-            type: DELETE_PROD_CART,
-            payload: cart_id
+            type: GET_CART,
+            payload: res.data
         })
-        toast.info('Product Deleted')
+        toast.success('Product Deleted')
     }catch{
 
     }

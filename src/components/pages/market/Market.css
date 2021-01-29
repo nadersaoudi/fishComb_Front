@@ -16,5 +16,49 @@
 .MuiButton-root{
     text-transform: none !important;
 }
+.product:hover{
+    transform: scale(1.2);
+    z-index: 1;
+}
+.product{
+    z-index: 0;
+}
+.link__cart,
+.cart__span{
+    text-decoration: none;
+    color: #000;
+}
+.link__cart,
+.cart__span:hover{
+    text-decoration: none;
+    color : #fff;
+}
+.button__cart:hover{
+    background-color: #202c43 !important;
+    border-radius: 0 !important;
+}
+.button__cart{
+    border-radius: 0 !important;
+}
+.link_cart{
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 20px;
+}
+.product__name{
+    font-weight: 600;
+    font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.product__price{
+    color: #777777;
+     text-align: center;
+}
+.sing__prod {
+    border-radius: 5px;
+}
+.cart__btn:hover{
+    color: #00E2c8;
 
 
+
+}

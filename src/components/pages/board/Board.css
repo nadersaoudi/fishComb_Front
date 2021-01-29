@@ -1,14 +1,9 @@
-.card{
-    display:-webkit-box!important;
+.title{
+    font-weight: 700;
 }
-
-#btn{
-    background-color: white !important;
-    color: #fff;
-    border-left: 0 solid transparent;
-    align-items: center;  
-
+#Button_board{
+    border-radius: 0 !important;
 }
-#btn__ask{
-    background-color: white;
+#Button_board:hover{
+    background-color: #202c43 !important;
 }
