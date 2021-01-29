@@ -191,4 +191,4 @@ const mapStateToProps = state => ({
     cart: state.cart,
     categories: state.categories,
 })
-export default connect(mapStateToProps , { getMarket, myProduct , search,showCart })(Market);
+export default connect(mapStateToProps , { getMarket, myProduct , search, showCart })(Market);

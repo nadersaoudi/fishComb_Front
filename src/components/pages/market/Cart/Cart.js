@@ -9,7 +9,7 @@ import './Cart.css';
 import { IoBagCheckOutline } from 'react-icons/io5';
 import { Button } from '@material-ui/core';
 import Checkout from './Checkout'
-const Cart = ( { showCart, cart :{ cart}   ,deleteProd }  ) => {
+const Cart = ( { showCart, cart : { cart } , deleteProd }  ) => {
 /******************************/    
 useEffect(() => {
   showCart()
@@ -62,7 +62,6 @@ return (
        </Row>
        <Row>
            <Col sm={10} md={10}></Col>
-          
            <Col sm={1} md={1}><Button onClick={e=>sethidden(false)}>Checkout</Button></Col>
        </Row>
        <Row hidden={hidden}><Col sm={1} md={1}></Col> <Col sm={5} md={5}><h3>Checkout</h3></Col>

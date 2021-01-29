@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { MdDelete } from 'react-icons/md';
-import { deleteProd, updateQuantity } from '../../../../Actions/cart';
+import { deleteProd, updateQuantity, showCart } from '../../../../Actions/cart';
 import { Col, Form, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Fragment } from 'react';
 import { GrAddCircle } from 'react-icons/gr';
 import { Button } from '@material-ui/core';
-const CartProduct = (  {cart  , deleteProd, loading,updateQuantity} ) => {
+const CartProduct = (  {cart  , deleteProd, loading,updateQuantity ,showCart} ) => {
 /**********************************/
+useEffect(() => {
+    showCart()
+  },[showCart])
 const [formdata, setFormData] = useState({
     quantity: '',
 });
@@ -55,10 +58,11 @@ return (
 CartProduct.propTypes = {
     cart:PropTypes.object.isRequired,
     deleteProd:PropTypes.func.isRequired,
+    showCart:PropTypes.func.isRequired,
     updateQuantity:PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     auth: state.auth,
     carts: state.cart
 })
-export default connect(mapStateToProps,{deleteProd, updateQuantity})(CartProduct)
+export default connect(mapStateToProps,{deleteProd, updateQuantity, showCart })(CartProduct)
