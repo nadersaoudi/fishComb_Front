@@ -24,6 +24,13 @@ const onSubmit = e => {
  e.preventDefault();
     updateQuantity(formdata,cart.cart_id);
 }
+const [total,setTotal]=useState(cart.amount)
+const [total1,setTotal1]=useState(0)
+const handlechange=()=>{
+    setTotal(quantity*cart.product.price)
+    setTotal1()
+}
+
 /**********************************/
 return (
     <Fragment>
@@ -36,10 +43,10 @@ return (
                         <Col xs={2}>{cart && cart.product.price}</Col> 
                         <Col xs={2}>
                             <GrAddCircle />
-                                <input className='col-6' value={quantity}  name="quantity"  onChange={e => onchange(e)} />
-                                <Button className='quantity__Button' type='submit'> submit</Button>
+                                <input className='col-6' value={quantity} type='number' min='1' name="quantity"  onChange={e => onchange(e)} onClick={handlechange}/>
+                              
                             </Col>
-                        <Col xs={1}>{cart && cart.amount}</Col>
+                        <Col xs={1}>{total}</Col>
                         <Col xs={1}>
                             <Button>
                                 <MdDelete onClick={e=>deleteProd(cart && cart.cart_id)}  />
@@ -49,6 +56,7 @@ return (
                 </Col>    
             </Row>
         </Form>
+    
     </Fragment>
 )
 }
