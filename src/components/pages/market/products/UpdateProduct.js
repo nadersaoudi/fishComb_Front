@@ -110,11 +110,12 @@ const handleClose = () => {
                             <div className='col-sm-1 mr-2'>
                               <Avatar  src={user&& user.profile_image}/>  
                             </div>
+                            
                             <div className='col-sm-10 pt-3'>
                                 <div className='row'>
                                     <div className='row'>
                                         <div className='col-sm-12'>
-                                           
+                                            <h6> {user && user.attributes.first_name.charAt(0).toUpperCase() + user.attributes.first_name.slice(1)}  {user && user.attributes.last_name.charAt(0).toUpperCase() + user.attributes.last_name.slice(1)}</h6>
                                         </div>
                                     </div>
                                 <div className='row'>
@@ -213,6 +214,7 @@ const handleClose = () => {
     </DialogContent>
 </form>
 </div>
+
 </Fragment>
 )
 }

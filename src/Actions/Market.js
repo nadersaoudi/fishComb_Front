@@ -161,7 +161,7 @@ export const search = (filter,value) => async dispatch => {
         const res = await axios.post(`/api/marketplace/search`,{filter,value},config)
         dispatch({
             type: SEARCH_PRODUCT,
-            payload:res.data.data
+            payload:res.data
         })
     }catch{
         dispatch({

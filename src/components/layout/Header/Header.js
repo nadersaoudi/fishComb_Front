@@ -127,7 +127,7 @@ const Header = ({
                             setText('')
                         }
                 }>
-                    <div className="col-sm  header__input">
+                    <div className="col-sm px-0  header__input">
 
                         <input type="text" placeholder='Search Fishcomb' aria-label="Search"
                             value={uid}

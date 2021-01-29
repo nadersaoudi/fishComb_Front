@@ -6,6 +6,7 @@ import { Card, Col, Row } from 'react-bootstrap';
 import { Fragment } from 'react';
 import CartProduct from './CartProduct';
 import './Cart.css';
+import PaymentIcon from '@material-ui/icons/Payment';
 import { IoBagCheckOutline } from 'react-icons/io5';
 import { Button } from '@material-ui/core';
 import Stepper from './Steppers'
@@ -29,11 +30,7 @@ return (
                         </Col>  
                     </Row>
                     <Row className='pt-5'>
-                        <Col xs={1}></Col>
-                        <Col xs={3}>Name Product</Col> 
-                        <Col xs={2}>Price</Col> 
-                        <Col xs={2}>Quantity</Col>
-                        <Col xs={2}>total</Col> 
+                        
                     </Row>
                     <hr /> 
                     <Row>
@@ -44,25 +41,23 @@ return (
                                 )}
                         </Col>:<Col>Empty cart</Col>} 
                     </Row>
-                    <Row className='pt-2'>
-                        <Col xs={12}>
-                            Total = {cart && cart.total_amount }
+                    <Row className='py-2 border Total__section'>
+                        <Col xs={11}>Total =</Col>
+                        <Col xs={1} className=''>
+                             {cart && cart.total_amount }
                         </Col>
                     </Row>
                     <Row className='pt-2'>
-                        <Col xs={5}>
-                            <Button className='Button_checkout'>
-                                <IoBagCheckOutline />
-                            </Button>
-                        </Col>
+                        <Col xs={5}></Col>
                     </Row>
                 </Card>             
             </Col>
-            <Col sm={2} ></Col>
+            <Col sm={2}></Col>
        </Row>
        <Row>
            <Col sm={10} md={10}></Col>
-           <Col sm={1} md={1}><Button onClick={e=>sethidden(false)}>Checkout</Button></Col>
+          
+           <Col sm={1} md={1}><Button onClick={e=>sethidden(false)}><PaymentIcon/> Checkout</Button></Col>
        </Row>
        <Row hidden={hidden}><Col sm={1} md={1}></Col> <Col sm={5} md={5}><h3>Checkout</h3></Col>
        <Row>

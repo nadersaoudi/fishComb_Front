@@ -108,6 +108,7 @@ const handleClose = () => {
 
         </Fragment>
     )
+
 }
 ProductItem.propTypes = {
     market: PropTypes.object.isRequired,

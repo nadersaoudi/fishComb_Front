@@ -111,3 +111,24 @@ export const checkout = (formdata) =>  async dispatch =>{
         });
     }
 }
+export const stripelog =(token,address)=>async dispatch=>{
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try {   
+        const res = await axios.post(`/api/getStripeResponse`,{token,address},config)
+      /*  dispatch ({
+            type: CHECKOUT,
+            payload: res.data
+        })*/
+       // toast.info('Checkout success')
+    }catch{
+       // toast.error('Checkout error')
+        dispatch({
+            type: CHECKOUT_FAILED,
+        });
+    } 
+}
