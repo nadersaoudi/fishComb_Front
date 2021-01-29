@@ -34,12 +34,12 @@ return (
             <Row className='pb-5'>
                 <Col xs={12}>
                     <Row className='pt-5'>
-                        <Col xs={1}>#</Col>
+                        <Col xs={1}></Col>
                         <Col xs={3}>{cart && cart.product.name}</Col> 
                         <Col xs={2}>{cart && cart.product.price}</Col> 
                         <Col xs={2}>
                             <GrAddCircle />
-                                <input className='col-6' value={quantity}  name="quantity"  onChange={e => onchange(e)} />
+                                <input className='col-6' type='number' min='1' value={quantity}  name="quantity"  onChange={e => onchange(e)} />
                                 <Button className='quantity__Button' type='submit'> submit</Button>
                             </Col>
                         <Col xs={1}>{cart && cart.amount}</Col>
@@ -48,6 +48,7 @@ return (
                                 <MdDelete onClick={e=>deleteProd(cart && cart.cart_id)}  />
                             </Button>
                         </Col>
+                        <hr />
                     </Row>
                 </Col>    
             </Row>

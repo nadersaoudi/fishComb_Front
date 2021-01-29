@@ -31,7 +31,7 @@ import {
      if (action.type === DELETE_PROD_CART) {
          return {
              ...state,
-             cart: state.cart.filter(cart => cart.cart_id !== action.payload),
+             cart: state.cart.carts.filter(cart => cart.cart_id !== action.payload),
          }
      }
      if (action.type === UPDATE_QUANTITY){

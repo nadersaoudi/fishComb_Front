@@ -14,6 +14,7 @@ import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
 import SingleProduct from './SingleProduct';
 import { BiEditAlt } from 'react-icons/bi';
+import { Card, Col, Image, Row } from 'react-bootstrap';
 
 
 
@@ -32,27 +33,42 @@ const handleClose = () => {
   setOpen(false);
 };
 /****************************/    
-    return(
-        
-        <Fragment>
-            <div className='pt-5'>
-                <div className='row pt-5'>
-                <div className='col-sm-10 pl-5 ml-5'>
-                    <div className='card'> 
-                        <div className='card-body'>
-                            <div className='row'>
-                            <div className='col-sm-4' >
-                                <img src={product && product.image} width="400" height="300" alt='market' className='img_product' />
-                            </div>           
-                <div className='col-sm-2'></div>
-                <div className='col-sm-6'>
-                   <div className='row'>
-                       <div className='row'>
-                        <div className='col-sm-10'>
-                      <label className='prod_details'>Product Name :</label> { product && product.name }
-                 </div>
-                 {user  && product && user.user_id ===   product.user.id?
-                 <div className='col-sm-1'>
+return( 
+    <Fragment>
+        <Row className='pt-5'>
+            <Col xs={1}></Col>
+            <Col xs={6}>
+            <Card>
+            <Col xs={4} className='pt-5'>
+               
+                    <Image src={product && product.image} height='250' width='360' />
+               
+            </Col>
+            <Col xs={4} className='pt-5'>
+                
+                    <Row>
+                        <Col>
+                            <span><h3>{product && product.name}</h3></span>
+                        </Col> 
+                    </Row>
+                    <Row>
+                        <Col>
+                            <span><h3>{product && product.price}</h3></span>
+                        </Col> 
+                    </Row>
+                    <Row>
+                        <Col>
+                            <span><h3>{product && product.stock}</h3></span>
+                        </Col> 
+                    </Row>
+                    <Row>
+                        <Col>
+                            <span><h4>{product && product.description}</h4></span>
+                        </Col> 
+                    </Row>
+                    <Row>
+                    {user  && product && user.user_id ===   product.user.id?
+                         <div className='col-sm-1'>
                    
                        <Button onClick={handleClickOpen} >  <BiEditAlt  /> </Button> 
                         <Dialog open={open}
@@ -63,57 +79,25 @@ const handleClose = () => {
                         
                         </div> 
                         : (<div></div>)}
-                        </div>
-                        
-                        
-                 <div className='row'>
-                        <div className='col-sm-10'>
-                         <label className='prod_details'>Price : </label>{ product && product.price }
-                         </div>
-                    <div className='col-sm-1'>
-                    {user &&  product && user.user_id===   product.user.id ?
+                         {user &&  product && user.user_id===   product.user.id ?
                         <Link className='delete_prod' to='/dashboard/marketplace' >
                            <Button className=''> <DeleteOutlineRoundedIcon onClick={e=>deleteProduct(match.params.id)} /> </Button>                      
                         </Link>
                         : (<div></div>)}
-                           <Button className=''> <MdAddShoppingCart onClick={e=>addCart(product.id)} /> </Button>                      
-                    </div>
-                    </div>
-                    <div className='row'>
-                        <div className='col-sm-8'>
-                           <label className='prod_details'>Quantity : </label> { product && product.stock }
-                           </div>
-                    </div>
-                    <div className='row'>
-                        <div className='col-md-8'>
-                     <label className='prod_details'> Description</label> { product && product.description }         
-                    </div>
+                           <Button className=''> <MdAddShoppingCart onClick={e=>addCart(product.id)} /> Add To Cart </Button>                      
                     
-                      
-                    </div>    
-                </div>
                     
-                    </div>
-                   
-                           
-                    </div>
-                    </div>
-                    </div>
-                    
-                                <hr/>
-                <div className='bot_section'>
-                    <div className='row'>
-                        <div className='col-1'></div>
-                        <div className='col-11'><h4>Similar Products</h4></div>      
-                          </div>
-                    </div>            
-              </div>
-        </div> 
-  </div>
-
-        </Fragment>
-    )
-    
+                       
+                    </Row>
+                
+            </Col>
+            </Card>
+            </Col> 
+        </Row>
+        <Row>
+        </Row>  
+    </Fragment>
+)    
 }
 ProductItem.propTypes = {
     market: PropTypes.object.isRequired,
