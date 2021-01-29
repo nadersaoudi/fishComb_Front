@@ -11,6 +11,7 @@ import {
   
   const initialStore = {
     cart: [],
+    carts:[],
     total: 0,
     amount: 0
   };

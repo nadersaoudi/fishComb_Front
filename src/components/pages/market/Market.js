@@ -12,11 +12,15 @@ import YourAccount from './YourAccount';
 import AddProduct from './products/AddProduct';
 import SingleProduct from './products/SingleProduct';
 const Market =( {auth : {user}, getMarket  , markets:{ markets , categories  } ,myProduct,search } ) => {
-/******************************/
-useEffect(() => {
+
+    /******************************/
+
+    useEffect(() => {
     getMarket()
 }, [getMarket])
+
 /**************************/
+
 const [open2, setOpen2] = React.useState(false);
 const handleClose2 = () => {
     setOpen1(false);
@@ -32,7 +36,9 @@ const handleClickOpen = () => {
 const handleClose = () => {
     setOpen(false);
 };
+
 /*****************************/    
+
 const [open1, setOpen1] = React.useState(false);
 const handleClickOpen1 = () => {
     setOpen1(true);
@@ -40,7 +46,9 @@ const handleClickOpen1 = () => {
 const handleClose1 = () => {
     setOpen1(false);
 };
+
 /*********************************/
+
 const [filter, setFilter] = React.useState('name');
 const [value, setValue] = React.useState('');
 const handleChange = (product) => {
@@ -76,7 +84,7 @@ const onsubmit1 = e => {
                     <li className="col-7 ">
                 </li>
                 <li className='nav-item'>
-                  <NavLink to={'/dashboard/cart'} className="m"><span className='n'>Basket<ShoppingCartIcon/></span></NavLink> 
+               <Button className='btn btn-outline-info'>   <NavLink to={'/dashboard/cart'} className="m"><span className='n'>Basket<ShoppingCartIcon/></span></NavLink> </Button>
                 </li>
                 </ul>
                 </div>
@@ -115,8 +123,8 @@ const onsubmit1 = e => {
                     </div>
                    
                     <div className='row'>
-                        <div className='col-md-3'> <div className='image_holder grid '>
-                     <img src='https://picsum.photos/id/99/200/300' width="200" height="150" alt='event'/>
+                        <div className='col-md-3 '> <div className='image_holder grid'>
+                     <img src='https://picsum.photos/id/99/200/300' width="200" height="150" alt='event' className='product'/>
                      <div className='description'>
                      <span>25$</span> <br/>
                      <span>lorem ipsuem</span> <br/>
@@ -127,7 +135,7 @@ const onsubmit1 = e => {
                         <div className='col-md-3'>
                              <div className='image_holder grid '>
 
-                     <img className='pic' src='https://picsum.photos/id/100/200/300' width="200" height="150" id='img' alt='event'/>
+                     <img className='pic' src='https://picsum.photos/id/100/200/300' width="200" height="150" id='img' alt='event' className='product'/>
                      <div className='icon'> <InfoOutlinedIcon />  </div>    
 
                 
@@ -139,7 +147,7 @@ const onsubmit1 = e => {
                     </div>
                         <div className='col-md-3'> 
                         <div className='image_holder grid '>
-                     <img src='https://picsum.photos/id/77/200/300' width="200" height="150" alt='event'/>
+                     <img src='https://picsum.photos/id/77/200/300' width="200" height="150" alt='event' className='product'/>
                      <div className='description'>
                      <span>41$</span> <br/>
                      <span>lorem ipsuem</span> <br/>
@@ -161,7 +169,7 @@ const onsubmit1 = e => {
                         <div className='row'>
                         {markets && markets.map((markets) =>
                                 (
-                                    <SingleProduct key={markets.id} markets={markets} />)
+                                    <SingleProduct key={markets.id} markets={markets}  className='product'/>)
                                 )}
 
                         </div>

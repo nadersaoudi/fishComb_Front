@@ -9,7 +9,7 @@ return (
         <div className='col-md-2'>
             <div className='image_holder grid '>
                 <NavLink to={`/dashboard/singleproduct/${markets.id}`} >
-                    <img src={markets && markets.image} width="125" height="100" alt='market' />
+                    <img src={markets && markets.image} width="125" height="100" alt='market' className='product' />
                 </NavLink>
             <div className='description'>
                 <span>{markets && markets.name}</span><br /> 

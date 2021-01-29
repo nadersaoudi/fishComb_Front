@@ -52,8 +52,8 @@ const handleClose = () => {
                       <label className='prod_details'>Product Name :</label> { product && product.name }
                  </div>
                  <div className='col-sm-1'>
-                    {user && user.id === product.user_id ?
-                       <Button onClick={handleClickOpen} >  <BiEditAlt  /> </Button> : (<div></div>)}
+                    {user && product && user.user_id === product.user.id ?
+                       <Button onClick={handleClickOpen} ><BiEditAlt  /> </Button> : (<div></div>)}
                         <Dialog open={open}
                          onClose={handleClose}
                           className='updateProd'>
@@ -69,7 +69,7 @@ const handleClose = () => {
                          </div>
                          
                     <div className='col-sm-1 '>
-                    {user && user.id === product.user_id ?
+                    {user && product && user.user_id === product.user.id ?
                         <Link className='delete_prod' to='/dashboard/marketplace' >
                            <Button className='pt-3'> <DeleteOutlineRoundedIcon onClick={e=>deleteProduct(match.params.id)} /> </Button>                      
                         </Link>

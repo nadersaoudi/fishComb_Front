@@ -6,7 +6,7 @@ import { Card, Col, Row } from 'react-bootstrap';
 import { Fragment } from 'react';
 import CartProduct from './CartProduct';
 import './Cart.css';
-const Cart = ( { showCart, cart :{ cart ,deleteProd } } ) => {
+const Cart = ( { showCart, cart :{ cart  ,deleteProd } } ) => {
 /******************************/    
 useEffect(() => {
   showCart()
@@ -25,7 +25,7 @@ return (
                         </Col>  
                     </Row>
                     <Row className='pt-5'>
-                        <Col xs={1}>#</Col>
+                        <Col xs={1}></Col>
                         <Col xs={3}>Name Product</Col> 
                         <Col xs={2}>Price</Col> 
                         <Col xs={2}>stock</Col>
@@ -34,15 +34,15 @@ return (
                     <hr /> 
                     <Row>
                         <Col xs={12}>
-                            {cart && cart.map((cart) =>
+                          {/*  {cart && cart.carts.map((cart) =>
                                 (
                                 <CartProduct key={cart.cart_id} cart={cart} />)
-                            )} 
+                                )} */}
                         </Col>
                     </Row>
                     <Row className='pt-2'>
                         <Col xs={12}>
-                            Total = 
+                            Total = {cart&& cart.total_amount}
                         </Col>
                     </Row>
                 </Card>             

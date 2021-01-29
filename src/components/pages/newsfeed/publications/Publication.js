@@ -26,8 +26,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {  NavLink } from "react-router-dom";
-import { makeStyles } from '@material-ui/core/styles';
-import Popper from '@material-ui/core/Popper';
+
 /*********************************/
 const useStyles = makeStyles((theme) => ({
   root: {
