@@ -8,7 +8,7 @@ import CartProduct from './CartProduct';
 import './Cart.css';
 import { IoBagCheckOutline } from 'react-icons/io5';
 import { Button } from '@material-ui/core';
-import Checkout from './Checkout'
+import Stepper from './Steppers'
 const Cart = ( { showCart, cart :{ cart}   ,deleteProd }  ) => {
 /******************************/    
 useEffect(() => {
@@ -37,12 +37,12 @@ return (
                     </Row>
                     <hr /> 
                     <Row>
-                        <Col xs={12}>
+                       {cart.carts ? <Col xs={12}>
                             {cart && cart.carts.map((cart) =>
                                 (
                                 <CartProduct key={cart.cart_id} cart={cart} />)
                                 )}
-                        </Col>
+                        </Col>:<Col>Empty cart</Col>} 
                     </Row>
                     <Row className='pt-2'>
                         <Col xs={12}>
@@ -67,7 +67,7 @@ return (
        </Row>
        <Row hidden={hidden}><Col sm={1} md={1}></Col> <Col sm={5} md={5}><h3>Checkout</h3></Col>
        <Row>
-       <Col sm={1} md={1}></Col><Col sm={11} md={11}><Checkout/></Col>
+       <Col sm={1} md={1}></Col><Col sm={11} md={11}><Stepper/></Col>
        </Row>
        </Row>
     </Fragment>
