@@ -45,3 +45,20 @@
     font-weight: 500;
     font-size: 20px;
 }
+.product__name{
+    font-weight: 600;
+    font-family:  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.product__price{
+    color: #777777;
+     text-align: center;
+}
+.sing__prod {
+    border-radius: 5px;
+}
+.cart__btn:hover{
+    color: #00E2c8;
+
+
+
+}

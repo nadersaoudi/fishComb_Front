@@ -13,12 +13,12 @@ return (
             <div className='image_holder grid '>
                 <div className='image'>
                 <NavLink to={`/dashboard/singleproduct/${markets.id}`} >
-                    <img src={markets && markets.image}   width="125" height="100" alt='market' />
+                    <img src={markets && markets.image}   width="180" height="135" alt='market' className='sing__prod'/>
                     </NavLink>
                 </div>
             <div className='description'>
-                <span>{markets && markets.name}</span><br /> 
-                <span> {markets && markets.price+'$'}</span>   
+                <span className='product__name'>{markets && markets.name}</span><br /> 
+                <span className='product__price'> {markets && markets.price+'$'}</span>   
             </div>
             </div>
         </div>
