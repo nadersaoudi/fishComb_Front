@@ -37,42 +37,43 @@ const handleClose = () => {
                     <div className='card'> 
                         <div className='card-body'>
                             <div className='row'>
-                            <div className='col-sm-4' >
+                            <div className='col-sm-4 mt-4' >
                                 <img src={product && product.image} width="400" height="300" alt='market' className='img_product' />
                             </div>           
-                <div className='col-sm-2'></div>
-                <div className='col-sm-6'>
-                   <div className='row'>
-                       <div className='row'>
-                        <div className='col-sm-10'>
+        
+                <div className='col-sm-8 border py-3 pl-3'>
+                    <div className='row float-right'> <div className='col-md-12'><Button className='cart__btn'> <MdAddShoppingCart onClick={e=>addCart(product.id)} style={{fontSize:'19px'}} /> Add to Cart</Button>                      
+                    </div> </div>
+                   <div className='row '>
+                       <div className='row '>
+                        <div className='col-sm-10 pl-2'>
                       <label className='prod_details'>Product Name :</label> { product && product.name }
                  </div>
                 
                  <div className='row'>
-                        <div className='col-sm-10'>
+                        <div className='col-sm-10 pl-2'>
                          <label className='prod_details'>Price : </label>{ product && product.price }
                          </div>
                     
                     </div>
                     <div className='row'>
-                        <div className='col-sm-8'>
+                        <div className='col-sm-8 pl-2'>
                            <label className='prod_details'>Quantity : </label> { product && product.stock }
                            </div>
                     </div>
                     <div className='row'>
-                        <div className='col-md-8'>
+                        <div className='col-md-8 pl-2'>
                      <label className='prod_details'> Description</label> { product && product.description }         
-                    </div>
-                    
-                      
-                    </div>    
-                </div>
-                <div className='row pt-5'>
-
-               <div className='col-sm-12'>
-               {user  && product && user.user_id ===   product.user.id?
+                                                </div>
+                                             </div>    
+                                         </div> 
+                                                 
+                                     </div>
+                                     <div className='row mt-5'></div>
+                                     <div className='row'>
+                            <div className='col-md-10 p-3'>{user  && product && user.user_id ===   product.user.id?
                  <div className='col-sm-12'>
-                       <Button onClick={handleClickOpen} >  <FaEdit  /> </Button> 
+                       <Button onClick={handleClickOpen} >  <FaEdit style={{fontSize:'19px'}} /> Edit Product  </Button> 
                         <Dialog open={open}
                          onClose={handleClose}
                           className='updateProd'>
@@ -80,23 +81,18 @@ const handleClose = () => {
                         </Dialog> 
                         
                         </div> 
-                        : (<div></div>)}
-                        </div>
-               </div>
-               
-                        <div className='col-sm-5'>
-                    {user &&  product && user.user_id===   product.user.id ?
+                        : (<div></div>)}</div>
+                            <div className='col-md-2 p-3 '>  {user &&  product && user.user_id===   product.user.id ?
                         <Link className='delete_prod' to='/dashboard/marketplace' >
-                           <Button className=''> <DeleteOutlineRoundedIcon onClick={e=>deleteProduct(match.params.id)} /> </Button>                      
+                           <Button className=''> <DeleteOutlineRoundedIcon onClick={e=>deleteProduct(match.params.id)} style={{fontSize:'19px'}} /> Delete </Button>                      
                         </Link>
-                        : (<div></div>)}
-                           <Button className=''> <MdAddShoppingCart onClick={e=>addCart(product.id)} /> </Button>                      
-                    </div> 
-                    </div>
-                    
-                    </div>       
-                    </div>
-                    </div>
+                        : (<div></div>)}</div>
+                           
+                        </div>
+                                </div>
+                                       
+                            </div> 
+                        </div>
                     </div>
                     
                                 <hr/>
