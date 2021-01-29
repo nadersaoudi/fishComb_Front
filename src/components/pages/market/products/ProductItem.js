@@ -10,13 +10,10 @@ import UpdateProduct from './UpdateProduct';
 import Dialog from '@material-ui/core/Dialog';
 import { MdAddShoppingCart } from 'react-icons/md';
 import '../Market.css';
-import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
+import { FaEdit } from 'react-icons/fa';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
 import SingleProduct from './SingleProduct';
 import { BiEditAlt } from 'react-icons/bi';
-
-
-
 const ProductItem = ( { auth: { user }, match, getProduct, deleteProduct,  market :{ product,markets  } ,addCart}  ) => {
 /****************************/
 useEffect(() => {
@@ -33,7 +30,6 @@ const handleClose = () => {
 };
 /****************************/    
     return(
-        
         <Fragment>
             <div className='pt-5'>
                 <div className='row pt-5'>
@@ -51,33 +47,12 @@ const handleClose = () => {
                         <div className='col-sm-10'>
                       <label className='prod_details'>Product Name :</label> { product && product.name }
                  </div>
-                 {user  && product && user.user_id ===   product.user.id?
-                 <div className='col-sm-1'>
-                   
-                       <Button onClick={handleClickOpen} >  <BiEditAlt  /> </Button> 
-                        <Dialog open={open}
-                         onClose={handleClose}
-                          className='updateProd'>
-                          <UpdateProduct />  
-                        </Dialog> 
-                        
-                        </div> 
-                        : (<div></div>)}
-                        </div>
-                        
-                        
+                
                  <div className='row'>
                         <div className='col-sm-10'>
                          <label className='prod_details'>Price : </label>{ product && product.price }
                          </div>
-                    <div className='col-sm-1'>
-                    {user &&  product && user.user_id===   product.user.id ?
-                        <Link className='delete_prod' to='/dashboard/marketplace' >
-                           <Button className=''> <DeleteOutlineRoundedIcon onClick={e=>deleteProduct(match.params.id)} /> </Button>                      
-                        </Link>
-                        : (<div></div>)}
-                           <Button className=''> <MdAddShoppingCart onClick={e=>addCart(product.id)} /> </Button>                      
-                    </div>
+                    
                     </div>
                     <div className='row'>
                         <div className='col-sm-8'>
@@ -92,10 +67,34 @@ const handleClose = () => {
                       
                     </div>    
                 </div>
-                    
+                <div className='row pt-5'>
+
+               <div className='col-sm-12'>
+               {user  && product && user.user_id ===   product.user.id?
+                 <div className='col-sm-12'>
+                       <Button onClick={handleClickOpen} >  <FaEdit  /> </Button> 
+                        <Dialog open={open}
+                         onClose={handleClose}
+                          className='updateProd'>
+                          <UpdateProduct />  
+                        </Dialog> 
+                        
+                        </div> 
+                        : (<div></div>)}
+                        </div>
+               </div>
+               
+                        <div className='col-sm-5'>
+                    {user &&  product && user.user_id===   product.user.id ?
+                        <Link className='delete_prod' to='/dashboard/marketplace' >
+                           <Button className=''> <DeleteOutlineRoundedIcon onClick={e=>deleteProduct(match.params.id)} /> </Button>                      
+                        </Link>
+                        : (<div></div>)}
+                           <Button className=''> <MdAddShoppingCart onClick={e=>addCart(product.id)} /> </Button>                      
+                    </div> 
                     </div>
-                   
-                           
+                    
+                    </div>       
                     </div>
                     </div>
                     </div>

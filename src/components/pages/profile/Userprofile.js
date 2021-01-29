@@ -39,7 +39,7 @@ return (
           </form>
           </div>
       <div>
-        <h2>
+        <h2 className='d-flex justify-content-center pb-4'>
           {profile && profile.data.attributes.first_name} {profile && profile.data.attributes.last_name}
         </h2>
       </div>
@@ -48,7 +48,7 @@ return (
       <Row className='pb-5'>
         <Col sm={2}></Col>
         <Col sm={5}>
-        <Nav />
+        
         </Col>
       </Row>
       <Row className='pt-2'>

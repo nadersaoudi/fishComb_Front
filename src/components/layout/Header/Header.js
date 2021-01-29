@@ -200,18 +200,14 @@ const Header = ({
                                         position: 'fixed',
                                         top: 100,
                                         right: 50,
-                                        borderRadius: '0'
+                                        borderRadius: '0',
                                     }
                                 }>
                                     <Toast.Header>
-                                        <strong className="mr-auto">Events Invitations
-                                        </strong>
+                                        <strong className="mr-auto">Events Invitations</strong>
                                         <small>just now</small>
                                     </Toast.Header>
-                                    {
-                                    inv && inv.map(e => <div key={
-                                        e.id
-                                    }>
+                                    {inv && inv.map(e => <div key={e.id}>
                                         <Toast.Body>
                                             <div className='col-md-12'>
                                                 <b>Name:

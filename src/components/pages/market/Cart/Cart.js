@@ -29,7 +29,7 @@ return (
                         </Col>  
                     </Row>
                     <Row className='pt-5'>
-                        <Col xs={1}>#</Col>
+                        <Col xs={1}></Col>
                         <Col xs={3}>Name Product</Col> 
                         <Col xs={2}>Price</Col> 
                         <Col xs={2}>Quantity</Col>

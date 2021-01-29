@@ -2,24 +2,20 @@ import React ,{ useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { IoBasketSharp } from 'react-icons/io5';
 import Button from '@material-ui/core/Button';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Dialog from '@material-ui/core/Dialog';
-import { getMarket, myProduct ,search  } from '../../../Actions/Market';
-import { showCart } from '../../../Actions/cart';
+import { getMarket, myProduct, getCategories ,search } from '../../../Actions/Market';
 import "./Market.css"
 import YourAccount from './YourAccount';
 import AddProduct from './products/AddProduct';
 import SingleProduct from './products/SingleProduct';
-const Market =( { getMarket  , markets:{ markets} ,cart, myProduct, search, showCart } ) => {
+const Market =( {auth :{user}, getMarket, markets:{ markets , categories }, myProduct, search } ) => {
 /******************************/
-useEffect(() => {
+    useEffect(() => {
     getMarket()
 }, [getMarket])
-useEffect(() => {
-    showCart()
-  },[showCart])
 /**************************/
 const [open2, setOpen2] = React.useState(false);
 const handleClose2 = () => {
@@ -49,7 +45,6 @@ const [filter, setFilter] = React.useState('name');
 const [value, setValue] = React.useState('');
 const handleChange = (product) => {
     setFilter(product.target.value);
-
 };
 const handleChange1 = e => {
     setValue(e.target.value)
@@ -67,25 +62,25 @@ const onsubmit1 = e => {
             <div className='row'>
                 <div className='col-md-12 pt-5 mt-5'>        
                 </div>
-                <div className='row'>
+                <div className='row pb-3'>
                     <div className='col-md-3'></div>
-                    <div className="col-9 pb-3">
+                    <div className="col-sm-9 pb-3">
                 <ul className="nav nav-pills nav-justified " id='navprofil'>
                     <li className="nav-item">
-                    <NavLink to={`/dashboard/profile/order`} className="m"><span className='n'>Multimedia</span></NavLink>
+                    <NavLink to={`#`} className="link_cart"><span className='n'>Multimedia</span></NavLink>
                     </li>
                     <li className="nav-item">
-                    <NavLink to={`/dashboard/profile/order`} className="m"><span className='n'>Books</span></NavLink>
+                    <NavLink to={`#`} className="link_cart"><span className='n'>Books</span></NavLink>
                     </li>
-                    <li className="col-7 ">
+                    <li className="col-sm-7">
                 </li>
                 <li className='nav-item'>
-                  <NavLink to={'/dashboard/cart'} className="m"><span className='n'>Basket<ShoppingCartIcon/>{ cart && cart.length}</span></NavLink> 
+               <button className='btn btn-outline-dark button__cart'><NavLink to={'/dashboard/cart'} className="link__cart"><span className='cart__span'>Basket<IoBasketSharp/></span></NavLink> </button>
                 </li>
                 </ul>
                 </div>
                 </div>
-            <div className='row'>
+            <div className='row pt-4'>
                 <div className='col-md-3  side_min_bar'> 
                 <form onSubmit={e => onsubmit1(e)} >
                 <div className="col-sm-12 px-0 header__input" >
@@ -118,8 +113,8 @@ const onsubmit1 = e => {
                     </div>
                    
                     <div className='row'>
-                        <div className='col-md-3'> <div className='image_holder grid '>
-                     <img src='https://picsum.photos/id/99/200/300' width="200" height="150" alt='event'/>
+                        <div className='col-md-3 '> <div className='image_holder grid'>
+                     <img src='https://picsum.photos/id/99/200/300' width="200" height="150" alt='event' className='product'/>
                      <div className='description'>
                      <span>25$</span> <br/>
                      <span>lorem ipsuem</span> <br/>
@@ -130,8 +125,8 @@ const onsubmit1 = e => {
                         <div className='col-md-3'>
                              <div className='image_holder grid '>
 
-                     <img className='pic' src='https://picsum.photos/id/100/200/300' width="200" height="150" id='img' alt='event'/>
-                     <div className='icon'> <InfoOutlinedIcon />  </div>    
+                     <img className='pic' src='https://picsum.photos/id/100/200/300' width="200" height="150" id='img' alt='event' className='product'/>
+                     <div className='icon'> </div>    
 
                 
                      <div className='description'>
@@ -142,7 +137,7 @@ const onsubmit1 = e => {
                     </div>
                         <div className='col-md-3'> 
                         <div className='image_holder grid '>
-                     <img src='https://picsum.photos/id/77/200/300' width="200" height="150" alt='event'/>
+                     <img src='https://picsum.photos/id/77/200/300' width="200" height="150" alt='event' className='product'/>
                      <div className='description'>
                      <span>41$</span> <br/>
                      <span>lorem ipsuem</span> <br/>
@@ -164,7 +159,7 @@ const onsubmit1 = e => {
                         <div className='row'>
                         {markets && markets.map((markets) =>
                                 (
-                                    <SingleProduct key={markets.id} markets={markets} />)
+                                    <SingleProduct key={markets.id} markets={markets}  className='products'/>)
                                 )}
 
                         </div>
@@ -182,13 +177,12 @@ Market.prototype = {
     getMarket : PropTypes.func.isRequired,
     myProduct : PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
-    search : PropTypes.func.isRequired,
-    showCart : PropTypes.func.isRequired
+    search : PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     auth: state.auth, 
     markets: state.market,
-    cart: state.cart,
     categories: state.categories,
+
 })
-export default connect(mapStateToProps , { getMarket, myProduct , search,showCart })(Market);
+export default connect(mapStateToProps , { getMarket, myProduct , search })(Market);

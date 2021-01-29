@@ -117,6 +117,8 @@ const handleClose = () => {
                                         type="text"/></div>
                                     <div className='col-5'>
                                     <Select
+                                        
+                                        className='col-md-12'
                                         labelId="demo-controlled-open-select-label"
                                         id="demo-controlled-open-select"
                                         open={open1}
@@ -174,15 +176,18 @@ const handleClose = () => {
                             </div>
                             <div className='col-2'>
                             </div>
-                            <div className='col-md-5'>
-                                <Button type='submit'
-                                    style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
-                                    onClick={handleClose}>
-                                    Save Product
-                                </Button>
-                            </div>  
+                              
                         </div>
+                   <div className='row'>   
+                   <div className='col-md-8'></div>
+                   <div className='col-md-4 pb-4 float-right'> <Button type='submit'
+                                    style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }} 
+                                    onClick={handleClose} className='float-right'>
+                                    Save Product
+                                </Button></div>
+                            </div>
                     </div>
+
                 </div>
             </div>
         </div>
