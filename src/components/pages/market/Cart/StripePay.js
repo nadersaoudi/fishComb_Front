@@ -1,12 +1,14 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap';
 import StripeCheckout from 'react-stripe-checkout';
-
-const StripePay =()=>{
+import {stripelog} from '../../../../Actions/cart'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+const StripePay =({stripelog})=>{
 
 
     const handleToken =(token,address)=>{
-        console.log({token,address})
+        stripelog(token,address)
     }
     return (
         <Row>  <Col sm={3} md={3}></Col> <Col sm={3} md={3}><StripeCheckout
@@ -20,4 +22,7 @@ const StripePay =()=>{
          
     )
 }
-export default StripePay;
+StripePay.propTypes={
+ stripelog:PropTypes.func.isRequired
+}
+export default connect(null,{stripelog}) (StripePay);
