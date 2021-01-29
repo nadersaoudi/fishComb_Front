@@ -1,3 +1,10 @@
 .card__shop{
     align-items: center;
 }
+.Total__section{
+    background-color: #c4c4c4;
+    box-shadow: 2 2;
+}
+.title{
+    font-family:Poppins sans-serif;
+}

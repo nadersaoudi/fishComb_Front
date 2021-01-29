@@ -42,7 +42,7 @@ const handleClose = () => {
                             </div>           
         
                 <div className='col-sm-8 border py-3 pl-3'>
-                    <div className='row float-right'> <div className='col-md-12'><Button className='cart__btn'> <MdAddShoppingCart onClick={e=>addCart(product.id)} style={{fontSize:'19px'}} /> Add to Cart</Button>                      
+                    <div className='row float-right'> <div className='col-md-12'><Button onClick={e=>addCart(product.id)} className='cart__btn'> <MdAddShoppingCart  style={{fontSize:'19px'}} /> Add to Cart</Button>                      
                     </div> </div>
                    <div className='row '>
                        <div className='row '>
