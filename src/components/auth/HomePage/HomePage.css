@@ -12,7 +12,9 @@
 .header{
     background-color:  #fff
 }
-
+.logo{
+    align-items: center
+}
 
 .login{
     text-decoration: none;

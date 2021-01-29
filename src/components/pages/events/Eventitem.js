@@ -40,33 +40,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     const [state, setState] = React.useState({
         checkedA: true
 
-    });
-    const options = {
-        margin: 30,
-        responsiveClass: true,
-        nav: true,
-        autoplay: false,
-        navText: ["Prev", "Next"],
-        smartSpeed: 1000,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            400: {
-                items: 1,
-            },
-            600: {
-                items: 2,
-            },
-            700: {
-                items: 3,
-            },
-            1000: {
-                items: 5,
-            }
-        },
-      };
-      
+    });   
 
 
     const increment = useCallback(() => {
@@ -78,12 +52,9 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
         getevent(event.previous_event)
     }, [event && event.previous_event])
-    const [index, setIndex] = useState(0);
+    
 
-    const handleSelect = (selectedIndex, e) => {
-        setIndex(selectedIndex);
-    };
-
+   
 
     const [open1, setOpen1] = React.useState(false);
 
@@ -121,13 +92,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     const handleClose = () => {
         setOpen(false);
     };
-    const handleClose1 = () => {
-        setOpen1(false);
-    };
-
-    const handleOpen1 = () => {
-        setOpen1(true);
-    };
+   
     const [user_id, setUser] = useState('');
 
     const onsubmit = e => {
@@ -136,59 +101,99 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
     }
 
     const [uid, setText] = useState('');
-    const [formData, setFormData] = useState({
-        name: '',
-        description: '',
-        location: '',
-        date: '',
-        cover: 'non',
-        video_link: '',
-        status: '',
-
-    })
+    const [disable, setdisable] = useState(false);
+    const [name, setname] = useState('')
+    const [description, setdescription] = useState('')
+    
+    const [location, setlocation1] = useState('')
+    const [date, setdate] = useState('')
+    const [video_link, setvideolink] = useState('')
+    const [cover, setcover] = useState('')
+    const [status,setStatus]=useState('')
     const [category_id, setCategory_id] = useState('')
-    const { name, description, location, date, cover, video_link, status } = formData;
+    const onnamechange = e => {
+        setname(e.target.value)
+    }
 
-    useEffect(() => {
-        setFormData({
-            location: loading || !event.location ? '' : event.location,
-            name: loading || !event.name ? '' : event.name,
-            description: loading || !event.description ? '' : event.description,
-            cover: loading || !event.cover ? '' : event.cover,
-            video_link: loading || !event.video_link ? '' : event.video_link,
-            status: loading || !event.status ? true : event.status,
-            date: loading || !event.date ? '' : event.date,
-        })
-    }, [loading])
+    const ondescchange = e => {
+        setdescription(e.target.value)
+    }
+
+    
+
+    const onlocationchange = e => {
+        setlocation1(e.target.value)
+    }
+
+    const ondatechange = e => {
+        setdate(e.target.value)
+    }
+    const oncoverchange = e => {
+        setcover(e.target.files[0])
+    }
+    const onlinkchange = e => {
+        setvideolink(e.target.value)
+    }
+ 
+    const onstatuschange =e=>{
+        setStatus(e.target.value)
+    }
+    useEffect(()=>{
+        setlocation1(loading || !event.location ? '' : event.location)
+    },[loading])
+  useEffect(()=>{
+      setname(loading || !event.name ? '' : event.name)
+  },[loading])
+  useEffect(()=>{
+    setdescription(loading || !event.description ? '' : event.description)
+},[loading])
+useEffect(()=>{
+
+},[loading])
+useEffect(()=>{
+    setvideolink(loading || !event.video_link ? '' : event.video_link)
+},[loading])
+useEffect(()=>{
+    setStatus(loading || !event.status ? 1 : event.status)
+},[loading])
+useEffect(()=>{
+    setdate(loading || !event.date ? '' : event.date)
+},[loading])
+useEffect(()=>{
+    setcover(loading || !event.cover ? '' : event.cover)
+
+},[loading])
+    
     const handleswitch = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
         if (event.target.checked === true) {
-            setFormData({ status: true })
+           setStatus(1)
         }
-        else { setFormData({ status: false }) }
+        else {   setStatus(0) }
         console.log(status)
     };
-    const onchange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-    const submit = e => {
+   
+  const submit = e => {
         e.preventDefault();
-        update({
-            name,
-            description,
-            category_id,
-            location,
-            date,
-            cover: 'non',
-            video_link,
-            status,
-
-        }, event.id)
+        console.log(description)
+        const file = new FormData();
+        file.append('name', name);
+        file.append('description', description);
+        file.append('category_id', category_id);
+        file.append('location', location);
+        file.append('date', date);
+        file.append('cover', cover);
+        file.append('video_link', video_link);
+        file.append('status', status);
+        update(file, event.id)
+       
         e.target.reset();
     }
-    const [disable, setdisable] = useState(false);
+  
     return (
         <div>
-             {/*****************************Update Dialog*********************************** */}
-             <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title1"    >
+            {/*****************************Update Dialog*********************************** */}
+            <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title1"    >
                     <form onSubmit={e => submit(e)}>
                         <DialogTitle id="form-dialog-title1">update event</DialogTitle>
                         <DialogContent>
@@ -202,7 +207,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         label="Title"
                                         type="text"
 
-                                        name="name" value={name} onChange={e => onchange(e)}
+                                        name="name" value={name} onChange={onnamechange}
                                     /></div></div>
                             <div className="row pt-3">
                                 <div className='col-6'>
@@ -212,7 +217,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         id="Date"
                                         type="Date"
 
-                                        name="date" value={date} onChange={e => onchange(e)}
+                                        name="date" value={date} onChange={ondatechange}
                                     />
 
                                 </div>
@@ -247,7 +252,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         className='input_event'
                                         type="text"
                                         fullWidth
-                                        name="location" value={location} onChange={e => onchange(e)}
+                                        name="location" value={location} onChange={onlocationchange}
                                     /></div></div>
                             <div className="row pt-3">
                                 <div className='col-sm-12'>
@@ -259,7 +264,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         as="textarea" aria-label="With textarea"
                                         type="textarea"
 
-                                        name="description" value={description} onChange={e => onchange(e)}
+                                        name="description" value={description} onChange={ondescchange}
                                     /></div></div>
                             <div className='row pt-3'>
 
@@ -271,6 +276,10 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
                                     </Button>
                                 </div>  </div>
+                                <Col  sm={12} md={12} xl={12} className="btn-group btn-group-toggle ">
+                                            <input accept="image/*" id="icon-button-file" type="file" onChange={oncoverchange} name="cover"/>
+                                           
+                                        </Col>
                             <div className="row pt-3">
                                 <div className='col-sm-12'>
                                     <FormControl
@@ -281,7 +290,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
 
                                         type="textarea"
                                         fullWidth
-                                        name="video_link" value={video_link} onChange={e => onchange(e)}
+                                        name="video_link" value={video_link} onChange={onlinkchange}
                                     />
                                     <FormControl
                                         // placeholder={event && event.status}
@@ -291,7 +300,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                         name="status" value={status.toString()}
                                         type="textarea"
                                         fullWidth
-                                        onChange={e => onchange(e)}
+                                        onChange={onstatuschange}
                                     />
                                     disable event
                                     <Switch
@@ -374,11 +383,11 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                                     <div>  <AddBoxIcon onClick={handleClickOpen} /></div>
 
                                     <div>
-                                        {event && user && user.id === event.user.data.user_id ?
+                                        {event && user && user.user_id === event.user.data.user_id ?
 
                                             <UpdateRoundedIcon onClick={handleClickOpen2} />
                                             : <div></div>} </div>
-                                    <div>{event && user && user.id === event.user.data.user_id ? <Link to='/dashboard/events'><DeleteOutlineRoundedIcon onClick={e => deleteEvent(match.params.id)} style={{ color: '#212529' }} />
+                                    <div>{event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events'><DeleteOutlineRoundedIcon onClick={e => deleteEvent(match.params.id)} style={{ color: '#212529' }} />
                                     </Link> : <div></div>}</div>
                                 </div></div>
 
@@ -388,7 +397,7 @@ const Eventitem = ({ match, getevent, events: { event, friends, events, categori
                             <div className="bot__section">
                                 <div className='row '>
                                     {event && event.is_subscribed === false ? <div className='col-sm-2 pt-5' id='attend'>
-                                        <button onClick={subscribEevent(event.id, 1)}  >Attend</button>
+                                        <button onClick={subscribEevent(event.id, 1)} disabled={disable} >Attend</button>
                                     </div> : <div className='col-sm-2 pt-5' id='attend'>
                                             <button disabled={true}>Already subscribed</button>
                                         </div>}

@@ -13,9 +13,10 @@ export const getPosts = () => async dispatch => {
     }
     try {
         const res = await axios.post('/api/posts/getaLlposts', {}, config)
+        console.log(res)
         dispatch({
             type: GET_POSTS,
-            payload: res.data.data
+            payload: res.data
         })
     } catch (error) {
         toast.error('Error happened when fetching posts');
@@ -34,7 +35,7 @@ export const addLike = (post_id) => async dispatch => {
     }
     try {
         const res = await axios.post(`/api/posts/like`, { post_id }, config)
-        console.log(res.data.data)
+        console.log(res.data)
         dispatch({
             type: UPDATE_LIKES,
             payload: res.data.data,
@@ -79,9 +80,10 @@ export const addPost = formData => async dispatch => {
     }
     try {
         const res = await axios.post('/api/posts', formData, config)
+
         dispatch({
             type: ADD_POST,
-            payload: res.data.data.data
+            payload: res.data.data
         })
         // save post id 
         // create function 
@@ -145,10 +147,10 @@ export const addComment = (idpost, formData) => async (dispatch,getState) => {
             await axios.post(`/api/posts/${idpost}/comment`, formData, config)
              const res = await axios.post('/api/posts/getaLlposts', {}, config)
              //  const finded= getState().Post.posts.filter(el=>el.id !==res.data.post_id)
-        console.log(res.data.data)
+       // console.log(res.data.data)
         dispatch({
             type: GET_POSTS,
-            payload: res.data.data //finded.concat(res.data)
+            payload: res.data //finded.concat(res.data)
             
         })
         toast.success('Your have commented this Post');
@@ -176,7 +178,7 @@ export const deleteComment = id => async dispatch => {
             //console.log(res.data)
             dispatch({
                 type: GET_POSTS,
-                payload: res.data.data,
+                payload: res.data,
 
             })
             toast.success('Delete success');

@@ -169,7 +169,7 @@ const onsubmit1 = e => {
                         <div className='row'>
                         {markets && markets.map((markets) =>
                                 (
-                                    <SingleProduct key={markets.id} markets={markets}  className='product'/>)
+                                    <SingleProduct key={markets.id} markets={markets}  className='products'/>)
                                 )}
 
                         </div>

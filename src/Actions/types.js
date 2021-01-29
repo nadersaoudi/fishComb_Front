@@ -62,7 +62,9 @@ export const ADD_CART = 'ADD_CART';
 export const DELETE_PROD_CART = 'DELETE_PROD_CART';
 export const ATTENDED='ATTENDED';
 export const PRODUCT_ERROR = 'PRODUCT_ERROR';
-
+export const UPDATE_PRODUCT_ERROR = 'UPDATE_PRODUCT_ERROR';
+export const DELETE_PRODUCT_ERROR = 'DELETE_PRODUCT_ERROR';
+export const SEARCH_PRODUCT_ERROR = 'SEARCH_PRODUCT_ERROR';
 
 //Cart Types
 export const DECREASE = "DECREASE";
@@ -71,3 +73,9 @@ export const REMOVE = "REMOVE";
 export const CLEAR_CART = "CLEAR_CART";
 export const GET_TOTALS = "GET_TOTALS";
 export const TOGGLE_AMOUNT = "TOGGLE_AMOUNT";
+export const UPDATE_QUANTITY = 'UPDATE_QUANTITY';
+export const ERROR_UPDATE_QUANTITY = 'ERROR_UPDATE_QUANTITY';
+export const CART_ERROR = 'CART_ERROR';
+export const CHECKOUT ='CHECKOUT';
+export const CHECKOUT_FAILED ='CHECKOUT_FAILED';
+export const GET_THREAD = 'GET_THREAD';

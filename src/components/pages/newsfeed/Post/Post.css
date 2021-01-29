@@ -53,17 +53,13 @@
 }
 .pub__bottom{
 	display: flex;
-	
-
 }
-
 .pub__option{
 	margin-left: 9px;
 	display: flex;
 	align-items: center;
 	padding: 3%;
 }
-
 .pub__option > h6{
 	font-size: 14px;
 	font-weight: 100  ;

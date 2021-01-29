@@ -15,7 +15,7 @@ import SortIcon from '@material-ui/icons/Sort';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Row, Col,Image } from 'react-bootstrap';
-
+import Switch from '@material-ui/core/Switch';
 
 const Events = ({ addEvent, getevents, events: { events, categories }, sortEvents, myevents, search }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -48,6 +48,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const [date, setdate] = useState('')
     const [video_link, setvideolink] = useState('')
     const [cover, setcover] = useState('')
+    const [status,setStatus]=useState(1)
     const onnamechange = e => {
         setname(e.target.value)
     }
@@ -73,7 +74,13 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const onlinkchange = e => {
         setvideolink(e.target.value)
     }
+    const onstatuschange =e=>{
+        setStatus(e.target.value)
+    }
+    const [state, setState] = React.useState({
+        checkedA: true
 
+    });   
 
 
 
@@ -88,7 +95,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
         file.append('date', date);
         file.append('cover', cover);
         file.append('video_link', video_link);
-        file.append('status', 1);
+        file.append('status', status);
         addEvent(file)
         e.target.reset();
     }
@@ -113,7 +120,14 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const handleChange1 = e => {
         setValue(e.target.value)
     }
-
+    const handleswitch = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked });
+        if (event.target.checked === true) {
+           setStatus(1)
+        }
+        else {   setStatus(0) }
+        console.log(status)
+    };
     const onsubmit1 = e => {
         e.preventDefault();
         console.log(filter)
@@ -551,7 +565,26 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                 type="textarea"
                                                 fullWidth
                                                 name="video_link" value={video_link} onChange={onlinkchange}
-                                            /></div></div>
+                                                
+                                            />
+                                            <FormControl
+                                        // placeholder={event && event.status}
+                                        className='input_event'
+                                        hidden='true'
+                                        id="status"
+                                        name="status" value={status.toString()}
+                                        type="textarea"
+                                        fullWidth
+                                        onChange={onstatuschange}
+                                    />
+                                    disable event
+                                    <Switch
+                                        checked={state.checkedA}
+
+                                        onChange={handleswitch}
+                                        name="checkedA"
+                                        inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                    /> enable event</div></div>
                                     <div className='row pt-2 px-0'>
                                         <div className='col-md-9'></div>
                                         <div className='col-md-3'>

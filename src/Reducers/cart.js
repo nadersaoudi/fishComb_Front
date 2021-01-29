@@ -6,7 +6,9 @@ import {
     GET_TOTALS,
     TOGGLE_AMOUNT,
     GET_CART,
-    DELETE_PROD_CART
+    ADD_CART,
+    DELETE_PROD_CART,
+    UPDATE_QUANTITY
   } from '../Actions/types';
   
   const initialStore = {
@@ -22,11 +24,22 @@ import {
              cart: action.payload
          }
      }
+     if (action.type === ADD_CART){
+      return {
+          ...state,
+      }
+  }
      if (action.type === DELETE_PROD_CART) {
          return {
              ...state,
              cart: state.cart.filter(cart => cart.cart_id !== action.payload),
          }
+     }
+     if (action.type === UPDATE_QUANTITY){
+       return {
+         ...state,
+         cart: action.payload
+       }
      }
     if (action.type === CLEAR_CART) {
       return { ...state, cart: [] };

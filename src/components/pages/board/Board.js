@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Select from '@material-ui/core/Select';
 import { Col, Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import { Table } from 'reactstrap';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -9,11 +10,15 @@ import PropTypes from 'prop-types';
 import FormControl from 'react-bootstrap/FormControl'
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link } from 'react-router-dom';
+import { getThread } from '../../../Actions/Board';
 import './Board.css';
 
 
 
-const Board =( { categories }) => {
+const Board =( { categories , getThread }) => {
+    useEffect(() => {
+        getThread()
+    }, [getThread])
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
         setOpen(true);
@@ -171,11 +176,11 @@ const Board =( { categories }) => {
 }
 Board.prototype={
     categories: PropTypes.object.isRequired,
+    getThread: PropTypes.func.isRequired,
+    thread: PropTypes.object.isRequired
 }
-
 const mapStateToProps = state => ({
     categories: state.categories,
-
+    thread : state.thread
 })
-
-export default Board;
+export default connect (mapStateToProps, { getThread }) (Board);

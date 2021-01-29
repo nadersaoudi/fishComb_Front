@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { GET_MARKETS, ADD_PRODUCT, GET_MY_PRODUCTS, GET_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT, MARKET_CATERROR, GATEGORIES_MARKET, SEARCH_PRODUCT, PRODUCT_ERROR} from './types';
+import { GET_MARKETS, ADD_PRODUCT, GET_MY_PRODUCTS, 
+    GET_PRODUCT, UPDATE_PRODUCT, DELETE_PRODUCT, MARKET_CATERROR,
+     GATEGORIES_MARKET, SEARCH_PRODUCT, PRODUCT_ERROR, SEARCH_PRODUCT_ERROR,DELETE_PRODUCT_ERROR,UPDATE_PRODUCT_ERROR} from './types';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 toast.configure();
@@ -69,18 +71,21 @@ export const updateProduct = (formdata, productID) => async dispatch => {
     const config = {
         headers: {
             Authorization: 'Bearer ' + Cookies.get('user'),
-            'content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         }
     }
     try{
-        const res = await axios.patch(`/api/marketplace/product/${productID}`,formdata,config)
+        const res = await axios.post(`/api/marketplace/product/${productID}`,formdata,config)
         dispatch({
             type: UPDATE_PRODUCT,
             payload: res.data.data
         })
         toast.info('Product Updated');
     }catch{
-
+        dispatch({
+            type: UPDATE_PRODUCT_ERROR,
+        })
+        toast.error('Error Updated');
     }
 }
 //My Product
@@ -95,7 +100,7 @@ export const myProduct = () => async dispatch => {
         const res = await axios.post(`/api/marketplace/my_products`,{},config)
         dispatch({
             type: GET_MARKETS,
-            payload: res.data.data
+            payload: res.data
         })
     }catch{
     }
@@ -114,9 +119,12 @@ export const deleteProduct = (productID) => async dispatch => {
              type: DELETE_PRODUCT,
              payload: productID
          })
-         toast.error('Product Delete');
+         toast.info('Product Delete');
     }catch {
-        
+        dispatch ({
+            type: DELETE_PRODUCT_ERROR,
+        })
+        toast.error('Error Delete');
     }
 }
 //Categories Market
@@ -156,6 +164,8 @@ export const search = (filter,value) => async dispatch => {
             payload:res.data.data
         })
     }catch{
-
+        dispatch({
+            type: SEARCH_PRODUCT_ERROR,
+        })
     }
 }

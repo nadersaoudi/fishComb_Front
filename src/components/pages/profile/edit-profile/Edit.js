@@ -10,7 +10,7 @@ export const Edit = ( { auth: {user}, edit , loading , history}) => {
         first_name: '',
         last_name: '',
         email: '', 
-        birth_date: '',
+        birthday: '',
         phone: '',
         about: '',
         username: '',
@@ -21,7 +21,7 @@ export const Edit = ( { auth: {user}, edit , loading , history}) => {
         first_name,
         last_name,
         email,
-        birth_date,
+        birthday,
         phone,
         about,
         location,
@@ -55,20 +55,20 @@ return (
                   <div className='row pt-4 pb-3'>
                   <div className='row'>
                     <div className='col-sm-6'>
-                      <input className="form-control mb-4"  placeholder={user && user.first_name} autoComplete="first_name" name="first_name" value={first_name} onChange={e => onchange(e)} />
+                      <input className="form-control mb-4"  placeholder={user && user.attributes.first_name} autoComplete="first_name" name="first_name" value={first_name} onChange={e => onchange(e)} />
                     </div>
                   <div className='col-sm-6'>
-                <input className="form-control mb-4"  placeholder={user && user.last_name} autoComplete="last_name" name="last_name" value={last_name} onChange={e => onchange(e)} />
+                <input className="form-control mb-4"  placeholder={user && user.attributes.last_name} autoComplete="last_name" name="last_name" value={last_name} onChange={e => onchange(e)} />
               </div>
              </div>
               <div className='row'>
                 <div className='col-sm-12'>
-                        <input className="form-control mb-4"  placeholder={user && user.username} autoComplete="username" name="username" value={username} onChange={e => onchange(e)} />
-                        <input className="form-control mb-4 "  placeholder={user && user.email} autoComplete="email" name="email" value={email} onChange={e => onchange(e)} />
-                        <input className="form-control mb-4 "  placeholder={user && user.location} autoComplete="location" name="location" value={location} onChange={e => onchange(e)} />
-                        <input className="form-control mb-4 "  placeholder={user && user.birth_date} autoComplete="birth_date" name="birth_date" value={birth_date} onChange={e => onchange(e)} />
-                        <input className="form-control mb-4 "  placeholder={user && user.phone} autoComplete="phone" name="phone" value={phone} onChange={e => onchange(e)} />  
-                        <textarea className="form-control mb-4" placeholder={user && user.about} autoComplete="about" name="about" value={about} onChange={e => onchange(e)}/>
+                        <input className="form-control mb-4"  placeholder={user && user.attributes.username} autoComplete="username" name="username" value={username} onChange={e => onchange(e)} />
+                        <input className="form-control mb-4 "  placeholder={user && user.attributes.email} autoComplete="email" name="email" value={email} onChange={e => onchange(e)} />
+                        <input className="form-control mb-4 "  placeholder={user && user.attributes.location} autoComplete="location" name="location" value={location} onChange={e => onchange(e)} />
+                        <input className="form-control mb-4 "  placeholder={user && user.attributes.birthday} autoComplete="birthday" name="birthday" value={birthday} onChange={e => onchange(e)} />
+                        <input className="form-control mb-4 "  placeholder={user && user.attributes.phone} autoComplete="phone" name="phone" value={phone} onChange={e => onchange(e)} />  
+                        <textarea className="form-control mb-4" placeholder={user && user.attributes.about} autoComplete="about" name="about" value={about} onChange={e => onchange(e)}/>
                 </div>
                 </div>
               </div>
@@ -86,11 +86,9 @@ return (
 Edit.propTypes = {
     auth: PropTypes.object.isRequired,
     editt: PropTypes.func.isRequired,
-
   };
-  const mapStateToProps = state => ({
-    auth: state.auth,
-  
-  })
-  export default connect(mapStateToProps, { edit })(withRouter(Edit));
+const mapStateToProps = state => ({
+  auth: state.auth,
+})
+export default connect(mapStateToProps, { edit })(withRouter(Edit));
 
