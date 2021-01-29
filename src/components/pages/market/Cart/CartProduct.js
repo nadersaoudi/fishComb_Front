@@ -20,7 +20,8 @@ const {
     setFormData({
     })
   }, [loading])
-const onchange = e => setFormData({ ...formdata, [e.target.name]: e.target.value });
+const onchange = e => setFormData({ ...formdata, [e.target.name]: e.target.value })
+
 const onSubmit = e => {
  e.preventDefault();
     updateQuantity(formdata,cart.cart_id);
@@ -29,7 +30,7 @@ const [total,setTotal]=useState(cart.amount)
 const [total1,setTotal1]=useState(0)
 const handlechange=()=>{
     setTotal(quantity*cart.product.price)
-    setTotal1()
+    
 }
 
 /**********************************/
