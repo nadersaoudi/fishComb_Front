@@ -31,18 +31,20 @@ const Checkout = ({checkout}) => {
         ...formData,
         [e.target.name]: e.target.value
     });
+    const [disable,setdisable]=useState(false)
     const submit =e=>{
         e.preventDefault()
     
       console.log(formData)
       checkout(formData)
+      setdisable(true)
     }
    
     return (
         <Fragment>
             <Row>
                
-                <form onSubmit={e=>submit(e)}>
+                <form onSubmit={e=>submit(e)} >
                     <Col sm={4}
                         md={4}
                         className='pt-3 pb-3'>
@@ -51,7 +53,9 @@ const Checkout = ({checkout}) => {
                             onChange={
                                 e => onchange(e)
                             }
-                            type="text"/></Col>
+                            type="text"
+                            disabled={disable}
+                            /></Col>
 
                     <Col sm={4}
                         md={4}
@@ -61,6 +65,7 @@ const Checkout = ({checkout}) => {
                             onChange={
                                 e => onchange(e)
                             }
+                            disabled={disable}
                             type="text"/></Col>
                             <Col sm={4}
                         md={4}
@@ -70,6 +75,7 @@ const Checkout = ({checkout}) => {
                             onChange={
                                 e => onchange(e)
                             }
+                            disabled={disable}
                             type="text"/></Col>
                             <Col sm={4}
                         md={4}
@@ -79,6 +85,7 @@ const Checkout = ({checkout}) => {
                             onChange={
                                 e => onchange(e)
                             }
+                            disabled={disable}
                             type="text"/></Col>
                              <Col sm={4}
                         md={4}
@@ -88,6 +95,7 @@ const Checkout = ({checkout}) => {
                             onChange={
                                 e => onchange(e)
                             }
+                            disabled={disable}
                             type="text"/></Col>
                              <Col sm={4}
                         md={4}
@@ -97,6 +105,7 @@ const Checkout = ({checkout}) => {
                             onChange={
                                 e => onchange(e)
                             }
+                            disabled={disable}
                             type="text"/></Col>
                              <Col sm={4}
                         md={4}
@@ -106,8 +115,9 @@ const Checkout = ({checkout}) => {
                             onChange={
                                 e => onchange(e)
                             }
+                            disabled={disable}
                             type="text"/></Col>
-                            <Col sm={3} md={3}><Button type='submit'>Confirm</Button></Col>
+                            <Col sm={3} md={3}><Button type='submit'  disabled={disable}>Confirm</Button></Col>
                 </form>
                 </Row>
         </Fragment>
