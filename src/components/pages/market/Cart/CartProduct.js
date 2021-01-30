@@ -36,13 +36,24 @@ const handlechange=()=>{
 return (
     <Fragment>
         <Form onSubmit={e => onSubmit(e)} >
-            <Row className=''>
+            <Row className='pt-3 pb-3'>
                 <Col xs={12}>
                     <Row className='mb-3 pt-2'>
                         <Col xs={1} className='border-right'>
                             <img src={cart && "http://77.68.24.35/storage/"+cart.product.image.slice(6)} width='70px' height='55px'/>
                         </Col>
-                        <Col xs={3}className='border-right'>{cart && cart.product.name}</Col> 
+                        <Col xs={3}className='border-right'>
+                            <Row>
+                                <Col>
+                                 <h5> { cart && cart.product.name.charAt(0).toUpperCase() + cart.product.name.slice(1) }</h5>
+                                </Col>
+                            </Row>
+                           <Row>
+                               <Col>
+                                <h6>{cart && cart.product.description}</h6>
+                               </Col>
+                           </Row>
+                            </Col> 
                         <Col xs={2} className='border-right'>{cart && cart.product.price}</Col> 
                         <Col xs={2}className='border-right ml-2'>
                             
@@ -51,14 +62,15 @@ return (
                             </Col>
                         <Col xs={2}className='border-right'>{total}</Col>
                         <Col xs={1} >
-                            <Button>
-                                <DeleteOutlineRoundedIcon onClick={e=>deleteProd(cart && cart.cart_id)}  />
+                            <Button onClick={e=>deleteProd(cart && cart.cart_id)}>
+                                <DeleteOutlineRoundedIcon   />
                             </Button>
                         </Col>
                     </Row>
-                    <hr/>
+                    
                 </Col>    
             </Row>
+            <hr/>
         </Form>
     
     </Fragment>

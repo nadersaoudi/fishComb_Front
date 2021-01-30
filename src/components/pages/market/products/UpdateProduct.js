@@ -190,7 +190,7 @@ const handleClose = () => {
                             <div className='col-md-5'>
                             <div className='row pt-3'>
                             <div className="btn-group btn-group-toggle col-md-12  ">
-                            <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
+                            <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} name='image'  />
                             { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                 <span  >Upload Video </span>
                                 </Button>*/}
@@ -226,7 +226,6 @@ UpdateProduct.prototype= {
 }
 const mapStateToProps = state => ({
     auth: state.auth,
-    events: state.events,
     market: state.market,
     updateProduct: state.market,
     categories: state.market,

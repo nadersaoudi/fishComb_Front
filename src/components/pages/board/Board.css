@@ -7,3 +7,8 @@
 #Button_board:hover{
     background-color: #202c43 !important;
 }
+.BoradBotton{
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+}

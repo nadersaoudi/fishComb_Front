@@ -8,7 +8,7 @@ import {
   deleteComment, getPosts, updateComment
 } from "../../../../Actions/Post";
 import EditIcon from '@material-ui/icons/Edit';
-import { Button } from 'react-bootstrap';
+import Button from '@material-ui/core/Button';
 import { getUsers } from '../../../../Actions/profile';
 import { NavLink } from 'react-router-dom';
 
@@ -37,18 +37,18 @@ const SingleComm = (
          onClick={(e) => getUsers(comments.user.id)} />
          </NavLink>
       </div>
-      <div className="col-7" id="comment" >
+      <div className="col-4" id="comment" >
         {comments.body}
         <div>
         </div>
       </div>
-      {user &&user.user_id===comments.user_id ? <div className='col-1 '>
-        <Button variant="light" onClick={onclick} >
+      {user &&user.user_id===comments.user_id ? <div className='col-3 '>
+        <Button   variant="outlined" color="primary" onClick={onclick} >
           <EditIcon className='butDelCom' />
         </Button>
       </div>: <div></div>} 
-      {user && user.user_id===comments.user_id ? <div className='col-1 mr-2'>
-        <Button variant="light" onClick={(e) => deleteComment(comments.id)} >
+      {user && user.user_id===comments.user_id ? <div className='col-3 mr-2'>
+        <Button   variant="outlined" color="secondary" onClick={(e) => deleteComment(comments.id)} >
           <DeleteIcon className='butDelCom' />
         </Button>
       </div> : <div></div>} 
