@@ -62,10 +62,10 @@ return (
                                </Col>
                            </Row>
                             </Col> 
-                        <Col xs={2} className='border-right'>{cart && cart.product.price}</Col> 
+                        <Col xs={1} className='border-right'>{cart && cart.product.price}</Col> 
                         <Col xs={3}className='border-right ml-2'>
                             
-                                <input className='col-6' value={quantity} type='number' min='1' name="quantity"  onChange={e => onchange(e)} onClick={handlechange}/>
+                                <input className='col-6' value={quantity} type='number'  name="quantity"  onChange={e => onchange(e)} onClick={handlechange} defaultValue={quantity} />
                               
                             </Col>
                         <Col xs={2}className='border-right'>{cart.amount}</Col>
