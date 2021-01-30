@@ -28,7 +28,7 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
         </div>
       <div className='col-sm-3'>
         
-      <OwlCarousel className="slider-items owl-carousel" >
+      <OwlCarousel className="slider-items owl-carousel">
         {events && events.map((event) =>
                                     (
                                         <div class="item" key={event.id}>
