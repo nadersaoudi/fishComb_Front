@@ -34,7 +34,7 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
                                         <div class="item" key={event.id}>
                                             <Col>
                                             <img src={event.cover} width='150px' height='100px' style={{borderRadius:'5px'}} className='pb-2'/></Col>
-                                           <Col> <p style={{color:'grey'}}>{event.name}</p>
+                                           <Col> <p style={{color:'grey'}}>{event.name.charAt(0).toUpperCase() + event.name.slice(1) }</p>
                                             <p  style={{color:'grey'}}><Moment format='MMM Do YY'>{event.date}</Moment></p></Col>
                                             </div>
                                        

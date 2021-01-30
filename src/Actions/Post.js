@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST ,GET_POST ,UPDATE_COMMENT ,ERROR_UPDATE, UPDATE_POST } from './types';
+import { GET_POSTS, POST_ERROR, UPDATE_LIKES, DELETE_POST, ADD_POST ,GET_POST ,UPDATE_COMMENT ,ERROR_UPDATE, UPDATE_POST, POST_ERROR_UPDATE } from './types';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 toast.configure();
@@ -127,11 +127,14 @@ export const updatePost  = (formData ,post_id) => async dispatch  => {
         const res = await axios.patch(`/api/posts/${post_id}`,formData,config)
         dispatch ({
             type: UPDATE_POST,
-            payload: res.data.data
+            payload: res.data
         })
         toast.info('Post Updated');
     }catch{
-
+        dispatch({
+            type: POST_ERROR_UPDATE,
+        })
+        toast.error('Error Updated')
     }
 }
 //Add comment

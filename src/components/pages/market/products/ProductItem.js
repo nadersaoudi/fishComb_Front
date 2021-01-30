@@ -17,8 +17,6 @@ import { MdAddShoppingCart } from 'react-icons/md';
 import '../Market.css';
 import { FaEdit } from 'react-icons/fa';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
-import SingleProduct from './SingleProduct';
-import { BiEditAlt } from 'react-icons/bi';
 const ProductItem = ( { auth: { user }, match, getProduct, deleteProduct,  market :{ product,categories  } ,addCart ,updateProduct , loading}  ) => {
 /****************************/
 useEffect(() => {
@@ -34,10 +32,8 @@ const [price, setprice] = useState('')
 const [stock, setstock] = useState('')
 const [image, setimage] = useState('')
 const [status , setStatus] = useState('')
-
-
 useEffect(()=>{
-  setname(loading || !!product.name ? '' : product.name)
+  setname(loading ||!!product.name ? '' : product.name)
 },[loading])
 useEffect(()=>{
 setcategoryid(loading || !!product.category_id? '' : product.category_id)
@@ -324,7 +320,7 @@ const handleClose = () => {
                         </div>
                     </div>
                     
-                                <hr/>
+                             <hr/>
                 <div className='bot_section'>
                     <div className='row'>
                         <div className='col-1'></div>

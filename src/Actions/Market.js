@@ -41,7 +41,7 @@ export const addProduct = file => async dispatch => {
         })
         toast.info('Product Added');
     } catch (error) {
-        toast.error('Error happened when adding event');
+        toast.error('Error happened when adding product');
         dispatch({
             type: PRODUCT_ERROR,
         });
@@ -164,8 +164,10 @@ export const search = (filter,value) => async dispatch => {
             payload:res.data
         })
     }catch{
+        toast.error('Error happened when fetching Product');
         dispatch({
             type: SEARCH_PRODUCT_ERROR,
         })
+       
     }
 }

@@ -40,7 +40,8 @@ export default function (state = initialState, action) {
         case UPDATE_POST:
             return{
                 ...state,
-                loading:false
+                posts: state.posts.filter(post => post.data.id !== payload),
+                loading: false
             } 
         case UPDATE_LIKES:
             return {

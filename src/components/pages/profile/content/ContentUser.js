@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import { getUsers } from '../../../../Actions/profile';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
