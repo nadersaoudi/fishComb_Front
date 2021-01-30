@@ -37,25 +37,25 @@ const [status , setStatus] = useState('')
 
 
 useEffect(()=>{
-  setname(loading || !product.name ? '' : product.name)
+  setname(loading || !!product.name ? '' : product.name)
 },[loading])
 useEffect(()=>{
-setcategoryid(loading || !product.category_id? '' : product.category_id)
+setcategoryid(loading || !!product.category_id? '' : product.category_id)
 },[loading])
 useEffect(()=>{
-setdescription(loading || !product.description ? '' : product.description)
+setdescription(loading || !!product.description ? '' : product.description)
 },[loading])
 useEffect(()=>{
-setStatus(loading || !product.status ? 1 : product.status)
+setStatus(loading || !!product.status ? 1 : product.status)
 },[loading])
 useEffect(()=>{
-setimage(loading || !product.image ? '' : product.image)
+setimage(loading || !!product.image ? '' : product.image)
 },[loading])
 useEffect(()=>{
-setstock(loading || !product.stock ? '' : product.stock)
+setstock(loading || !!product.stock ? '' : product.stock)
 },[loading])
 useEffect(()=>{
-setprice(loading || !product.price ? '' : product.price)
+setprice(loading || !!product.price ? '' : product.price)
 },[loading])
 
 const onnamechange = e => {
