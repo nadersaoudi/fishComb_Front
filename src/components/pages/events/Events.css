@@ -148,3 +148,9 @@ color: #F7F8FA;
     text-decoration: none;
     color : #fff;
 }
+.link_attended{
+    text-decoration: none;
+}
+.link_attended:hover{
+    text-decoration: none;
+}

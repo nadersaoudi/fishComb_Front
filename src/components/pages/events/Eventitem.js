@@ -326,8 +326,8 @@ useEffect(()=>{
             
             {/*****************Navlink***************** */}
             <Row className='pt-5 pb-5'>
-                <Col md={2} sm={2} ></Col>
-                <Col md={6} sm={6}>
+                <Col md={3} className='px-0'></Col>
+                <Col md={4} className="pb-4 pt-5 px-0 mr-5" >
                     <ul className="nav nav-pills nav-justified" id='navprofil'>
                         <li className="nav-item">
                             <Link to={`/dashboard/events`} className="link_cart"><span className="n">General event</span></Link>
@@ -357,7 +357,7 @@ useEffect(()=>{
             </Row>
                             <Row>
                         <Col md={3}  >  {event && !event.video_link === null ? <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} /> : <div>
-                            <img src={event && event.cover} width="380" height="300" alt='event' style={{ borderRadius: '0' }} />
+                            <img src={event && event.cover} width="380" height="300" alt='event' style={{ borderRadius: '4px' }} />
                         </div>}</Col>
                         <Col md={2} sm={2}></Col>
                         <Col md={7} sm={7}>

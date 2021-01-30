@@ -40,7 +40,6 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const handleOpen1 = () => {
         setOpen1(true);
     };
-
     const [name, setname] = useState('')
     const [description, setdescription] = useState('')
     const [category_id, setcategoryid] = useState('')
@@ -52,15 +51,12 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     const onnamechange = e => {
         setname(e.target.value)
     }
-
     const ondescchange = e => {
         setdescription(e.target.value)
     }
-
     const oncategorychange = e => {
         setcategoryid(e.target.value)
     }
-
     const onlocationchange = e => {
         setlocation1(e.target.value)
     }
@@ -137,8 +133,8 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     return (
         <div>
               <Row className='pt-5 pb-3'>
-                    <Col md={2} ></Col>
-                    <Col md={6} className="pb-4">
+                    <Col md={3} className='px-0' ></Col>
+                    <Col md={4} className="pb-4 pt-5 px-0 mr-5">
                         <ul className="nav nav-pills nav-justified " id='navprofil'>
                             <li className="nav-item">
                                 <Link to={`/dashboard/events`} className="link_cart"><span className='n' >All Events</span></Link>
@@ -621,7 +617,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                         <Row>
                         <Col md={2} sm={2} xl={2}> 
                                
-                                <Image src='https://picsum.photos/id/99/200/300'  width="220" height="200" alt='event' rounded />
+                                <Image src='https://picsum.photos/id/99/200/300'  width="200" height="180" alt='event' rounded />
                                 <div className='description'>
                                     <span>lorem ipsuem</span> <br />
 
@@ -631,7 +627,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             </div>
                             </Col> <Col sm={1} md={1}></Col>
                             <Col md={2} sm={2} xl={2} >
-                            <Image src='https://picsum.photos/id/100/200/300'  width="220" height="200" alt='event' rounded />
+                            <Image src='https://picsum.photos/id/100/200/300' width="200" height="180" alt='event' rounded />
                                 <div className='description'>
 
                                     <span>lorem ipsuem</span> <br />
@@ -639,7 +635,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                               
                             </div></Col> <Col sm={1} md={1}></Col>
                             <Col md={2} sm={2} xl={2} >
-                            <Image src='https://picsum.photos/id/77/200/300'  width="220" height="200" alt='event' rounded />
+                            <Image src='https://picsum.photos/id/77/200/300'  width="200" height="180" alt='event' rounded />
                                     <div className='description'>
                                         <span>lorem ipsuem</span> <br />
                                         <span>lorem ipsuem</span> <br />
@@ -648,7 +644,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             </Col>
                             <Col sm={1} md={1}></Col>
                             <Col md={2} sm={2} xl={2} >
-                            <Image src='https://picsum.photos/id/98/200/300'  width="220" height="200" alt='event' rounded />
+                            <Image src='https://picsum.photos/id/98/200/300' width="200" height="180"alt='event' rounded />
                                     <div className='description'>
                                         <span>lorem ipsuem</span> <br />
                                         <span>lorem ipsuem</span> <br />

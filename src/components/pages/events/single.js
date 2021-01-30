@@ -7,11 +7,11 @@ import PropTypes from 'prop-types'
 const Single =({  event })=> {
     return (
      
-        <div className='col-md-2'>
+        <div className='col-md-2 col-xl-2'>
               
         <div className='image_holder grid '>
         <NavLink to={`/dashboard/singleevent/${event.id}`} > 
-        <img src={event && event.cover} width="150" height="125" alt='event'  style={{borderRadius:'5px'}} /></NavLink>
+        <img src={event && event.cover} width="130" height="100" alt='event'  style={{borderRadius:'5px'}} /></NavLink>
             <div className='description'>
                 <span>{event && event.name.charAt(0).toUpperCase() + event.name.slice(1) }</span> <br /> 
                 <Moment
