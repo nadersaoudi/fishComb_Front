@@ -38,7 +38,7 @@ const Search = ({ friend, addFriend ,getUser }) => {
     <div className='row pt-3'>
       <div className='col-1'>
       </div>
-      <div className='col-11'>
+      <div className='col-12'>
         <div className='row pt-4 pb-4'>
           <div className='card pt-3 pb-3' id='cardSearsh'>
           <form  onSubmit={e => {
@@ -47,23 +47,21 @@ const Search = ({ friend, addFriend ,getUser }) => {
              setDisable(true);
             }}>
           <div className='row '>
-           <div className='col-sm-1 pt-4'>
+           <div className='col-sm-1 pt-4 ml-4'>
              <NavLink to={`/dashboard/profileuser/${friend.data.user_id}`}>
              <Avatar src={friend.data.attributes.profile_image} onClick={(e) => getUsers(friend.data.user_id)}  className={classes.large} />
              </NavLink>
               </div>
               <div className='col-sm-8 '>
               <div className='row'>
-                <div className='col-sm-4 ml-3 pt-4'>
-                  <h5>{friend.data.attributes.name}</h5>
-                  <h6>{friend.data.attributes.about}</h6>
+                <div className='col-sm-5 ml-3 pt-4'>
+                  <h5>{friend.data.attributes.first_name.charAt(0).toUpperCase() + friend.data.attributes.first_name.slice(1)} {friend.data.attributes.last_name.charAt(0).toUpperCase() + friend.data.attributes.last_name.slice(1)}</h5>
+                  <h6>{friend.data.attributes.about.charAt(0).toUpperCase() + friend.data.attributes.about.slice(1)}</h6>
                 </div>
               </div>
             </div>
-              <div className='col-sm-1 mr-2 pt-4'>
-               
+              <div className='col-sm-2 mr-2 pt-4'>
                {friend && friend.data.attributes.is_friend ===false ? <Button variant="outlined" type="submit" disabled={disable}>Add<AiOutlineUserAdd className='add' /></Button>
-
                :<NavLink to={`/dashboard/profileuser/${friend.data.user_id}`}>
                  <Button style={{backgroundColor:'white',border:'none'}}><AiOutlineTeam style={{color:'black'}}  /><p style={{color:'black'}}>View Profile</p></Button>
                </NavLink>

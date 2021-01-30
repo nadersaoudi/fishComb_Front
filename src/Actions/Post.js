@@ -109,7 +109,7 @@ export const getPost = (post_id) =>async dispatch=> {
         const res = await axios.post(`/api/posts/post`,{"post_id":post_id},config);
         dispatch({
             type: GET_POST,
-            payload : res.data
+            payload : res.data.data
         })
         console.log(res)
     }catch{   

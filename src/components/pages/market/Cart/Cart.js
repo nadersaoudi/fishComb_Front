@@ -24,7 +24,7 @@ return (
             <Col sm={8} className='card__shop'>
                 <Card style={{backgroundColor:'#f7f8fa',border:'0px'}} >
                     <Row className='pt-3'> 
-                        <Col xs={1}></Col>
+                        
                         <Col xs={10}>
                             <h2 className='title'><b>Your Shop Cart</b></h2>
                         </Col>  

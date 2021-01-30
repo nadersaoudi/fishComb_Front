@@ -7,8 +7,8 @@ const Searchitem = ({ Friends: { friend, loading } }) => {
   return (
     <Fragment>
       <div className='row pt-5'>
-        <div className='col-1'></div>
-        <div className='col-6'>
+        <div className='col-1 '></div>
+        <div className='col-6 '>
         <h4>Search results </h4> 
         </div>
         
@@ -25,19 +25,19 @@ const Searchitem = ({ Friends: { friend, loading } }) => {
         </div>
       </div>) :
         <div className='col-8'>
-          <div className='row pt-5'>
-            <div className='col-3'></div>
-            <div className='col-9'>
+          <div className='row '>
+            <div className='col-2'></div>
+            <div className='col-10'>
             
               {friend && friend.map((f,index) => (<Search key={index} friend={f} />))}
             
             </div>
         
           </div>
-
-        </div>
-        
+          
+        </div>  
       }
+      <hr />
 </div>
     </Fragment>
   )

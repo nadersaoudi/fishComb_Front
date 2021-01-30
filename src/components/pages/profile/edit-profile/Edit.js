@@ -8,8 +8,7 @@ import {  withRouter } from 'react-router-dom';
 export const Edit = ( { auth: {user}, edit , loading , history}) => {
     const [formdata, setFormData] = useState({
         first_name: '',
-        last_name: '',
-        email: '', 
+        last_name: '', 
         birthday: '',
         phone: '',
         about: '',
@@ -20,7 +19,6 @@ export const Edit = ( { auth: {user}, edit , loading , history}) => {
       const {
         first_name,
         last_name,
-        email,
         birthday,
         phone,
         about,
@@ -63,8 +61,7 @@ return (
              </div>
               <div className='row'>
                 <div className='col-sm-12'>
-                        <input className="form-control mb-4"  placeholder={user && user.attributes.username} autoComplete="username" name="username" value={username} onChange={e => onchange(e)} />
-                        <input className="form-control mb-4 "  placeholder={user && user.attributes.email} autoComplete="email" name="email" value={email} onChange={e => onchange(e)} />
+                        <input className="form-control mb-4"  placeholder={user && user.attributes.name} autoComplete="username" name="username" value={username} onChange={e => onchange(e)} />
                         <input className="form-control mb-4 "  placeholder={user && user.attributes.location} autoComplete="location" name="location" value={location} onChange={e => onchange(e)} />
                         <input className="form-control mb-4 "  placeholder={user && user.attributes.birthday} autoComplete="birthday" name="birthday" value={birthday} onChange={e => onchange(e)} />
                         <input className="form-control mb-4 "  placeholder={user && user.attributes.phone} autoComplete="phone" name="phone" value={phone} onChange={e => onchange(e)} />  
