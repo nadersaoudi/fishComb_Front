@@ -16,6 +16,7 @@ useEffect(() => {
   showCart()
 },[showCart])
 const [hidden,sethidden]=useState(true)
+
 /******************************/ 
 return (
     <Fragment>
