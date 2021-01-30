@@ -11,7 +11,7 @@ import { Button } from '@material-ui/core';
 const CartProduct = (  {cart  , deleteProd, loading,updateQuantity} ) => {
 /**********************************/
 const [formdata, setFormData] = useState({
-    quantity: '',
+    quantity: cart.quantity,
 });
 const {
     quantity,
@@ -27,14 +27,22 @@ const onSubmit = e => {
     updateQuantity(formdata,cart.cart_id);
 }
 const [total,setTotal]=useState(cart.amount)
-const [total1,setTotal1]=useState(quantity*cart.product.price)
+const [total1,setTotal1]=useState(cart.product.price)
 const handlechange=()=>{
-    setTotal(quantity*cart.product.price)
-    
+    updateQuantity(formdata,cart.cart_id);
+   
+}
+
+const sum=()=> {
+
+    // setTotal1(cart.reduce((totalamount,cart)=>totalamount+cart.price,0))
+     console.log(total1)
+ 
 }
 /**********************************/
 return (
     <Fragment>
+        
         <Form onSubmit={e => onSubmit(e)} >
             <Row className='pt-3 pb-3'>
                 <Col xs={12}>
@@ -55,12 +63,12 @@ return (
                            </Row>
                             </Col> 
                         <Col xs={2} className='border-right'>{cart && cart.product.price}</Col> 
-                        <Col xs={2}className='border-right ml-2'>
+                        <Col xs={3}className='border-right ml-2'>
                             
                                 <input className='col-6' value={quantity} type='number' min='1' name="quantity"  onChange={e => onchange(e)} onClick={handlechange}/>
                               
                             </Col>
-                        <Col xs={2}className='border-right'>{total}</Col>
+                        <Col xs={2}className='border-right'>{cart.amount}</Col>
                         <Col xs={1} >
                             <Button onClick={e=>deleteProd(cart && cart.cart_id)}>
                                 <DeleteOutlineRoundedIcon   />
