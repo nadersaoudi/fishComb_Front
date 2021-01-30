@@ -13,7 +13,7 @@ return (
             <div className='image_holder grid '>
                 <div className='image'>
                 <NavLink to={`/dashboard/singleproduct/${markets.id}`} >
-                    <img src={markets && markets.image}   width="180" height="135" alt='market' className='sing__prod'/>
+                    <img src={markets && markets.image}   width="150" height="125" alt='market' className='sing__prod border'/>
                     </NavLink>
                 </div>
             <div className='description'>

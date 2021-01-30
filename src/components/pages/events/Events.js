@@ -141,13 +141,13 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                     <Col md={8} className="pb-4">
                         <ul className="nav nav-pills nav-justified " id='navprofil'>
                             <li className="nav-item">
-                                <Link to={`/dashboard/events`} className="m"><span style={{ fontFamily: "arial" }}>All Events</span></Link>
+                                <Link to={`/dashboard/events`} className="link_cart"><span  className='n' style={{ fontFamily: "arial" }}>All Events</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={`/dashboard/invited`} className="m"><span style={{ fontFamily: "arial" }}>Invited Events</span></Link>
+                                <Link to={`/dashboard/invited`} className="link_cart"><span className='n' style={{ fontFamily: "arial" }}>Invited Events</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={`/dashboard/attendedevent`} className="m"><span style={{ fontFamily: "arial" }}>Attending</span></Link>
+                                <Link to={`/dashboard/attendedevent`} className="link_cart"><span className='n' style={{ fontFamily: "arial" }}>Attending</span></Link>
                             </li>
                         </ul>
 

@@ -37,8 +37,8 @@ const handleClose = () => {
                     <div className='card'> 
                         <div className='card-body'>
                             <div className='row'>
-                            <div className='col-sm-4 mt-4' >
-                                <img src={product && product.image} width="400" height="300" alt='market' className='img_product' />
+                            <div className='col-sm-4 ' >
+                                <img src={product && product.image} width="400" height="300" alt='market'  />
                             </div>           
         
                 <div className='col-sm-8 border py-3 pl-3'>

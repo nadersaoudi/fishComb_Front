@@ -140,3 +140,20 @@ color: #F7F8FA;
     font-size: 20px;
     font-weight: 300;
 }
+.link__cart,
+.cart__span:hover{
+    text-decoration: none;
+    color : #fff;
+}
+
+
+.link_cart{
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 20px;
+}
+.link__cart,
+.cart__span{
+    text-decoration: none;
+    color: #000;
+}
