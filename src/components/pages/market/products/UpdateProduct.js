@@ -110,11 +110,12 @@ const handleClose = () => {
                             <div className='col-sm-1 mr-2'>
                               <Avatar  src={user&& user.profile_image}/>  
                             </div>
+                            
                             <div className='col-sm-10 pt-3'>
                                 <div className='row'>
                                     <div className='row'>
                                         <div className='col-sm-12'>
-                                           
+                                            <h6> {user && user.attributes.first_name.charAt(0).toUpperCase() + user.attributes.first_name.slice(1)}  {user && user.attributes.last_name.charAt(0).toUpperCase() + user.attributes.last_name.slice(1)}</h6>
                                         </div>
                                     </div>
                                 <div className='row'>
@@ -189,7 +190,7 @@ const handleClose = () => {
                             <div className='col-md-5'>
                             <div className='row pt-3'>
                             <div className="btn-group btn-group-toggle col-md-12  ">
-                            <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
+                            <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} name='image'  />
                             { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                 <span  >Upload Video </span>
                                 </Button>*/}
@@ -213,6 +214,7 @@ const handleClose = () => {
     </DialogContent>
 </form>
 </div>
+
 </Fragment>
 )
 }
@@ -224,7 +226,6 @@ UpdateProduct.prototype= {
 }
 const mapStateToProps = state => ({
     auth: state.auth,
-    events: state.events,
     market: state.market,
     updateProduct: state.market,
     categories: state.market,

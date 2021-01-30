@@ -325,25 +325,21 @@ useEffect(()=>{
           
             
             {/*****************Navlink***************** */}
-            <Row className='pt-3'>
-                <Col md={3} sm={3} ></Col>
-                <Col md={8} sm={8}>
+            <Row className='pt-5 pb-5'>
+                <Col md={2} sm={2} ></Col>
+                <Col md={6} sm={6}>
                     <ul className="nav nav-pills nav-justified" id='navprofil'>
                         <li className="nav-item">
-                            <Link to={`/dashboard/events`} className="m"><span className="n">General event</span></Link>
+                            <Link to={`/dashboard/events`} className="link_cart"><span className="n">General event</span></Link>
                         </li>
 
                         <li className="nav-item">
-                            <Link to={`/dashboard/Gallery`} className="m"><span className="n">Gallery</span></Link>
+                            <Link to={`/dashboard/Gallery`} className="link_cart"><span className="n">Gallery</span></Link>
                         </li>
 
                     </ul>
 
                 </Col>
-               
-
-
-
             </Row>
             <Row className='pt-5'>
                 <Col md={1} sm={1}></Col>
@@ -351,7 +347,7 @@ useEffect(()=>{
                     <Row>
                         <Card className='pt-2 pb-2' style={{backgroundColor:'#f7f8fa',border:'0px'}}>
                             {/*********************NEXT PREVIEW EVENT************************* */}
-            <Row className='pb-3'>
+                <Row className='pb-3'>
                 <Col md={9} sm={9}></Col>
                 <Col md={3} sm={3} className=' Top__section'> <button onClick={increment} style={{backgroundColor:'#f7f8fa'}}>Next {'>>'} </button> -<button onClick={decrement} style={{backgroundColor:'#f7f8fa'}}>{'<<'} Preview</button>
                 </Col>
@@ -361,16 +357,16 @@ useEffect(()=>{
             </Row>
                             <Row>
                         <Col md={3}  >  {event && !event.video_link === null ? <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} /> : <div>
-                            <img src={event && event.cover} width="380" height="300" alt='event' style={{ borderRadius: '5px' }} />
+                            <img src={event && event.cover} width="380" height="300" alt='event' style={{ borderRadius: '0' }} />
                         </div>}</Col>
                         <Col md={2} sm={2}></Col>
                         <Col md={7} sm={7}>
                             <div className='row'>
-                                <div className='col-sm-8'> <h4><b>{event && event.name}</b></h4>
+                                <div className='col-sm-8'> <h4><b>{event && event.name.charAt(0).toUpperCase() + event.name.slice(1) }</b></h4>
                                     <div className='row'>
-                                        <div className='col-sm-2 '>{event && event.location} </div>
+                                        <div className='col-sm-2 '>{event && event.location.charAt(0).toUpperCase() + event.location.slice(1)} </div>
 
-                                        <div className='col-sm-4 '>  {event && event.date} </div>
+                                        <div className='col-sm-4 '>{event && event.date} </div>
                                     </div>
 
                                     <div className='row'>
@@ -391,7 +387,7 @@ useEffect(()=>{
                                     </Link> : <div></div>}</div>
                                 </div></div>
 
-                            <div className='row'><div className='col-sm-6'>participants {event && event.participants.length}
+                            <div className='row pb-5'><div className='col-sm-6 pb-4'>participants {event && event.participants.length}
                             </div></div>
 
                             <div className="bot__section">
@@ -485,7 +481,7 @@ useEffect(()=>{
                         </Card>
                         <div className='mt-4 mb-2'></div>
                         <hr />
-                        <div className='mt-2'>
+                        <div className='pt-3 '>
                             <h6><b>Similar Events</b></h6>
                             <Row >
                                 {/*events && events.map((event) =>
@@ -518,13 +514,12 @@ useEffect(()=>{
 
         <div>
         
-        <OwlCarousel className="slider-items owl-carousel" >
+        <OwlCarousel className="slider-items owl-carousel pt-4" >
         {events && events.map((event) =>
                                     (
                                         <div class="item" key={event.id}>
                                             <Col>
-                                            <img src={event.cover} width='250px' height='300px' style={{borderRadius:'5px'}}/></Col>
-                                            <p>{event.name}</p>
+                                            <img src={event.cover} width='180px' height='250' style={{borderRadius:'5px'}}/></Col>
                                             </div>
                                        
                                     ))}

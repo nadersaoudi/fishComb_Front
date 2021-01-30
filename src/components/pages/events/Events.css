@@ -34,10 +34,9 @@ color: #F7F8FA;
     color: black;
 }
 .event{
-    width: 180px;
+    width: 150px;
     align-items: center;
     justify-content: center;
-
 }
 /*.col-sm-6{
     max-height: 100px;
@@ -134,9 +133,18 @@ color: #F7F8FA;
     text-decoration: none;
 }
 .eventslink {
-   
     font-family:Arial, Helvetica, sans-serif;
     text-decoration: none;
     font-size: 20px;
     font-weight: 300;
+}
+.link__cart,
+.cart__span{
+    text-decoration: none;
+    color: #000;
+}
+.link__cart
+:hover{
+    text-decoration: none;
+    color : #fff;
 }

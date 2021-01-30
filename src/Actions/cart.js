@@ -61,7 +61,7 @@ export const deleteProd = (cart_id) =>  async dispatch =>{
             type: GET_CART,
             payload: res.data
         })
-        toast.info('Product Deleted')
+        toast.success('Product Deleted')
     }catch{
 
     }

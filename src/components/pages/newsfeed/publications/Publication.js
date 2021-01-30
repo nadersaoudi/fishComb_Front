@@ -198,8 +198,8 @@ const Publication = ({
             <div className="col-lg-2">
               <div className="row" id="lcp">
                 <div className='col-lg-1'></div>
-                <div className="col-lg-4">
-                  <button className="But__Like" onClick={(e) => addLike(posts.data.id)}>
+                <div className="col-lg-6">
+                  <Button className="But__Like" onClick={(e) => addLike(posts.data.id)}>
                     <svg
                       width="25px"
                       height="21px"
@@ -216,17 +216,17 @@ const Publication = ({
                         </g>
                       </g>
                     </svg>
-                  </button>
+                  </Button>
                 </div>
                 <div className="col-3">
-                { <div className="col-lg-4 datepost">{ posts.data.likes.length>0 && posts.data.likes.length} </div>}
+                { <div className="col-lg-6 datepost"><h6>{ posts.data.likes.length>0 && posts.data.likes.length}</h6> </div>}
                 </div>
               </div>
             </div>
             <div className="col-lg-2">
               <div className="row" id="lcp">
-                <div className="col-lg-4">
-                  <button className="ButCom" onClick={onclick}>
+                <div className="col-lg-6">
+                  <Button className="ButCom" onClick={onclick}>
                     <svg
                       width="23px"
                       height="21px"
@@ -242,9 +242,10 @@ const Publication = ({
                         />
                       </g>
                     </svg>
-                  </button>
+                  </Button>
                 </div>
-                <div className="col-lg-3 datepost">{posts.data.comments.length} </div>
+                <div className="col-1"></div>
+                <div className="col-lg-2 datepost"><h6>{posts.data.comments.length}</h6> </div>
               </div>
             </div>
           </div>

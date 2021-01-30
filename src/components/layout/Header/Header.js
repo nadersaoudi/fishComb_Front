@@ -127,7 +127,7 @@ const Header = ({
                             setText('')
                         }
                 }>
-                    <div className="col-sm  header__input">
+                    <div className="col-sm px-0  header__input">
 
                         <input type="text" placeholder='Search Fishcomb' aria-label="Search"
                             value={uid}
@@ -155,7 +155,7 @@ const Header = ({
                 <div className="col-sm-3  flex">
                     <div className="col-sm-2 pt-1">
                         <Avatar src={
-                                user && user.profile_image
+                                user && user.attributes.profile_image
                             }
                             className={
                                 classes.large

@@ -37,7 +37,7 @@ const Container = () => {
               <Route path={`/dashboard/marketplace`}>
                 <Market />
               </Route>
-              <Route path={"/dashboard/cart"}  render={props => <Cart {...props} />}>
+              <Route path={"/dashboard/cart"}> <Cart />
                
               </Route>
               <Route path={`/dashboard/watch`}>

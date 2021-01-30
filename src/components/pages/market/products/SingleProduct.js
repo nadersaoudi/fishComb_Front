@@ -7,17 +7,18 @@ import { addCart } from '../../../../Actions/cart';
 import '../Market.css';
 
 const SingleProduct = ( { auth: {user} ,markets,addCart ,market :{ product} }) => {
+    
 return (
     <Fragment>
         <div className='col-md-2'>
             <div className='image_holder grid '>
                 <div className='image'>
                 <NavLink to={`/dashboard/singleproduct/${markets.id}`} >
-                    <img src={markets && markets.image}   width="180" height="135" alt='market' className='sing__prod'/>
+                    <img src={markets && markets.image}   width="150" height="100" alt='market' className='sing__prod'/>
                     </NavLink>
                 </div>
             <div className='description'>
-                <span className='product__name'>{markets && markets.name}</span><br /> 
+                <span className='product__name'>{markets && markets.name.charAt(0).toUpperCase() + markets.name.slice(1) }</span><br /> 
                 <span className='product__price'> {markets && markets.price+'$'}</span>   
             </div>
             </div>
