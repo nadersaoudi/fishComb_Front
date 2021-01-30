@@ -17,7 +17,7 @@ import { MdAddShoppingCart } from 'react-icons/md';
 import '../Market.css';
 import { FaEdit } from 'react-icons/fa';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
-const ProductItem = ( { auth: { user }, match, getProduct, deleteProduct,  market :{ product,categories  } ,addCart ,updateProduct , loading}  ) => {
+const ProductItem = ( { auth: { user }, match, getProduct, deleteProduct,  market:{ product,categories} ,addCart ,updateProduct , loading}  ) => {
 /****************************/
 useEffect(() => {
     getProduct(match.params.id);
@@ -124,7 +124,6 @@ const handleClose = () => {
                             <div className='col-sm-4 ' >
                                 <img src={product && product.image} width="340" height="300" alt='market' />
                             </div>           
-        
                 <div className='col-sm-8 border py-3 pl-3'>
                     <div className='row float-right'> <div className='col-md-12'><Button className='cart__btn' onClick={e=>addCart(product.id)}> <MdAddShoppingCart  style={{fontSize:'19px'}} /> Add to Cart</Button>                      
                     </div> </div>
@@ -177,9 +176,7 @@ const handleClose = () => {
                          { product && product.description } 
                          </label> 
                          </div>
-                                
                             </div>      
-                        
                                                 </div>
                                              </div>    
                                          </div> 
@@ -198,8 +195,7 @@ const handleClose = () => {
                         <div className='row'>
                             <div className='col-sm-1 mr-2'>
                               <Avatar  src={user&& user.profile_image}/>  
-                            </div>
-                            
+                            </div>  
                             <div className='col-sm-10 pt-3'>
                                 <div className='row'>
                                     <div className='row'>
