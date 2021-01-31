@@ -514,7 +514,7 @@ useEffect(()=>{
 
         <div>
         
-        <OwlCarousel className="slider-items owl-carousel pt-4" >
+        <OwlCarousel className="slider-items owl-carousel pt-4" autoplay='true' autoplaySpeed='2000'>
         {events && events.map((event) =>
                                     (
                                         <div class="item" key={event.id}>
