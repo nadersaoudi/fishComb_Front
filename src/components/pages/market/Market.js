@@ -123,7 +123,7 @@ const handleClose = () => {
                     <li className="col-sm-7">
                 </li>
                 <li className='nav-item'>
-               <button className='btn btn-outline-dark button__cart'><NavLink to={'/dashboard/cart'} className="link__cart"><span className='cart__span'>Basket <IoBasketSharp/>{cart && cart.carts.length}</span></NavLink> </button>
+               <button className='btn btn-outline-dark button__cart'><NavLink to={'/dashboard/cart'} className="link__cart"><span className='cart__span'>Basket <IoBasketSharp/>{cart && cart.carts ? <div>{cart.carts.length}</div>:<div></div>}</span></NavLink> </button>
                 </li>
                 </ul>
                 </div>
