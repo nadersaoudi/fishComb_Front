@@ -617,7 +617,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                         <Row>
                         <Col md={2} sm={2} xl={2}> 
                                
-                                <Image src='https://picsum.photos/id/99/200/300'  width="200" height="180" alt='event' rounded />
+                                <Image src='https://picsum.photos/id/99/200/300'  width="200" height="180" alt='event' rounded className='product'/>
                                 <div className='description'>
                                     <span>lorem ipsuem</span> <br />
 
@@ -627,7 +627,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             </div>
                             </Col> <Col sm={1} md={1}></Col>
                             <Col md={2} sm={2} xl={2} >
-                            <Image src='https://picsum.photos/id/100/200/300' width="200" height="180" alt='event' rounded />
+                            <Image src='https://picsum.photos/id/100/200/300' width="200" height="180" alt='event' rounded className='product'/>
                                 <div className='description'>
 
                                     <span>lorem ipsuem</span> <br />
@@ -635,7 +635,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                               
                             </div></Col> <Col sm={1} md={1}></Col>
                             <Col md={2} sm={2} xl={2} >
-                            <Image src='https://picsum.photos/id/77/200/300'  width="200" height="180" alt='event' rounded />
+                            <Image src='https://picsum.photos/id/77/200/300'  width="200" height="180" alt='event' rounded className='product'/>
                                     <div className='description'>
                                         <span>lorem ipsuem</span> <br />
                                         <span>lorem ipsuem</span> <br />
@@ -644,7 +644,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             </Col>
                             <Col sm={1} md={1}></Col>
                             <Col md={2} sm={2} xl={2} >
-                            <Image src='https://picsum.photos/id/98/200/300' width="200" height="180"alt='event' rounded />
+                            <Image src='https://picsum.photos/id/98/200/300' width="200" height="180"alt='event' rounded className='product'/>
                                     <div className='description'>
                                         <span>lorem ipsuem</span> <br />
                                         <span>lorem ipsuem</span> <br />

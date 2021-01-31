@@ -108,7 +108,7 @@ const handleClose = () => {
         <div>
             <div>
             <div className='row'>
-                <div className='col-md-12 pt-5 mt-5'>        
+                <div className='col-md-12  mt-5'>        
                 </div>
                 <div className='row pb-3'>
                     <div className='col-md-3'></div>
