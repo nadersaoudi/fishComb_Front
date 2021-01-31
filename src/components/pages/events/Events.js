@@ -132,7 +132,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     }
     return (
         <div>
-              <Row className='pt-5 pb-3'>
+              <Row className=' pb-3'>
                     <Col md={3} className='px-0' ></Col>
                     <Col md={4} className="pb-4 pt-5 px-0 mr-5">
                         <ul className="nav nav-pills nav-justified " id='navprofil'>
