@@ -13,7 +13,7 @@ const Single =({  event })=> {
         <NavLink to={`/dashboard/singleevent/${event.id}`} > 
         <img src={event && event.cover} width="130" height="100" alt='event'  style={{borderRadius:'5px'}} /></NavLink>
             <div className='description'>
-                <span>{event && event.name.charAt(0).toUpperCase() + event.name.slice(1) }</span> <br /> 
+                <span><b>{event && event.name.charAt(0).toUpperCase() + event.name.slice(1) }</b></span> <br /> 
                 <Moment
                       date={event && event.date}
                       format="YYYY-MM-DD"
