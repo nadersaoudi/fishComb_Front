@@ -162,14 +162,10 @@ const Header = ({
                             }/>
                     </div>
 
-                    <div className="col-sm-4 pt-3">
+                    <div className="col-sm-3 pt-3">
                         <Link to={`/dashboard/profile/about`}
                             className='lin'>
-                            {
-                            user && user.attributes.first_name.charAt(0).toUpperCase() + user.attributes.first_name.slice(1)
-                        }
-                            {
-                            user && user.attributes.last_name.charAt(0).toUpperCase() + user.attributes.last_name.slice(1)
+                            {user && user.attributes.first_name.charAt(0).toUpperCase() + user.attributes.first_name.slice(1)} {user && user.attributes.last_name.charAt(0).toUpperCase() + user.attributes.last_name.slice(1)
                         } </Link>
                     </div>
                     <div className="col-sm-2 pt-3">

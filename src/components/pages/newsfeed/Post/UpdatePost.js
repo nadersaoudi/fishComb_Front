@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 const UpdatePost  = ({ auth: { user }, getPosts, updatePost ,loading, history, Post:{ post }  }) => {
     const [formdata, setFormData] = useState({
        // link: '',
-        description: '',
+       description: '',
       });
       const {
      //  link,
@@ -22,7 +22,11 @@ const UpdatePost  = ({ auth: { user }, getPosts, updatePost ,loading, history, P
       }
       useEffect(() => {
         setFormData({
+<<<<<<< HEAD
+          description: loading || !post.description ? '' : post.description,
+=======
             description: loading || !!post.description ? '' : post.description,
+>>>>>>> 219e3902b6616a0da5c66827697c4d7679408138
         })
       }, [loading])
     
@@ -34,7 +38,7 @@ const UpdatePost  = ({ auth: { user }, getPosts, updatePost ,loading, history, P
                         <Avatar src={user && user.attributes.profile_image} />
                         <div className='pub__top'>
                         <form  onSubmit={(e) => onSubmit(e)} >
-                            <input id="description" placeholder={post && post.description}  autoComplete="description" className='pub__input' name="description" value={description} onChange={e => onchange(e)}  />
+                            <input id="description" placeholder={post && post.data.description}  autoComplete="description" className='pub__input' name="description" value={description} onChange={e => onchange(e)}  />
                             <input type="text" id="linkurl" />
                             <button  type="submit1" >submit</button>
                         </form>

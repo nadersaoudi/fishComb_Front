@@ -245,7 +245,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                 type="text"
                                                 name="name" value={name} onChange={onnamechange}
                                             /></Col>
-                                            
+                                        
                                             </Row>
                                     <div className="row pt-3">
                                         <div className='col-8'>

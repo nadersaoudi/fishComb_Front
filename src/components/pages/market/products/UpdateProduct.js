@@ -143,6 +143,7 @@ const handleClose = () => {
                                         type="text"/></div>
                                     <div className='col-5'>
                                     <Select
+                                        className='col-md-12'
                                         labelId="demo-controlled-open-select-label"
                                         id="demo-controlled-open-select"
                                         open={open1}
