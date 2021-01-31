@@ -110,7 +110,7 @@ const handleClose = () => {
                     <DialogContent>
                         <div className='row'>
                             <div className='col-sm-1 mr-2'>
-                              <Avatar  src={user&& user.profile_image}/>  
+                              <Avatar  src={user&& user.attributes.profile_image}/>  
                             </div>
                             
                             <div className='col-sm-10 pt-3'>

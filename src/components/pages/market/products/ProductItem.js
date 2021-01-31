@@ -9,18 +9,26 @@ import PropTypes from 'prop-types';
 import { Avatar } from "@material-ui/core";
 import { updateProduct } from '../../../../Actions/Market';
 import { addCart } from '../../../../Actions/cart';
-import {  deleteProduct, getProduct } from '../../../../Actions/Market';
+import {  deleteProduct, getProduct,getMarket } from '../../../../Actions/Market';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import Dialog from '@material-ui/core/Dialog';
 import { MdAddShoppingCart } from 'react-icons/md';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 import '../Market.css';
 import { FaEdit } from 'react-icons/fa';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
+import SingleProduct from './SingleProduct';
 import UpdateProduct from './UpdateProduct';
-const ProductItem = ( { auth: { user }, match, getProduct, deleteProduct,  market:{ product,categories} ,addCart ,updateProduct , loading}) => {
+import { Col } from 'reactstrap';
+const ProductItem = ( { auth: { user },getMarket, match, getProduct, deleteProduct,  market:{ product,categories} ,addCart ,updateProduct , loading , markets:{ markets} }) => {
      
 /****************************/
+useEffect(() => {
+    getMarket()
+}, [getMarket])
 useEffect(() => {
     getProduct(match.params.id);
 },  [getProduct, match.params.id]
@@ -61,7 +69,7 @@ const handleClose = () => {
                         <div className='card-body'>
                             <div className='row'>
                             <div className='col-sm-4 ' >
-                                <img src={product && product.image} width="340" height="300" alt='market' />
+                                <img src={product && product.image} width="290" height="300" alt='market' />
                             </div>           
                 <div className='col-sm-8 border py-3 pl-3'>
                     <div className='row float-right'> <div className='col-md-12'><Button className='cart__btn' onClick={e=>addCart(product.id)}> <MdAddShoppingCart  style={{fontSize:'19px'}} /> Add to Cart</Button>                      
@@ -71,7 +79,7 @@ const handleClose = () => {
                         <div className='col-sm-10 pl-2'>
                             <div className='row'>
                             <div className='col-sm-4'>
-                            <label className='prod_details'>Product Name :</label> 
+                            <label className='prod_details'>Product Name:</label> 
                             </div>
                             <div className='col-sm-5'>
                             <label className='prod_details'> {product && product.name.charAt(0).toUpperCase() + product.name.slice(1) }</label>
@@ -151,7 +159,20 @@ const handleClose = () => {
                 <div className='bot_section'>
                     <div className='row'>
                         <div className='col-1'></div>
-                        <div className='col-11'><h4>Similar Products</h4></div>      
+                        <div className='col-11'><h5>Similar Products</h5></div> 
+                        <div className='row'>
+                        <OwlCarousel className="slider-items owl-carousel">
+                        {markets && markets.map((markets) =>
+                                (
+                                    <div>
+                                    <Col key={markets.id} markets={markets}  className='products'>
+                                    <Col><img src={markets.image} width='200px' height='150px'  className='pb-2'/></Col>
+                                    </Col>
+                                    </div>
+                                    )
+                                )}
+                        </OwlCarousel>
+                        </div>     
                           </div>
                     </div>            
               </div>
@@ -171,6 +192,7 @@ ProductItem.propTypes = {
     categories: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
     updateProduct : PropTypes.func.isRequired,
+    getMarket: PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     auth: state.auth,
@@ -179,5 +201,6 @@ const mapStateToProps = state => ({
     categories: state.market,
     product : state.product,
     updateProduct: state.market,
+    markets: state.market,
 })
-export default connect(mapStateToProps ,{ getProduct ,deleteProduct,addCart,updateProduct })(ProductItem);
+export default connect(mapStateToProps ,{ getProduct ,deleteProduct,addCart,updateProduct,getMarket })(ProductItem);

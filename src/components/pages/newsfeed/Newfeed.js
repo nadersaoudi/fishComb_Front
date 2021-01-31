@@ -41,7 +41,7 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
                                     ))}
                         </OwlCarousel>
       </div>
-      <div className='row '>
+      <div className='row pt-3'>
         <div className='col-sm-1'></div>
         {posts.length > 0 ? (
           <div className='col-sm-6'>
