@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {  useEffect } from 'react';
 import { Avatar } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -18,10 +19,9 @@ import {
   addLike,
   addComment,
 } from "../../../../Actions/Post";
-import { deletePost , getPost } from "../../../../Actions/Post";
+import { deletePost , getPost, updatePost } from "../../../../Actions/Post";
 import { getUsers } from '../../../../Actions/profile';
 import SingleComm from "./SingleComm";
-import UpdatePost from "../Post/UpdatePost";
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -44,7 +44,9 @@ const Publication = ({
   addLike,
   addComment,
   getPost,
-  getUsers
+  getUsers,
+  getPosts, updatePost ,loading,
+  Post:{ post }
 }) => {
   /******************************************/
 
@@ -62,7 +64,25 @@ const Publication = ({
     getPost(post_id)
   }
   /******************************/
- 
+  const [formdata, setFormData] = useState({
+    // link: '',
+     description: '',
+   });
+   const {
+  //  link,
+    description
+   } = formdata;
+   const onchange = e => setFormData({ ...formdata, [e.target.name]: e.target.value });
+   const onSubmit = e => {
+     e.preventDefault();
+     console.log('aaaaa');
+     updatePost(formdata ,post.id);
+   }
+   useEffect(() => {
+     setFormData({
+         description: loading || !!post.description ? '' : post.description,
+     })
+   }, [loading])
   /******************************/
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -187,10 +207,21 @@ const Publication = ({
               <div className="col-1"></div>
             </div>
           </form>
-               <Dialog open={open1} onClose={handleClose1} aria-labelledby="form-dialog-title" className='dialogForm'>
+               <Dialog open={open1} onClose={handleClose1} aria-labelledby="form-dialog-title" className='addproduct'>
                                 <DialogTitle id="form-dialog-title">Update Post</DialogTitle>
                                 <DialogContent>
-                                    <UpdatePost />
+                                <div className="pub px-0 ">
+                                        <div className=" ">   
+                                        <Avatar src={user && user.attributes.profile_image} />
+                                        <div className='pub__top'>
+                                        <form  onSubmit={(e) => onSubmit(e)} >
+                                            <input id="description" placeholder={post && post.description}  autoComplete="description" className='pub__input' name="description" value={description} onChange={e => onchange(e)}  />
+                                            <input type="text" id="linkurl" />
+                                            <button  type="submit1" onClick={handleClose1} >submit</button>
+                                        </form>
+                                        </div>  
+                                </div>
+                                </div>
                                 </DialogContent>                
                 </Dialog>
           <div className="row"></div>
@@ -306,12 +337,15 @@ Publication.prototype = {
   addComment: PropTypes.func.isRequired,
   getPosts: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
-  getUsers : PropTypes.func.isRequired
+  getUsers : PropTypes.func.isRequired,
+  Post: PropTypes.object.isRequired,
+  getPosts: PropTypes.func.isRequired,
+  updatePost: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,
   Post: state.Post,
 });
-export default connect(mapStateToProps, { deletePost, getPost, addComment, getPosts, addLike, getUsers })(
+export default connect(mapStateToProps, { deletePost, getPost, addComment, getPosts, addLike, getUsers,updatePost })(
   Publication
 );

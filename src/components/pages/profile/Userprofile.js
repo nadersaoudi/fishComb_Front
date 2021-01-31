@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Image from 'react-bootstrap/Image';
 import { getUsers } from '../../../Actions/profile';
 import { Col, Row } from 'react-bootstrap';
-import Nav from './navbar/nav';
+
 
 import './Profile.css'
 import ContentUser from './content/ContentUser';

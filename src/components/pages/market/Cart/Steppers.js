@@ -118,9 +118,9 @@ function getStepContent(step) {
             </Button>
           </div>
         ) : (
-          <div>
+          <div >
             <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-            <div>
+            <div className='pb-5'>
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>
@@ -136,11 +136,12 @@ function getStepContent(step) {
               )}
 
               <Button
+              className='pb-5'
                 variant="contained"
                 color="primary"
                 onClick={handleNext}
                 className={classes.button}
-              >
+               >
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
             </div>

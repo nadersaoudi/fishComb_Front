@@ -22,23 +22,26 @@ const useStyles = makeStyles((theme) => ({
 const Gallery =()=>{
     const classes = useStyles();
     return (
-        <Container>
-        <Row className='pt-5'>
-        <Col md={3} sm={3} xl={3} ></Col>
-        <Col md={8} sm={8} xl={8}>
-            <ul className="nav nav-pills nav-justified" id='navprofil'>
-                <li className="nav-item">
-                    <Link to={`/dashboard/events`} className="m"><span className="eventslink" >General event</span></Link>
+        <div>
+        <Row className='pt-5 pb-3'>
+                    <Col md={3} className='px-0' ></Col>
+                    <Col md={4} className="pb-4 pt-5 px-0 mr-5">
+                        <ul className="nav nav-pills nav-justified " id='navprofil'>
+                            <li className="nav-item">
+                    <Link to={`/dashboard/events`}className="link_cart" ><span className="n" >General event</span></Link>
                 </li>
 
                 <li className="nav-item">
-                    <Link to={`/dashboard/Gallery`} className="m"><span className="n">Gallery</span></Link>
+                    <Link to={`/dashboard/Gallery`} className="link_cart" ><span className="n">Gallery</span></Link>
                 </li>
 
             </ul>
         </Col>
         <Row className='pt-3'>
-            <h1>Events Gallery</h1>
+          <Col xs={1}></Col>
+          <Col xs={10}>
+          <h1>Events Gallery</h1>
+          </Col>  
         </Row>
     </Row>
     <Row>
@@ -52,7 +55,7 @@ const Gallery =()=>{
       </GridList>
     </div>
     </Row>
-    </Container>
+    </div>
     )
 }
 export default Gallery;

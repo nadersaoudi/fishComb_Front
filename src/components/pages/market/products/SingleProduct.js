@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { addCart } from '../../../../Actions/cart';
 import '../Market.css';
 
-const SingleProduct = ( { auth: {user} ,markets,addCart ,market :{ product} }) => {
+const SingleProduct = ( { auth: {user} ,markets,addCart ,markets :{ product} }) => {
     
 return (
     <Fragment>
@@ -14,7 +14,7 @@ return (
             <div className='image_holder grid '>
                 <div className='image'>
                 <NavLink to={`/dashboard/singleproduct/${markets.id}`} >
-                    <img src={markets && markets.image}   width="150" height="100" alt='market' className='sing__prod'/>
+                    <img src={markets && markets.image}   width="120" height="100" alt='market' className='sing__prod'/>
                     </NavLink>
                 </div>
             <div className='description'>
