@@ -155,17 +155,17 @@ const handleClose = () => {
                     </div>
                     
                              <hr/>
-                <div className='bot_section'>
+                <div className='bot_section ' className='pt-3 '>
                     <div className='row'>
                         <div className='col-1'></div>
                         <div className='col-11'><h5>Similar Products</h5></div> 
                         <div className='row'>
-                        <OwlCarousel className="slider-items owl-carousel">
+                        <OwlCarousel className="slider-items owl-carousel pt-4"  autoplay='true' autoplaySpeed='2000'>
                         {markets && markets.map((markets) =>
                                 (
                                     <div>
                                     <Col key={markets.id} markets={markets}  className='products'>
-                                    <Col><img src={markets.image} width='200px' height='150px'  className='pb-2'/></Col>
+                                    <Col><img src={markets.image} width='180px' height='250' style={{borderRadius:'5px'}}  className='pb-2'/></Col>
                                     </Col>
                                     </div>
                                     )
