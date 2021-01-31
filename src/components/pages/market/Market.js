@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { IoBasketSharp } from 'react-icons/io5';
 import Button from '@material-ui/core/Button';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Dialog from '@material-ui/core/Dialog';
 import { getMarket, myProduct, getCategories ,search } from '../../../Actions/Market';
 import "./Market.css";
@@ -15,17 +14,14 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import YourAccount from './YourAccount';
 import { Avatar } from "@material-ui/core";
-import AddProduct from './products/AddProduct';
 import SingleProduct from './products/SingleProduct';
-const Market =( {auth :{user}, getMarket, markets:{ markets , categories }, myProduct, search , addProduct } ) => {
+const Market =( {auth :{user}, getMarket, markets:{ markets , categories }, myProduct, search , addProduct,cart:{cart} } ) => {
 /******************************/
     useEffect(() => {
     getMarket()
 }, [getMarket])
-/**************************/
-/*******************************/  
 
-/*****************************/    
+  
 /*********************************/
 const [filter, setFilter] = React.useState('name');
 const [value, setValue] = React.useState('');
@@ -127,7 +123,7 @@ const handleClose = () => {
                     <li className="col-sm-7">
                 </li>
                 <li className='nav-item'>
-               <button className='btn btn-outline-dark button__cart'><NavLink to={'/dashboard/cart'} className="link__cart"><span className='cart__span'>Basket<IoBasketSharp/></span></NavLink> </button>
+               <button className='btn btn-outline-dark button__cart'><NavLink to={'/dashboard/cart'} className="link__cart"><span className='cart__span'>Basket <IoBasketSharp/>{cart && cart.carts.length}</span></NavLink> </button>
                 </li>
                 </ul>
                 </div>
@@ -286,7 +282,7 @@ const handleClose = () => {
 
                 <div className='col-md-9 'id='body'>
                     <div className='row'>
-                        <div className='col-md-12 pb-4'><h6><b>Featred</b></h6></div>
+                        <div className='col-md-12 pb-4'><h6><b>Featured</b></h6></div>
                     </div>
                    
                     <div className='row'>
@@ -356,11 +352,13 @@ Market.prototype = {
     categories: PropTypes.object.isRequired,
     search : PropTypes.func.isRequired,
     addProduct  : PropTypes.func.isRequired,
+    cart:PropTypes.object.isRequired
 }
 const mapStateToProps = state => ({
     auth: state.auth, 
     markets: state.market,
     categories: state.categories,
+    cart:state.cart
 
 })
 export default connect(mapStateToProps , { getMarket, myProduct , search ,addProduct })(Market);
