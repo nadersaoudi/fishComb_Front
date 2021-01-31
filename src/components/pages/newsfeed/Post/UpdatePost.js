@@ -22,7 +22,11 @@ const UpdatePost  = ({ auth: { user }, getPosts, updatePost ,loading, history, P
       }
       useEffect(() => {
         setFormData({
+<<<<<<< HEAD
           description: loading || !post.description ? '' : post.description,
+=======
+            description: loading || !!post.description ? '' : post.description,
+>>>>>>> 219e3902b6616a0da5c66827697c4d7679408138
         })
       }, [loading])
     
@@ -31,7 +35,7 @@ const UpdatePost  = ({ auth: { user }, getPosts, updatePost ,loading, history, P
             
                 <div className="pub px-0 ">
                         <div className=" ">   
-                        <Avatar src={user && user.profile_image} />
+                        <Avatar src={user && user.attributes.profile_image} />
                         <div className='pub__top'>
                         <form  onSubmit={(e) => onSubmit(e)} >
                             <input id="description" placeholder={post && post.data.description}  autoComplete="description" className='pub__input' name="description" value={description} onChange={e => onchange(e)}  />

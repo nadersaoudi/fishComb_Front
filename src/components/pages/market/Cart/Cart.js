@@ -22,7 +22,7 @@ return (
     <Fragment>
         <Row className='pt-5 pb-5 '>
             <Col sm={2} ></Col>
-            <Col sm={8} className='card__shop'>
+            <Col sm={9} className='card__shop'>
                 <Card style={{backgroundColor:'#f7f8fa',border:'0px'}} >
                     <Row className='pt-3'> 
                         
@@ -43,9 +43,9 @@ return (
                         </Col>:<Col>Empty cart</Col>} 
                     </Row>
                     <Row className='py-2 border Total__section'>
-                        <Col xs={11}>Total =</Col>
-                        <Col xs={1} className=''>
-                             {cart && cart.total_amount }
+                        <Col xs={10}>Total =</Col>
+                        <Col xs={2} className=''>
+                             {cart && cart.total_amount} £
                         </Col>
                     </Row>
                     <Row className='pt-2'>

@@ -16,8 +16,10 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
 import { NavLink } from 'react-bootstrap';
 import Switch from '@material-ui/core/Switch';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Carousel from 'react-bootstrap/Carousel'
 import { Card, Col, Row} from 'react-bootstrap';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -172,6 +174,9 @@ useEffect(()=>{
         else {   setStatus(0) }
         console.log(status)
     };
+    const getlink=()=>{
+        console.log(window.location.href);
+    }
    
   const submit = e => {
         e.preventDefault();
@@ -186,7 +191,6 @@ useEffect(()=>{
         file.append('video_link', video_link);
         file.append('status', status);
         update(file, event.id)
-       
         e.target.reset();
     }
   
@@ -271,10 +275,9 @@ useEffect(()=>{
 
                                 <div className="btn-group btn-group-toggle col-md-12  ">
                                     <Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-
                                         <span  >Upload Video </span>
-
                                     </Button>
+
                                 </div>  </div>
                                 <Col  sm={12} md={12} xl={12} className="btn-group btn-group-toggle ">
                                             <input accept="image/*" id="icon-button-file" type="file" onChange={oncoverchange} name="cover"/>
@@ -326,8 +329,8 @@ useEffect(()=>{
             
             {/*****************Navlink***************** */}
             <Row className='pt-5 pb-5'>
-                <Col md={2} sm={2} ></Col>
-                <Col md={6} sm={6}>
+                <Col md={3} className='px-0'></Col>
+                <Col md={4} className="pb-4 pt-5 px-0 mr-5" >
                     <ul className="nav nav-pills nav-justified" id='navprofil'>
                         <li className="nav-item">
                             <Link to={`/dashboard/events`} className="link_cart"><span className="n">General event</span></Link>
@@ -349,7 +352,7 @@ useEffect(()=>{
                             {/*********************NEXT PREVIEW EVENT************************* */}
                 <Row className='pb-3'>
                 <Col md={9} sm={9}></Col>
-                <Col md={3} sm={3} className=' Top__section'> <button onClick={increment} style={{backgroundColor:'#f7f8fa'}}>Next {'>>'} </button> -<button onClick={decrement} style={{backgroundColor:'#f7f8fa'}}>{'<<'} Preview</button>
+                <Col md={3} sm={3} className=' Top__section'>  <button onClick={decrement} style={{backgroundColor:'#f7f8fa'}}> <NavigateBeforeIcon/>Previous</button>...<button onClick={increment} style={{backgroundColor:'#f7f8fa'}}>Next <NavigateNextIcon/></button>
                 </Col>
 
 
@@ -357,16 +360,15 @@ useEffect(()=>{
             </Row>
                             <Row>
                         <Col md={3}  >  {event && !event.video_link === null ? <ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={event.video_link} /> : <div>
-                            <img src={event && event.cover} width="380" height="300" alt='event' style={{ borderRadius: '0' }} />
+                            <img src={event && event.cover} width="380" height="300" alt='event' style={{ borderRadius: '4px' }} />
                         </div>}</Col>
                         <Col md={2} sm={2}></Col>
                         <Col md={7} sm={7}>
                             <div className='row'>
                                 <div className='col-sm-8'> <h4><b>{event && event.name.charAt(0).toUpperCase() + event.name.slice(1) }</b></h4>
                                     <div className='row'>
-                                        <div className='col-sm-2 '>{event && event.location.charAt(0).toUpperCase() + event.location.slice(1)} </div>
-
-                                        <div className='col-sm-4 '>{event && event.date} </div>
+                                        <div className='col-sm-4 '>{event && event.location.charAt(0).toUpperCase() + event.location.slice(1)} </div>
+                                        <div className='col-sm-3 '>{event && event.date} </div>
                                     </div>
 
                                     <div className='row'>
@@ -375,8 +377,8 @@ useEffect(()=>{
                                         </div>
                                     </div>
 
-                                </div><div className='col-sm-1'><IoShareSocialOutline />
-                                    <div>  <AddBoxIcon onClick={handleClickOpen} /></div>
+                                </div><div className='col-sm-3'><Button className='Invite__btn mt-2 pr-3' onClick={getlink}><IoShareSocialOutline />Share</Button>
+                                    <div><Button className='Invite__btn  mt-2' onClick={handleClickOpen}> <AddBoxIcon /> Invite Friends</Button></div>
 
                                     <div>
                                         {event && user && user.user_id === event.user.data.user_id ?
@@ -387,15 +389,15 @@ useEffect(()=>{
                                     </Link> : <div></div>}</div>
                                 </div></div>
 
-                            <div className='row pb-5'><div className='col-sm-6 pb-4'>participants {event && event.participants.length}
+                            <div className='row pb-5'><div className='col-sm-5 pb-4'>participants {event && event.participants.length}
                             </div></div>
 
                             <div className="bot__section">
                                 <div className='row '>
-                                    {event && event.is_subscribed === false ? <div className='col-sm-2 pt-5' id='attend'>
-                                        <button onClick={subscribEevent(event.id, 1)} disabled={disable} >Attend</button>
-                                    </div> : <div className='col-sm-2 pt-5' id='attend'>
-                                            <button disabled={true}>Already subscribed</button>
+                                    {event && event.is_subscribed === false ? <div className='col-sm-4 pt-5' id='attend'>
+                                        <button onClick={subscribEevent(event.id, 1)} className='btn btn-outline-dark' disabled={disable} >Attend</button>
+                                    </div> : <div className='col-sm-4 pt-5' id='attend'>
+                                            <button disabled={true} className='btn btn-outline-dark'>Already subscribed</button>
                                         </div>}
 
 
@@ -437,8 +439,8 @@ useEffect(()=>{
                                                         (
                                                             <div className='col-md-6'>
                                                                 <form onSubmit={e => onsubmit(e)}>
-                                                                    <div className='col-md-12 pb-2 mt-3 friends'>
-                                                                        <div className='col-md-2 '><Avatar className='mr-2 pr-1 pb-2' src={c.data.attributes.profile_image} /></div> <div className='col-md-8'> {c.data.attributes.name}</div>
+                                                                    <div className='col-md-12 pb-2 mt-1 friends border'>
+                                                                        <div><Avatar className='mt-1' src={c.data.attributes.profile_image} /></div><div className='col-md-1'></div> <div className='col-md-6 pt-2'> {c.data.attributes.name}</div>
                                                                         <div className='col-md-2'> <AddBoxIcon onClick={e => invite(c.data.user_id, event.id)} /></div>
 
                                                                     </div>
@@ -469,8 +471,8 @@ useEffect(()=>{
                                     </Dialog>
 
 
-                                    <div className='col-sm-2 pt-5' >
-                                        <button id='cancel'>Cancel</button>
+                                    <div className='col-sm-4  pt-5' >
+                                        <button  className='btn btn-outline-dark'id='cancel'>Cancel</button>
                                     </div>
                                 </div>
 

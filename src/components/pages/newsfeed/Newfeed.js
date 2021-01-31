@@ -18,7 +18,7 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
     getevents()
   }, [getevents])
   return (
-    <div className='row mt-5 no-gutters'>
+    <div className='row pt-5 no-gutters'>
       <div className='col-sm-1'></div>
       <div className='col-sm-6 '>
         <div className='card col-sm-12'>
@@ -33,15 +33,15 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
                                     (
                                         <div class="item" key={event.id}>
                                             <Col>
-                                            <img src={event.cover} width='150px' height='100px' style={{borderRadius:'5px'}} className='pb-2'/></Col>
-                                           <Col> <p style={{color:'grey'}}>{event.name}</p>
+                                            <img src={event.cover} width='200px' height='100px'  className='pb-2'/></Col>
+                                           <Col> <p style={{color:'grey'}}>{event.name.charAt(0).toUpperCase() + event.name.slice(1) }</p>
                                             <p  style={{color:'grey'}}><Moment format='MMM Do YY'>{event.date}</Moment></p></Col>
                                             </div>
                                        
                                     ))}
                         </OwlCarousel>
       </div>
-      <div className='row mt-5'>
+      <div className='row '>
         <div className='col-sm-1'></div>
         {posts.length > 0 ? (
           <div className='col-sm-6'>
@@ -75,7 +75,7 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
 
 
           </div>
-          <div className='row mt-5'>
+          <div className='row '>
 
           </div>
         </div>

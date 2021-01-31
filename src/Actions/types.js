@@ -80,3 +80,4 @@ export const CART_ERROR = 'CART_ERROR';
 export const CHECKOUT ='CHECKOUT';
 export const CHECKOUT_FAILED ='CHECKOUT_FAILED';
 export const GET_THREAD = 'GET_THREAD';
+export const POST_ERROR_UPDATE = 'POST_ERROR_UPDATE';

@@ -75,6 +75,7 @@ const submit = e => {
     file.append('image', image);
     file.append('status', status);
     updateProduct(file,product.id)
+    setOpen2(false);
     e.target.reset();
 }
 /*****************************/    
@@ -103,6 +104,7 @@ const handleClose = () => {
 /**********************************/
     return (
         <Fragment>
+            
             <div>
                 <form  className='addProduct' onSubmit={e => submit(e)}>
                     <DialogContent>

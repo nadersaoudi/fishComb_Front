@@ -72,7 +72,7 @@ const SingleComm = (
                 value={body}
                 onChange={(e) => setText(e.target.value)}
               />
-              <button type="submit" className="b">
+              <button type="submit"  className="b">
                 add
                 </button>
             </div>

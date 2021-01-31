@@ -11,7 +11,7 @@ import { Button } from '@material-ui/core';
 const CartProduct = (  {cart  , deleteProd, loading,updateQuantity} ) => {
 /**********************************/
 const [formdata, setFormData] = useState({
-    quantity: '',
+    quantity: cart.quantity,
 });
 const {
     quantity,
@@ -27,10 +27,13 @@ const onSubmit = e => {
     updateQuantity(formdata,cart.cart_id);
 }
 const [total,setTotal]=useState(cart.amount)
-const [total1,setTotal1]=useState(quantity*cart.product.price)
-const handlechange=()=>{
-    setTotal(quantity*cart.product.price)
-    
+const [total1,setTotal1]=useState(cart.product.price)
+const handlechange=()=>{   
+    updateQuantity(formdata,cart.cart_id);
+}
+const sum=()=> {
+    // setTotal1(cart.reduce((totalamount,cart)=>totalamount+cart.price,0))
+     console.log(total1)
 }
 /**********************************/
 return (
@@ -38,13 +41,13 @@ return (
         <Form onSubmit={e => onSubmit(e)} >
             <Row className='pt-3 pb-3'>
                 <Col xs={12}>
-                    <Row className='mb-3 pt-2'>
+                    <Row className=''>
                         <Col xs={1} className='border-right'>
-                            <img src={cart && "http://77.68.24.35/storage/"+cart.product.image.slice(6)} width='70px' height='55px'/>
+                            <img src={cart && "http://77.68.24.35/storage/"+cart.product.image.slice(6)} width='70px' height='55px' style={{borderRadius:'4px'}}/>
                         </Col>
                         <Col xs={3}className='border-right'>
                             <Row>
-                                <Col>
+                                <Col >
                                  <h5> { cart && cart.product.name.charAt(0).toUpperCase() + cart.product.name.slice(1) }</h5>
                                 </Col>
                             </Row>
@@ -53,14 +56,13 @@ return (
                                 <h6>{cart && cart.product.description}</h6>
                                </Col>
                            </Row>
-                            </Col> 
-                        <Col xs={2} className='border-right'>{cart && cart.product.price}</Col> 
+                        </Col> 
+                        <Col xs={1} className='border-right'>{cart && cart.product.price} £</Col> 
                         <Col xs={2}className='border-right ml-2'>
-                            
-                                <input className='col-6' value={quantity} type='number' min='1' name="quantity"  onChange={e => onchange(e)} onClick={handlechange}/>
-                              
+                                <input className='col-6' value={quantity} type='number'    
+                         min="1" max="100"  name="quantity"  onChange={e => onchange(e)} onClick={handlechange} defaultValue={quantity} />
                             </Col>
-                        <Col xs={2}className='border-right'>{total}</Col>
+                        <Col xs={2}className='border-right'>{cart.amount} £</Col>
                         <Col xs={1} >
                             <Button onClick={e=>deleteProd(cart && cart.cart_id)}>
                                 <DeleteOutlineRoundedIcon   />
@@ -72,7 +74,6 @@ return (
             </Row>
             <hr/>
         </Form>
-    
     </Fragment>
 )
 }

@@ -291,7 +291,7 @@ const handleClose = () => {
                    
                     <div className='row'>
                         <div className='col-md-3 '> <div className='image_holder grid'>
-                     <img src='https://picsum.photos/id/99/200/300' width="220" height="200" alt='event' className='product'/>
+                     <img src='https://picsum.photos/id/99/200/300'width="200" height="180" alt='event'  style={{borderRadius:'5px'}} className='product'/>
                      <div className='description'>
                      <span>25$</span> <br/>
                      <span>lorem ipsuem</span> <br/>
@@ -302,7 +302,7 @@ const handleClose = () => {
                         <div className='col-md-3'>
                              <div className='image_holder grid '>
 
-                     <img className='pic' src='https://picsum.photos/id/100/200/300' width="220" height="200" id='img' alt='event' className='product'/>
+                     <img className='pic' src='https://picsum.photos/id/100/200/300' width="200" height="180" id='img' style={{borderRadius:'5px'}} alt='event' className='product'/>
                      <div className='icon'> </div>    
 
                 
@@ -314,7 +314,7 @@ const handleClose = () => {
                     </div>
                         <div className='col-md-3'> 
                         <div className='image_holder grid '>
-                     <img src='https://picsum.photos/id/77/200/300' width="220" height="200" alt='event' className='product'/>
+                     <img src='https://picsum.photos/id/77/200/300' width="200" height="180" alt='event' style={{borderRadius:'5px'}} className='product'/>
                      <div className='description'>
                      <span>41$</span> <br/>
                      <span>lorem ipsuem</span> <br/>
@@ -323,7 +323,7 @@ const handleClose = () => {
                     </div>
                     <div className='col-md-3'> 
                         <div className='image_holder grid '>
-                     <img src='https://picsum.photos/id/98/200/300' width="220" height="200" alt='event'/>
+                     <img src='https://picsum.photos/id/98/200/300' width="200" height="180" style={{borderRadius:'5px'}} alt='event' className='product' />
                      <div className='description'>
                      <span>36$</span> <br/>
                      <span>lorem ipsuem</span> <br/>
