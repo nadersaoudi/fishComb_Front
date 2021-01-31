@@ -376,6 +376,8 @@ useEffect(()=>{
                                             <span>{event && event.description}</span>
                                         </div>
                                     </div>
+                                    <div className='row pb-5'><div className='col-sm-5 pb-4'>participants {event && event.participants.length}
+                            </div></div>
 
                                 </div><div className='col-sm-3'><Button className='Invite__btn mt-2 pr-3' onClick={getlink}><IoShareSocialOutline />Share</Button>
                                     <div><Button className='Invite__btn  mt-2' onClick={handleClickOpen}> <AddBoxIcon /> Invite Friends</Button></div>
@@ -383,14 +385,13 @@ useEffect(()=>{
                                     <div>
                                         {event && user && user.user_id === event.user.data.user_id ?
 
-                                            <UpdateRoundedIcon onClick={handleClickOpen2} />
+                                           <Button className='Invite__btn  mt-2'> <UpdateRoundedIcon onClick={handleClickOpen2} /> Update</Button>
                                             : <div></div>} </div>
-                                    <div>{event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events'><DeleteOutlineRoundedIcon onClick={e => deleteEvent(match.params.id)} style={{ color: '#212529' }} />
+                                    <div>{event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events'> <Button className='Invite__btn  mt-2' onClick={e => deleteEvent(match.params.id)}> <DeleteOutlineRoundedIcon  style={{ color: '#212529' }} /> Delete</Button>
                                     </Link> : <div></div>}</div>
                                 </div></div>
 
-                            <div className='row pb-5'><div className='col-sm-5 pb-4'>participants {event && event.participants.length}
-                            </div></div>
+                           
 
                             <div className="bot__section">
                                 <div className='row '>
@@ -402,10 +403,6 @@ useEffect(()=>{
 
 
 
-                                    <div className='col-sm-2' id='Invite'>
-
-
-                                    </div>
 
                                     <Dialog className='invite_form'
                                         open={open}
