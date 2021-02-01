@@ -262,7 +262,7 @@ export const update = (file,event_id) => async dispatch => {
             })
             toast.success('Event updated');
         } catch (error) {
-            toast.error('Error happened when adding event');
+            toast.error('Error happened when updating event');
             dispatch({
                 type: EVENT_ERROR,
             });
