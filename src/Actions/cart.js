@@ -39,7 +39,7 @@ export const addCart = (product_id) => async dispatch => {
         const res = await axios.post('/api/cart',{product_id}, config)
         dispatch ({
             type: ADD_CART,
-            payload: res.data
+            payload: res.data.data
         })
         toast.info('Product Add to you Basket')
     }catch{
@@ -99,9 +99,10 @@ export const checkout = (formdata) =>  async dispatch =>{
     }
     try {   
         const res = await axios.post(`/api/order`,formdata,config)
+        console.log(res.data.data)
         dispatch ({
             type: CHECKOUT,
-            payload: res.data
+            payload: res.data.data
         })
         toast.info('Checkout success')
     }catch{

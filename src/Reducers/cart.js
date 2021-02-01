@@ -8,14 +8,16 @@ import {
     GET_CART,
     ADD_CART,
     DELETE_PROD_CART,
-    UPDATE_QUANTITY
+    UPDATE_QUANTITY,
+    CHECKOUT
   } from '../Actions/types';
   
   const initialStore = {
     cart: [],
     carts:[],
     total: 0,
-    amount: 0
+    amount: 0,
+    order:null
   };
   function reducer(state = initialStore, action) {
      if (action.type === GET_CART){
@@ -27,6 +29,7 @@ import {
      if (action.type === ADD_CART){
       return {
           ...state,
+       // cart:[...state.cart,action.payload]
       }
   }
      if (action.type === DELETE_PROD_CART) {
@@ -41,6 +44,12 @@ import {
          cart: action.payload
        }
      }
+     if (action.type === CHECKOUT){
+      return {
+        ...state,
+        order: action.payload
+      }
+    }
     return state;
   }
   

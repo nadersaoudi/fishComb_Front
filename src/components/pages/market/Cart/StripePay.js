@@ -4,7 +4,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import {stripelog} from '../../../../Actions/cart'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-const StripePay =({stripelog})=>{
+const StripePay =({stripelog,cart :{order}})=>{
 
 
     const handleToken =(token,address)=>{
@@ -13,16 +13,23 @@ const StripePay =({stripelog})=>{
     return (
         <Row>  <Col sm={3} md={3}></Col> <Col sm={3} md={3}><StripeCheckout
        token={handleToken}
-        stripeKey={"pk_test_51IEjvvIXwitv1UEDISBXIR9khWNK1XSnOmEGQIHNNin0nEKV93qnzvECKAxFKOqMecX1u3Jhr2Q14ytPr28MbBCK00EL9G80iZ"}
-       amount={1000}
+        stripeKey={"pk_test_51IEjdFKKRkm2jfjKQ46eifger6zWp30iM4SzIGNVKSxaHUOKrfVOytseDJpKHIz43fTtvUwcq98BD7XoyPpG6ss400dIHQtQX9"}
+        description={order && order.description}
+        name={"Total amount: "+order.sub_total}
+        email={order && order.email}
+       amount={order && order.sub_total}
        billingAddress
-       shippingAddress
-       name='test'
+       shippingAddress={order &&order.shipping_address}
+       currency="USD"
       /></Col></Row>
          
     )
 }
 StripePay.propTypes={
- stripelog:PropTypes.func.isRequired
+ stripelog:PropTypes.func.isRequired,
+ cart:PropTypes.object.isRequired
 }
-export default connect(null,{stripelog}) (StripePay);
+const mapStateToProps =state =>({
+    cart:state.cart
+})
+export default connect(mapStateToProps,{stripelog}) (StripePay);

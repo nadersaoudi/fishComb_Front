@@ -6,6 +6,7 @@ import { IoBasketSharp } from 'react-icons/io5';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import { getMarket, myProduct, getCategories ,search } from '../../../Actions/Market';
+import { showCart } from '../../../Actions/cart';
 import "./Market.css";
 import DialogContent from '@material-ui/core/DialogContent';
 import { addProduct } from '../../../Actions/Market';
@@ -15,12 +16,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import YourAccount from './YourAccount';
 import { Avatar } from "@material-ui/core";
 import SingleProduct from './products/SingleProduct';
-const Market =( {auth :{user}, getMarket, markets:{ markets , categories }, myProduct, search , addProduct,cart:{cart} } ) => {
+const Market =( {auth :{user}, getMarket, markets:{ markets , categories }, myProduct, search , addProduct,cart:{cart}, showCart } ) => {
 /******************************/
     useEffect(() => {
     getMarket()
 }, [getMarket])
-
+useEffect(() => {
+    showCart()
+  },[showCart])
   
 /*********************************/
 const [filter, setFilter] = React.useState('name');
@@ -112,7 +115,7 @@ const handleClose = () => {
                 </div>
                 <div className='row pb-3'>
                     <div className='col-md-3'></div>
-                    <div className="col-sm-9 pb-3">
+                    <div className="col-sm-9  pb-3">
                 <ul className="nav nav-pills nav-justified " id='navprofil'>
                     <li className="nav-item">
                     <NavLink to={`#`} className="link_cart"><span className='n'>Multimedia</span></NavLink>
@@ -131,8 +134,8 @@ const handleClose = () => {
             <div className='row pt-4'>
                 <div className='col-md-3  side_min_bar'> 
                 <form onSubmit={e => onsubmit1(e)} >
-                <div className="col-sm-12 px-0 header__input" >
-                    <input type="text" placeholder='Search Marketplace' aria-label="Search" height='25px' value={value} onChange={handleChange1} />
+                <div className="col-sm-11 px-0 header__input" >
+                    <input type="text" placeholder='Search Product' aria-label="Search"  value={value} onChange={handleChange1} />
                         <button className="col-sm-2  header__button" >       
                             <svg width="19px" height="19px"  version="1.1" xmlns="http://www.w3.org/1999/xlink">
                                 <g id="fishcomb-product-icons-14">
@@ -350,13 +353,14 @@ Market.prototype = {
     categories: PropTypes.object.isRequired,
     search : PropTypes.func.isRequired,
     addProduct  : PropTypes.func.isRequired,
-    cart:PropTypes.object.isRequired
+    cart:PropTypes.object.isRequired,
+    showCart: PropTypes.object.isRequired
 }
 const mapStateToProps = state => ({
     auth: state.auth, 
     markets: state.market,
     categories: state.categories,
-    cart:state.cart
-
+    cart:state.cart,
+    carts: state.cart
 })
-export default connect(mapStateToProps , { getMarket, myProduct , search ,addProduct })(Market);
+export default connect(mapStateToProps , { getMarket, myProduct , search ,addProduct, showCart })(Market);

@@ -40,11 +40,11 @@ return (
                                 (
                                 <CartProduct key={cart.cart_id} cart={cart} />)
                                 )}
-                        </Col>:<Col>Empty cart</Col>} 
+                        </Col>:<Col className='pt-3 pb-3'><h4>No Product in Your Cart</h4></Col>} 
                     </Row>
                     <Row className='py-2 border Total__section'>
-                        <Col xs={10}>Total =</Col>
-                        <Col xs={2} className=''>
+                        <Col xs={10} className='px-5'><h3><b>Total</b></h3> </Col>
+                        <Col xs={2} className='px-5'>
                              {cart && cart.total_amount} £
                         </Col>
                     </Row>
