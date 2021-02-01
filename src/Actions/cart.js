@@ -99,9 +99,10 @@ export const checkout = (formdata) =>  async dispatch =>{
     }
     try {   
         const res = await axios.post(`/api/order`,formdata,config)
+        console.log(res.data.data)
         dispatch ({
             type: CHECKOUT,
-            payload: res.data
+            payload: res.data.data
         })
         toast.info('Checkout success')
     }catch{
