@@ -92,14 +92,14 @@ const onsubmit2=e=>{
               <div className='col-sm-11'></div>
               <div className='col-sm-1'>
               <label htmlFor="icon-button-filee">
-              <IconButton className='upload' color="primary" aria-label="upload picture" component="span">
-                <PhotoCamera   />
+              <IconButton className='upload' color="primary" aria-label="upload picture" component="span" >
+                <PhotoCamera/>
               </IconButton>
               <input
                 type='submit'
                 value='Upload'
                 id='vali1'
-                className='btn'
+                className='btn mt-3 '
                 hidden={hide1}
               />
             </label>
@@ -116,7 +116,7 @@ const onsubmit2=e=>{
               <IconButton className='upload1' color="primary" aria-label="upload picture" component="span">
                 <PhotoCamera />
               </IconButton>
-              <div className='row'>
+              <div className='row mt-3'>
               <input
                 type='submit'
                 value='Upload'

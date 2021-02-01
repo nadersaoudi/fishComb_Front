@@ -160,7 +160,7 @@ const handleClose = () => {
                             </div>
                             </div>
                         <div className='row '>
-                            <div className='col-12'>
+                            <div className='col-12 pb-3'>
                                 <FormControl
                                     placeholder={product && product.stock}
                                     className='input_event'

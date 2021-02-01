@@ -226,8 +226,7 @@ const Eventitem = ({
                 onClose={handleClose2}
                 aria-labelledby="form-dialog-title1">
                 <form onSubmit={
-                    e => submit(e)
-                }>
+                    e => submit(e) }>
                     <DialogTitle id="form-dialog-title1">update event</DialogTitle>
                     <DialogContent>
                         <div className="row pt-1">

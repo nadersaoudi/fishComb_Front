@@ -207,7 +207,7 @@ const Publication = ({
               <div className="col-1"></div>
             </div>
           </form>
-               <Dialog open={open1} onClose={handleClose1} aria-labelledby="form-dialog-title" className='addproduct'>
+               <Dialog open={open1} onClose={handleClose1} aria-labelledby="form-dialog-title"  className='updateProd'>
                                 <DialogTitle id="form-dialog-title">Update Post</DialogTitle>
                                 <DialogContent>
                                 <div className="pub px-0 ">

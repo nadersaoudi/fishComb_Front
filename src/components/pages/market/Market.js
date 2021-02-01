@@ -145,19 +145,19 @@ const handleClose = () => {
                     </button>
                 </div>
                </form>
-               <div className='row pt-3'>
+               <div className='row pt-2'>
                 <div className='col-sm-4'>
-                <Button className='marketbotton ' onClick={handleClickOpen1}><h5>Your Account</h5></Button>
+                <Button className='marketbotton ' onClick={handleClickOpen1}><h6>Your Account</h6></Button>
                 </div>
                 </div>
-                <div className='row pt-3'>
+                <div className='row pt-2'>
                 <div className='col-sm-4'>
-                <Button  className='marketbotton' onClick={handleClickOpen}><h5>Add Product</h5></Button>
+                <Button  className='marketbotton' onClick={handleClickOpen}><h6>Add Product</h6></Button>
                 </div>
                 </div>
-                <div className='row pt-3'>
+                <div className='row pt-2'>
                 <div className='col-sm-4'>
-                <Button className='marketbotton'   onClick={myProduct} ><h5>My Product</h5></Button>
+                <Button className='marketbotton'   onClick={myProduct} ><h6>My Product</h6></Button>
                 </div>
                 </div>
                     </div>
@@ -244,25 +244,23 @@ const handleClose = () => {
                              </div>
                         </div>
                         <div className='row pt-3 pb-2'>
-                            <div className='col-5'>
+                            <div className='col-12'>
                             <div className='row pt-3'>
                             <div className="btn-group btn-group-toggle col-md-12  ">
-                            <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
+                            <div className='col-md-4'> Upload image </div><input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} /> 
+                            {   /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+                                <span  >Upload Video </span>
+                                </Button>*/}
+                            </div>  </div> </div>
+                            <div className='col-12'>
+                            <div className='row pt-3'>
+                            <div className="btn-group btn-group-toggle col-md-12  ">
+                            <div className='col-md-4'>Upload File </div><input accept="image/*" id="icon-button-file" type="file" placeholder='file product' />
                             { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                 <span  >Upload Video </span>
                                 </Button>*/}
-                            </div>  </div>
-                            <div className='row pt-3'>
-                            <div className="btn-group btn-group-toggle col-md-12  ">
-                            <input accept="image/*" id="icon-button-file" type="file" placeholder='file product' />
-                            { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-                                <span  >Upload Video </span>
-                                </Button>*/}
-                            </div>  </div>
-                            </div>
-                            <div className='col-2'>
-                            </div>
-                              
+                               </div> </div> </div>  
+                            <div className='col-2'></div>      
                         </div>
                    <div className='row'>   
                    <div className='col-md-8'></div>
@@ -271,7 +269,7 @@ const handleClose = () => {
                                     onClick={handleClose} className='float-right'>
                                     Save Product
                                 </Button></div>
-                            </div>
+                          </div>
                     </div>
 
                 </div>

@@ -77,9 +77,6 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
         checkedA: true
 
     });   
-
-
-
     const submit = e => {
         e.preventDefault();
         console.log(description)
@@ -222,12 +219,12 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                         </form>
                         <div className='row pt-2'>
                             <div className='col-sm-4'>
-                            <Button className="event" onClick={myevents}><h5>My Events</h5></Button>
+                            <Button className="event" onClick={myevents}><h6>My Events</h6></Button>
                             </div>
                         </div>
                         <div className='row pt-2'>
                             <div className='col-sm-4'>
-                                <Button className="event" onClick={handleClickOpen}><h5>Add Events</h5></Button>
+                                <Button className="event" onClick={handleClickOpen}><h6>Add Events</h6></Button>
                             </div>
                         </div>
                         
