@@ -39,7 +39,7 @@ export const addCart = (product_id) => async dispatch => {
         const res = await axios.post('/api/cart',{product_id}, config)
         dispatch ({
             type: ADD_CART,
-            payload: res.data
+            payload: res.data.data
         })
         toast.info('Product Add to you Basket')
     }catch{
