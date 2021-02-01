@@ -132,9 +132,9 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     }
     return (
         <div>
-              <Row className=' pb-3'>
+              <Row className=' pb-3 '>
                     <Col md={3} className='px-0' ></Col>
-                    <Col md={4} className="pb-4 pt-5 px-0 mr-5">
+                    <Col md={4} className="pb-4 pt-5 px-0 ">
                         <ul className="nav nav-pills nav-justified " id='navprofil'>
                             <li className="nav-item">
                                 <Link to={`/dashboard/events`} className="link_cart"><span className='n' >All Events</span></Link>
@@ -148,6 +148,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                         </ul>
 
                     </Col>
+                    <Col md={5}></Col>
                 </Row>
             <Row >
                 
@@ -266,13 +267,10 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                 onOpen={handleOpen1}
                                                 value={category_id}
                                                 name="category_id"
-                                                onChange={oncategorychange}
-                                            >
+                                                onChange={oncategorychange}>
                                                 {categories && categories.map(c =>
                                                     (<MenuItem key={c.id} value={c.id} placeholder='Category Event' >{c.name} </MenuItem>)
-
                                                 )}
-
                                             </Select>
                                         </div>
                                     </div>
@@ -609,17 +607,12 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                         <Row>
                             <Col md={12} className=' pb-4'><h6 className="h66"><b>Featured</b></h6></Col>
                         </Row>
-
                         <Row>
                         <Col md={2} sm={2} xl={2}> 
-                               
                                 <Image src='https://picsum.photos/id/99/200/300'  width="200" height="180" alt='event' rounded className='product'/>
                                 <div className='description'>
                                     <span>lorem ipsuem</span> <br />
-
                                     <span>lorem ipsuem</span> <br />
-
-                                
                             </div>
                             </Col> <Col sm={1} md={1}></Col>
                             <Col md={2} sm={2} xl={2} >

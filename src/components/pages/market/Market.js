@@ -115,7 +115,7 @@ const handleClose = () => {
                 </div>
                 <div className='row pb-3'>
                     <div className='col-md-3'></div>
-                    <div className="col-sm-8 pb-3">
+                    <div className="col-sm-9  pb-3">
                 <ul className="nav nav-pills nav-justified " id='navprofil'>
                     <li className="nav-item">
                     <NavLink to={`#`} className="link_cart"><span className='n'>Multimedia</span></NavLink>
