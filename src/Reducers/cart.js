@@ -28,7 +28,8 @@ import {
      }
      if (action.type === ADD_CART){
       return {
-          ...state,       
+          ...state,
+       // cart:[...state.cart,action.payload]
       }
   }
      if (action.type === DELETE_PROD_CART) {
