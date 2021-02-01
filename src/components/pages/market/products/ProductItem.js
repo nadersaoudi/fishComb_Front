@@ -1,5 +1,7 @@
 import React from 'react' ;
 import { Fragment ,useState, useEffect} from 'react';
+import { NavLink } from 'react-router-dom';
+import { IoBasketSharp } from 'react-icons/io5';
 import DialogContent from '@material-ui/core/DialogContent';
 import FormControl from 'react-bootstrap/FormControl';
 import Select from '@material-ui/core/Select';
@@ -10,6 +12,7 @@ import { Avatar } from "@material-ui/core";
 import { updateProduct } from '../../../../Actions/Market';
 import { addCart } from '../../../../Actions/cart';
 import {  deleteProduct, getProduct,getMarket } from '../../../../Actions/Market';
+import { showCart } from '../../../../Actions/cart';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import Dialog from '@material-ui/core/Dialog';
@@ -23,12 +26,16 @@ import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
 import SingleProduct from './SingleProduct';
 import UpdateProduct from './UpdateProduct';
 import { Col } from 'reactstrap';
-const ProductItem = ( { auth: { user },getMarket, match, getProduct, deleteProduct,  market:{ product,categories} ,addCart ,updateProduct , loading , markets:{ markets} }) => {
+import { Row } from 'react-bootstrap';
+const ProductItem = ( { auth: { user },getMarket, match, getProduct, deleteProduct,  market:{ product,categories} ,addCart ,updateProduct , loading , markets:{ markets},cart:{cart}, showCart }) => {
      
 /****************************/
 useEffect(() => {
     getMarket()
 }, [getMarket])
+useEffect(() => {
+    showCart()
+  },[showCart])
 useEffect(() => {
     getProduct(match.params.id);
 },  [getProduct, match.params.id]
@@ -62,7 +69,23 @@ const handleClose = () => {
     return(
         <Fragment>
             <div className='pt-5'>
-                <div className='row pt-5'>
+                <Row >
+                    <Col sm={1}></Col>
+                    <Col sm={10}>
+                        <Row>
+                            <Col sm={10}></Col>
+                            <Col sm={2}>
+                                <button className='btn btn-outline-dark button__cart'>
+                                    <NavLink to={'/dashboard/cart'} className="link__cart">
+                                        <span className='cart__span'>Basket <IoBasketSharp/>{cart && cart.carts ? <div>{cart.carts.length}</div>:<div></div>}
+                                        </span>
+                                    </NavLink>
+                                </button>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+                <div className='row pt-3'>
                 <div className='col-sm-10 pl-5 ml-5'>
                     <div className='card'> 
                         <div className='card-body'>
@@ -201,5 +224,7 @@ const mapStateToProps = state => ({
     product : state.product,
     updateProduct: state.market,
     markets: state.market,
+    cart: state.cart,
+    carts: state.cart
 })
-export default connect(mapStateToProps ,{ getProduct ,deleteProduct,addCart,updateProduct,getMarket })(ProductItem);
+export default connect(mapStateToProps ,{ getProduct , deleteProduct, addCart, updateProduct, getMarket, showCart })(ProductItem);
