@@ -23,7 +23,6 @@ const Login = ({ log, isAuthenticated }) => {
   const onSubmit = async e => {
     e.preventDefault();
     log(login, password);
-    
   }
   if (isAuthenticated) {
 

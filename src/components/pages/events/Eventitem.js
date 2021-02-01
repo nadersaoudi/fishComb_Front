@@ -220,7 +220,6 @@ useEffect(()=>{
                                         margin="dense"
                                         id="Date"
                                         type="Date"
-
                                         name="date" value={date} onChange={ondatechange}
                                     />
 
@@ -308,7 +307,6 @@ useEffect(()=>{
                                     disable event
                                     <Switch
                                         checked={state.checkedA}
-
                                         onChange={handleswitch}
                                         name="checkedA"
                                         inputProps={{ 'aria-label': 'secondary checkbox' }}
@@ -383,7 +381,6 @@ useEffect(()=>{
                                     <div><Button className='Invite__btn  mt-2' onClick={handleClickOpen}> <AddBoxIcon /> Invite Friends</Button></div>
                                     <div>
                                         {event && user && user.user_id === event.user.data.user_id ?
-
                                            <Button className='Invite__btn  mt-2'> <UpdateRoundedIcon onClick={handleClickOpen2} /> Update</Button>
                                             : <div></div>} </div>
                                     <div>{event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events' className='Invite__btn'> <Button className='Invite__btn  mt-2' onClick={e => deleteEvent(match.params.id)}> <DeleteOutlineRoundedIcon  style={{ color: '#212529' }} /> Delete</Button>

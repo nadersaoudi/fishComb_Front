@@ -77,9 +77,6 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
         checkedA: true
 
     });   
-
-
-
     const submit = e => {
         e.preventDefault();
         console.log(description)

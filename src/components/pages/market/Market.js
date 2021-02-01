@@ -241,25 +241,23 @@ const handleClose = () => {
                              </div>
                         </div>
                         <div className='row pt-3 pb-2'>
-                            <div className='col-5'>
+                            <div className='col-12'>
                             <div className='row pt-3'>
                             <div className="btn-group btn-group-toggle col-md-12  ">
-                            <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
+                            <div className='col-md-4'> Upload image </div><input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} /> 
+                            {   /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+                                <span  >Upload Video </span>
+                                </Button>*/}
+                            </div>  </div> </div>
+                            <div className='col-12'>
+                            <div className='row pt-3'>
+                            <div className="btn-group btn-group-toggle col-md-12  ">
+                            <div className='col-md-4'>Upload File </div><input accept="image/*" id="icon-button-file" type="file" placeholder='file product' />
                             { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                 <span  >Upload Video </span>
                                 </Button>*/}
-                            </div>  </div>
-                            <div className='row pt-3'>
-                            <div className="btn-group btn-group-toggle col-md-12  ">
-                            <input accept="image/*" id="icon-button-file" type="file" placeholder='file product' />
-                            { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-                                <span  >Upload Video </span>
-                                </Button>*/}
-                            </div>  </div>
-                            </div>
-                            <div className='col-2'>
-                            </div>
-                              
+                               </div> </div> </div>  
+                            <div className='col-2'></div>      
                         </div>
                    <div className='row'>   
                    <div className='col-md-8'></div>
@@ -268,7 +266,7 @@ const handleClose = () => {
                                     onClick={handleClose} className='float-right'>
                                     Save Product
                                 </Button></div>
-                            </div>
+                          </div>
                     </div>
 
                 </div>
