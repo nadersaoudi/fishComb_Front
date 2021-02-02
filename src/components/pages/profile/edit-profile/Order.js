@@ -2,10 +2,10 @@ import React from 'react';
 import { useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import { connect } from 'react-redux';
-import {myOrders} from '../../../../Actions/cart'
+import {myOrders,CancelPayment} from '../../../../Actions/cart'
 import PropTypes from 'prop-types';
 
-const Order = ({myOrders,cart:{orders}}) => {
+const Order = ({myOrders,cart:{orders},CancelPayment}) => {
 useEffect(()=>{
   myOrders()
 },[myOrders])
@@ -23,16 +23,18 @@ return(
       <th>Last Name</th>
       <th>Total</th>
       <th>Transaction_Id</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     {orders.map(order=> (
-      <tr>
+      <tr key={order.data.id}>
      
       <td>{order.data.first_name}</td>
       <td>{order.data.last_name}</td>
       <td>{order.data.sub_total}</td>
       <td>{order.data.payment_id}</td>
+      <td><button onClick={e=>CancelPayment(order.data.id)}>Cancel Payment</button></td>
     </tr>
     )
 
@@ -56,4 +58,4 @@ Order.propTypes ={
 const mapStateToProps=state=>({
   cart:state.cart
 })
-export default connect(mapStateToProps,{myOrders}) (Order);
+export default connect(mapStateToProps,{myOrders,CancelPayment}) (Order);

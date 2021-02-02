@@ -10,13 +10,13 @@ import PropTypes from 'prop-types';
 import FormControl from 'react-bootstrap/FormControl'
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link } from 'react-router-dom';
-import { getThread } from '../../../Actions/Board';
+import { getThread, addThread } from '../../../Actions/Board';
 import './Board.css';
 import { Button } from '@material-ui/core';
 
 
 
-const Board =( { categories , getThread }) => {
+const Board =( { categories, getThread, addThread }) => {
     useEffect(() => {
         getThread()
     }, [getThread])
@@ -27,22 +27,28 @@ const Board =( { categories , getThread }) => {
     const oncategorychange = e => {
         setcategoryid(e.target.value)
     }
-
     const handleClose = () => {
         setOpen(false);
     };
-
     const [open1, setOpen1] = React.useState(false);
     const handleClose1 = () => {
         setOpen1(false);
     };
-
     const handleOpen1 = () => {
         setOpen1(true);
     };
     const [category_id, setcategoryid] = useState('')
-    
 
+    const [formData, setformData] = useState({
+        title: '',
+        description: ''
+    })
+    const { title, description } = formData;
+    const onchange = e => setformData({ ...formData, [e.target.name]: e.target.value });
+    const submit = e => {
+        e.preventDefault();
+        addThread(formData);
+    }
     return (
             <div>
                 <Row className='pt-5 mb-4'>
@@ -84,7 +90,7 @@ const Board =( { categories , getThread }) => {
                         </form>
                         <Row className='pt-2'>
                             <Col xs={4}>
-                            <Button className='BoradBotton'><h5>My Account</h5> </Button>
+                            <Button className='BoradBotton'><h6>My Account</h6> </Button>
                             </Col> 
                         </Row>
                                  
@@ -131,7 +137,7 @@ const Board =( { categories , getThread }) => {
                 
                 </Row>
                 <Dialog  open={open} onClose={handleClose} aria-labelledby="form-dialog-title" className='dialogForm'   >
-                <form className='add__event'>
+                <form className='add__event' onSubmit={e => submit(e)}>
                 <DialogTitle id="form-dialog-title">Ask Question</DialogTitle>
                 <DialogContent>
                 <Row className=" pt-1">
@@ -143,7 +149,7 @@ const Board =( { categories , getThread }) => {
                                                 id="Title"
                                                 label="Title"
                                                 type="text"
-                                                name="name"
+                                                name="title" value={title} onChange={e => onchange(e)} 
                        />
                 </Col>
                 </Row>
@@ -156,13 +162,10 @@ const Board =( { categories , getThread }) => {
                                                 onOpen={handleOpen1}
                                                 value={category_id}
                                                 name="category_id"
-                                                onChange={oncategorychange}
-                                            >
+                                                onChange={oncategorychange}>
                                                 {categories && categories.map(c =>
                                                     (<MenuItem key={c.id} value={c.id} >{c.name} </MenuItem>)
-
                                                 )}
-
                                             </Select>
                 </Row>
                 <Row className='pt-3'>
@@ -173,12 +176,12 @@ const Board =( { categories , getThread }) => {
                                                 id="Title"
                                                 label="Title"
                                                 type="text"
-                                                name="name"
+                                                name="title" value={title} onChange={e => onchange(e)} 
                        />
                 </Row>
                 <Row>
                     <Col md={10}className='mt-3'></Col>
-                    <Col><button className='btn btn-light '>Save</button></Col>
+                    <Col><button className='btn btn-light  ' type='submit'>Save</button></Col>
                 </Row>
                 </DialogContent>
         </form>
@@ -189,10 +192,11 @@ const Board =( { categories , getThread }) => {
 Board.prototype={
     categories: PropTypes.object.isRequired,
     getThread: PropTypes.func.isRequired,
-    thread: PropTypes.object.isRequired
+    thread: PropTypes.object.isRequired,
+    addThread: PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     categories: state.categories,
     thread : state.thread
 })
-export default connect (mapStateToProps, { getThread }) (Board);
+export default connect (mapStateToProps, { getThread, addThread }) (Board);

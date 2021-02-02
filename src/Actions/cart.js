@@ -175,3 +175,25 @@ export const Order_Payment =(order_id)=>async dispatch=>{
         toast.error('Error')
     } 
 }
+///api/order/cancel_payment
+export const CancelPayment =(order_id)=>async dispatch=>{
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.post(`/api/order/cancel_payment`,{order_id},config)
+       /* dispatch({
+            type:PAYMENT_SUCCESS,
+           // payload:res.data
+        })*/
+        toast.info('payment canceled')
+    } catch (error) {
+        /*dispatch({
+            type:PAYMENT_ERROR
+        })*/
+        toast.error('Error')
+    }
+}
