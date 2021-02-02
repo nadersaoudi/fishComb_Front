@@ -1,9 +1,14 @@
 import React from 'react';
+import { useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
+import { connect } from 'react-redux';
+import {myOrders} from '../../../../Actions/cart'
+import PropTypes from 'prop-types';
 
-
-const Order = () => {
-
+const Order = ({myOrders,cart:{orders}}) => {
+useEffect(()=>{
+  myOrders()
+},[myOrders])
 
 return(
     <div className='kk'>
@@ -13,31 +18,26 @@ return(
           <Table striped bordered hover>
   <thead>
     <tr>
-      <th>#</th>
+     
       <th>First Name</th>
       <th>Last Name</th>
-      <th>Username</th>
+      <th>Total</th>
+      <th>Transaction_Id</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+    {orders.map(order=> (
+      <tr>
+     
+      <td>{order.data.first_name}</td>
+      <td>{order.data.last_name}</td>
+      <td>{order.data.sub_total}</td>
+      <td>{order.data.payment_id}</td>
     </tr>
-    <tr>
-      <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td colSpan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
+    )
+
+    )}
+   </tbody>
 </Table>
         
           </div> 
@@ -50,5 +50,10 @@ return(
 )
 
 }
-
-export default Order;
+Order.propTypes ={
+  cart:PropTypes.object.isRequired
+}
+const mapStateToProps=state=>({
+  cart:state.cart
+})
+export default connect(mapStateToProps,{myOrders}) (Order);

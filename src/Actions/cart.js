@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_CART, ADD_CART, DELETE_PROD_CART, UPDATE_QUANTITY, ERROR_UPDATE_QUANTITY, CART_ERROR} from './types';
+import { GET_CART, ADD_CART, DELETE_PROD_CART, UPDATE_QUANTITY, ERROR_UPDATE_QUANTITY, CART_ERROR, MY_ORDERS, ORDER_FAILS, PAYMENT_SUCCESS, PAYMENT_ERROR} from './types';
 import {  CHECKOUT,CHECKOUT_FAILED} from './types';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -131,5 +131,47 @@ export const stripelog =(token,address)=>async dispatch=>{
         dispatch({
             type: CHECKOUT_FAILED,
         });
+    } 
+}
+//myOrders
+export const myOrders =()=>async dispatch=>{
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.get(`/api/order/my_orders`,config)
+        dispatch({
+            type:MY_ORDERS,
+            payload:res.data
+        })
+    } catch (error) {
+        dispatch({
+            type:ORDER_FAILS
+        })
+    }
+}
+//Order_Payment
+export const Order_Payment =(order_id)=>async dispatch=>{
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.post(`/api/order/payment`,{order_id},config)
+       /* dispatch({
+            type:PAYMENT_SUCCESS,
+           // payload:res.data
+        })*/
+        toast.success('payment success')
+    } catch (error) {
+        /*dispatch({
+            type:PAYMENT_ERROR
+        })*/
+        toast.error('Error')
     } 
 }
