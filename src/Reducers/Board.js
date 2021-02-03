@@ -1,7 +1,7 @@
 import { GET_THREAD, ADD_THREAD, ADD_THREAD_ERROR, DELETE_THREAD, ERROR_DELETE_THREAD  } from '../Actions/types';
 const initialState = {
     thread: [],
-    threads:[],
+    threads: null,
     loading:true,
     isAuthenticated: false,
 error :{}

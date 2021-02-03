@@ -9,7 +9,11 @@ import {
     ADD_CART,
     DELETE_PROD_CART,
     UPDATE_QUANTITY,
-    CHECKOUT
+    CHECKOUT,
+    MY_ORDERS,
+    ORDER_FAILS,
+    PAYMENT_ERROR,
+    PAYMENT_SUCCESS
   } from '../Actions/types';
   
   const initialStore = {
@@ -17,7 +21,8 @@ import {
     carts:[],
     total: 0,
     amount: 0,
-    order:null
+    order:null,
+    orders:[]
   };
   function reducer(state = initialStore, action) {
      if (action.type === GET_CART){
@@ -48,6 +53,27 @@ import {
       return {
         ...state,
         order: action.payload
+      }
+    }
+    if (action.type === MY_ORDERS){
+      return {
+        ...state,
+        orders: action.payload
+      }
+    }
+    if (action.type === ORDER_FAILS){
+      return {
+        ...state
+      }
+    }
+    if (action.type === PAYMENT_SUCCESS){
+      return {
+        ...state
+      }
+    }
+    if (action.type === PAYMENT_ERROR){
+      return {
+        ...state
       }
     }
     return state;

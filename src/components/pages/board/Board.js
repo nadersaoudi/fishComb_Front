@@ -13,10 +13,11 @@ import { Link } from 'react-router-dom';
 import { getThread, addThread } from '../../../Actions/Board';
 import './Board.css';
 import { Button } from '@material-ui/core';
+import SingleThread from './SingleThread';
 
 
 
-const Board =( {  getThread, addThread,addthreaderr,deletethread, deletethreaderr }) => {
+const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
     useEffect(() => {
         getThread()
     }, [getThread])
@@ -41,9 +42,10 @@ const Board =( {  getThread, addThread,addthreaderr,deletethread, deletethreader
 
     const [formData, setformData] = useState({
         title: '',
-        description: ''
+        body: '',
+        status: '1'
     })
-    const { title, description } = formData;
+    const { title, body,status } = formData;
     const onchange = e => setformData({ ...formData, [e.target.name]: e.target.value });
     const submit = e => {
         e.preventDefault();
@@ -93,46 +95,14 @@ const Board =( {  getThread, addThread,addthreaderr,deletethread, deletethreader
                             <Button className='BoradBotton'><h6>My Account</h6> </Button>
                             </Col> 
                         </Row>
-                                 
-
                          </Col>
-                         
                          <Col className='border-left'>
-                         <Table>
-                        <thead> 
-                               <tr>
-                                   <th width="65%">Question</th>
-                                   <th width="20%">Views</th> 
-                                   <th width="15%">Last Post</th>
-                               </tr>
-                        </thead>
-                        <tbody>
-                                <tr>
-                                <td><span className='title'>Title</span><br/>
-                                    <span className='descreption'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                                </td>
-                                <td>14758</td>
-                                <td>7 june 2020</td>
-                                </tr>
-                                <tr>
-                                <td><span className='title'>Title</span><br/>
-                                    <span className='descreption'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                                </td>
-                                <td>14758</td>
-                                <td>7 june 2020</td>
-                                </tr>
-                                <tr>
-                                <td><span className='title'>Title</span><br/>
-                                    <span className='descreption'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-                                </td>
-                                <td>14758</td>
-                                <td>7 june 2020</td>
-                                </tr>
-                        </tbody>
-                        </Table>
+                         {thread && thread.map((thread) =>
+                                (
+                                    <SingleThread key={thread.id} threads={thread}  />)
+                                )}
                         </Col>
-                            <Row>
-                                   
+                            <Row>   
                             </Row>
                 
                 </Row>
@@ -173,10 +143,10 @@ const Board =( {  getThread, addThread,addthreaderr,deletethread, deletethreader
                                                 className='input_event'
                                                 placeholder="descreption"
                                                 margin="dense"
-                                                id="Title"
+
                                                 label="Title"
                                                 type="text"
-                                                name="title" value={title} onChange={e => onchange(e)} 
+                                                name="body" value={body} onChange={e => onchange(e)} 
                        />
                 </Row>
                 <Row>
@@ -192,11 +162,11 @@ const Board =( {  getThread, addThread,addthreaderr,deletethread, deletethreader
 Board.prototype={
     categories: PropTypes.object.isRequired,
     getThread: PropTypes.func.isRequired,
-    thread: PropTypes.object.isRequired,
+    Thread: PropTypes.object.isRequired,
     addThread: PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     categories: state.categories,
-    thread : state.thread
+    Thread : state.Thread,
 })
 export default connect (mapStateToProps, { getThread, addThread }) (Board);

@@ -6,9 +6,9 @@ import Profile from './Profile';
 import events from './events';
 import market from './market';
 import cart from './cart';
-import thread from './Board';
+import Thread from './Board';
 export default combineReducers({
 
-    auth,Post,Friends,Profile,events,market,cart,thread
+    auth,Post,Friends,Profile,events,market,cart,Thread
 
 });

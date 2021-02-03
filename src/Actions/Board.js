@@ -14,7 +14,8 @@ export const getThread  =  () => async dispatch => {
             'content-Type': 'application/json'
         }
     }
-    const res = await axios.get('/api/threads',{},config)
+    const res = await axios.get('/api/threads',config)
+    console.log('***', res.data)
     dispatch({
         type: GET_THREAD,
         payload: res.data
