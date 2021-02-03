@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { addCart } from '../../../../Actions/cart';
 import '../Market.css';
 
-const SingleProduct = ( { auth: {user} ,markets,addCart ,markets :{ product} }) => {
+const SingleProduct = ( { auth: {user} ,markets  }) => {
     
 return (
     <Fragment>

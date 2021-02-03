@@ -1,6 +1,7 @@
 import { GET_THREAD } from '../Actions/types';
 const initialState = {
     thread: [],
+    threads: null,
     loading:true,
 };
 export default function (state = initialState, action) {
