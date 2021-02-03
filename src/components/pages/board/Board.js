@@ -16,7 +16,7 @@ import { Button } from '@material-ui/core';
 
 
 
-const Board =( { categories, getThread, addThread }) => {
+const Board =( {  getThread, addThread,addthreaderr,deletethread, deletethreaderr }) => {
     useEffect(() => {
         getThread()
     }, [getThread])
