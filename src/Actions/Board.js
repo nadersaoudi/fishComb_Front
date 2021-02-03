@@ -1,4 +1,4 @@
-import { GET_THREAD, ADD_THREAD, ADD_THREAD_ERROR, DELETE_THREAD, ERROR_DELETE_THREAD } from './types';
+import { GET_THREAD, ADD_THREAD, ADD_THREAD_ERROR, DELETE_THREAD, ERROR_DELETE_THREAD, UPDATE_THREAD, UPDATE_THREAD_ERRROR } from './types';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -30,10 +30,10 @@ export const addThread = (formData) => async dispatch => {
         }
     }
     try{
-        const res = await axios.post('/api/threads',formData , config)
+        const res = await axios.post('/api/threads',formData,config)
         dispatch({
             type: ADD_THREAD,
-            payload: res.data
+            payload: res.data.data
         })
         toast.info('Thread Added')
     }catch{
@@ -62,6 +62,29 @@ export const deleteTreadh = (thread_id) => async dispatch => {
     }catch{
         dispatch({
             type:ERROR_DELETE_THREAD
+        })
+    }
+}
+//Update Thread 
+export const upadateThread = (formData, thread_id) => async dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.patch(`/api/threads/${thread_id}`,formData, config)
+        toast.info('Thread Updated');
+        dispatch ({
+            types: UPDATE_THREAD,
+            payload: res.data,
+        })
+    }
+    catch (error){
+        toast.error('Error in Update');
+        dispatch({
+            type: UPDATE_THREAD_ERRROR
         })
     }
 }

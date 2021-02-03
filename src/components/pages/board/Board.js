@@ -17,6 +17,7 @@ import SingleThread from './SingleThread';
 
 
 
+
 const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
     useEffect(() => {
         getThread()
@@ -151,7 +152,7 @@ const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
                 </Row>
                 <Row>
                     <Col md={10}className='mt-3'></Col>
-                    <Col><button className='btn btn-light  ' type='submit'>Save</button></Col>
+                    <Col><button className='btn btn-light  '  onClick={handleClose} type='submit'>Save</button></Col>
                 </Row>
                 </DialogContent>
         </form>

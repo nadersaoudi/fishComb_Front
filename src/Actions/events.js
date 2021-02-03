@@ -267,7 +267,6 @@ export const update = (file,event_id) => async dispatch => {
                 type: EVENT_ERROR,
             });
         }
-
     }
 //search
 export const search = (filter,value) => async dispatch => {
