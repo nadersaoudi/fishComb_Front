@@ -17,6 +17,7 @@ import SingleThread from './SingleThread';
 
 
 
+
 const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
     useEffect(() => {
         getThread()
@@ -106,13 +107,14 @@ const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
                             </Row>
                 
                 </Row>
-                <Dialog  open={open} onClose={handleClose} aria-labelledby="form-dialog-title" className='dialogForm'   >
+                <Dialog  open={open} onClose={handleClose} aria-labelledby="form-dialog-title" className='dialogForm' style={{maxWidth:'250',}}  >
                 <form className='add__event' onSubmit={e => submit(e)}>
                 <DialogTitle id="form-dialog-title">Ask Question</DialogTitle>
                 <DialogContent>
-                <Row className=" pt-1">
+                <Row className=" pt-1 px-0">
                 <Col sm={12} md={12} xl={12}>
                 <FormControl
+                                 style={{width:'32rem',}}
                                                 className='input_event'
                                                 placeholder="Title"
                                                 margin="dense"
@@ -124,7 +126,8 @@ const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
                 </Col>
                 </Row>
                 <Row className='pt-1 pb-1'>
-                <Select
+                <Select         style={{width:'32rem',marginLeft:'10px',}}
+                                               
                                                 labelId="demo-controlled-open-select-label"
                                                 id="demo-controlled-open-select"
                                                 open={open1}
@@ -139,19 +142,19 @@ const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
                                             </Select>
                 </Row>
                 <Row className='pt-3'>
-                <FormControl
+                <FormControl style={{width:'140',}}
                                                 className='input_event'
-                                                placeholder="descreption"
+                                                placeholder="Descreption"
                                                 margin="dense"
-
                                                 label="Title"
-                                                type="text"
+                                                type="textarea" 
+                                                as="textarea" aria-label="With textarea"
                                                 name="body" value={body} onChange={e => onchange(e)} 
                        />
                 </Row>
                 <Row>
                     <Col md={10}className='mt-3'></Col>
-                    <Col><button className='btn btn-light  ' type='submit'>Save</button></Col>
+                    <Col><button className='btn btn-light  mt-2'  onClick={handleClose} type='submit'>Save</button></Col>
                 </Row>
                 </DialogContent>
         </form>
