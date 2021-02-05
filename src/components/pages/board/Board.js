@@ -8,9 +8,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 import FormControl from 'react-bootstrap/FormControl'
-import MenuItem from '@material-ui/core/MenuItem';
 import { Link } from 'react-router-dom';
 import { getThread, addThread } from '../../../Actions/Board';
+import Form from 'react-bootstrap/Form';
 import './Board.css';
 import { Button } from '@material-ui/core';
 import SingleThread from './SingleThread';
@@ -53,31 +53,33 @@ const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
         addThread(formData);
     }
     return (
-            <div>
-                <Row className='pt-5 mb-4'>
-                    <Col md={3}></Col>
-                    <Col md={4} style={{display:'contents'}}>
-                        <Row>
+        <div>
+            <Row className='pt-5 mb-4'>
+                <Col md={3}></Col>
+                <Col md={4} style={{display:'contents'}}>
+                    <Row>
                         <ul className="nav">
                             <Col xs={6}>
-                            <li className="nav-item">
-                                <Link className='nav-link' className="link_cart" to={`/dashboard/events`} ><span className="n">Latest</span></Link>
-                            </li>
+                                <li className="nav-item">
+                                    <Link className='nav-link' className="link_cart" to={`/dashboard/events`} ><span className="n">Latest</span></Link>
+                                </li>
                             </Col>
                             <Col xs={1}></Col>
-                           <Col xs={4}>
-                           <li className="nav-item">
-                                <Link className='nav-link' className="link_cart" to={`/dashboard/invited`} ><span className="n" style={{ fontFamily: "arial" }}>New</span></Link>
-                            </li>
+                            <Col xs={4}>
+                                 <li className="nav-item">
+                                    <Link className='nav-link' className="link_cart" to={`/dashboard/invited`} ><span className="n" style={{ fontFamily: "arial" }}>New</span></Link>
+                                </li>
                            </Col>
                         </ul>
-                        </Row>
-                        </Col>
-                        <Col md={5}></Col>
-                         <Col><button className='btn btn-outline-dark' id='Button_board' onClick={handleClickOpen} >Ask Question</button></Col>         
+                    </Row>
+                </Col>
+                    <Col md={5}></Col>
+                    <Col>
+                        <button className='btn btn-outline-dark' id='Button_board' onClick={handleClickOpen} >Ask Question</button>
+                    </Col>         
                 </Row>
                 <Row className='Side_Bar'>
-                         <Col md={3} sm={3} xl={3} className='side_min_bar'>
+                    <Col md={3} sm={3} xl={3} className='side_min_bar'>
                         <form onSubmit >
                             <Col md={12} sm={12} xl={12} className="header__input px-0" >
                                 <input type="text" placeholder='Search Fishcomb' aria-label="Search" height='25px'  />
@@ -89,75 +91,61 @@ const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
                                     </svg>
                                 </button>
                             </Col>
-
                         </form>
                         <Row className='pt-2'>
                             <Col xs={4}>
-                            <Button className='BoradBotton'><h6>My Account</h6> </Button>
+                                <Button className='BoradBotton'><h6>My Account</h6> </Button>
                             </Col> 
                         </Row>
-                         </Col>
-                         <Col className='border-left'>
-                         {thread && thread.map((thread) =>
-                                (
-                                    <SingleThread key={thread.id} threads={thread}  />)
+                            </Col>
+                            <Col className='border-left'>
+                                {thread && thread.map((threads) =>
+                                    (
+                                    <SingleThread key={threads.id} threads={threads}  />)
                                 )}
-                        </Col>
-                            <Row>   
-                            </Row>
-                
+                            </Col>
+                        <Row>   
+                    </Row>
                 </Row>
-                <Dialog  open={open} onClose={handleClose} aria-labelledby="form-dialog-title" className='dialogForm'   >
-                <form className='add__event' onSubmit={e => submit(e)}>
-                <DialogTitle id="form-dialog-title">Ask Question</DialogTitle>
-                <DialogContent>
-                <Row className=" pt-1">
-                <Col sm={12} md={12} xl={12}>
-                <FormControl
+                <Dialog  open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    <form className='addQuestion' onSubmit={e => submit(e)}>
+                        <DialogTitle id="form-dialog-title">Ask Question</DialogTitle>
+                            <DialogContent>
+                                <Row className=" pt-2">
+                                    <Col sm={12} md={12} xl={12}>
+                                        <FormControl
+                                            className='input_event'
+                                            placeholder="Title"
+                                            margin="dense"
+                                            id="Title"
+                                            label="Title"
+                                            type="text"
+                                            name="title" value={title} onChange={e => onchange(e)} />
+                                    </Col>
+                                </Row>
+                                <Row className='pt-1 pb-1'>
+                                </Row>
+                                <Row className='pt-3'>
+                                    <Col xs={12}>
+                                        <Form.Group controlId="exampleForm.ControlTextarea1">
+                                            <Form.Control as="textarea" 
+                                                rows={3}
                                                 className='input_event'
-                                                placeholder="Title"
-                                                margin="dense"
-                                                id="Title"
-                                                label="Title"
-                                                type="text"
-                                                name="title" value={title} onChange={e => onchange(e)} 
-                       />
-                </Col>
-                </Row>
-                <Row className='pt-1 pb-1'>
-                <Select
-                                                labelId="demo-controlled-open-select-label"
-                                                id="demo-controlled-open-select"
-                                                open={open1}
-                                                onClose={handleClose1}
-                                                onOpen={handleOpen1}
-                                                value={category_id}
-                                                name="category_id"
-                                                onChange={oncategorychange}>
-                                                {categories && categories.map(c =>
-                                                    (<MenuItem key={c.id} value={c.id} >{c.name} </MenuItem>)
-                                                )}
-                                            </Select>
-                </Row>
-                <Row className='pt-3'>
-                <FormControl
-                                                className='input_event'
-                                                placeholder="descreption"
-                                                margin="dense"
-
-                                                label="Title"
-                                                type="text"
-                                                name="body" value={body} onChange={e => onchange(e)} 
-                       />
-                </Row>
-                <Row>
-                    <Col md={10}className='mt-3'></Col>
-                    <Col><button className='btn btn-light  '  onClick={handleClose} type='submit'>Save</button></Col>
-                </Row>
-                </DialogContent>
-        </form>
-                </Dialog>
-            </div>
+                                                placeholder="descreption" 
+                                                name="body" value={body} onChange={e => onchange(e)} />
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                                <Row className='pt-3'>
+                                    <Col md={10} className='mt-3'></Col>
+                                    <Col className='pb-4' >
+                                        <Button className='btn btn-light pt-2 pb-2 '  onClick={handleClose} type='submit'>Ask Question</Button>
+                                    </Col>
+                                </Row>
+                            </DialogContent>
+                        </form>
+                    </Dialog>
+                </div>
     )
 }
 Board.prototype={

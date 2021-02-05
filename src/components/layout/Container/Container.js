@@ -14,19 +14,15 @@ import Attended from '../../pages/events/Attended'
 import ProductItem from '../../pages/market/products/ProductItem';
 import Userprofile from '../../pages/profile/Userprofile';
 import Cart from '../../pages/market/Cart/Cart';
-
+import Replies from '../../pages/board/Replies';
 import Invited  from '../../pages/events/Invited'
 import Gallery  from '../../pages/events/Gallery'
 const Container = () => {
-
   return (
-
     <div classes='row no-gutters '>
       <div className="content-wrapper col-10 px-0">
         <main role="main">
           <div className="main">
-
-
             <Switch>
               <Route path={`/dashboard/newsfeed`}>
                 <NewFeed />
@@ -69,6 +65,9 @@ const Container = () => {
               </Route>
               <Route path="/dashboard/search">
                 <Searchitem />
+              </Route>
+              <Route path="/dashboard/replies">
+                <Replies />
               </Route>
              
             </Switch>
