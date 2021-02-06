@@ -12,3 +12,11 @@
     align-items: center;
     justify-content: center;
 }
+.addQuestion{
+    width: 550px;
+    min-height: auto;
+}
+.reply{
+    width: 550px;
+    min-height: auto;
+}

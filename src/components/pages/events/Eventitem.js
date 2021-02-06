@@ -36,9 +36,12 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Carousel from 'react-bootstrap/Carousel'
 import {Card, Col, Row} from 'react-bootstrap';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import FeaturedDialog from './FeaturedDialog'
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up"
         ref={ref}
@@ -203,7 +206,7 @@ const Eventitem = ({
     const getlink = () => {
         console.log(window.location.href);
     }
-
+  
     const submit = e => {
         e.preventDefault();
         console.log(description)
@@ -553,6 +556,7 @@ const Eventitem = ({
                                                         Delete</Button>
                                                 </Link> : <div></div>
                                             }</div>
+                                            <div> <FeaturedDialog/></div>
                                         </div>
                                     </div>
                                     <div className="bot__section">

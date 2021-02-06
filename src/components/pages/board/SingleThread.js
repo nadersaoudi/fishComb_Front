@@ -3,47 +3,68 @@ import { Fragment, useState } from 'react';
 import { Col, Row,Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import './Board.css';
 import { Button } from '@material-ui/core';
 import { deleteTreadh, upadateThread } from '../../../Actions/Board';
+import { addReplies } from '../../../Actions/Replies';
 import Dialog from '@material-ui/core/Dialog';
 import FormControl from 'react-bootstrap/FormControl';
 import DeleteIcon from '@material-ui/icons/Delete';
 import UpdateIcon from '@material-ui/icons/Update';
 
 import DialogContent from '@material-ui/core/DialogContent';
-const SingleThread = ( {threads , deleteTreadh, upadateThread } ) => {
-/***********************************/
-const [open, setOpen] = React.useState(false);
-const handleClickOpen = () => {
-    setOpen(true);
-};
-const handleClose = () => {
-    setOpen(false);
-};
-/***********************************/
-const [formData, setformData] = useState({
-    title: '',
-    body: '',
-    status: '1'
-})
-const { title, body,status } = formData;
-const onchange = e => setformData({ ...formData, [e.target.name]: e.target.value });
-const submit = e => {
-    e.preventDefault();
-    upadateThread(formData,threads.id);
-}
-/***********************************/
-return (
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Form from 'react-bootstrap/Form';
+import { NavLink } from 'react-router-dom';
+const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies }) => {
+    /***********************************/
+    const [open, setOpen] = React.useState(false);
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    const [open1, setOpen1] = React.useState(false);
+    const handleClickOpen1 = () => {
+        setOpen1(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const handleClose1 = () => {
+        setOpen1(false);
+    };
+    /***********************************/
+    const [formData, setformData] = useState({
+        title: '',
+        body: '',
+        status: '1'
+    })
+    const { title, body, status } = formData;
+    const onchange = e => setformData({ ...formData, [e.target.name]: e.target.value });
+    const submit = e => {
+        e.preventDefault();
+        upadateThread(formData, threads.id);
+    }
+    const [formData1, setformData1] = useState({
+        body2: '',
+    })
+    const { body2 } = formData1;
+    const onchange1 = e => setformData1({ ...formData1, [e.target.name]: e.target.value });
+    const submit1 = e => {
+        e.preventDefault();
+        addReplies(formData1, threads.id);
+    }
+    /***********************************/
+    return (
         <Fragment>
-            <Row>
+            <Row className='pb-2'>
                 <Col xs={12}>
                     <Row>
                         <Col xs= {8}>
                             <Card style={{ width: '55rem',marginBottom:'4px' }}>
                                 <Card.Title>
-                                {threads && threads.title}
+                                {threads && threads.title.charAt(0).toUpperCase() + threads.title.slice(1)}
                             
-                            </Card.Title>
+                                  </Card.Title>
                             
                     <Card.Text>
                     
@@ -51,7 +72,9 @@ return (
                         
                         <Button className="float-right" onClick={handleClickOpen} ><UpdateIcon Style={{}}/>Edit</Button>
                             <Button className="float-right" onClick={e=>deleteTreadh(threads && threads.id)}><DeleteIcon/>Delete</Button>
-                    
+                            <NavLink to='/dashboard/replies'>
+                            <Button className='float-right'>Replies</Button>
+                            </NavLink>
                     </Card.Text>
                     <Col xs={6}>
                             
@@ -97,7 +120,7 @@ return (
                         </form>
                             </Dialog>
                         
-                        
+                            
                     </Row>
                 </Col>
               
@@ -105,14 +128,15 @@ return (
         </Fragment>
     )
 }
-SingleThread.prototype={
+SingleThread.prototype = {
     Thread: PropTypes.object.isRequired,
     thread: PropTypes.object.isRequired,
     deleteTreadh: PropTypes.func.isRequired,
     upadateThread: PropTypes.func.isRequired,
+    addReplies: PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
-    thread : state.Thread,
-    Threads : state.Thread
+    thread: state.Thread,
+    Threads: state.Thread
 })
-export default connect (mapStateToProps , { deleteTreadh, upadateThread }) (SingleThread);
+export default connect(mapStateToProps, { deleteTreadh, upadateThread, addReplies })(SingleThread);
