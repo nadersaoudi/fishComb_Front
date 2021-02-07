@@ -1,6 +1,6 @@
 import React from 'react';
 import { Fragment, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './Board.css';
@@ -9,11 +9,13 @@ import { deleteTreadh, upadateThread } from '../../../Actions/Board';
 import { addReplies } from '../../../Actions/Replies';
 import Dialog from '@material-ui/core/Dialog';
 import FormControl from 'react-bootstrap/FormControl';
+import DeleteIcon from '@material-ui/icons/Delete';
+import UpdateIcon from '@material-ui/icons/Update';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Form from 'react-bootstrap/Form';
 import { NavLink } from 'react-router-dom';
-const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies }) => {
+const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match}) => {
     /***********************************/
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
@@ -39,7 +41,7 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies }) => {
     const onchange = e => setformData({ ...formData, [e.target.name]: e.target.value });
     const submit = e => {
         e.preventDefault();
-        upadateThread(formData, threads.id);
+        upadateThread(formData, threads.data.id);
     }
     const [formData1, setformData1] = useState({
         body2: '',
@@ -53,67 +55,66 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies }) => {
     /***********************************/
     return (
         <Fragment>
-            <Row className='pt-5 pb-2'>
+            <Row className='pb-2'>
                 <Col xs={12}>
                     <Row>
                         <Col xs={8}>
-                            <span>
-                                <h5>
-                                    {threads && threads.title.charAt(0).toUpperCase() + threads.title.slice(1)}
-                                </h5>
-                            </span>
+                            <Card style={{ width: '55rem', marginBottom: '4px' }}>
+                                <Card.Title>
+                                    {threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)}
+                                </Card.Title>
+                                <Card.Text>
+                                    {threads && threads.data.body}
+                                    <Button className="float-right" onClick={handleClickOpen} ><UpdateIcon Style={{}} />Edit</Button>
+                                    <Button className="float-right" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button>
+                                    <NavLink to={`/dashboard/thread/${threads.data.id}`} >
+                                        <Button className='float-right' >Replies</Button>
+                                    </NavLink>
+                                </Card.Text>
+                                <Col xs={6}>
+                                </Col>
+                            </Card>
                         </Col>
-                        <Col xs={4}>
-                            <Button onClick={handleClickOpen} >Edit</Button>
-                            <Dialog open={open} onClose={handleClose} className='addProduct'>
-                                <form className='addQuestion' onSubmit={e => submit(e)}>
-                                    <DialogTitle id="form-dialog-title">Edit Question</DialogTitle>
-                                    <DialogContent>
-                                        <Row className=" pt-1">
-                                            <Col sm={12} md={12} xl={12}>
-                                                <FormControl
+                        <Dialog open={open} onClose={handleClose} >
+                            <form className='addQuestion' onSubmit={e => submit(e)}>
+                                <DialogTitle id="form-dialog-title">Ask Question</DialogTitle>
+                                <DialogContent>
+                                    <Row className=" pt-2">
+                                        <Col sm={12} md={12} xl={12}>
+                                            <FormControl
+                                                className='input_event'
+                                                placeholder="Title"
+                                                margin="dense"
+                                                id="Title"
+                                                label="Title"
+                                                type="text"
+                                                name="title" value={title} onChange={e => onchange(e)} />
+                                        </Col>
+                                    </Row>
+                                    <Row className='pt-1 pb-1'>
+                                    </Row>
+                                    <Row className='pt-3'>
+                                        <Col xs={12}>
+                                            <Form.Group controlId="exampleForm.ControlTextarea1">
+                                                <Form.Control as="textarea"
+                                                    rows={3}
                                                     className='input_event'
-                                                    placeholder="Title"
-                                                    margin="dense"
-                                                    id="Title"
-                                                    label="Title"
-                                                    type="text"
-                                                    name="title" value={title} onChange={e => onchange(e)} />
-                                            </Col>
-                                        </Row>
-                                        <Row className='pt-3'>
-                                            <Col xs={12}>
-                                                <Form.Group controlId="exampleForm.ControlTextarea1">
-                                                    <Form.Control as="textarea"
-                                                        rows={3}
-                                                        className='input_event'
-                                                        placeholder="descreption"
-                                                        name="body" value={body} onChange={e => onchange(e)} />
-                                                </Form.Group>
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col md={10} className='mt-2'></Col>
-                                            <Col className='pt-3 pb-3'>
-                                                <Button className='btn btn-light' type='submit'>Edit</Button>
-                                            </Col>
-                                        </Row>
-                                    </DialogContent>
-                                </form>
-                            </Dialog>
-                            <NavLink to='/dashboard/replies'>
-                            <Button>Replies</Button>
-                            </NavLink>
-                            <Button onClick={e => deleteTreadh(threads && threads.id)}>Delete</Button>
-                        </Col>
+                                                    placeholder="descreption"
+                                                    name="body" value={body} onChange={e => onchange(e)} />
+                                            </Form.Group>
+                                        </Col>
+                                    </Row>
+                                    <Row className='pt-3'>
+                                        <Col md={10} className='mt-3'></Col>
+                                        <Col className='pb-4' >
+                                            <Button className='btn btn-light pt-2 pb-2 ' onClick={handleClose} type='submit'>Ask Question</Button>
+                                        </Col>
+                                    </Row>
+                                </DialogContent>
+                            </form>
+                        </Dialog>
                     </Row>
                 </Col>
-                <Col xs={8}>
-                    <span>
-                        {threads && threads.body}
-                    </span>
-                </Col>
-                <hr></hr>
             </Row>
         </Fragment>
     )

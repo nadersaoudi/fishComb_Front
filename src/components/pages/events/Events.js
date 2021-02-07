@@ -258,12 +258,12 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                             className='col-md-12'
                                                 labelId="demo-controlled-open-select-label"
                                                 id="demo-controlled-open-select"
-                                                placeholder='Category Event'
                                                 open={open1}
                                                 onClose={handleClose1}
                                                 onOpen={handleOpen1}
                                                 value={category_id}
                                                 name="category_id"
+                                                defaultValue='qkjsdql'
                                                 onChange={oncategorychange}>
                                                 {categories && categories.map(c =>
                                                     (<MenuItem key={c.id} value={c.id} placeholder='Category Event' >{c.name} </MenuItem>)
