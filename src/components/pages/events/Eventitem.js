@@ -527,7 +527,7 @@ const Eventitem = ({
                                             </div>
 
                                         </div>
-                                        <div className='col-sm-3'>
+                                        <div className='col-sm-4'>
                                             <Button className='Invite__btn mt-2 pr-3'
                                                 onClick={getlink}><IoShareSocialOutline/>Share</Button>
                                             <div>
@@ -553,7 +553,8 @@ const Eventitem = ({
                                                         Delete</Button>
                                                 </Link> : <div></div>
                                             }</div>
-                                            <div> <FeaturedDialog/></div>
+                                            <div>{
+                                                event && user && user.user_id === event.user.data.user_id ? <FeaturedDialog/>:<div></div>}</div>
                                         </div>
                                     </div>
                                     <div className="bot__section">
