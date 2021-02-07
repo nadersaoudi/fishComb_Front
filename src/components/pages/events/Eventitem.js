@@ -257,10 +257,7 @@ const Eventitem = ({
                             <div className='col-md-12'>
 
 
-                                <Select labelId="demo-controlled-open-select-label1" id="demo-controlled-open-select1"
-                                    open={open3}
-                                    onClose={handleClose3}
-                                    onOpen={handleOpen3}
+                                <select 
                                     value={category_id}
                                     onChange={
                                         e => setCategory_id(e.target.value)
@@ -268,7 +265,7 @@ const Eventitem = ({
 
                                     {
                                     categories && categories.map(c => (
-                                        <MenuItem key={
+                                        <option key={
                                                 c.id
                                             }
                                             value={
@@ -276,9 +273,9 @@ const Eventitem = ({
                                         }>
                                             {
                                             c.name
-                                        } </MenuItem>
+                                        } </option>
                                     ))
-                                } </Select>
+                                } </select>
 
 
                             </div>
