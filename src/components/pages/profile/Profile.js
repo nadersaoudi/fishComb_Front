@@ -89,8 +89,8 @@ const onsubmit2=e=>{
             <Image src={user && user.attributes.cover_image} alt='' className='coverture'/>
             <input accept="image/*" className={classes.input} id="icon-button-filee" type="file" onChange={onchange2} />
             <div className='row'>
-              <div className='col-sm-11'></div>
-              <div className='col-sm-1'>
+              <div className='col-sm-10'></div>
+              <div className='col-sm-2'>
               <label htmlFor="icon-button-filee">
               <IconButton className='upload' color="primary" aria-label="upload picture" component="span" >
                 <PhotoCamera/>

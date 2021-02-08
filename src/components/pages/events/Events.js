@@ -17,6 +17,8 @@ import { Link } from 'react-router-dom';
 import { Row, Col,Image } from 'react-bootstrap';
 import Switch from '@material-ui/core/Switch';
 
+
+
 const Events = ({ addEvent, getevents, events: { events, categories }, sortEvents, myevents, search }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -254,21 +256,20 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                 name="date" value={date} onChange={ondatechange}/>
                                         </div>
                                         <div className='col-7 '>
-                                            <Select
+                                            <select
                                             className='col-md-12'
-                                                labelId="demo-controlled-open-select-label"
-                                                id="demo-controlled-open-select"
-                                                open={open1}
-                                                onClose={handleClose1}
-                                                onOpen={handleOpen1}
+                                                
+                                               // placeholder='Category Event'
+                                               
                                                 value={category_id}
                                                 name="category_id"
-                                                defaultValue='qkjsdql'
+                                
                                                 onChange={oncategorychange}>
+                                                
                                                 {categories && categories.map(c =>
-                                                    (<MenuItem key={c.id} value={c.id} placeholder='Category Event' >{c.name} </MenuItem>)
+                                                    (<option key={c.id} value={c.id}>{c.name} </option>)
                                                 )}
-                                            </Select>
+                                            </select>
                                         </div>
                                     </div>
                                     <Row className=" pt-3">
