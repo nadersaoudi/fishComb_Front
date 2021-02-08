@@ -62,20 +62,19 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies }) => {
                         <Col xs= {8}>
                             <Card style={{ width: '55rem',marginBottom:'4px' }}>
                                 <Card.Title>
-                                {threads && threads.title.charAt(0).toUpperCase() + threads.title.slice(1)}
-                            
+                                        {threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)}        
                                   </Card.Title>
-                            
+                      <Col xs={12}>      
                     <Card.Text>
-                    
-                        {threads && threads.body}
-                        
-                        <Button className="float-right" onClick={handleClickOpen} ><UpdateIcon Style={{}}/>Edit</Button>
+                        {threads && threads.data.body}   
+                        <Col xs={4}> 
+                            <Button className="float-right" onClick={handleClickOpen} ><UpdateIcon Style={{}}/>Edit</Button>
                             <Button className="float-right" onClick={e=>deleteTreadh(threads && threads.id)}><DeleteIcon/>Delete</Button>
                             <NavLink to='/dashboard/replies'>
                             <Button className='float-right'>Replies</Button>
-                            </NavLink>
+                            </NavLink></Col> 
                     </Card.Text>
+                    </Col>
                     <Col xs={6}>
                             
                             </Col>
@@ -107,7 +106,7 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies }) => {
                                                 aria-label="With textarea"
 
                                                 label="Title"
-                                                type="textarea"
+                                                type="textaz"
                                                 name="body" value={body} onChange={e => onchange(e)} />
                                 </Row>
                                 <Row>
