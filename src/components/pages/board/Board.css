@@ -20,3 +20,6 @@
     width: 550px;
     min-height: auto;
 }
+.replyButton{
+    display: none !important ;
+}

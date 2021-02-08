@@ -17,7 +17,7 @@ export default function (state = initialState, action) {
         case ADD_REPLY: 
         return{
             ...state,
-            replies:[payload,...state.replies],
+            replies:payload,
             loading:false
         }
         case DELETE_REPLY:

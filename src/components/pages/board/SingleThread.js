@@ -62,7 +62,7 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
                                     {user && threads && user.user_id ===   threads.data.user.data.user_id ?
                                     <Button className="float-right" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button> : (<div></div>)}
                                     <NavLink to={`/dashboard/thread/${threads.data.id}`}>
-                                        <Button className='float-right' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
+                                    <Button className='float-right' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
                                     </NavLink>
                                 </Card.Text>
                                 <Col xs={6}>
@@ -71,7 +71,7 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
                         </Col>
                         <Dialog open={open} onClose={handleClose} >
                             <form className='addQuestion' onSubmit={e => submit(e)}>
-                                <DialogTitle id="form-dialog-title">Ask Question</DialogTitle>
+                                <DialogTitle id="form-dialog-title">Update Question</DialogTitle>
                                 <DialogContent>
                                     <Row className=" pt-2">
                                         <Col sm={12} md={12} xl={12}>
@@ -87,7 +87,7 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
                                     </Row>
                                     <Row className='pt-1 pb-1'>
                                     </Row>
-                                    <Row className='pt-3'>
+                                    <Row className='pt-3  '>
                                         <Col xs={12}>
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                                 <Form.Control as="textarea"
@@ -101,7 +101,7 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
                                     <Row className='pt-3'>
                                         <Col md={10} className='mt-3'></Col>
                                         <Col className='pb-4' >
-                                            <Button className='btn btn-light pt-2 pb-2 ' onClick={handleClose} type='submit'>Ask Question</Button>
+                                            <Button className='btn btn-light pt-2 pb-2 ' onClick={handleClose} type='submit'>Update</Button>
                                         </Col>
                                     </Row>
                                 </DialogContent>

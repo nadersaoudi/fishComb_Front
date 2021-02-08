@@ -145,20 +145,14 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                 <Link to={`/dashboard/attendedevent`} className="link_cart"><span  className='n'>Attending</span></Link>
                             </li>
                         </ul>
-
                     </Col>
                     <Col md={5}></Col>
                 </Row>
             <Row >
-                
-              
                 <Row >
-                   
                     <Col md={5} sm={5} xl={5} className="pb-4">
                         <ul className="nav nav-pills nav-justified " id='navprofil'>
-                            
                             <li className="nav-item">
-                               
                                 <form onSubmit={e => submit1(e)}>
                                     <Row >
                                         <Col sm={1} md={1} xl={1}>
@@ -188,10 +182,8 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                 </form>
                             </li>
                         </ul>
-                        
-                    </Col>
-                    
-                                  </Row>
+                    </Col> 
+                </Row>
                 <Row >
                     <Col md={3} sm={3} xl={3} className='side_min_bar '>
                         <form onSubmit={e => onsubmit1(e)} >
@@ -590,11 +582,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
 
                             </form>
                         </Dialog>
-
-
-
                     </Col>
-
                     <Row  className='col-md-9 ' id='body'>
                         <Row>
                             <Col md={12} className=' pb-4'><h6 className="h66"><b>Featured</b></h6></Col>

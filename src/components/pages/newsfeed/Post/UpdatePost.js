@@ -28,7 +28,7 @@ const UpdatePost  = ({ auth: { user }, getPosts, updatePost ,loading, history, P
     
     return(
         <Fragment>
-            
+            <div >
                 <div className="pub px-0 ">
                              <div className="">   
                               <Avatar src={user && user.attributes.profile_image} />
@@ -42,6 +42,7 @@ const UpdatePost  = ({ auth: { user }, getPosts, updatePost ,loading, history, P
                              </form>
                           </div>  
                       </div>
+                </div>
                 </div>              
         </Fragment>
     )

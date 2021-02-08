@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 import { deleteProd, updateQuantity } from '../../../../Actions/cart';
 import { Col, Form, Row } from 'react-bootstrap';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
