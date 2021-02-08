@@ -38,7 +38,7 @@ export const addReplies = (formData, thread_id) => async dispatch => {
         const res = await axios.post(`/api/thread/${thread_id}/reply`,formData,config)
         dispatch({
             type: ADD_REPLY,
-            payload: res.data.data
+            payload: res.data.data.replies
         })
         console.log('----------',res.data.data)
         toast.info('Add Succes')
@@ -78,10 +78,10 @@ export const deleteReply = (reply_id) => async dispatch => {
         }
     }
     try{  
-        const res = await axios.delete (`/api/thread/replies/reply_id`, config )
+        const res = await axios.delete (`/api/thread/replies/${reply_id}`, config )
         dispatch({
             type : DELETE_REPLY,
-            payload : res.data
+            payload : reply_id
         })
     }catch (error) {
         dispatch({

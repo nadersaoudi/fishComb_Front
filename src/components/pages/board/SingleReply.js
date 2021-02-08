@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 import { Col, Row, Card } from 'reactstrap';
 import { Avatar } from '@material-ui/core';
 
-
-const SingleReply = ( { reply } ) => {
+const SingleReply = ( { reply ,deleteReply } ) => {
     return (
         <Fragment>
             <Card className='p-3 my-2' style={{backgroundColor:'#f5f3f0'}}>
@@ -24,6 +23,9 @@ const SingleReply = ( { reply } ) => {
                 <Col xs={8}> 
                     {reply && reply.body.charAt(0).toUpperCase() + reply.body.slice(1)}
                 </Col>
+                <Col xs={2}>
+                    <Button  onClick={e => deleteReply( reply.id)}><DeleteIcon /></Button>
+                </Col>
             </Row>
             </Card>
         </Fragment>
@@ -32,9 +34,10 @@ const SingleReply = ( { reply } ) => {
 SingleReply.prototype={ 
     Replies:  PropTypes.object.isRequired,
     replies: PropTypes.object.isRequired,
+    deleteReply: PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     replies : state.Replies,
     Replies:state.Replies
 })
-export default connect(mapStateToProps)(SingleReply);
+export default connect(mapStateToProps , { deleteReply })(SingleReply);
