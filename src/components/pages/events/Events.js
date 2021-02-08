@@ -258,14 +258,10 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                         <div className='col-7 '>
                                             <select
                                             className='col-md-12'
-                                                
                                                // placeholder='Category Event'
-                                               
                                                 value={category_id}
                                                 name="category_id"
-                                                
                                                 onChange={oncategorychange}>
-                                                
                                                 {categories && categories.map(c =>
                                                     (<option key={c.id} value={c.id}>{c.name} </option>)
                                                 )}
@@ -523,7 +519,6 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                 <option value="Zaire">Zaire</option>
                                                 <option value="Zambia">Zambia</option>
                                                 <option value="Zimbabwe">Zimbabwe</option>
-
                                             </Select>
                                         </Col>
                                     </Row>
@@ -536,19 +531,19 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                 id="Description"
                                                 as="textarea" aria-label="With textarea"
                                                 type="textarea"
-
                                                 name="description" value={description} onChange={ondescchange}
-                                            /></Col></Row>
+                                            />
+                                        </Col>
+                                    </Row>
                                     <Row className=' pt-3'>
-
-
                                         <Col  sm={12} md={12} xl={12} className="btn-group btn-group-toggle ">
                                             <input accept="image/*" id="icon-button-file" type="file" onChange={oncoverchange} />
                                             { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                                 <span  >Upload Video </span>
 
                                                 </Button>*/}
-                                        </Col>  </Row>
+                                        </Col>
+                                    </Row>
                                     <div className="row pt-3">
                                         <div className='col-sm-12'>
                                             <FormControl
@@ -559,8 +554,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
 
                                                 type="textarea"
                                                 fullWidth
-                                                name="video_link" value={video_link} onChange={onlinkchange}
-                                                
+                                                name="video_link" value={video_link} onChange={onlinkchange}            
                                             />
                                             <FormControl
                                         // placeholder={event && event.status}

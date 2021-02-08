@@ -227,9 +227,9 @@ const Eventitem = ({
         <div> {/*****************************Update Dialog*********************************** */}
             <Dialog open={open2}
                 onClose={handleClose2}
-                aria-labelledby="form-dialog-title1">
+                aria-labelledby="form-dialog-title1" className='dialogForm'>
                 <form onSubmit={
-                    e => submit(e) }>
+                    e => submit(e) } className='add__event'>
                     <DialogTitle id="form-dialog-title1">update event</DialogTitle>
                     <DialogContent>
                         <div className="row pt-1">
@@ -366,14 +366,12 @@ const Eventitem = ({
                                 <Switch checked={
                                         state.checkedA
                                     }
-
                                     onChange={handleswitch}
                                     name="checkedA"
                                     inputProps={
                                         {'aria-label': 'secondary checkbox'}
                                     }/>
                                 enable event
-
                             </div>
                         </div>
                         <div className='row pt-3'>
@@ -537,8 +535,8 @@ const Eventitem = ({
                                                     Invite Friends</Button>
                                             </div>
                                             <div> {
-                                                event && user && user.user_id === event.user.data.user_id ? <Button className='Invite__btn  mt-2'>
-                                                    <UpdateRoundedIcon onClick={handleClickOpen2}/>
+                                                event && user && user.user_id === event.user.data.user_id ? <Button className='Invite__btn  mt-2' onClick={handleClickOpen2}>
+                                                    <UpdateRoundedIcon />
                                                     Update</Button> : <div></div>
                                             } </div>
                                             <div>{

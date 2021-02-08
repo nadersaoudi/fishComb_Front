@@ -1,4 +1,4 @@
-import { GET_THREAD, ADD_THREAD, ADD_THREAD_ERROR, DELETE_THREAD, ERROR_DELETE_THREAD, UPDATE_THREAD, UPDATE_THREAD_ERRROR } from './types';
+import { GET_THREAD, ADD_THREAD, ADD_THREAD_ERROR, DELETE_THREAD, ERROR_DELETE_THREAD, UPDATE_THREAD, UPDATE_THREAD_ERRROR, GET_ONETHREAD, ERROR__THREAD } from './types';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 //Toast Config 
 toast.configure();
 
-//Get Thread 
+//Get Threads 
 export const getThread  =  () => async dispatch => {
     const config = {
         headers : {
@@ -33,7 +33,7 @@ export const addThread = (formData) => async dispatch => {
         const res = await axios.post('/api/threads',formData,config)
         dispatch({
             type: ADD_THREAD,
-            payload: res.data.data
+            payload: res.data
         })
         toast.info('Thread Added')
     }catch{
@@ -42,7 +42,6 @@ export const addThread = (formData) => async dispatch => {
         })
         toast.error('error added')
     }
-
 }
 //Delet Thread 
 export const deleteTreadh = (thread_id) => async dispatch => {
@@ -78,13 +77,32 @@ export const upadateThread = (formData, thread_id) => async dispatch => {
         toast.info('Thread Updated');
         dispatch ({
             types: UPDATE_THREAD,
-            payload: res.data,
+            payload: res.data.data,
         })
     }
     catch (error){
-        toast.error('Error in Update');
         dispatch({
             type: UPDATE_THREAD_ERRROR
+        })
+    }
+}
+//Get Thread
+export const getoneThread = (thread_id) => async dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.get(`/api/thread/${thread_id}`,config)
+        dispatch ({
+            type: GET_ONETHREAD,
+            payload : res.data
+        })
+    }catch{
+        dispatch({
+            type: ERROR__THREAD
         })
     }
 }

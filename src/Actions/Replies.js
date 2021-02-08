@@ -8,21 +8,21 @@ toast.configure();
 
 //Get Replies 
 export const getReplies = (thread_id) => async dispatch => {
-    const config = {
+    const config ={
         headers: {
             Authorization: 'Bearer ' + Cookies.get('user'),
             'content-Type': 'application/json'
         }
     }
     try{
-        const res = await axios.get(`/api/thread/${thread_id}/replies`, config)
+        const res = await axios.get(`/api/thread/${thread_id}/replies`,config)
         dispatch ({
-            types: GET_REPLIES,
+            type: GET_REPLIES,
             payload : res.data
         })
     }catch (error){
         dispatch({
-            types: GET_REPLIES_ERROR
+            type: GET_REPLIES_ERROR
         })
     }
 }
@@ -38,8 +38,9 @@ export const addReplies = (formData, thread_id) => async dispatch => {
         const res = await axios.post(`/api/thread/${thread_id}/reply`,formData,config)
         dispatch({
             type: ADD_REPLY,
-            payload: res.data
+            payload: res.data.data
         })
+        console.log('----------',res.data.data)
         toast.info('Add Succes')
     }catch (error){
         dispatch({

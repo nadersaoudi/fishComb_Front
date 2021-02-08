@@ -66,8 +66,7 @@ const Container = () => {
               <Route path="/dashboard/search">
                 <Searchitem />
               </Route>
-              <Route path="/dashboard/replies">
-                <Replies />
+              <Route path={'/dashboard/thread/:id'} render={props => <Replies {...props} />}>
               </Route>
              
             </Switch>

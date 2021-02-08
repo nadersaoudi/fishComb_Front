@@ -1,10 +1,10 @@
-import { DELETE_THREAD, GET_THREAD, ADD_THREAD, UPDATE_THREAD } from '../Actions/types';
+import { DELETE_THREAD, GET_THREAD, ADD_THREAD, UPDATE_THREAD, GET_ONETHREAD } from '../Actions/types';
 const initialState = {
     thread: [],
     threads: null,
     loading:true,
     isAuthenticated: false,
-error :{}
+    error :{}
 };
 export default function (state = initialState, action) {
     const { type, payload } = action
@@ -24,12 +24,18 @@ export default function (state = initialState, action) {
         case DELETE_THREAD:
             return {
                 ...state,
-                thread:state.thread.filter(thread => thread.id !==payload)
+                thread:state.thread.filter(thread => thread.data.id !==payload)
             }
         case UPDATE_THREAD: {
             return{
                 ...state,
-                thread : payload
+                thread:payload
+            }
+        }
+        case GET_ONETHREAD: {
+            return{
+                ...state,
+                threads:payload
             }
         }
         default:
