@@ -4,7 +4,7 @@ const initialState = {
     threads: null,
     loading:true,
     isAuthenticated: false,
-error :{}
+    error :{}
 };
 export default function (state = initialState, action) {
     const { type, payload } = action

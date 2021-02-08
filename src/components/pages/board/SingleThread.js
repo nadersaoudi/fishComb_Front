@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import './Board.css';
 import { Button } from '@material-ui/core';
 import { deleteTreadh, upadateThread } from '../../../Actions/Board';
-import { addReplies } from '../../../Actions/Replies';
+import { addReplies ,getReplies } from '../../../Actions/Replies';
 import Dialog from '@material-ui/core/Dialog';
 import FormControl from 'react-bootstrap/FormControl';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -15,7 +15,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Form from 'react-bootstrap/Form';
 import { NavLink } from 'react-router-dom';
-const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match}) => {
+const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match ,getReplies}) => {
     /***********************************/
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
@@ -43,15 +43,7 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match}
         e.preventDefault();
         upadateThread(formData, threads.data.id);
     }
-    const [formData1, setformData1] = useState({
-        body2: '',
-    })
-    const { body2 } = formData1;
-    const onchange1 = e => setformData1({ ...formData1, [e.target.name]: e.target.value });
-    const submit1 = e => {
-        e.preventDefault();
-        addReplies(formData1, threads.id);
-    }
+
     /***********************************/
     return (
         <Fragment>
@@ -67,8 +59,8 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match}
                                     {threads && threads.data.body}
                                     <Button className="float-right" onClick={handleClickOpen} ><UpdateIcon Style={{}} />Edit</Button>
                                     <Button className="float-right" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button>
-                                    <NavLink to={`/dashboard/thread/${threads.data.id}`} >
-                                        <Button className='float-right' >Replies</Button>
+                                    <NavLink to={`/dashboard/thread/${threads.data.id}`}>
+                                        <Button className='float-right' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
                                     </NavLink>
                                 </Card.Text>
                                 <Col xs={6}>
@@ -124,10 +116,11 @@ SingleThread.prototype = {
     thread: PropTypes.object.isRequired,
     deleteTreadh: PropTypes.func.isRequired,
     upadateThread: PropTypes.func.isRequired,
-    addReplies: PropTypes.func.isRequired
+    addReplies: PropTypes.func.isRequired,
+    getReplies: PropTypes.func.isRequired,
 }
 const mapStateToProps = state => ({
     thread: state.Thread,
     Threads: state.Thread
 })
-export default connect(mapStateToProps, { deleteTreadh, upadateThread, addReplies })(SingleThread);
+export default connect(mapStateToProps, { deleteTreadh, upadateThread, addReplies ,getReplies })(SingleThread);
