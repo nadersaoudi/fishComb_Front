@@ -78,10 +78,10 @@ export const deleteReply = (reply_id) => async dispatch => {
         }
     }
     try{  
-        const res = await axios.delete (`/api/thread/replies/reply_id`, config )
+        const res = await axios.delete (`/api/thread/replies/${reply_id}`, config )
         dispatch({
             type : DELETE_REPLY,
-            payload : res.data
+            payload : reply_id
         })
     }catch (error) {
         dispatch({
