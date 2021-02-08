@@ -64,20 +64,17 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies }) => {
                                 <Card.Title>
                                         {threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)}        
                                   </Card.Title>
-                      <Col xs={12}>      
+                            
                     <Card.Text>
-                        {threads && threads.data.body}   
-                        <Col xs={4}> 
+                       <Col className='mr-0' style={{maxWidth:'35rem',}}>{threads && threads.data.body}</Col>     
+                        
                             <Button className="float-right" onClick={handleClickOpen} ><UpdateIcon Style={{}}/>Edit</Button>
                             <Button className="float-right" onClick={e=>deleteTreadh(threads && threads.id)}><DeleteIcon/>Delete</Button>
                             <NavLink to='/dashboard/replies'>
                             <Button className='float-right'>Replies</Button>
-                            </NavLink></Col> 
+                            </NavLink>
                     </Card.Text>
-                    </Col>
-                    <Col xs={6}>
-                            
-                            </Col>
+                
                             </Card>
                         </Col>
                        
