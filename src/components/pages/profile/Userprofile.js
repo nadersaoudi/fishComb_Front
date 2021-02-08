@@ -2,18 +2,20 @@ import React, { Fragment ,useEffect} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Image from 'react-bootstrap/Image';
-import { getUsers } from '../../../Actions/profile';
+import { getUsers , getNetwork} from '../../../Actions/profile';
 import { Col, Row } from 'react-bootstrap';
-
-
 import './Profile.css'
 import ContentUser from './content/ContentUser';
 
 
-const Userprofile = ( {  match,getUsers, Profile:{profile}}) => {
+const Userprofile = ( {  match,getUsers, Profile:{profile} ,getNetwork}) => {
   useEffect(() => {
     getUsers(match.params.id);
 }, [getUsers, match.params.id]
+)
+useEffect(() => {
+  getNetwork(match.params.id);
+}, [getNetwork, match.params.id]
 )
 return (
     <Fragment>
@@ -63,10 +65,11 @@ return (
 }
 
 Userprofile.propTypes = {
-    getUsers: PropTypes.func.isRequired
+    getUsers: PropTypes.func.isRequired,
+    getNetwork: PropTypes.func.isRequired,
 }
 const mapStateToProps = state => ({
     Profile:state.Profile
 })
-export default connect(mapStateToProps,{getUsers}) (Userprofile);
+export default connect(mapStateToProps,{getUsers , getNetwork}) (Userprofile);
 

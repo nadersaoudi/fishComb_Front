@@ -104,3 +104,4 @@ export const DELETE_REPLY = 'DELETE_REPLY';
 export const DELETE_REPLY_ERROR = 'DELETE_REPLY_ERROR'; 
 export const GET_ONETHREAD = 'GET_ONETHREAD';
 export const ERROR__THREAD = 'ERROR__THREAD';
+export const GET_NETWORK = 'GET_NETWORK'; 

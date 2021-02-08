@@ -61,11 +61,11 @@ const Search = ({ friend, addFriend ,getUser }) => {
               </div>
             </div>
               <div className='col-sm-2 mr-2 pt-4'>
-               {friend && friend.data.attributes.is_friend ===false ? <Button variant="outlined" type="submit" disabled={disable}>Add<AiOutlineUserAdd className='add' /></Button>
-               :<NavLink to={`/dashboard/profileuser/${friend.data.user_id}`}>
-                 <Button style={{backgroundColor:'white',border:'none'}}><AiOutlineTeam style={{color:'black'}}  /><p style={{color:'black'}}>View Profile</p></Button>
-               </NavLink>
-               }
+                {friend && friend.data.attributes.is_friend ===false ? <Button variant="outlined" type="submit" disabled={disable}>Add<AiOutlineUserAdd className='add' /></Button>
+                :<NavLink to={`/dashboard/profileuser/${friend.data.user_id}`}>
+                  <Button style={{backgroundColor:'white',border:'none'}}><AiOutlineTeam style={{color:'black'}}  /><p style={{color:'black'}}>View Profile</p></Button>
+                </NavLink>
+                }
               </div>
           </div>
           </form>

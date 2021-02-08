@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { UPDATE_PROFILE, PROFILE_ERROR, EDIT_PIC, GET_USER } from './types';
+import { UPDATE_PROFILE, PROFILE_ERROR, EDIT_PIC, GET_USER, GET_NETWORK } from './types';
 import { toast } from 'react-toastify';
 import { loadUser } from './auth';
 
@@ -66,6 +66,24 @@ export const getUsers =( user_id )=> async dispatch => {
             payload: res.data
         })
 
+    }catch{
+
+    }
+}
+// Get Users Network 
+export const getNetwork = (user_id) => async dispatch => {
+    const config = {
+        headers :{
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'Content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.get(`/api/user/${user_id}`, config)
+        dispatch ({
+            type : GET_NETWORK,
+            payload : res.data
+        })
     }catch{
 
     }

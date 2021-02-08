@@ -28,7 +28,9 @@ const { body } = formData;
     const submit = e => {
         e.preventDefault();
         addReplies(formData, threads.data.id);
-        e.target.reset();
+        setformData({
+            body: ''  
+        })
     }
 /**************************************/
     return (

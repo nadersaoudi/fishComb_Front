@@ -206,7 +206,6 @@ const Eventitem = ({
     const getlink = () => {
         console.log(window.location.href);
     }
-  
     const submit = e => {
         e.preventDefault();
         console.log(description)
@@ -222,7 +221,6 @@ const Eventitem = ({
         update(file, event.id)
         e.target.reset();
     }
-
     return (
         <div> {/*****************************Update Dialog*********************************** */}
             <Dialog open={open2}
@@ -569,8 +567,6 @@ const Eventitem = ({
                                                     className='btn btn-outline-dark'>Already subscribed</button>
                                             </div>
                                         }
-
-
                                             <Dialog className='invite_form'
                                                 open={open}
                                                 TransitionComponent={Transition}
