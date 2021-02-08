@@ -51,11 +51,12 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
                 <Col xs={12}>
                     <Row>
                         <Col xs={8}>
-                            <Card style={{ width: '55rem', marginBottom: '4px' }}>
-                                <Card.Title className='title_thread'>
+                            <Card style={{ width: '55rem', marginBottom: '4px',borderRadius:'2px' }}>
+                                <Card.Title className='title_thread mt-2 ml-2'>
                                <b>     {threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)} </b>
                                 </Card.Title>
-                                <Card.Text className='text_thread'>
+                        
+                                <Card.Text className='text_thread ml-3'>
                                     {threads && threads.data.body}
                                     {user && threads && user.user_id ===   threads.data.user.data.user_id ?
                                     <Button className="float-right thread__btn" onClick={handleClickOpen} ><UpdateIcon/>Edit</Button> : (<div></div>)}

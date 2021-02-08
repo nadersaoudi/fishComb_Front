@@ -12,8 +12,6 @@ const ContentUser = ({ Profile: { profile}}) => {
              <div className='row'>  
              <div className='col-sm-9'></div>
              <div className='col-sm-2'>
-           
-           
              <div className='col-1'></div>
              </div>
              </div> 
@@ -33,12 +31,9 @@ const ContentUser = ({ Profile: { profile}}) => {
                 {profile && profile.data.attributes.phone}  
                 </div> 
                 <div className='pt-4 pb-1'>
-                    
                 </div> 
                 <div className='pt-4 pb-1'>
-                    
-                </div>
-                 
+                </div> 
              </div>
             </form>
       </Fragment>

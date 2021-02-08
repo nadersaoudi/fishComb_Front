@@ -28,7 +28,9 @@ const { body } = formData;
     const submit = e => {
         e.preventDefault();
         addReplies(formData, threads.data.id);
-        e.target.reset();
+        setformData({
+            body: ''  
+        })
     }
 /**************************************/
     return (
@@ -47,7 +49,9 @@ const { body } = formData;
                             <Col xs={1}></Col>
                             <Col xs={10}>
                                 <h6>{threads && threads.data.body}</h6>
+
                             </Col>
+                           
                         </Row>
                     </Card>
                </Col>
