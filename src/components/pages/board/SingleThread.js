@@ -15,7 +15,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Form from 'react-bootstrap/Form';
 import { NavLink } from 'react-router-dom';
-const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match ,getReplies}) => {
+const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addReplies, match ,getReplies}) => {
     /***********************************/
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
@@ -57,8 +57,10 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match 
                                 </Card.Title>
                                 <Card.Text>
                                     {threads && threads.data.body}
-                                    <Button className="float-right" onClick={handleClickOpen} ><UpdateIcon Style={{}} />Edit</Button>
-                                    <Button className="float-right" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button>
+                                    {user && threads && user.user_id ===   threads.data.user.data.user_id ?
+                                    <Button className="float-right" onClick={handleClickOpen} ><UpdateIcon Style={{}} />Edit</Button> : (<div></div>)}
+                                    {user && threads && user.user_id ===   threads.data.user.data.user_id ?
+                                    <Button className="float-right" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button> : (<div></div>)}
                                     <NavLink to={`/dashboard/thread/${threads.data.id}`}>
                                         <Button className='float-right' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
                                     </NavLink>
@@ -118,8 +120,10 @@ SingleThread.prototype = {
     upadateThread: PropTypes.func.isRequired,
     addReplies: PropTypes.func.isRequired,
     getReplies: PropTypes.func.isRequired,
+    auth :PropTypes.object.isRequired,
 }
 const mapStateToProps = state => ({
+    auth: state.auth,
     thread: state.Thread,
     Threads: state.Thread
 })

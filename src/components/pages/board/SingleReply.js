@@ -7,7 +7,7 @@ import { Avatar, Button } from '@material-ui/core';
 import { deleteReply } from '../../../Actions/Replies';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const SingleReply = ( { reply ,deleteReply } ) => {
+const SingleReply = ( { reply ,deleteReply , auth : { user } } ) => {
     return (
         <Fragment>
             <Row >
@@ -25,18 +25,21 @@ const SingleReply = ( { reply ,deleteReply } ) => {
                     {reply && reply.body.charAt(0).toUpperCase() + reply.body.slice(1)}
                 </Col>
                 <Col xs={2}>
-                    <Button  onClick={e => deleteReply( reply.id)}><DeleteIcon /></Button>
+                {user && reply && user.user_id ===   reply.user.id ?
+                    <Button  onClick={e => deleteReply(reply.id)}><DeleteIcon /></Button>: (<div></div>)}
                 </Col>
             </Row>
         </Fragment>
     )
 }
 SingleReply.prototype={ 
+    auth:  PropTypes.object.isRequired,
     Replies:  PropTypes.object.isRequired,
     replies: PropTypes.object.isRequired,
     deleteReply: PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
+    auth: state.auth,
     replies : state.Replies,
     Replies:state.Replies
 })
