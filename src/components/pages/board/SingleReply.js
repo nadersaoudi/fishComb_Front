@@ -2,10 +2,12 @@ import React from 'react';
 import { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Col, Row, Card } from 'reactstrap';
+import { Col, Row, Card, Button } from 'reactstrap';
 import { Avatar } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { deleteReply } from '../../../Actions/Replies';
 
-const SingleReply = ( { reply ,deleteReply } ) => {
+const SingleReply = ( { reply , deleteReply } ) => {
     return (
         <Fragment>
             <Card className='p-3 my-2' style={{backgroundColor:'#f5f3f0'}}>
@@ -24,7 +26,7 @@ const SingleReply = ( { reply ,deleteReply } ) => {
                     {reply && reply.body.charAt(0).toUpperCase() + reply.body.slice(1)}
                 </Col>
                 <Col xs={2}>
-                    <Button  onClick={e => deleteReply( reply.id)}><DeleteIcon /></Button>
+                    <Button  onClick={e => deleteReply(reply.id)}><DeleteIcon /></Button>
                 </Col>
             </Row>
             </Card>
@@ -40,4 +42,4 @@ const mapStateToProps = state => ({
     replies : state.Replies,
     Replies:state.Replies
 })
-export default connect(mapStateToProps , { deleteReply })(SingleReply);
+export default connect(mapStateToProps , { deleteReply }) (SingleReply);
