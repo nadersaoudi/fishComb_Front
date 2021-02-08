@@ -19,8 +19,6 @@ const [price, setprice] = useState('')
 const [stock, setstock] = useState('')
 const [image, setimage] = useState('')
 const [status , setStatus] = useState('')
-
-
 useEffect(()=>{
   setname(loading || !product.name ? '' : product.name)
 },[loading])

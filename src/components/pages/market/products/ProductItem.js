@@ -163,7 +163,8 @@ const handleClose = () => {
                         </Dialog> 
                         
                         </div> 
-                        : (<div></div>)}</div>
+                        : (<div></div>)}
+                        </div>
                             <div className='col-md-2 pt-5 '>  {user &&  product && user.user_id===   product.user.id ?
                         <Link className='delete_prod' to='/dashboard/marketplace' >
                            <Button className='' onClick={e=>deleteProduct(match.params.id)}> <DeleteOutlineRoundedIcon  style={{fontSize:'19px'}} /> Delete </Button>                      

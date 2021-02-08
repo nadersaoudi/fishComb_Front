@@ -9,6 +9,7 @@ import { Card } from '@material-ui/core';
 import Form from 'react-bootstrap/Form';
 import { Button } from '@material-ui/core';
 import SingleReply from './SingleReply';
+import './Board.css';
 
 const Replies = ( {thread: {threads} , match , getoneThread, getReplies , Replies: {replies} ,addReplies} ) => {
 /**************************************/
@@ -42,8 +43,8 @@ const { body } = formData;
                                 <h4><b>{threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)}</b></h4>
                             </Col>
                         </Row>
-                        <Row className='pt-3 pb-3'>
-                            <Col xs={2}></Col>
+                        <Row className='pt-3 pb-5'>
+                            <Col xs={1}></Col>
                             <Col xs={10}>
                                 <h6>{threads && threads.data.body}</h6>
                             </Col>
@@ -61,19 +62,22 @@ const { body } = formData;
                 </Col>
            </Row>
            <form onSubmit={e => submit(e)}>
-           <Row className='pt-3'>
-               <Col xs={2}></Col>
-               <Col xs={8} >
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+           <Row className='pt-3 '>
+                <Col xs={2}></Col>
+                <Col xs={8} >
+                    <Form.Group controlId="exampleForm.ControlTextarea1">
                         <Form.Control as="textarea"
                             rows={3}
                             className='input_event'
                             name="body" value={body} onChange={e => onchange(e)} />
                     </Form.Group>
                </Col>
-               <Col xs={1}>
-                    <Button className='float-right' type='submit'>Replies</Button>
-               </Col>
+           </Row>
+           <Row className='pt-1 pb-5 '>
+               <Col xs={10}></Col>
+                <Col xs={1}>
+                    <Button className='' type='submit'>Replies</Button>
+                </Col>
            </Row>
            </form>
            <Row>

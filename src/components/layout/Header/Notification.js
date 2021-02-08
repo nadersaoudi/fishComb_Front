@@ -37,11 +37,12 @@ const Notification = ({users ,acceptInv}) => {
           
             <div className='row pt-2 pb-2'>
                 <div className='col-sm-1'>
-                    <Avatar className={classes.large} />
+                    <Avatar className={classes.large} src={users && users.data.attributes.profile_image} />
                 </div>
                 <div className='col-sm-1'></div>
                 <div className='col-sm-7 pt-1'>
-                <h6><b>{users && users.data.attributes.name}</b></h6>
+                <h6><b>{users && users.data.attributes.first_name.charAt(0).toUpperCase() + users.data.attributes.first_name.slice(1)} {users && users.data.attributes.last_name.charAt(0).toUpperCase() + users.data.attributes.last_name.slice(1)}
+                </b></h6>
                      <div className='row '>
                         <div className='col-sm-5 '>
                         <span className='abouts'>

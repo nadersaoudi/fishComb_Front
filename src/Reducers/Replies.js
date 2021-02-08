@@ -1,4 +1,4 @@
-import { ADD_REPLY, DELETE_REPLY, GET_REPLIES } from '../Actions/types';
+import { ADD_REPLY, DELETE_REPLY, GET_REPLIES, UPDATE_REPLY } from '../Actions/types';
 const initialState = {
     replies: [],
     loading:true,
@@ -25,6 +25,12 @@ export default function (state = initialState, action) {
                 ...state,
                 replies:state.replies.filter(replies => replies.id !==payload)
             }
+        case UPDATE_REPLY :
+            return{
+            ...state,
+            replies:payload,
+            loading:false,
+        }
         default:
             return state;
     }

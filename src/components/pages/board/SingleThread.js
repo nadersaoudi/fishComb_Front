@@ -15,7 +15,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Form from 'react-bootstrap/Form';
 import { NavLink } from 'react-router-dom';
-const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match ,getReplies}) => {
+const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addReplies, match ,getReplies}) => {
     /***********************************/
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
@@ -52,15 +52,17 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match 
                     <Row>
                         <Col xs={8}>
                             <Card style={{ width: '55rem', marginBottom: '4px' }}>
-                                <Card.Title>
-                                    {threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)}
+                                <Card.Title className='title_thread'>
+                               <b>     {threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)} </b>
                                 </Card.Title>
-                                <Card.Text>
+                                <Card.Text className='text_thread'>
                                     {threads && threads.data.body}
-                                    <Button className="float-right" onClick={handleClickOpen} ><UpdateIcon Style={{}} />Edit</Button>
-                                    <Button className="float-right" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button>
+                                    {user && threads && user.user_id ===   threads.data.user.data.user_id ?
+                                    <Button className="float-right thread__btn" onClick={handleClickOpen} ><UpdateIcon/>Edit</Button> : (<div></div>)}
+                                    {user && threads && user.user_id ===   threads.data.user.data.user_id ?
+                                    <Button className="float-right thread__btn" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button> : (<div></div>)}
                                     <NavLink to={`/dashboard/thread/${threads.data.id}`}>
-                                    <Button className='float-right' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
+                                    <Button className='float-right thread__btn' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
                                     </NavLink>
                                 </Card.Text>
                                 <Col xs={6}>
@@ -69,7 +71,7 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match 
                         </Col>
                         <Dialog open={open} onClose={handleClose} >
                             <form className='addQuestion' onSubmit={e => submit(e)}>
-                                <DialogTitle id="form-dialog-title">Ask Question</DialogTitle>
+                                <DialogTitle id="form-dialog-title">Update Question</DialogTitle>
                                 <DialogContent>
                                     <Row className=" pt-2">
                                         <Col sm={12} md={12} xl={12}>
@@ -85,7 +87,7 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match 
                                     </Row>
                                     <Row className='pt-1 pb-1'>
                                     </Row>
-                                    <Row className='pt-3'>
+                                    <Row className='pt-3  '>
                                         <Col xs={12}>
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                                 <Form.Control as="textarea"
@@ -99,7 +101,7 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match 
                                     <Row className='pt-3'>
                                         <Col md={10} className='mt-3'></Col>
                                         <Col className='pb-4' >
-                                            <Button className='btn btn-light pt-2 pb-2 ' onClick={handleClose} type='submit'>Ask Question</Button>
+                                            <Button className='btn btn-light pt-2 pb-2 ' onClick={handleClose} type='submit'>Update</Button>
                                         </Col>
                                     </Row>
                                 </DialogContent>
@@ -118,8 +120,10 @@ SingleThread.prototype = {
     upadateThread: PropTypes.func.isRequired,
     addReplies: PropTypes.func.isRequired,
     getReplies: PropTypes.func.isRequired,
+    auth :PropTypes.object.isRequired,
 }
 const mapStateToProps = state => ({
+    auth: state.auth,
     thread: state.Thread,
     Threads: state.Thread
 })
