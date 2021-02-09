@@ -23,3 +23,13 @@
 .replyButton{
     display: none !important ;
 }
+.title_thread{
+font-weight: bold;
+
+}
+.text_thread{
+    font-weight: 120;
+}
+.thread__btn:hover{
+    color: #00E2C8;
+}

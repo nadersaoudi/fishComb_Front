@@ -51,18 +51,21 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
                 <Col xs={12}>
                     <Row>
                         <Col xs={8}>
-                            <Card style={{ width: '55rem', marginBottom: '4px' }}>
-                                <Card.Title>
-                                    {threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)}
+                            <Card style={{ width: '55rem', marginBottom: '4px',borderRadius:'2px' }}>
+                                <Card.Title className='title_thread mt-2 ml-2'>
+                                    <b>{threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)} </b>
                                 </Card.Title>
-                                <Card.Text>
-                                    {threads && threads.data.body}
+                        
+                                <Card.Text className='text_thread ml-3'>
+                                    <Col xs={9}>
+                                        {threads && threads.data.body}
+                                    </Col>                                    
                                     {user && threads && user.user_id ===   threads.data.user.data.user_id ?
-                                    <Button className="float-right" onClick={handleClickOpen} ><UpdateIcon Style={{}} />Edit</Button> : (<div></div>)}
+                                        <Button className="float-right thread__btn" onClick={handleClickOpen} ><UpdateIcon/>Edit</Button> : (<div></div>)}
                                     {user && threads && user.user_id ===   threads.data.user.data.user_id ?
-                                    <Button className="float-right" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button> : (<div></div>)}
+                                        <Button className="float-right thread__btn" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button> : (<div></div>)}
                                     <NavLink to={`/dashboard/thread/${threads.data.id}`}>
-                                    <Button className='float-right' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
+                                        <Button className='float-right thread__btn' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
                                     </NavLink>
                                 </Card.Text>
                                 <Col xs={6}>

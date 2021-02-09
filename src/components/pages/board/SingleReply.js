@@ -62,7 +62,7 @@ const submit = e => {
             </Card>
             <Dialog open={open} onClose={handleClose} >
                             <form className='addQuestion' onSubmit={e => submit(e)} >
-                                <DialogTitle id="form-dialog-title">Update Question</DialogTitle>
+                                <DialogTitle id="form-dialog-title">Update</DialogTitle>
                                 <DialogContent>
                                     <Row className='pt-3'>
                                         <Col xs={12}>

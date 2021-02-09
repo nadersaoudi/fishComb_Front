@@ -49,7 +49,9 @@ const { body } = formData;
                             <Col xs={1}></Col>
                             <Col xs={10}>
                                 <h6>{threads && threads.data.body}</h6>
+
                             </Col>
+                           
                         </Row>
                     </Card>
                </Col>
