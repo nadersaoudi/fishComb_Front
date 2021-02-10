@@ -1,22 +1,20 @@
 import React from 'react';
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState,useEffect } from 'react';
 import { Col, Row, Card, Image } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import './Board.css';
+import UpdateIcon from '@material-ui/icons/Update';
 import { Button } from '@material-ui/core';
-import { deleteTreadh, upadateThread } from '../../../Actions/Board';
-import { addReplies ,getReplies } from '../../../Actions/Replies';
+import { upadateThread, getoneThread } from '../../../Actions/Board';
 import Dialog from '@material-ui/core/Dialog';
 import FormControl from 'react-bootstrap/FormControl';
-import DeleteIcon from '@material-ui/icons/Delete';
-import UpdateIcon from '@material-ui/icons/Update';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Form from 'react-bootstrap/Form';
-import { NavLink } from 'react-router-dom';
-const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addReplies, match ,getReplies , loading}) => {
-    /***********************************/
+const UpdateThread = ({auth:{user}, thread: {threads}, loading, upadateThread, match,getoneThread}) => {
+    useEffect(() => {
+        getoneThread(match.params.id);
+    },  [getoneThread, match.params.id])
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
         setOpen(true);
@@ -70,45 +68,38 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
         upadateThread(file,threads.data.id)
         e.target.reset();
     }
-    /************************************/
-    /***********************************/
     return (
-        <Fragment>
-            <Row className='pb-2'>
-                <Col xs={12}>
-                    <Row>
-                        <Col xs={8}>
-                            <Card style={{ width: '55rem', marginBottom: '4px',borderRadius:'2px' }}>
-                                <Card.Title className='title_thread mt-2 ml-2'>
-                                    <NavLink to={`/dashboard/thread/${threads.data.id}`} className='threadLink'>
-                                        <b>{threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)} </b>
-                                    </NavLink>
-                                </Card.Title>
-                                <Card.Text className='text_thread ml-3'>
+      <Fragment>
+             <Card className='pt-3'> 
+                        <Row className='pt-3 pb-3'>
+                            <Col xs={1}></Col>
+                            <Col xs={4}>
+                                <h4><b>{threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)}</b></h4>
+                            </Col>
+                        </Row>
+                        <Row className='pt-3 pb-5'>
+                            <Col xs={1}></Col>
+                            <Col xs={10}>
+                                <Row className='pt-2 pb-2'>
                                     <Col xs={9}>
-                                        <Row className='pt-2 pb-2'>
-                                            <Col xs={11}>
-                                                <span>{threads && threads.data.body.charAt(0).toUpperCase() + threads.data.body.slice(1)}</span>
-                                            </Col>
-                                        </Row>
-                                    </Col>                       
-                                </Card.Text>
-                                <Row>
-                                    <Col xs={8}></Col>
-                                    <Col xs={4}>
-                                            {user && threads && user.user_id ===   threads.data.user.data.user_id ?
-                                                        <Button className="float-right thread__btn" onClick={handleClickOpen} ><UpdateIcon/>Edit</Button> : (<div></div>)}
-                                            
-                                            {user && threads && user.user_id ===   threads.data.user.data.user_id ?
-                                                <Button className="float-right thread__btn" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button> : (<div></div>)}
-                                            <NavLink to={`/dashboard/thread/${threads.data.id}`}>
-                                                <Button className='float-right thread__btn' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
-                                            </NavLink>
+                                        <span>{threads && threads.data.body.charAt(0).toUpperCase() + threads.data.body.slice(1)}</span>
                                     </Col>
-                                    </Row> 
-                            </Card>
-                        </Col>
-                        <Dialog open={open} onClose={handleClose} >
+                                    <Col xs={1}>
+                                        <Image src={threads && threads.data.image}  width="200" height="150" alt='event' rounded className='product'/>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={11}>
+                                    </Col>
+                                    <Col xs={1}>
+                                    {user && threads && user.user_id ===   threads.data.user.data.user_id ?
+                                                <Button className="float-right thread__btn" onClick={handleClickOpen} ><UpdateIcon/>Edit</Button> : (<div></div>)}
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Card>
+                    <Dialog open={open} onClose={handleClose} >
                             <form className='addQuestion' onSubmit={e => submit(e)}>
                                 <DialogTitle id="form-dialog-title">Update Question</DialogTitle>
                                 <DialogContent>
@@ -164,24 +155,27 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
                                 </DialogContent>
                             </form>
                         </Dialog>
-                    </Row>
-                </Col>
-            </Row>
-        </Fragment>
+         
+      </Fragment>
     )
 }
-SingleThread.prototype = {
-    Thread: PropTypes.object.isRequired,
-    thread: PropTypes.object.isRequired,
-    deleteTreadh: PropTypes.func.isRequired,
-    upadateThread: PropTypes.func.isRequired,
+UpdateThread.prototype={
     addReplies: PropTypes.func.isRequired,
+    threads: PropTypes.object.isRequired,
+    Replies: PropTypes.object.isRequired,
+    getoneThread: PropTypes.func.isRequired,
     getReplies: PropTypes.func.isRequired,
-    auth :PropTypes.object.isRequired,
+    addReplies: PropTypes.func.isRequired,
+    reply: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired,
+    upadateThread :PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
-    auth: state.auth,
     thread: state.Thread,
-    Threads: state.Thread
+    threads: state.threads,
+    Replies: state.Replies,
+    replies : state.Replies,
+    reply: state.Replies,
+    auth: state.auth
 })
-export default connect(mapStateToProps, { deleteTreadh, upadateThread, addReplies ,getReplies })(SingleThread);
+export default connect(mapStateToProps, {upadateThread ,getoneThread})(UpdateThread);

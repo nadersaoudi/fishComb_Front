@@ -49,12 +49,9 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
 
               {posts && posts.map(posts =>
                 <Publication key={posts.data.id} posts={posts} />
-
-
               )}
 
             </div>
-
           </div>
         ) :
 

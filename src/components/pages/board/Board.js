@@ -9,7 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 import FormControl from 'react-bootstrap/FormControl'
 import { Link } from 'react-router-dom';
-import { getThread, addThread } from '../../../Actions/Board';
+import { getThread, addThread, searchThread } from '../../../Actions/Board';
 import Form from 'react-bootstrap/Form';
 import './Board.css';
 import { Button } from '@material-ui/core';
@@ -18,7 +18,7 @@ import SingleThread from './SingleThread';
 
 
 
-const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
+const Board =( { categories, getThread, addThread , Thread: {thread}, searchThread }) => {
     useEffect(() => {
         getThread()
     }, [getThread])
@@ -41,17 +41,52 @@ const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
     };
     const [category_id, setcategoryid] = useState('')
 
-    const [formData, setformData] = useState({
-        title: '',
-        body: '',
-        status: '1'
-    })
-    const { title, body,status } = formData;
-    const onchange = e => setformData({ ...formData, [e.target.name]: e.target.value });
-    const submit = e => {
-        e.preventDefault();
-        addThread(formData);
-    }
+
+/***************************************/
+const [title, settitle] = useState('')
+const [body, setbody] = useState('')
+const [status, setstatus] = useState('')
+const [image, setimage] = useState('')
+const ontitlechange = e => {
+    settitle(e.target.value)
+}
+
+const onbodychange = e => {
+    setbody(e.target.value)
+}
+
+const onstatuschange = e => {
+    setstatus(e.target.value)
+}
+const onimagechange = e => {
+    setimage(e.target.files[0])
+}
+const submit = e => {
+    e.preventDefault();
+    const file = new FormData();
+    file.append('title', title);
+    file.append('body', body);
+    file.append('image', image);
+    file.append('status', 1);
+    addThread(file)
+    e.target.reset();
+}
+/***************************************/
+const [filter, setFilter] = React.useState('title');
+const [value, setValue] = React.useState('');
+const handleChange = (product) => {
+    setFilter(product.target.value);
+};
+const handleChange1 = e => {
+    setValue(e.target.value)
+}
+const onsubmit1 = e => {
+    e.preventDefault();
+    console.log(filter)
+   // console.log(value)
+    searchThread(filter, value)
+}
+/***************************************/
     return (
         <div>
             <Row className='pt-5 mb-4'>
@@ -61,13 +96,13 @@ const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
                         <ul className="nav">
                             <Col xs={6}>
                                 <li className="nav-item">
-                                    <Link className='nav-link' className="link_cart" to={`/dashboard/events`} ><span className="n">Latest</span></Link>
+                                    <Link className='nav-link' className="link_cart" to='#' ><span className="n">Latest</span></Link>
                                 </li>
                             </Col>
                             <Col xs={1}></Col>
                             <Col xs={4}>
                                  <li className="nav-item">
-                                    <Link className='nav-link' className="link_cart" to={`/dashboard/invited`} ><span className="n" style={{ fontFamily: "arial" }}>New</span></Link>
+                                    <Link className='nav-link' className="link_cart" to='#' ><span className="n" style={{ fontFamily: "arial" }}>New</span></Link>
                                 </li>
                            </Col>
                         </ul>
@@ -80,9 +115,9 @@ const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
                 </Row>
                 <Row className='Side_Bar'>
                     <Col md={3} sm={3} xl={3} className='side_min_bar'>
-                        <form onSubmit >
+                        <form onSubmit={e => onsubmit1(e)} >
                             <Col md={12} sm={12} xl={12} className="header__input px-0" >
-                                <input type="text" placeholder='Search Fishcomb' aria-label="Search" height='25px'  />
+                                <input type="text" placeholder='Search Fishcomb' aria-label="Search" height='25px' value={value} onChange={handleChange1}  />
                                 <button className="col  header__button" >
                                     <svg width="19px" height="19px" version="1.1" xmlns="http://www.w3.org/1999/xlink">
                                         <g id="fishcomb-product-icons-14">
@@ -120,7 +155,7 @@ const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
                                             id="Title"
                                             label="Title"
                                             type="text"
-                                            name="title" value={title} onChange={e => onchange(e)} />
+                                            name="title" value={title} onChange={ontitlechange} />
                                     </Col>
                                 </Row>
                                 <Row className='pt-1 pb-1'>
@@ -131,11 +166,20 @@ const Board =( { categories, getThread, addThread , Thread: {thread}}) => {
                                             <Form.Control as="textarea" 
                                                 rows={3}
                                                 className='input_event'
-                                                placeholder="descreption" 
-                                                name="body" value={body} onChange={e => onchange(e)} />
+                                                placeholder="body" 
+                                                name="body" value={body} onChange={onbodychange} />
                                         </Form.Group>
                                     </Col>
                                 </Row>
+                                <Row className=' pt-3'>
+                                        <Col  sm={12} md={12} xl={12} className="btn-group btn-group-toggle ">
+                                            <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
+                                            { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
+                                                <span  >Upload Video </span>
+
+                                                </Button>*/}
+                                        </Col>
+                                    </Row>
                                 <Row className='pt-3'>
                                     <Col md={10} className='mt-3'></Col>
                                     <Col className='pb-4' >
@@ -152,10 +196,11 @@ Board.prototype={
     categories: PropTypes.object.isRequired,
     getThread: PropTypes.func.isRequired,
     Thread: PropTypes.object.isRequired,
-    addThread: PropTypes.func.isRequired
+    addThread: PropTypes.func.isRequired,
+    searchThread: PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     categories: state.categories,
     Thread : state.Thread,
 })
-export default connect (mapStateToProps, { getThread, addThread }) (Board);
+export default connect (mapStateToProps, { getThread, addThread, searchThread }) (Board);
