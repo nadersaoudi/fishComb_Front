@@ -187,7 +187,6 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                 <Row >
                     <Col md={3} sm={3} xl={3} className='side_min_bar '>
                         <form onSubmit={e => onsubmit1(e)} >
-                            
                             <Col md={11} sm={11} xl={11} className="header__input px-0" >
                                 <input type="text" placeholder='Search Event' aria-label="Search"  value={value} onChange={handleChange1} />
                                 <button className="col-2 px-0  header__button" >

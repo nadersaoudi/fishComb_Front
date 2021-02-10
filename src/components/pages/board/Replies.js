@@ -55,19 +55,17 @@ const { body } = formData;
                         </Row>
                         <Row className='pt-3 pb-5'>
                             <Col xs={1}></Col>
-                            <Col xs={10}>
+                            <Col xs={11}>
                                 <Row className='pt-2 pb-2'>
                                     <Col xs={9}>
                                         <span>{threads && threads.data.body.charAt(0).toUpperCase() + threads.data.body.slice(1)}</span>
                                     </Col>
-                                    <Col xs={1}>
-                                        <Image src={threads && threads.data.image}  width="200" height="150" alt='event' rounded className='product'/>
-                                    </Col>
                                 </Row>
-                                <Row>
+                                <Row className='pt-3 pb-5'>
+                                    <Col XS={1}></Col>
                                     <Col xs={11}>
+                                        <Image src={threads && threads.data.image}  width="250" height="200" alt='event' rounded className='product'/>
                                     </Col>
-                                
                                 </Row>
                             </Col>
                         </Row>
