@@ -140,8 +140,8 @@ const Eventitem = ({
     const [video_link, setvideolink] = useState('')
     const [cover, setcover] = useState('')
     const [status, setStatus] = useState('')
-    const [category_id, setCategory_id] = useState(event?.category.id)
-    console.log(event?.category.id)
+    const [category_id, setCategory_id] = useState('')
+   
     const onnamechange = e => {
         setname(e.target.value)
     }
@@ -191,7 +191,10 @@ const Eventitem = ({
         setcover(loading || !!event && !event?.cover ? '' : event?.cover)
 
     }, [loading])
+    useEffect(() => {
+        setCategory_id(loading || !!event && !event?.category.id ? '' : event?.category.id)
 
+    }, [loading])
     const handleswitch = (event) => {
         setState({
             ...state,
@@ -209,7 +212,7 @@ const Eventitem = ({
     }
     const submit = e => {
         e.preventDefault();
-        console.log(description)
+        console.log(category_id)
         const file = new FormData();
         file.append('name', name);
         file.append('description', description);
