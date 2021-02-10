@@ -44,7 +44,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     };
     const [name, setname] = useState('')
     const [description, setdescription] = useState('')
-    const [category_id, setcategoryid] = useState('')
+    const [category_id, setcategoryid] = useState(1)
     const [location, setlocation1] = useState('')
     const [date, setdate] = useState('')
     const [video_link, setvideolink] = useState('')
@@ -252,6 +252,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                // placeholder='Category Event'
                                                 value={category_id}
                                                 name="category_id"
+                                                defaultValue='1'
                                                 onChange={oncategorychange}>
                                                 {categories && categories.map(c =>
                                                     (<option key={c.id} value={c.id}>{c.name} </option>)

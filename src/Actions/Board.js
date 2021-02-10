@@ -130,8 +130,9 @@ export const searchThread = (filter,value) => async dispatch => {
 //Get My Threads
 {/*export const myThreads = () => async dispatch => {
     const config = {
-        headers : {
-
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
         }
     }
 }*/}

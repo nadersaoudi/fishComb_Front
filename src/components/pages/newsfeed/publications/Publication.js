@@ -245,7 +245,7 @@ const Publication = ({
                   </Button>
                 </div>
                 <div className="col-3">
-                { <div className="col-lg-6 datepost"><h6>{ posts.data.likes.length>0 && posts.data.likes.length}</h6> </div>}
+                { <div className="col-lg-6 datepost"><h6>{ posts.data?.likes?.length>0 && posts.data.likes.length}</h6> </div>}
                 </div>
               </div>
             </div>
