@@ -140,7 +140,7 @@ const Eventitem = ({
     const [video_link, setvideolink] = useState('')
     const [cover, setcover] = useState('')
     const [status, setStatus] = useState('')
-    const [category_id, setCategory_id] = useState(event.category_id)
+    const [category_id, setCategory_id] = useState(event?.category_id)
     const onnamechange = e => {
         setname(e.target.value)
     }
@@ -621,6 +621,14 @@ const Eventitem = ({
                             </Row>
                         </Card>
                         <div className='mt-4 mb-2'></div>
+                        { event && event.video_link !== null ? <ReactTinyLink cardSize="large"
+                                        showGraphic={true}
+                                        maxLine={2}
+                                        minLine={1}
+                                        url={
+                                            event.video_link
+                                        }/> : <div></div>
+                                }
                         <hr/>
                         <div className='pt-3 '>
                             <h6>
