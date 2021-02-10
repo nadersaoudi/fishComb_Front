@@ -313,7 +313,6 @@ const Eventitem = ({
                             <input accept="image/*" id="icon-button-file" type="file"
                                 onChange={oncoverchange}
                                 name="cover"/>
-
                         </Col>
                         <div className="row pt-3">
                             <div className='col-sm-12'>
@@ -323,7 +322,6 @@ const Eventitem = ({
                                     className='input_event'
                                     margin="dense"
                                     id="video"
-
                                     type="textarea"
                                     fullWidth
                                     name="video_link"

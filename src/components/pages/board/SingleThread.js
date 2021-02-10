@@ -15,6 +15,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Form from 'react-bootstrap/Form';
 import { NavLink } from 'react-router-dom';
+import Switch from '@material-ui/core/Switch';
 const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addReplies, match ,getReplies , loading}) => {
     /***********************************/
     const [open, setOpen] = React.useState(false);
@@ -48,6 +49,21 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
     const onimagechange = e => {
         setimage(e.target.value)
     }
+    /***************************************/
+    const [state, setState] = React.useState({checkedA: true});
+    const handleswitch = (threads) => {
+        setState({
+            ...state,
+            [threads.target.name]: threads.target.checked
+        });
+        if (threads.target.checked === true) {
+            setStatus(1)
+        } else {
+            setStatus(0)
+        }
+        console.log(status)
+    };
+    /*********************************/
     useEffect(() => {
         settitle(loading || !!threads && !threads.data.title ? '' :  threads.data.title)
     }, [loading])
@@ -114,45 +130,68 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
                                 <DialogContent>
                                     <Row className=" pt-2">
                                         <Col sm={12} md={12} xl={12}>
-                                            <FormControl
-                                                className='input_event'
-                                                placeholder={threads && threads.data.title}
-                                                margin="dense"
-                                                id="Title"
-                                                label="Title"
-                                                type="text"
-                                                name="title" value={title} onChange={ontitlechange} />
-                                        </Col>
-                                    </Row>
-                                    <Row className='pt-1 pb-1'>
-                                        <Col xs={12}>
-                                            <Form.Group controlId="exampleForm.ControlTextarea1">
-                                                <Form.Control 
-                                                    rows={3}
+                                            <Row>
+                                                <Col xs={2}>
+                                                    <Form.Label>Title</Form.Label>
+                                                </Col>
+                                                <Col xs={10}>
+                                                    <FormControl
                                                     className='input_event'
-                                                    placeholder={threads && threads.data.status}
-                                                    name="status" value={status} onChange={onstatuschange} />
-                                            </Form.Group>
+                                                    placeholder={threads && threads.data.title}
+                                                    margin="dense"
+                                                    id="Title"
+                                                    label="Title"
+                                                    type="text"
+                                                    name="title" value={title} onChange={ontitlechange} />
+                                                </Col>
+                                            </Row>
                                         </Col>
                                     </Row>
                                     <Row className='pt-3'>
                                         <Col xs={12}>
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
-                                                <Form.Control as="textarea"
-                                                    rows={3}
-                                                    className='input_event'
-                                                    placeholder={threads && threads.data.body}
-                                                    name="body" value={body} onChange={onbodychange} />
+                                                <Row>
+                                                    <Col xs={2}>
+                                                        <Form.Label>Body</Form.Label>
+                                                    </Col>
+                                                    <Col xs={10}>
+                                                        <Form.Control as="textarea"
+                                                            rows={3}
+                                                            className='input_event'
+                                                            placeholder={threads && threads.data.body}
+                                                            name="body" value={body} onChange={onbodychange} />
+                                                    </Col>
+                                                </Row>
                                             </Form.Group>
                                         </Col>
                                     </Row>
+                                    <Row className='pt-1 pb-1'>
+                                        <Col xs={12}>
+                                        <FormControl // placeholder={event && event.status}
+                                        className='input_event'
+                                        hidden='true'
+                                        id="status"
+                                        name="status"
+                                        value={
+                                            status.toString()
+                                        }
+                                        type="textarea"
+                                        fullWidth
+                                        onChange={onstatuschange}/>
+                                        Disable Post
+                                    <Switch checked={
+                                        state.checkedA
+                                    }
+                                    onChange={handleswitch}
+                                    name="checkedA"
+                                    inputProps={
+                                        {'aria-label': 'secondary checkbox'}}/>
+                                        Enable Post
+                                    </Col>
+                                    </Row>
                                     <Row className=' pt-3'>
                                         <Col  sm={12} md={12} xl={12} className="btn-group btn-group-toggle ">
-                                            <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
-                                            { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-                                                <span  >Upload Video </span>
-
-                                                </Button>*/}
+                                        <div className='col-md-3 px-0'>Upload Image</div><input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
                                         </Col>
                                     </Row>
                                     <Row className='pt-3'>

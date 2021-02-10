@@ -94,15 +94,15 @@ const onsubmit1 = e => {
                 <Col md={4} style={{display:'contents'}}>
                     <Row>
                         <ul className="nav">
-                            <Col xs={6}>
+                            <Col xs={4}>
                                 <li className="nav-item">
                                     <Link className='nav-link' className="link_cart" to='#' ><span className="n">Latest</span></Link>
                                 </li>
                             </Col>
                             <Col xs={1}></Col>
-                            <Col xs={4}>
+                            <Col xs={6}>
                                  <li className="nav-item">
-                                    <Link className='nav-link' className="link_cart" to='#' ><span className="n" style={{ fontFamily: "arial" }}>New</span></Link>
+                                    <Link className='nav-link' className="link_cart" to='#' ><span className="n" >My Posts</span></Link>
                                 </li>
                            </Col>
                         </ul>
@@ -110,7 +110,7 @@ const onsubmit1 = e => {
                 </Col>
                     <Col md={5}></Col>
                     <Col>
-                        <button className='btn btn-outline-dark' id='Button_board' onClick={handleClickOpen} >Ask Question</button>
+                        <button className='btn btn-outline-dark' id='Button_board' onClick={handleClickOpen} >New Post</button>
                     </Col>         
                 </Row>
                 <Row className='Side_Bar'>
@@ -144,36 +144,48 @@ const onsubmit1 = e => {
                 </Row>
                 <Dialog  open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                     <form className='addQuestion' onSubmit={e => submit(e)}>
-                        <DialogTitle id="form-dialog-title">Ask Question</DialogTitle>
+                        <DialogTitle id="form-dialog-title">New Post</DialogTitle>
                             <DialogContent>
                                 <Row className=" pt-2">
                                     <Col sm={12} md={12} xl={12}>
-                                        <FormControl
-                                            className='input_event'
-                                            placeholder="Title"
-                                            margin="dense"
-                                            id="Title"
-                                            label="Title"
-                                            type="text"
-                                            name="title" value={title} onChange={ontitlechange} />
+                                        <Row>
+                                            <Col xs={2}>
+                                                <Form.Label>Title</Form.Label>
+                                            </Col>
+                                            <Col xs={10}>
+                                                <FormControl
+                                                className='input_event'
+                                                placeholder='Title'
+                                                margin="dense"
+                                                id="Title"
+                                                label="Title"
+                                                type="text"
+                                                name="title" value={title} onChange={ontitlechange} />
+                                            </Col>
+                                        </Row>
                                     </Col>
                                 </Row>
                                 <Row className='pt-1 pb-1'>
                                 </Row>
                                 <Row className='pt-3'>
                                     <Col xs={12}>
-                                        <Form.Group controlId="exampleForm.ControlTextarea1">
-                                            <Form.Control as="textarea" 
-                                                rows={3}
-                                                className='input_event'
-                                                placeholder="body" 
-                                                name="body" value={body} onChange={onbodychange} />
-                                        </Form.Group>
+                                    <Row>
+                                        <Col xs={2}>
+                                            <Form.Label>Body</Form.Label>
+                                        </Col>
+                                        <Col xs={10}>
+                                            <Form.Control as="textarea"
+                                            rows={3}
+                                            className='input_event'
+                                            placeholder='Body'
+                                            name="body" value={body} onChange={onbodychange} />
+                                        </Col>
+                                    </Row>
                                     </Col>
                                 </Row>
                                 <Row className=' pt-3'>
                                         <Col  sm={12} md={12} xl={12} className="btn-group btn-group-toggle ">
-                                            <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
+                                        <div className='col-md-3 px-0'>Upload Image</div><input accept="image/*" id="icon-button-file" className='px-0' type="file" onChange={onimagechange} placeholder='file Image' />
                                             { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                                 <span  >Upload Video </span>
 
@@ -181,9 +193,9 @@ const onsubmit1 = e => {
                                         </Col>
                                     </Row>
                                 <Row className='pt-3'>
-                                    <Col md={10} className='mt-3'></Col>
-                                    <Col className='pb-4' >
-                                        <Button className='btn btn-light pt-2 pb-2 '  onClick={handleClose} type='submit'>Ask Question</Button>
+                                    <Col md={8} className='mt-3'></Col>
+                                    <Col xs={4} className='pb-4' >
+                                        <Button className='pt-2 pb-2 ' variant="contained" color="primary"  onClick={handleClose} type='submit'>Ask Question</Button>
                                     </Col>
                                 </Row>
                             </DialogContent>

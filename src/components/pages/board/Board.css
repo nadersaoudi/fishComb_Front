@@ -3,6 +3,8 @@
 }
 #Button_board{
     border-radius: 0 !important;
+    background-color: #202c43 !important;
+    color:white;
 }
 #Button_board:hover{
     background-color: #202c43 !important;
@@ -25,7 +27,6 @@
 }
 .title_thread{
 font-weight: bold;
-
 }
 .text_thread{
     font-weight: 120;

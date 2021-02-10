@@ -16,6 +16,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import YourAccount from './YourAccount';
 import { Avatar } from "@material-ui/core";
 import SingleProduct from './products/SingleProduct';
+import { Col, Row } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, myProduct, search, addProduct, cart: { cart }, showCart }) => {
     /******************************/
     useEffect(() => {
@@ -174,64 +176,95 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
                                             </div>
                                             <div className='col-sm-10 pt-3'>
                                                 <div className='row'>
-                                                    <div className='row'>
+                                                    <div className='row pb-2'>
                                                         <div className='col-sm-12'>
-                                                            <h6> {user && user.attributes.first_name.charAt(0).toUpperCase() + user.attributes.first_name.slice(1)}  {user && user.attributes.last_name.charAt(0).toUpperCase() + user.attributes.last_name.slice(1)}</h6>
+                                                            <h6><b>{user && user.attributes.first_name.charAt(0).toUpperCase() + user.attributes.first_name.slice(1)}  {user && user.attributes.last_name.charAt(0).toUpperCase() + user.attributes.last_name.slice(1)}</b></h6>
                                                         </div>
                                                     </div>
                                                     <div className='row'>
                                                         <div className='row pt-3'>
                                                             <div className='col-sm-12'>
-                                                                <FormControl
-                                                                    className='input_event'
-                                                                    placeholder="Product Name"
-                                                                    margin="dense"
-                                                                    label="Product_name"
-                                                                    name="name" value={name} onChange={onnamechange}
-                                                                    type="text" />
+                                                                <Row>
+                                                                    <Col xs={4}>
+                                                                        <Form.Label>Name Product</Form.Label>
+                                                                    </Col>
+                                                                    <Col xs={8}>
+                                                                        <FormControl
+                                                                            className='input_event'
+                                                                            placeholder="Product Name"
+                                                                            margin="dense"
+                                                                            label="Product_name"
+                                                                            name="name" value={name} onChange={onnamechange}
+                                                                            type="text" />
+                                                                    </Col>
+                                                                </Row>
                                                             </div>
                                                         </div>
                                                         <div className='row pt-3 '>
-                                                            <div className='col-7'>
-                                                                <FormControl
-                                                                    className='input_event'
-                                                                    placeholder="Price"
-                                                                    margin="dense"
-                                                                    name="price" value={price} onChange={onpricechange}
-                                                                    type="text" /></div>
-                                                           <div className='col-5 '>
+                                                            <div className='col-12'>
+                                                                <Row>
+                                                                    <Col xs={4}>
+                                                                        <Form.Label>Price</Form.Label>
+                                                                    </Col>
+                                                                    <Col xs={8}>
+                                                                        <FormControl
+                                                                            className='input_event'
+                                                                            placeholder="Price"
+                                                                            margin="dense"
+                                                                            name="price" value={price} onChange={onpricechange}
+                                                                            type="text" />
+                                                                    </Col>
+                                                                </Row>
+                                                            </div>
+                                                        </div>
+                                                        <Row className='pt-3 pb-2'>
+                                                            <Col xs={12}> 
                                                                 <select
-                                                                className='col-md-12'
-                                                                // placeholder='Category Event'
-                                                                    value={category_id}
-                                                                    name="category_id"
-                                                                    onChange={oncategorychange}>
-                                                                    {categories && categories.map(c =>
-                                                                        (<option key={c.id} value={c.id}>{c.name} </option>)
-                                                                    )}
-                                                                </select>
+                                                                        className='col-md-12'
+                                                                        // placeholder='Category Event'
+                                                                        value={category_id}
+                                                                        name="category_id"
+                                                                        onChange={oncategorychange}>
+                                                                        {categories && categories.map(c =>
+                                                                            (<option key={c.id} value={c.id}>{c.name} </option>)
+                                                                        )}
+                                                                    </select>
+                                                            </Col>
+                                                        </Row>
+                                                        <div className='row pt-3'>
+                                                            <div className='col-12'>
+                                                                 <Row>
+                                                                    <Col xs={4}>
+                                                                        <Form.Label>Quantity</Form.Label>
+                                                                    </Col>
+                                                                    <Col xs={8}>
+                                                                        <FormControl
+                                                                            placeholder="Stock"
+                                                                            className='input_event'
+                                                                            margin="dense"
+                                                                            name="stock" value={stock} onChange={onstockchange}
+                                                                            type="text" />
+                                                                    </Col>
+                                                                </Row>
                                                             </div>
                                                         </div>
                                                         <div className='row pt-3'>
                                                             <div className='col-12'>
-                                                                <FormControl
-                                                                    placeholder="Stock"
-                                                                    className='input_event'
-                                                                    margin="dense"
-                                                                    name="stock" value={stock} onChange={onstockchange}
-                                                                    type="text" />
-                                                            </div>
-                                                        </div>
-                                                        <div className='row pt-3'>
-                                                            <div className='col-12'>
-                                                                <FormControl
-                                                                    placeholder="Description"
-                                                                    className='input_event'
-                                                                    margin="dense"
-                                                                    id="Description"
-                                                                    as="textarea" aria-label="With textarea"
-                                                                    name="description" value={description} onChange={ondescchange}
-                                                                    type="textarea" />
+                                                                <Row>
+                                                                    <Col xs={4}>
+                                                                        <Form.Label>Description</Form.Label>
+                                                                    </Col>
+                                                                    <Col xs={8}>
+                                                                        <FormControl
+                                                                            placeholder="Description"
+                                                                            className='input_event'
+                                                                            margin="dense"
+                                                                            id="Description"
+                                                                            as="textarea" aria-label="With textarea"
+                                                                            name="description" value={description} onChange={ondescchange}
+                                                                            type="textarea" />
+                                                                    </Col>
+                                                                </Row>
                                                             </div>
                                                         </div>
                                                         <div className='row pt-3 pb-2'>
@@ -240,29 +273,30 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
                                                                     <div className="btn-group btn-group-toggle col-md-12  ">
                                                                         <div className='col-md-4'> Upload image </div><input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
                                                                         {   /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-                                <span  >Upload Video </span>
-                                </Button>*/}
+                                                                            <span  >Upload Video </span>
+                                                                            </Button>*/}
                                                                     </div>  </div> </div>
                                                             <div className='col-12'>
                                                                 <div className='row pt-3'>
                                                                     <div className="btn-group btn-group-toggle col-md-12  ">
                                                                         <div className='col-md-4'>Upload File </div><input accept="image/*" id="icon-button-file" type="file" placeholder='file product' />
                                                                         { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
-                                <span  >Upload Video </span>
-                                </Button>*/}
+                                                                            <span  >Upload Video </span>
+                                                                            </Button>*/}
                                                                     </div> </div> </div>
                                                             <div className='col-2'></div>
                                                         </div>
-                                                        <div className='row'>
-                                                            <div className='col-md-8'></div>
-                                                            <div className='col-md-4 pb-4 float-right'> <Button type='submit'
-                                                                style={{ backgroundColor: "#f2f3f3", color: 'black', borderRadius: '0' }}
-                                                                onClick={handleClose} className='float-right'>
-                                                                Save Product
-                                </Button></div>
-                                                        </div>
                                                     </div>
-
+                                                    <Row className='pb-4 pt-3'>
+                                                        <Col xs={8}></Col>
+                                                        <Col xs={4}>
+                                                            <Button type='submit'
+                                                                    variant="contained" color="primary"
+                                                                    onClick={handleClose} className='float-right'>
+                                                                    Save Product
+                                                            </Button>
+                                                        </Col>
+                                                    </Row>
                                                 </div>
                                             </div>
                                         </div>
@@ -270,8 +304,6 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
                                 </form>
                             </div>
                         </Dialog>
-
-
                         <div className='col-md-9 ' id='body'>
                             <div className='row'>
                                 <div className='col-md-12 pb-4'><h6><b>Featured</b></h6></div>
