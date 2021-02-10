@@ -138,9 +138,7 @@ const Publication = ({
                   <div className="col-lg-8 datepost">
                     <Moment
                       date={posts && posts.data.created_at}
-                     // format="YYYY-MM-DD HH:mm"
-                      toNow
-                    /> ago
+                      toNow/> ago
                   </div>
                 </div>
               </div>
@@ -151,8 +149,7 @@ const Publication = ({
                       ref={anchorRef}
                       aria-controls={open ? 'menu-list-grow' : undefined}
                       aria-haspopup="true"
-                      onClick={handleToggle}
-                    >
+                      onClick={handleToggle}>
                       <svg width="26px" height="7px" version="1.1" xmlns="http://www.w3.org/1999/xlink" >
                         <g id="Group" transform="translate(0.5 0.5)">
                           <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" id="Oval" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
@@ -165,8 +162,7 @@ const Publication = ({
                       {({ TransitionProps, placement }) => (
                         <Grow
                           {...TransitionProps}
-                          style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' ,borderRadius:'0'}}
-                        >
+                          style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' ,borderRadius:'0'}}>
                           <Paper>
                             <ClickAwayListener onClickAway={handleClose}>
                               <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>

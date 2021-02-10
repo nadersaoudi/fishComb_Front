@@ -7,6 +7,7 @@ import { acceptInv } from '../../../Actions/Friends';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './Header.css';
+import { Col, Row } from 'reactstrap';
 const Notification = ({users ,acceptInv}) => {
  
   const acceptinv =  () => {
@@ -53,15 +54,20 @@ const Notification = ({users ,acceptInv}) => {
                 </div>
                 <input type='hidden' value={users && users.data.user_id} />
                 <div className='col-sm-3'>
+                  <Row className='pb-2'>
+                    <Col xs={12}>
+                      <Button variant="outlined" color="primary" className='pb-2'  onClick={(e) =>acceptinv()}>Accept</Button>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs={12}>
+                      <Button variant="outlined" color="secondary" onClick={(e) =>deletinv()} >Decline</Button>
+                    </Col>
+                  </Row>
                   {/** to do change the icons to accept declien */}
-                    <Button><PersonAddIcon onClick={(e) =>acceptinv()} className='add'/></Button>
-                    <Button><MdCancel onClick={(e) =>deletinv()}  className='add'/></Button>
                 </div>
-               
             </div>
             <hr />
-                
-
         </Fragment>
     )
 }
