@@ -5,9 +5,7 @@
 #lik{
     font-size:50px;
     color:#c7c7c8;
-
 }
-
 #lo{
     padding: 3%;
 }
@@ -36,19 +34,14 @@
 }
 #comment{
     background-color: rgb(231, 228, 228);
-   
-   
 }
 #com{
     border: none;
     font-size: 80%;
     background-color: transparent;
     outline-width: 0;
-    border-radius: 25px;
-  
+    border-radius: 25px; 
 }
-
-
 .ButCom{
     border : 0;
     background-color:  transparent;
@@ -69,7 +62,6 @@
 }
 .pp{
     align-items: center;
-    
 }
 #comment{
     outline: 0;
@@ -77,8 +69,11 @@
     border: 0;
     padding: 1.5%;
     border-radius: 3%;
-  
 }
 .butDelCom{
     color: #3f3f3f; 
+}
+.add__event{
+    width: 550px;
+    min-height: auto;
 }

@@ -37,17 +37,17 @@ const SingleComm = (
          onClick={(e) => getUsers(comments.user.id)} />
          </NavLink>
       </div>
-      <div className="col-4" id="comment" >
+      <div className="col-7" id="comment" >
         {comments.body}
         <div>
         </div>
       </div>
-      {user &&user.user_id===comments.user_id ? <div className='col-3 '>
+      {user &&user.user_id===comments.user_id ? <div className='col-2 '>
         <Button   variant="outlined" color="primary" onClick={onclick} >
           <EditIcon className='butDelCom' />
         </Button>
       </div>: <div></div>} 
-      {user && user.user_id===comments.user_id ? <div className='col-3 mr-2'>
+      {user && user.user_id===comments.user_id ? <div className='col-1 mr-2'>
         <Button   variant="outlined" color="secondary" onClick={(e) => deleteComment(comments.id)} >
           <DeleteIcon className='butDelCom' />
         </Button>

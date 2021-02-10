@@ -26,7 +26,6 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {  NavLink } from "react-router-dom";
-
 /*********************************/
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -207,7 +206,7 @@ const Publication = ({
               <div className="col-1"></div>
             </div>
           </form>
-               <Dialog open={open1} onClose={handleClose1} aria-labelledby="form-dialog-title"  className='updateProd'>
+               <Dialog open={open1} onClose={handleClose1} aria-labelledby="form-dialog-title"   className='add__event' >
                                 <DialogTitle id="form-dialog-title">Update Post</DialogTitle>
                                 <DialogContent>
                                 <div className="pub px-0 ">

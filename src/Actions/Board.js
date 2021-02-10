@@ -1,4 +1,4 @@
-import { GET_THREAD, ADD_THREAD, ADD_THREAD_ERROR, DELETE_THREAD, ERROR_DELETE_THREAD, UPDATE_THREAD, UPDATE_THREAD_ERRROR, GET_ONETHREAD, ERROR__THREAD } from './types';
+import { GET_THREAD, ADD_THREAD, ADD_THREAD_ERROR, DELETE_THREAD, ERROR_DELETE_THREAD, UPDATE_THREAD, UPDATE_THREAD_ERRROR, GET_ONETHREAD, ERROR__THREAD, SEARCH_THREAD, SEARCH_THREAD_ERROR} from './types';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -22,15 +22,15 @@ export const getThread  =  () => async dispatch => {
     })
 }
 //Add Thread
-export const addThread = (formData) => async dispatch => {
+export const addThread = (file) => async dispatch => {
     const config = {
         headers : {
             Authorization: 'Bearer ' + Cookies.get('user'),
-            'content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         }
     }
     try{
-        const res = await axios.post('/api/threads',formData,config)
+        const res = await axios.post('/api/threads',file,config)
         dispatch({
             type: ADD_THREAD,
             payload: res.data
@@ -65,22 +65,23 @@ export const deleteTreadh = (thread_id) => async dispatch => {
     }
 }
 //Update Thread 
-export const upadateThread = (formData, thread_id) => async dispatch => {
+export const upadateThread = (file, thread_id) => async dispatch => {
     const config = {
         headers: {
             Authorization: 'Bearer ' + Cookies.get('user'),
-            'content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         }
     }
     try{
-        const res = await axios.patch(`/api/threads/${thread_id}`,formData, config)
-        toast.info('Thread Updated');
-        dispatch ({
-            types: UPDATE_THREAD,
-            payload: res.data.data,
+        await axios.post(`/api/threads/update/${thread_id}`,file, config)
+        const res = await axios.get('/api/threads',config)
+        console.log('***', res.data)
+        dispatch({
+            type: GET_THREAD,
+            payload: res.data
         })
-    }
-    catch (error){
+        toast.info('Thread Updated');
+    }catch {
         dispatch({
             type: UPDATE_THREAD_ERRROR
         })
@@ -103,6 +104,26 @@ export const getoneThread = (thread_id) => async dispatch => {
     }catch{
         dispatch({
             type: ERROR__THREAD
+        })
+    }
+}
+//Searsh Thread
+export const searchThread = (filter,value) => async dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.post(`/api/threads/search`,{filter,value} , config)
+        dispatch({
+            type: SEARCH_THREAD,
+            payload: res.data
+        })
+    }catch{
+        dispatch({
+            type: SEARCH_THREAD_ERROR,
         })
     }
 }

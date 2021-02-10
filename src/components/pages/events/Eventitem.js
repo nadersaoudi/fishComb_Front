@@ -206,7 +206,6 @@ const Eventitem = ({
     const getlink = () => {
         console.log(window.location.href);
     }
-  
     const submit = e => {
         e.preventDefault();
         console.log(description)
@@ -222,7 +221,6 @@ const Eventitem = ({
         update(file, event.id)
         e.target.reset();
     }
-
     return (
         <div> {/*****************************Update Dialog*********************************** */}
             <Dialog open={open2}
@@ -242,7 +240,6 @@ const Eventitem = ({
                                     id="Title"
                                     label="Title"
                                     type="text"
-
                                     name="name"
                                     value={name}
                                     onChange={onnamechange}/></div>
@@ -252,11 +249,8 @@ const Eventitem = ({
                                 <FormControl className='input_event' margin="dense" id="Date" type="Date" name="date"
                                     value={date}
                                     onChange={ondatechange}/>
-
                             </div>
-                            <div className='col-md-12'>
-
-
+                            <div className='col-md-6'>
                                 <select 
                                     value={category_id}
                                     onChange={
@@ -313,22 +307,6 @@ const Eventitem = ({
                                     onChange={ondescchange}/></div>
                         </div>
                         <div className='row pt-3'>
-
-
-                            <div className="btn-group btn-group-toggle col-md-12  ">
-                                <Button variant="outlined"
-                                    style={
-                                        {
-                                            backgroundColor: '#202c43',
-                                            color: 'white',
-                                            borderRadius: '0'
-                                        }
-                                }>
-                                    <span>Upload Video
-                                    </span>
-                                </Button>
-
-                            </div>
                         </div>
                         <Col sm={12}
                             md={12}
@@ -337,7 +315,6 @@ const Eventitem = ({
                             <input accept="image/*" id="icon-button-file" type="file"
                                 onChange={oncoverchange}
                                 name="cover"/>
-
                         </Col>
                         <div className="row pt-3">
                             <div className='col-sm-12'>
@@ -347,7 +324,6 @@ const Eventitem = ({
                                     className='input_event'
                                     margin="dense"
                                     id="video"
-
                                     type="textarea"
                                     fullWidth
                                     name="video_link"
@@ -571,8 +547,6 @@ const Eventitem = ({
                                                     className='btn btn-outline-dark'>Already subscribed</button>
                                             </div>
                                         }
-
-
                                             <Dialog className='invite_form'
                                                 open={open}
                                                 TransitionComponent={Transition}

@@ -137,7 +137,6 @@ export const getCategories = () => async dispatch => {
     }
     try {
         const res = await axios.post(`/api/marketplace/categories`,{}, config)
-       
         dispatch({
             type: GATEGORIES_MARKET,
             payload: res.data.data

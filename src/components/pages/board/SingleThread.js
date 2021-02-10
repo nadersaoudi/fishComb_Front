@@ -1,6 +1,6 @@
 import React from 'react';
-import { Fragment, useState } from 'react';
-import { Col, Row, Card } from 'react-bootstrap';
+import { Fragment, useState, useEffect } from 'react';
+import { Col, Row, Card, Image } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './Board.css';
@@ -15,7 +15,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Form from 'react-bootstrap/Form';
 import { NavLink } from 'react-router-dom';
-const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match ,getReplies}) => {
+import Switch from '@material-ui/core/Switch';
+const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addReplies, match ,getReplies , loading}) => {
     /***********************************/
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
@@ -32,18 +33,60 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match 
         setOpen1(false);
     };
     /***********************************/
-    const [formData, setformData] = useState({
-        title: '',
-        body: '',
-        status: '1'
-    })
-    const { title, body, status } = formData;
-    const onchange = e => setformData({ ...formData, [e.target.name]: e.target.value });
+    const [title, settitle] = useState('')
+    const [body, setbody] = useState('')
+    const [image, setimage] = useState('')
+    const [status, setStatus] = useState('')
+    const ontitlechange = e => {
+        settitle(e.target.value)
+    }
+    const onbodychange = e => {
+        setbody(e.target.value)
+    }
+    const onstatuschange = e => {
+        setStatus(e.target.value)
+    }
+    const onimagechange = e => {
+        setimage(e.target.value)
+    }
+    /***************************************/
+    const [state, setState] = React.useState({checkedA: true});
+    const handleswitch = (threads) => {
+        setState({
+            ...state,
+            [threads.target.name]: threads.target.checked
+        });
+        if (threads.target.checked === true) {
+            setStatus(1)
+        } else {
+            setStatus(0)
+        }
+        console.log(status)
+    };
+    /*********************************/
+    useEffect(() => {
+        settitle(loading || !!threads && !threads.data.title ? '' :  threads.data.title)
+    }, [loading])
+    useEffect(() => {
+        setbody(loading || !!threads && !threads.data.body ? '' : threads.data.body)
+    }, [loading])
+    useEffect(() => {
+        setStatus(loading || !!threads && !threads.data.status ? 1 : threads.data.status)
+    }, [loading])
+    useEffect(() => {
+        setimage(loading || !!threads && !threads.data.image ? '' : threads.data.image )
+    }, [loading])
     const submit = e => {
         e.preventDefault();
-        upadateThread(formData, threads.data.id);
+        const file = new FormData();
+        file.append('title', title);
+        file.append('body', body);
+        file.append('image', image);
+        file.append('status', status);
+        upadateThread(file,threads.data.id)
+        e.target.reset();
     }
-
+    /************************************/
     /***********************************/
     return (
         <Fragment>
@@ -51,55 +94,110 @@ const SingleThread = ({ threads, deleteTreadh, upadateThread, addReplies, match 
                 <Col xs={12}>
                     <Row>
                         <Col xs={8}>
-                            <Card style={{ width: '55rem', marginBottom: '4px' }}>
-                                <Card.Title>
-                                    {threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)}
-                                </Card.Title>
-                                <Card.Text>
-                                    {threads && threads.data.body}
-                                    <Button className="float-right" onClick={handleClickOpen} ><UpdateIcon Style={{}} />Edit</Button>
-                                    <Button className="float-right" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button>
-                                    <NavLink to={`/dashboard/thread/${threads.data.id}`}>
-                                        <Button className='float-right' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
+                            <Card style={{ width: '55rem', marginBottom: '4px',borderRadius:'2px' }}>
+                                <Card.Title className='title_thread mt-2 ml-2'>
+                                    <NavLink to={`/dashboard/thread/${threads.data.id}`} className='threadLink'>
+                                        <b>{threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)} </b>
                                     </NavLink>
+                                </Card.Title>
+                                <Card.Text className='text_thread ml-3'>
+                                    <Col xs={9}>
+                                        <Row className='pt-2 pb-2'>
+                                            <Col xs={11}>
+                                                <span>{threads && threads.data.body.charAt(0).toUpperCase() + threads.data.body.slice(1)}</span>
+                                            </Col>
+                                        </Row>
+                                    </Col>                       
                                 </Card.Text>
-                                <Col xs={6}>
-                                </Col>
+                                <Row>
+                                    <Col xs={8}></Col>
+                                    <Col xs={4}>
+                                            {user && threads && user.user_id ===   threads.data.user.data.user_id ?
+                                                        <Button className="float-right thread__btn" onClick={handleClickOpen} ><UpdateIcon/>Edit</Button> : (<div></div>)}
+                                            
+                                            {user && threads && user.user_id ===   threads.data.user.data.user_id ?
+                                                <Button className="float-right thread__btn" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button> : (<div></div>)}
+                                            <NavLink to={`/dashboard/thread/${threads.data.id}`}>
+                                                <Button className='float-right thread__btn' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
+                                            </NavLink>
+                                    </Col>
+                                    </Row> 
                             </Card>
                         </Col>
                         <Dialog open={open} onClose={handleClose} >
                             <form className='addQuestion' onSubmit={e => submit(e)}>
-                                <DialogTitle id="form-dialog-title">Ask Question</DialogTitle>
+                                <DialogTitle id="form-dialog-title">Update Question</DialogTitle>
                                 <DialogContent>
                                     <Row className=" pt-2">
                                         <Col sm={12} md={12} xl={12}>
-                                            <FormControl
-                                                className='input_event'
-                                                placeholder="Title"
-                                                margin="dense"
-                                                id="Title"
-                                                label="Title"
-                                                type="text"
-                                                name="title" value={title} onChange={e => onchange(e)} />
+                                            <Row>
+                                                <Col xs={2}>
+                                                    <Form.Label>Title</Form.Label>
+                                                </Col>
+                                                <Col xs={10}>
+                                                    <FormControl
+                                                    className='input_event'
+                                                    placeholder={threads && threads.data.title}
+                                                    margin="dense"
+                                                    id="Title"
+                                                    label="Title"
+                                                    type="text"
+                                                    name="title" value={title} onChange={ontitlechange} />
+                                                </Col>
+                                            </Row>
                                         </Col>
-                                    </Row>
-                                    <Row className='pt-1 pb-1'>
                                     </Row>
                                     <Row className='pt-3'>
                                         <Col xs={12}>
                                             <Form.Group controlId="exampleForm.ControlTextarea1">
-                                                <Form.Control as="textarea"
-                                                    rows={3}
-                                                    className='input_event'
-                                                    placeholder="descreption"
-                                                    name="body" value={body} onChange={e => onchange(e)} />
+                                                <Row>
+                                                    <Col xs={2}>
+                                                        <Form.Label>Body</Form.Label>
+                                                    </Col>
+                                                    <Col xs={10}>
+                                                        <Form.Control as="textarea"
+                                                            rows={3}
+                                                            className='input_event'
+                                                            placeholder={threads && threads.data.body}
+                                                            name="body" value={body} onChange={onbodychange} />
+                                                    </Col>
+                                                </Row>
                                             </Form.Group>
+                                        </Col>
+                                    </Row>
+                                    <Row className='pt-1 pb-1'>
+                                        <Col xs={12}>
+                                        <FormControl // placeholder={event && event.status}
+                                        className='input_event'
+                                        hidden='true'
+                                        id="status"
+                                        name="status"
+                                        value={
+                                            status.toString()
+                                        }
+                                        type="textarea"
+                                        fullWidth
+                                        onChange={onstatuschange}/>
+                                        Disable Post
+                                    <Switch checked={
+                                        state.checkedA
+                                    }
+                                    onChange={handleswitch}
+                                    name="checkedA"
+                                    inputProps={
+                                        {'aria-label': 'secondary checkbox'}}/>
+                                        Enable Post
+                                    </Col>
+                                    </Row>
+                                    <Row className=' pt-3'>
+                                        <Col  sm={12} md={12} xl={12} className="btn-group btn-group-toggle ">
+                                        <div className='col-md-3 px-0'>Upload Image</div><input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
                                         </Col>
                                     </Row>
                                     <Row className='pt-3'>
                                         <Col md={10} className='mt-3'></Col>
                                         <Col className='pb-4' >
-                                            <Button className='btn btn-light pt-2 pb-2 ' onClick={handleClose} type='submit'>Ask Question</Button>
+                                            <Button className='btn btn-light pt-2 pb-2 ' onClick={handleClose} type='submit'>Update</Button>
                                         </Col>
                                     </Row>
                                 </DialogContent>
@@ -118,8 +216,10 @@ SingleThread.prototype = {
     upadateThread: PropTypes.func.isRequired,
     addReplies: PropTypes.func.isRequired,
     getReplies: PropTypes.func.isRequired,
+    auth :PropTypes.object.isRequired,
 }
 const mapStateToProps = state => ({
+    auth: state.auth,
     thread: state.Thread,
     Threads: state.Thread
 })

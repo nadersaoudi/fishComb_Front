@@ -60,7 +60,7 @@ export const updateReply = (formData, reply_id) => async dispatch => {
         const res = await axios.patch(`/api/thread/${reply_id}/reply`, formData , config)
         dispatch({
             type: UPDATE_REPLY,
-            payload: res.data
+            payload: res.data.data.replies
         })
         toast.info('Update Succes')
     }catch (error) {
@@ -83,6 +83,7 @@ export const deleteReply = (reply_id) => async dispatch => {
             type : DELETE_REPLY,
             payload : reply_id
         })
+        toast.info('Delete Succes');
     }catch (error) {
         dispatch({
             type:DELETE_REPLY_ERROR,
