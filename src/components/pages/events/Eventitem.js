@@ -68,8 +68,8 @@ const Eventitem = ({
     getevents
 }) => {
     useEffect(() => {
-        getevent(match.params.id);
-    }, [getevent, match.params.id])
+        getevent(match.params?.id);
+    }, [getevent, match.params?.id])
     useEffect(() => {
         getfriends()
     }, [getfriends])
@@ -140,7 +140,7 @@ const Eventitem = ({
     const [video_link, setvideolink] = useState('')
     const [cover, setcover] = useState('')
     const [status, setStatus] = useState('')
-    const [category_id, setCategory_id] = useState('')
+    const [category_id, setCategory_id] = useState(event.category_id)
     const onnamechange = e => {
         setname(e.target.value)
     }
@@ -168,26 +168,26 @@ const Eventitem = ({
         setStatus(e.target.value)
     }
     useEffect(() => {
-        setlocation1(loading || !!event && !event.location ? '' : event.location)
+        setlocation1(loading || !!event && !event?.location ? '' : event?.location)
     }, [loading])
     useEffect(() => {
-        setname(loading || !!event && !event.name ? '' : event.name)
+        setname(loading || !!event && !event?.name ? '' : event?.name)
     }, [loading])
     useEffect(() => {
-        setdescription(loading || !!event && !event.description ? '' : event.description)
+        setdescription(loading || !!event && !event?.description ? '' : event?.description)
     }, [loading])
     useEffect(() => {}, [loading])
     useEffect(() => {
-        setvideolink(loading || !!event && !event.video_link ? '' : event.video_link)
+        setvideolink(loading || !!event && !event?.video_link ? '' : event?.video_link)
     }, [loading])
     useEffect(() => {
-        setStatus(loading || !!event && !event.status ? 1 : event.status)
+        setStatus(loading || !!event && !event?.status ? 1 : event?.status)
     }, [loading])
     useEffect(() => {
-        setdate(loading || !!event && !event.date ? '' : event.date)
+        setdate(loading || !!event && !event?.date ? '' : event?.date)
     }, [loading])
     useEffect(() => {
-        setcover(loading || !!event && !event.cover ? '' : event.cover)
+        setcover(loading || !!event && !event?.cover ? '' : event?.cover)
 
     }, [loading])
 
@@ -261,7 +261,9 @@ const Eventitem = ({
                                     value={category_id}
                                     onChange={
                                         e => setCategory_id(e.target.value)
-                                }>
+                                }
+                                
+                                >
 
                                     {
                                     categories && categories.map(c => (
