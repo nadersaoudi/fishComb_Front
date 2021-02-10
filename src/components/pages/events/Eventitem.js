@@ -36,7 +36,7 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Carousel from 'react-bootstrap/Carousel'
 import {Card, Col, Row} from 'react-bootstrap';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-
+import ReactPlayer from 'react-player'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -140,7 +140,8 @@ const Eventitem = ({
     const [video_link, setvideolink] = useState('')
     const [cover, setcover] = useState('')
     const [status, setStatus] = useState('')
-    const [category_id, setCategory_id] = useState(event?.category_id)
+    const [category_id, setCategory_id] = useState(event?.category.id)
+    console.log(event?.category.id)
     const onnamechange = e => {
         setname(e.target.value)
     }
@@ -621,13 +622,8 @@ const Eventitem = ({
                             </Row>
                         </Card>
                         <div className='mt-4 mb-2'></div>
-                        { event && event.video_link !== null ? <ReactTinyLink cardSize="large"
-                                        showGraphic={true}
-                                        maxLine={2}
-                                        minLine={1}
-                                        url={
-                                            event.video_link
-                                        }/> : <div></div>
+                        { event && event.video_link !== null ? <ReactPlayer  cardSize="large"
+                              playing={true}             url={event.video_link}/> : <div></div>
                                 }
                         <hr/>
                         <div className='pt-3 '>

@@ -15,14 +15,13 @@ export const addEvent = file => async dispatch => {
         try {
 
             const res = await axios.post(`/api/events`,file, config)
-           
+           console.log(res.data)
             dispatch({
                 type: ADD_EVENT,
                 payload: res.data.data,
             })
             toast.success('Event added');
         } catch (error) {
-            toast.error('Error happened when adding event');
             dispatch({
                 type: EVENT_ERROR,
             });
