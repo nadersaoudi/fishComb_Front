@@ -9,7 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 import FormControl from 'react-bootstrap/FormControl'
 import { Link } from 'react-router-dom';
-import { getThread, addThread, searchThread } from '../../../Actions/Board';
+import { getThread, addThread, searchThread, myThreads } from '../../../Actions/Board';
 import Form from 'react-bootstrap/Form';
 import './Board.css';
 import { Button } from '@material-ui/core';
@@ -18,7 +18,7 @@ import SingleThread from './SingleThread';
 
 
 
-const Board =( { categories, getThread, addThread , Thread: {thread}, searchThread }) => {
+const Board =( { categories, getThread, addThread , Thread: {thread}, searchThread, myThreads}) => {
     useEffect(() => {
         getThread()
     }, [getThread])
@@ -102,7 +102,7 @@ const onsubmit1 = e => {
                             <Col xs={1}></Col>
                             <Col xs={6}>
                                  <li className="nav-item">
-                                    <Link className='nav-link' className="link_cart" to='#' ><span className="n" >My Posts</span></Link>
+                                    <Link className='nav-link' className="link_cart" to='#' onClick={myThreads} ><span className="n" >My Posts</span></Link>
                                 </li>
                            </Col>
                         </ul>
@@ -209,10 +209,11 @@ Board.prototype={
     getThread: PropTypes.func.isRequired,
     Thread: PropTypes.object.isRequired,
     addThread: PropTypes.func.isRequired,
-    searchThread: PropTypes.func.isRequired
+    searchThread: PropTypes.func.isRequired,
+    myThreads: PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     categories: state.categories,
     Thread : state.Thread,
 })
-export default connect (mapStateToProps, { getThread, addThread, searchThread }) (Board);
+export default connect (mapStateToProps, { getThread, addThread, searchThread, myThreads }) (Board);

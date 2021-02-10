@@ -267,7 +267,6 @@ const UpdateProduct = ({ auth: { user }, updateProduct, market: { product, categ
                                                 </div>
                                             </div>
                                         </div>
-                                       
                                     </div>
                                     <Row className='pt-3 pb-3'>
                                         <Col xs={7}></Col>
