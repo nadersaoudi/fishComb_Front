@@ -1,6 +1,6 @@
 import Single from './single'
-import React, {useEffect, useState, useCallback} from 'react'
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import {
     getevent,
     deleteEvent,
@@ -11,9 +11,9 @@ import {
     getevents
 } from '../../../Actions/events'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import './Events.css'
-import {IoShareSocialOutline} from "react-icons/io5";
+import { IoShareSocialOutline } from "react-icons/io5";
 import {
     Avatar,
     Dialog,
@@ -23,20 +23,20 @@ import {
     MenuItem,
     Slide
 } from '@material-ui/core'
-import {FormControl} from 'react-bootstrap'
+import { FormControl } from 'react-bootstrap'
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
-import {ReactTinyLink} from 'react-tiny-link';
+import { ReactTinyLink } from 'react-tiny-link';
 import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
-import {NavLink} from 'react-bootstrap';
+import { NavLink } from 'react-bootstrap';
 import Switch from '@material-ui/core/Switch';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Carousel from 'react-bootstrap/Carousel'
-import {Card, Col, Row} from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-
+import ReactPlayer from 'react-player';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -45,7 +45,7 @@ import FeaturedDialog from './FeaturedDialog'
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up"
         ref={ref}
-        {...props}/>;
+        {...props} />;
 });
 
 const Eventitem = ({
@@ -76,11 +76,11 @@ const Eventitem = ({
     useEffect(() => {
         getevents()
     }, [getevents])
-    const [state, setState] = React.useState({checkedA: true});
+    const [state, setState] = React.useState({ checkedA: true });
 
 
     const increment = useCallback(() => {
-        getevent(event.next_event)   
+        getevent(event.next_event)
 
     }, [event && event.next_event])
 
@@ -140,7 +140,8 @@ const Eventitem = ({
     const [video_link, setvideolink] = useState('')
     const [cover, setcover] = useState('')
     const [status, setStatus] = useState('')
-    const [category_id, setCategory_id] = useState(event?.category_id)
+    const [category_id, setCategory_id] = useState('')
+
     const onnamechange = e => {
         setname(e.target.value)
     }
@@ -176,7 +177,7 @@ const Eventitem = ({
     useEffect(() => {
         setdescription(loading || !!event && !event?.description ? '' : event?.description)
     }, [loading])
-    useEffect(() => {}, [loading])
+    useEffect(() => { }, [loading])
     useEffect(() => {
         setvideolink(loading || !!event && !event?.video_link ? '' : event?.video_link)
     }, [loading])
@@ -190,7 +191,10 @@ const Eventitem = ({
         setcover(loading || !!event && !event?.cover ? '' : event?.cover)
 
     }, [loading])
+    useEffect(() => {
+        setCategory_id(loading || !!event && !event?.category.id ? '' : event?.category.id)
 
+    }, [loading])
     const handleswitch = (event) => {
         setState({
             ...state,
@@ -208,7 +212,7 @@ const Eventitem = ({
     }
     const submit = e => {
         e.preventDefault();
-        console.log(description)
+        console.log(category_id)
         const file = new FormData();
         file.append('name', name);
         file.append('description', description);
@@ -227,7 +231,7 @@ const Eventitem = ({
                 onClose={handleClose2}
                 aria-labelledby="form-dialog-title1" className='dialogForm'>
                 <form onSubmit={
-                    e => submit(e) } className='add__event'>
+                    e => submit(e)} className='add__event'>
                     <DialogTitle id="form-dialog-title1">update event</DialogTitle>
                     <DialogContent>
                         <div className="row pt-1">
@@ -242,36 +246,36 @@ const Eventitem = ({
                                     type="text"
                                     name="name"
                                     value={name}
-                                    onChange={onnamechange}/></div>
+                                    onChange={onnamechange} /></div>
                         </div>
                         <div className="row pt-3">
                             <div className='col-6'>
                                 <FormControl className='input_event' margin="dense" id="Date" type="Date" name="date"
                                     value={date}
-                                    onChange={ondatechange}/>
+                                    onChange={ondatechange} />
                             </div>
                             <div className='col-md-6'>
-                                <select 
+                                <select
                                     value={category_id}
                                     onChange={
                                         e => setCategory_id(e.target.value)
-                                }
-                                
+                                    }
+
                                 >
 
                                     {
-                                    categories && categories.map(c => (
-                                        <option key={
+                                        categories && categories.map(c => (
+                                            <option key={
                                                 c.id
                                             }
-                                            value={
-                                                c.id
-                                        }>
-                                            {
-                                            c.name
-                                        } </option>
-                                    ))
-                                } </select>
+                                                value={
+                                                    c.id
+                                                }>
+                                                {
+                                                    c.name
+                                                } </option>
+                                        ))
+                                    } </select>
 
 
                             </div>
@@ -279,8 +283,8 @@ const Eventitem = ({
                         <div className="row pt-3">
                             <div className='col-sm-12'>
                                 <FormControl placeholder={
-                                        event && event.location
-                                    }
+                                    event && event.location
+                                }
                                     margin="dense"
                                     id="Location"
                                     className='input_event'
@@ -288,13 +292,13 @@ const Eventitem = ({
                                     fullWidth
                                     name="location"
                                     value={location}
-                                    onChange={onlocationchange}/></div>
+                                    onChange={onlocationchange} /></div>
                         </div>
                         <div className="row pt-3">
                             <div className='col-sm-12'>
                                 <FormControl placeholder={
-                                        event && event.description
-                                    }
+                                    event && event.description
+                                }
                                     className='input_event'
                                     margin="dense"
                                     id="Description"
@@ -304,7 +308,7 @@ const Eventitem = ({
 
                                     name="description"
                                     value={description}
-                                    onChange={ondescchange}/></div>
+                                    onChange={ondescchange} /></div>
                         </div>
                         <div className='row pt-3'>
                         </div>
@@ -314,13 +318,13 @@ const Eventitem = ({
                             className="btn-group btn-group-toggle ">
                             <input accept="image/*" id="icon-button-file" type="file"
                                 onChange={oncoverchange}
-                                name="cover"/>
+                                name="cover" />
                         </Col>
                         <div className="row pt-3">
                             <div className='col-sm-12'>
                                 <FormControl placeholder={
-                                        event && event.video_link
-                                    }
+                                    event && event.video_link
+                                }
                                     className='input_event'
                                     margin="dense"
                                     id="video"
@@ -328,7 +332,7 @@ const Eventitem = ({
                                     fullWidth
                                     name="video_link"
                                     value={video_link}
-                                    onChange={onlinkchange}/>
+                                    onChange={onlinkchange} />
                                 <FormControl // placeholder={event && event.status}
                                     className='input_event'
                                     hidden='true'
@@ -339,16 +343,16 @@ const Eventitem = ({
                                     }
                                     type="textarea"
                                     fullWidth
-                                    onChange={onstatuschange}/>
+                                    onChange={onstatuschange} />
                                 disable event
                                 <Switch checked={
-                                        state.checkedA
-                                    }
+                                    state.checkedA
+                                }
                                     onChange={handleswitch}
                                     name="checkedA"
                                     inputProps={
-                                        {'aria-label': 'secondary checkbox'}
-                                    }/>
+                                        { 'aria-label': 'secondary checkbox' }
+                                    } />
                                 enable event
                             </div>
                         </div>
@@ -412,7 +416,7 @@ const Eventitem = ({
                                     backgroundColor: '#f7f8fa',
                                     border: '0px'
                                 }
-                        }>
+                            }>
                             {/*********************NEXT PREVIEW EVENT************************* */}
                             <Row className='pb-3'>
                                 <Col md={9}
@@ -421,27 +425,27 @@ const Eventitem = ({
                                     sm={3}
                                     className=' Top__section'>
                                     {
-                                    event && event.previous_event !== null ? <button onClick={decrement}
-                                        style={
-                                            {backgroundColor: '#f7f8fa'}
-                                    }>
-                                        <NavigateBeforeIcon/>Previous</button> : <button onClick={decrement} disabled='true'
-                                        style={
-                                            {backgroundColor: '#f7f8fa'}
-                                    }>
-                                        <NavigateBeforeIcon/>Previous</button>
-                                }...{event && event.next_event!== null? <button 
+                                        event && event.previous_event !== null ? <button onClick={decrement}
+                                            style={
+                                                { backgroundColor: '#f7f8fa' }
+                                            }>
+                                            <NavigateBeforeIcon />Previous</button> : <button onClick={decrement} disabled='true'
+                                                style={
+                                                    { backgroundColor: '#f7f8fa' }
+                                                }>
+                                                <NavigateBeforeIcon />Previous</button>
+                                    }...{event && event.next_event !== null ? <button
                                         onClick={increment}
                                         style={
-                                            {backgroundColor: '#f7f8fa'}
-                                    }>Next
-                                        <NavigateNextIcon/></button>: <button 
-                                        onClick={increment}
-                                        disabled='true'
-                                        style={
-                                            {backgroundColor: '#f7f8fa'}
-                                    }>Next
-                                        <NavigateNextIcon/></button>}
+                                            { backgroundColor: '#f7f8fa' }
+                                        }>Next
+                                        <NavigateNextIcon /></button> : <button
+                                            onClick={increment}
+                                            disabled='true'
+                                            style={
+                                                { backgroundColor: '#f7f8fa' }
+                                            }>Next
+                                        <NavigateNextIcon /></button>}
                                 </Col>
 
 
@@ -449,24 +453,24 @@ const Eventitem = ({
                             <Row>
                                 <Col md={3}>
                                     {
-                                    event && !event.video_link === null ? <ReactTinyLink cardSize="large"
-                                        showGraphic={true}
-                                        maxLine={2}
-                                        minLine={1}
-                                        url={
-                                            event.video_link
-                                        }/> : <div>
-                                        <img src={
-                                                event && event.cover
-                                            }
-                                            width="380"
-                                            height="300"
-                                            alt='event'
-                                            style={
-                                                {borderRadius: '4px'}
-                                            }/>
-                                    </div>
-                                }</Col>
+                                        event && !event.video_link === null ? <ReactTinyLink cardSize="large"
+                                            showGraphic={true}
+                                            maxLine={2}
+                                            minLine={1}
+                                            url={
+                                                event.video_link
+                                            } /> : <div>
+                                                <img src={
+                                                    event && event.cover
+                                                }
+                                                    width="380"
+                                                    height="300"
+                                                    alt='event'
+                                                    style={
+                                                        { borderRadius: '4px' }
+                                                    } />
+                                            </div>
+                                    }</Col>
                                 <Col md={2}
                                     sm={2}></Col>
                                 <Col md={7}
@@ -481,12 +485,12 @@ const Eventitem = ({
                                             <div className='row'>
                                                 <div className='col-sm-4 '>
                                                     {
-                                                    event && event.location.charAt(0).toUpperCase() + event.location.slice(1)
-                                                } </div>
+                                                        event && event.location.charAt(0).toUpperCase() + event.location.slice(1)
+                                                    } </div>
                                                 <div className='col-sm-3 '>
                                                     {
-                                                    event && event.date
-                                                } </div>
+                                                        event && event.date
+                                                    } </div>
                                             </div>
 
                                             <div className='row'>
@@ -505,11 +509,11 @@ const Eventitem = ({
                                         </div>
                                         <div className='col-sm-4'>
                                             <Button className='Invite__btn mt-2 pr-3'
-                                                onClick={getlink}><IoShareSocialOutline/>Share</Button>
+                                                onClick={getlink}><IoShareSocialOutline />Share</Button>
                                             <div>
                                                 <Button className='Invite__btn  mt-2'
                                                     onClick={handleClickOpen}>
-                                                    <AddBoxIcon/>
+                                                    <AddBoxIcon />
                                                     Invite Friends</Button>
                                             </div>
                                             <div> {
@@ -522,31 +526,31 @@ const Eventitem = ({
                                                     <Button className='Invite__btn  mt-2'
                                                         onClick={
                                                             e => deleteEvent(match.params.id)
-                                                    }>
+                                                        }>
                                                         <DeleteOutlineRoundedIcon style={
-                                                            {color: '#212529'}
-                                                        }/>
+                                                            { color: '#212529' }
+                                                        } />
                                                         Delete</Button>
                                                 </Link> : <div></div>
                                             }</div>
                                             <div>{
-                                                event && user && user.user_id === event.user.data.user_id ? <FeaturedDialog/>:<div></div>}</div>
+                                                event && user && user.user_id === event.user.data.user_id ? <FeaturedDialog /> : <div></div>}</div>
                                         </div>
                                     </div>
                                     <div className="bot__section">
                                         <div className='row '>
                                             {
-                                            event && event.is_subscribed === false ? <div className='col-sm-4 pt-5' id='attend'>
-                                                <button onClick={
+                                                event && event.is_subscribed === false ? <div className='col-sm-4 pt-5' id='attend'>
+                                                    <button onClick={
                                                         subscribEevent(event.id, 1)
                                                     }
-                                                    className='btn btn-outline-dark'
-                                                    disabled={disable}>Attend</button>
-                                            </div> : <div className='col-sm-4 pt-5' id='attend'>
-                                                <button disabled={true}
-                                                    className='btn btn-outline-dark'>Already subscribed</button>
-                                            </div>
-                                        }
+                                                        className='btn btn-outline-dark'
+                                                        disabled={disable}>Attend</button>
+                                                </div> : <div className='col-sm-4 pt-5' id='attend'>
+                                                        <button disabled={true}
+                                                            className='btn btn-outline-dark'>Already subscribed</button>
+                                                    </div>
+                                            }
                                             <Dialog className='invite_form'
                                                 open={open}
                                                 TransitionComponent={Transition}
@@ -565,51 +569,47 @@ const Eventitem = ({
                                                         <div className='row'>
 
                                                             <FormControl className='input_name' placeholder='Name' margin='dense' type='text'
-                                                                value={uid}/></div>
+                                                                value={uid} /></div>
                                                         <div className='row pt-2'>
 
                                                             <div className='col-md-7 ' id='user_data'>
 
                                                                 {
-                                                                friends && friends.map((c, index) => (
-                                                                    <div className='col-md-6'>
-                                                                        <form onSubmit={
-                                                                            e => onsubmit(e)
-                                                                        }>
-                                                                            <div className='col-md-12 pb-2 mt-1 friends border'>
-                                                                                <div><Avatar className='mt-1'
+                                                                    friends && friends.map((c, index) => (
+                                                                        <div className='col-md-6'>
+                                                                            <form onSubmit={
+                                                                                e => onsubmit(e)
+                                                                            }>
+                                                                                <div className='col-md-12 pb-2 mt-1 friends border'>
+                                                                                    <div><Avatar className='mt-1'
                                                                                         src={
                                                                                             c.data.attributes.profile_image
-                                                                                        }/></div>
-                                                                                <div className='col-md-1'></div>
-                                                                                <div className='col-md-6 pt-2'>
-                                                                                    {
-                                                                                    c.data.attributes.name
-                                                                                }</div>
-                                                                                <div className='col-md-2'>
-                                                                                    <AddBoxIcon onClick={
-                                                                                        e => invite(c.data.user_id, event.id)
-                                                                                    }/></div>
+                                                                                        } /></div>
+                                                                                    <div className='col-md-1'></div>
+                                                                                    <div className='col-md-6 pt-2'>
+                                                                                        {
+                                                                                            c.data.attributes.name
+                                                                                        }</div>
+                                                                                    <div className='col-md-2'>
+                                                                                        <AddBoxIcon onClick={
+                                                                                            e => invite(c.data.user_id, event.id)
+                                                                                        } /></div>
 
-                                                                            </div>
-                                                                        </form>
-                                                                        <div className='col-md-1'></div>
-                                                                    </div>
-                                                                ))
-                                                            } </div>
+                                                                                </div>
+                                                                            </form>
+                                                                            <div className='col-md-1'></div>
+                                                                        </div>
+                                                                    ))
+                                                                } </div>
 
                                                         </div>
 
 
                                                         <div></div>
-
-
                                                     </DialogContent>
                                                     <DialogActions></DialogActions>
                                                 </form>
                                             </Dialog>
-
-
                                             <div className='col-sm-4  pt-5'>
                                                 <button className='btn btn-outline-dark' id='cancel'>Cancel</button>
                                             </div>
@@ -621,16 +621,16 @@ const Eventitem = ({
                             </Row>
                         </Card>
                         <div className='mt-4 mb-2'></div>
-                        { event && event.video_link !== null ? <ReactTinyLink cardSize="large"
-                                        showGraphic={true}
-                                        maxLine={2}
-                                        minLine={1}
-                                        url={
-                                            event.video_link
-                                        }/> : <div></div>
+                        <Row>
+                            <Col xs={2}></Col>
+                            <Col xs={8} sm={8}>
+                                {event && event.video_link !== null ? <ReactPlayer 
+                                    playing={true} url={event.video_link} /> : <div></div>
                                 }
-                        <hr/>
+                            </Col>
+                        </Row>
                         <div className='pt-3 '>
+                            <hr />
                             <h6>
                                 <b>Similar Events</b>
                             </h6>
@@ -657,32 +657,28 @@ const Eventitem = ({
                                             </Carousel.Caption>
                                         </Carousel.Item>
                                     ))}
-
-
                                 </Carousel>*/}
-
                                 <div>
-
                                     <OwlCarousel className="slider-items owl-carousel pt-4" autoplay='true' autoplaySpeed='2000'>
                                         {
-                                        events && events.map((event) => (
-                                            <div class="item"
-                                                key={
-                                                    event.id
-                                            }>
-                                                <Col>
-                                                    <img src={
+                                            events && events.map((event) => (
+                                                <div class="item"
+                                                    key={
+                                                        event.id
+                                                    }>
+                                                    <Col>
+                                                        <img src={
                                                             event.cover
                                                         }
-                                                        width='180px'
-                                                        height='250'
-                                                        style={
-                                                            {borderRadius: '5px'}
-                                                        }/></Col>
-                                            </div>
+                                                            width='180px'
+                                                            height='250'
+                                                            style={
+                                                                { borderRadius: '5px' }
+                                                            } /></Col>
+                                                </div>
 
-                                        ))
-                                    } </OwlCarousel>
+                                            ))
+                                        } </OwlCarousel>
                                 </div>
 
                             </Row>
@@ -707,7 +703,7 @@ const Eventitem = ({
     getevents: PropTypes.func.isRequired
 
 }
-const mapStateToProps = state => ({events: state.events, auth: state.auth, categories: state.categories})
+const mapStateToProps = state => ({ events: state.events, auth: state.auth, categories: state.categories })
 export default connect(mapStateToProps, {
     update,
     getevent,
