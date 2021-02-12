@@ -1,4 +1,4 @@
-import { DELETE_THREAD, GET_THREAD, ADD_THREAD, UPDATE_THREAD, GET_ONETHREAD, SEARCH_THREAD  } from '../Actions/types';
+import { DELETE_THREAD, GET_THREAD, ADD_THREAD, UPDATE_THREAD, GET_ONETHREAD, SEARCH_THREAD, GETMT_THREADS } from '../Actions/types';
 const initialState = {
     thread: [],
     threads: null,
@@ -40,6 +40,13 @@ export default function (state = initialState, action) {
             }
         }
         case SEARCH_THREAD: {
+            return{
+                ...state,
+                thread: payload,
+                loading:false
+            }
+        }
+        case GETMT_THREADS: {
             return{
                 ...state,
                 thread: payload,

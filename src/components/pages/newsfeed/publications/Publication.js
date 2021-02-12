@@ -13,6 +13,7 @@ import "./Publication.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { ReactTinyLink } from "react-tiny-link";
+import ReactPlayer from 'react-player';
 import Moment from "react-moment";
 import {
   getPosts,
@@ -186,15 +187,11 @@ const Publication = ({
                 <div className="col-lg-10">{posts && posts.data.description}</div>
               </div>
               <div className="row pt-3"></div>
-              <div className="col-lg-1"></div>
-              <div className="col-lg-10">
+              <div className="col-sm-1"></div>
+              <div className="col-sm-10">
                 {posts && posts.data.link && (
-                  <ReactTinyLink
-                    cardSize="large"
-                    showGraphic={true}
-                    
-                    maxLine={2}
-                    minLine={1}
+                  <ReactPlayer
+                    width='auto'
                     url={posts.data.link}
                   />
                 )}

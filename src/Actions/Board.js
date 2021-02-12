@@ -1,4 +1,4 @@
-import { GET_THREAD, ADD_THREAD, ADD_THREAD_ERROR, DELETE_THREAD, ERROR_DELETE_THREAD, UPDATE_THREAD, UPDATE_THREAD_ERRROR, GET_ONETHREAD, ERROR__THREAD, SEARCH_THREAD, SEARCH_THREAD_ERROR} from './types';
+import { GET_THREAD, ADD_THREAD, ADD_THREAD_ERROR, DELETE_THREAD, ERROR_DELETE_THREAD, UPDATE_THREAD, UPDATE_THREAD_ERRROR, GET_ONETHREAD, ERROR__THREAD, SEARCH_THREAD, SEARCH_THREAD_ERROR, GETMT_THREADS, GETMT_THREADS_ERROR } from './types';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -128,11 +128,22 @@ export const searchThread = (filter,value) => async dispatch => {
     }
 }
 //Get My Threads
-{/*export const myThreads = () => async dispatch => {
+export const myThreads = () => async dispatch => {
     const config = {
         headers: {
             Authorization: 'Bearer ' + Cookies.get('user'),
             'content-Type': 'application/json'
         }
     }
-}*/}
+    try{ 
+        const res = await axios.post('/api/user/forum/myposts',{},config)
+        dispatch({
+            type: GETMT_THREADS,
+            payload:res.data
+        })
+    }catch{
+        dispatch({
+            type:GETMT_THREADS_ERROR
+        })
+    }
+}
