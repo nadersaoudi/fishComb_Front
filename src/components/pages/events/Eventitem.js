@@ -212,7 +212,6 @@ const Eventitem = ({
     }
     const submit = e => {
         e.preventDefault();
-        console.log(category_id)
         const file = new FormData();
         file.append('name', name);
         file.append('description', description);

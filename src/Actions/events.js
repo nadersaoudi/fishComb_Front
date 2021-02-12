@@ -21,7 +21,15 @@ export const addEvent = file => async dispatch => {
                 payload: res.data.data,
             })
             toast.success('Event added');
-        } catch (error) {
+        } catch (err) {
+            const errors = err.response.data.errors;
+            toast.error(errors.cover[0])
+            toast.error(errors.date[0])
+            toast.error(errors.location[0])
+            toast.error(errors.description[0])
+            toast.error(errors.name[0])
+            
+           
             dispatch({
                 type: EVENT_ERROR,
             });
