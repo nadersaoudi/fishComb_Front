@@ -43,6 +43,8 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuList from '@material-ui/core/MenuList';
 import Moment from "react-moment";
+
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up"
         ref={ref}
@@ -405,7 +407,7 @@ const Eventitem = ({
 
 
             {/*****************Navlink***************** */}
-            <Row className='pt-5 pb-5'>
+            <Row>
                 <Col md={3}
                     className='px-0'></Col>
                 <Col md={4}
@@ -432,18 +434,10 @@ const Eventitem = ({
             <Row className='pt-5'>
                 <Col md={1}
                     sm={1}></Col>
-                <Col md={9}
-                    sm={9}>
-                    <Row>
-                        <Card className='pt-2 pb-2'
-                            style={
-                                {
-                                    backgroundColor: '#f7f8fa',
-                                    border: '0px'
-                                }
-                            }>
-                            {/*********************NEXT PREVIEW EVENT************************* */}
-                            <Row className='pb-3'>
+                <Col md={11}
+                    sm={11}>
+                        {/*********************NEXT PREVIEW EVENT************************* */}
+                        <Row className='pb-5'>
                                 <Col md={9}
                                     sm={9}></Col>
                                 <Col md={3}
@@ -475,37 +469,108 @@ const Eventitem = ({
 
 
                             </Row>
+                     <Row>
+                        <Card className='pt-2'
+                            style={
+                                {
+                                    backgroundColor: '#f7f8fa',
+                                    border: '0px'
+                                }
+                            }>
+                            
                             <Row>
-                                <Col md={3}>
-                                        <div>
+                                <Col xs={4} sm={4} md={4} xl={4}>
+                                        
                                                 <img src={
                                                     event && event.cover
                                                 }
-                                                    width="380"
-                                                    height="300"
+                                                    width="100%"
+                                                    height="100%"
                                                     alt='event'
                                                     style={
                                                         { borderRadius: '4px' }
                                                     } />
-                                            </div>
-                                    </Col>
-                                <Col md={2}
-                                    sm={2}></Col>
-                                <Col md={7}
-                                    sm={7}>
+                                           
+                                </Col>
+                                <Col xs={1} sm={1} md={1}></Col>
+                                <Col md={7} sm={7}>
+                                <Row><Col md={10}><h4>
+                                                <b>{
+                                                    event && event.name.charAt(0).toUpperCase() + event.name.slice(1)
+                                                }</b>
+                                            </h4></Col>
+                                            <Col md={2}>
+                                            <div className='col-sm-2' >
+                                                                        <Button
+                                                    ref={anchorRef}
+                                                    aria-controls={open1 ? 'menu-list-grow' : undefined}
+                                                    aria-haspopup="true"
+                                                    onClick={handleToggle}>
+                                                    <svg width="26px" height="7px" version="1.1" xmlns="http://www.w3.org/1999/xlink" >
+                                                        <g id="Group" transform="translate(0.5 0.5)">
+                                                        <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" id="Oval" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
+                                                        <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(20 0)" id="Oval-Copy" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
+                                                        <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(10 0)" id="Oval-Copy-2" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
+                                                        </g>
+                                                    </svg>
+                                                    </Button>
+                                                                        <Popper open={open1} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                                                    {({ TransitionProps, placement }) => (
+                                                        <Grow
+                                                        {...TransitionProps}
+                                                        style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' ,borderRadius:'0'}}>
+                                                        <Paper>
+                                                            <ClickAwayListener onClickAway={handleClosePoint}>
+                                                            <MenuList autoFocusItem={open1} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                                                            <MenuItem > <Button className='Invite__btn mt-2 pr-3'
+                                                                                onClick={getlink}><IoShareSocialOutline />Share</Button>
+                                                                                </MenuItem>
+                                                            <MenuItem >  <Button className='Invite__btn  mt-2'
+                                                                                    onClick={handleClickOpen}>
+                                                                                    <AddBoxIcon />
+                                                                                    Invite Friends</Button></MenuItem>
+                                                                                    <MenuItem>{
+                                                                                event && user && user.user_id === event.user.data.user_id ? <Button className='Invite__btn  mt-2' onClick={handleClickOpen2}>
+                                                                                    <UpdateRoundedIcon />
+                                                                                    Update</Button> : <div></div>
+                                                                            } </MenuItem><MenuItem> {
+                                                                                event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events' className='Invite__btn'>
+                                                                                    <Button className='Invite__btn  mt-2'
+                                                                                        onClick={
+                                                                                            e => deleteEvent(match.params.id)
+                                                                                        }>
+                                                                                        <DeleteOutlineRoundedIcon style={
+                                                                                            { color: '#212529' }
+                                                                                        } />
+                                                                                        Delete</Button>
+                                                                                </Link> : <div></div>
+                                                                            }</MenuItem><MenuItem>{
+                                                                                event && user && user.user_id === event.user.data.user_id ? <FeaturedDialog /> : <div></div>}</MenuItem>
+                                                            </MenuList>
+                                                            </ClickAwayListener>
+                                                        </Paper>
+                                                        </Grow>
+                                                    )}
+                                                    </Popper>
+                                                                            
+                                                        
+                                                            </div>
+
+                                            </Col>
+                                            </Row>
                                     <div className='row'>
-                                        <div className='col-sm-8'>
+                                        <div className='col-sm-10'>
                                             <h4>
                                                 <b>{
                                                     event && event.name.charAt(0).toUpperCase() + event.name.slice(1)
                                                 }</b>
                                             </h4>
                                             <div className='row'>
-                                                <div className='col-sm-4 '>
+                                                <div className='col-sm-7 '>
                                                     {
                                                         event && event.location.charAt(0).toUpperCase() + event.location.slice(1)
                                                     } </div>
-                                                <div className='col-sm-8 '>
+                                                <div className='col-sm-5 '> 
                                                     {
                                                         event && <Moment date={event.date} format='dddd, MMMM Do YYYY' > </Moment>
                                                     } </div>
@@ -519,149 +584,153 @@ const Eventitem = ({
                                                 </div>
                                             </div>
                                             <div className='row pb-5'>
-                                                <div className='col-sm-5 pb-4'>participants {
+                                                <div className='col-sm-5 pb-4'>participants<AvatarGroup max={4}>
+                                                    {event?.participants?.map(participants=> (<Avatar alt={participants?.data?.attributes?.name} src={participants?.data?.attributes?.profile_image} />)) }
+                                            
+     
+                                                </AvatarGroup> {
                                                     event && event.participants.length
                                                 } </div>
                                             </div>
 
                                         </div>
                                         {/************************************************ */}
-                                        <div className='col-sm-4' >
-                                        <Button
-                      ref={anchorRef}
-                      aria-controls={open1 ? 'menu-list-grow' : undefined}
-                      aria-haspopup="true"
-                      onClick={handleToggle}>
-                      <svg width="26px" height="7px" version="1.1" xmlns="http://www.w3.org/1999/xlink" >
-                        <g id="Group" transform="translate(0.5 0.5)">
-                          <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" id="Oval" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
-                          <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(20 0)" id="Oval-Copy" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
-                          <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(10 0)" id="Oval-Copy-2" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
-                        </g>
-                      </svg>
-                    </Button>
-                                        <Popper open={open1} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                      {({ TransitionProps, placement }) => (
-                        <Grow
-                          {...TransitionProps}
-                          style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' ,borderRadius:'0'}}>
-                          <Paper>
-                            <ClickAwayListener onClickAway={handleClosePoint}>
-                              <MenuList autoFocusItem={open1} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                              <MenuItem > <Button className='Invite__btn mt-2 pr-3'
-                                                onClick={getlink}><IoShareSocialOutline />Share</Button>
-                                                </MenuItem>
-                              <MenuItem >  <Button className='Invite__btn  mt-2'
-                                                    onClick={handleClickOpen}>
-                                                    <AddBoxIcon />
-                                                    Invite Friends</Button></MenuItem>
-                                                    <MenuItem>{
-                                                event && user && user.user_id === event.user.data.user_id ? <Button className='Invite__btn  mt-2' onClick={handleClickOpen2}>
-                                                    <UpdateRoundedIcon />
-                                                    Update</Button> : <div></div>
-                                            } </MenuItem><MenuItem> {
-                                                event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events' className='Invite__btn'>
-                                                    <Button className='Invite__btn  mt-2'
-                                                        onClick={
-                                                            e => deleteEvent(match.params.id)
-                                                        }>
-                                                        <DeleteOutlineRoundedIcon style={
-                                                            { color: '#212529' }
-                                                        } />
-                                                        Delete</Button>
-                                                </Link> : <div></div>
-                                            }</MenuItem><MenuItem>{
-                                                event && user && user.user_id === event.user.data.user_id ? <FeaturedDialog /> : <div></div>}</MenuItem>
-                              </MenuList>
-                            </ClickAwayListener>
-                          </Paper>
-                        </Grow>
-                      )}
-                    </Popper>
-                   {/***************************************************************************************************************** */}                         
-                                    
-                                        </div>
-                                    </div>
-                                    <div className="bot__section">
-                                        <div className='row '>
-                                            {
-                                                event && event.is_subscribed === false ? <div className='col-sm-4 pt-5' id='attend'>
-                                                    <button onClick={
-                                                        subscribEevent(event.id, 1)
-                                                    }
-                                                        className='btn btn-outline-dark'
-                                                        disabled={disable}>Attend</button>
-                                                </div> : <div className='col-sm-4 pt-5' id='attend'>
-                                                        <button disabled={true}
-                                                            className='btn btn-outline-dark'>Already subscribed</button>
-                                                    </div>
-                                            }
-                                            <Dialog className='invite_form'
-                                                open={open}
-                                                TransitionComponent={Transition}
-                                                keepMounted
-                                                onClose={handleClose}
-                                                aria-labelledby="alert-dialog-slide-title"
-                                                aria-describedby="alert-dialog-slide-description">
-
-                                                <form onSubmit={
-                                                    e => onsubmit(e)
-                                                }>
-                                                    <DialogTitle id="alert-dialog-slide-title">
-                                                        {"invite"}</DialogTitle>
-
-                                                    <DialogContent>
-                                                        <div className='row'>
-
-                                                            <FormControl className='input_name' placeholder='Name' margin='dense' type='text'
-                                                                value={uid} /></div>
-                                                        <div className='row pt-2'>
-
-                                                            <div className='col-md-7 ' id='user_data'>
-
-                                                                {
-                                                                    friends && friends.map((c, index) => (
-                                                                        <div className='col-md-6'>
-                                                                            <form onSubmit={
-                                                                                e => onsubmit(e)
-                                                                            }>
-                                                                                <div className='col-md-12 pb-2 mt-1 friends border'>
-                                                                                    <div><Avatar className='mt-1'
-                                                                                        src={
-                                                                                            c.data.attributes.profile_image
-                                                                                        } /></div>
-                                                                                    <div className='col-md-1'></div>
-                                                                                    <div className='col-md-6 pt-2'>
-                                                                                        {
-                                                                                            c.data.attributes.name
-                                                                                        }</div>
-                                                                                    <div className='col-md-2'>
-                                                                                        <AddBoxIcon onClick={
-                                                                                            e => invite(c.data.user_id, event.id)
-                                                                                        } /></div>
-
-                                                                                </div>
-                                                                            </form>
-                                                                            <div className='col-md-1'></div>
-                                                                        </div>
-                                                                    ))
-                                                                } </div>
-
+                                       <div className='col-sm-2' >
+                                                                        <Button
+                                                    ref={anchorRef}
+                                                    aria-controls={open1 ? 'menu-list-grow' : undefined}
+                                                    aria-haspopup="true"
+                                                    onClick={handleToggle}>
+                                                    <svg width="26px" height="7px" version="1.1" xmlns="http://www.w3.org/1999/xlink" >
+                                                        <g id="Group" transform="translate(0.5 0.5)">
+                                                        <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" id="Oval" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
+                                                        <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(20 0)" id="Oval-Copy" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
+                                                        <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(10 0)" id="Oval-Copy-2" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
+                                                        </g>
+                                                    </svg>
+                                                    </Button>
+                                                                        <Popper open={open1} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                                                    {({ TransitionProps, placement }) => (
+                                                        <Grow
+                                                        {...TransitionProps}
+                                                        style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' ,borderRadius:'0'}}>
+                                                        <Paper>
+                                                            <ClickAwayListener onClickAway={handleClosePoint}>
+                                                            <MenuList autoFocusItem={open1} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                                                            <MenuItem > <Button className='Invite__btn mt-2 pr-3'
+                                                                                onClick={getlink}><IoShareSocialOutline />Share</Button>
+                                                                                </MenuItem>
+                                                            <MenuItem >  <Button className='Invite__btn  mt-2'
+                                                                                    onClick={handleClickOpen}>
+                                                                                    <AddBoxIcon />
+                                                                                    Invite Friends</Button></MenuItem>
+                                                                                    <MenuItem>{
+                                                                                event && user && user.user_id === event.user.data.user_id ? <Button className='Invite__btn  mt-2' onClick={handleClickOpen2}>
+                                                                                    <UpdateRoundedIcon />
+                                                                                    Update</Button> : <div></div>
+                                                                            } </MenuItem><MenuItem> {
+                                                                                event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events' className='Invite__btn'>
+                                                                                    <Button className='Invite__btn  mt-2'
+                                                                                        onClick={
+                                                                                            e => deleteEvent(match.params.id)
+                                                                                        }>
+                                                                                        <DeleteOutlineRoundedIcon style={
+                                                                                            { color: '#212529' }
+                                                                                        } />
+                                                                                        Delete</Button>
+                                                                                </Link> : <div></div>
+                                                                            }</MenuItem><MenuItem>{
+                                                                                event && user && user.user_id === event.user.data.user_id ? <FeaturedDialog /> : <div></div>}</MenuItem>
+                                                            </MenuList>
+                                                            </ClickAwayListener>
+                                                        </Paper>
+                                                        </Grow>
+                                                    )}
+                                                    </Popper>
+                                                    {/***************************************************************************************************************** */}                         
+                                                        
+                                                            </div>
                                                         </div>
+                                                        <div className="bot__section">
+                                                            <div className='row '>
+                                                                {
+                                                                    event && event.is_subscribed === false ? <div className='col-sm-4' id='attend'>
+                                                                        <button onClick={
+                                                                            subscribEevent(event.id, 1)
+                                                                        }
+                                                                            className='btn btn-outline-dark'
+                                                                            disabled={disable}>Attend</button>
+                                                                    </div> : <div className='col-sm-4' id='attend'>
+                                                                            <button disabled={true}
+                                                                                className='btn btn-outline-dark'>Already subscribed</button>
+                                                                        </div>
+                                                                }
+                                                                <Dialog className='invite_form'
+                                                                    open={open}
+                                                                    TransitionComponent={Transition}
+                                                                    keepMounted
+                                                                    onClose={handleClose}
+                                                                    aria-labelledby="alert-dialog-slide-title"
+                                                                    aria-describedby="alert-dialog-slide-description">
+
+                                                                    <form onSubmit={
+                                                                        e => onsubmit(e)
+                                                                    }>
+                                                                        <DialogTitle id="alert-dialog-slide-title">
+                                                                            {"invite"}</DialogTitle>
+
+                                                                        <DialogContent>
+                                                                            <div className='row'>
+
+                                                                                <FormControl className='input_name' placeholder='Name' margin='dense' type='text'
+                                                                                    value={uid} /></div>
+                                                                            <div className='row pt-2'>
+
+                                                                                <div className='col-md-7 ' id='user_data'>
+
+                                                                                    {
+                                                                                        friends && friends.map((c, index) => (
+                                                                                            <div className='col-md-6'>
+                                                                                                <form onSubmit={
+                                                                                                    e => onsubmit(e)
+                                                                                                }>
+                                                                                                    <div className='col-md-12 pb-2 mt-1 friends border'>
+                                                                                                        <div><Avatar className='mt-1'
+                                                                                                            src={
+                                                                                                                c.data.attributes.profile_image
+                                                                                                            } /></div>
+                                                                                                        <div className='col-md-1'></div>
+                                                                                                        <div className='col-md-6 pt-2'>
+                                                                                                            {
+                                                                                                                c.data.attributes.name
+                                                                                                            }</div>
+                                                                                                        <div className='col-md-2'>
+                                                                                                            <AddBoxIcon onClick={
+                                                                                                                e => invite(c.data.user_id, event.id)
+                                                                                                            } /></div>
+
+                                                                                                    </div>
+                                                                                                </form>
+                                                                                                <div className='col-md-1'></div>
+                                                                                            </div>
+                                                                                        ))
+                                                                                    } </div>
+
+                                                                            </div>
 
 
-                                                        <div></div>
-                                                    </DialogContent>
-                                                    <DialogActions></DialogActions>
-                                                </form>
-                                            </Dialog>
-                                            <div className='col-sm-4  pt-5'>
-                                                <button className='btn btn-outline-dark' id='cancel'>Cancel</button>
-                                            </div>
-                                        </div>
+                                                                            <div></div>
+                                                                        </DialogContent>
+                                                                        <DialogActions></DialogActions>
+                                                                    </form>
+                                                                </Dialog>
+                                                                <div className='col-sm-4 '>
+                                                                    <button className='btn btn-outline-dark' id='cancel'>Cancel</button>
+                                                                </div>
+                                                            </div>
 
-                                    </div>
-                                </Col>
+                                       </div>
+                                    </Col>
 
                             </Row>
                         </Card>
