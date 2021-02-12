@@ -40,8 +40,15 @@ export const addProduct = file => async dispatch => {
             payload: res.data.data
         })
         toast.info('Product Added');
-    } catch (error) {
-        toast.error('Error happened when adding product');
+    } catch (err) {
+        const errors = err.response.data.errors;
+            toast.error(errors.category_id[0])
+            toast.error(errors.image[0])
+            toast.error(errors.description[0])
+            toast.error(errors.name[0])
+            toast.error(errors.price[0])
+            toast.error(errors.stock[0])
+            
         dispatch({
             type: PRODUCT_ERROR,
         });
