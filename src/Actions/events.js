@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 toast.configure();
 //Add event
 export const addEvent = file => async dispatch => {
-
         const config = {
             headers: {
                 Authorization: 'Bearer ' + Cookies.get('user'),
@@ -13,7 +12,6 @@ export const addEvent = file => async dispatch => {
             }
         }
         try {
-
             const res = await axios.post(`/api/events`,file, config)
            console.log(res.data)
             dispatch({
@@ -21,7 +19,15 @@ export const addEvent = file => async dispatch => {
                 payload: res.data.data,
             })
             toast.success('Event added');
-        } catch (error) {
+        } catch (err) {
+            const errors = err.response.data.errors;
+            toast.error(errors.cover[0])
+            toast.error(errors.date[0])
+            toast.error(errors.location[0])
+            toast.error(errors.description[0])
+            toast.error(errors.name[0])
+            
+           
             dispatch({
                 type: EVENT_ERROR,
             });
@@ -97,7 +103,6 @@ export const getcategories = () => async dispatch => {
             type: EVENT_ERROR,
         });
     }
-
 }
 //delete event
 //show single event

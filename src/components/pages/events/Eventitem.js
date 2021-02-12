@@ -212,7 +212,6 @@ const Eventitem = ({
     }
     const submit = e => {
         e.preventDefault();
-        console.log(category_id)
         const file = new FormData();
         file.append('name', name);
         file.append('description', description);
@@ -259,10 +258,7 @@ const Eventitem = ({
                                     value={category_id}
                                     onChange={
                                         e => setCategory_id(e.target.value)
-                                    }
-
-                                >
-
+                                    }>
                                     {
                                         categories && categories.map(c => (
                                             <option key={
@@ -276,8 +272,6 @@ const Eventitem = ({
                                                 } </option>
                                         ))
                                     } </select>
-
-
                             </div>
                         </div>
                         <div className="row pt-3">
@@ -373,8 +367,6 @@ const Eventitem = ({
                             </div>
                         </div>
                     </DialogContent>
-
-
                 </form>
             </Dialog>
 
@@ -392,16 +384,13 @@ const Eventitem = ({
                                 <span className="n">General event</span>
                             </Link>
                         </li>
-
                         <li className="nav-item">
                             <Link to={`/dashboard/Gallery`}
                                 className="link_cart">
                                 <span className="n">Gallery</span>
                             </Link>
                         </li>
-
                     </ul>
-
                 </Col>
             </Row>
             <Row className='pt-5'>
@@ -447,8 +436,6 @@ const Eventitem = ({
                                             }>Next
                                         <NavigateNextIcon /></button>}
                                 </Col>
-
-
                             </Row>
                             <Row>
                                 <Col md={3}>
@@ -463,7 +450,7 @@ const Eventitem = ({
                                                 <img src={
                                                     event && event.cover
                                                 }
-                                                    width="380"
+                                                    width="auto"
                                                     height="300"
                                                     alt='event'
                                                     style={
@@ -471,8 +458,6 @@ const Eventitem = ({
                                                     } />
                                             </div>
                                     }</Col>
-                                <Col md={2}
-                                    sm={2}></Col>
                                 <Col md={7}
                                     sm={7}>
                                     <div className='row'>
@@ -492,7 +477,6 @@ const Eventitem = ({
                                                         event && event.date
                                                     } </div>
                                             </div>
-
                                             <div className='row'>
                                                 <div className='col-sm-6 pb-3 pt-2'>
                                                     <span>{
@@ -505,7 +489,6 @@ const Eventitem = ({
                                                     event && event.participants.length
                                                 } </div>
                                             </div>
-
                                         </div>
                                         <div className='col-sm-4'>
                                             <Button className='Invite__btn mt-2 pr-3'

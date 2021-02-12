@@ -14,7 +14,6 @@ const Footer = () => {
                             <img  src="../../../../dist/img/logo_gray.png" alt='fishcomb' className="pb-3"/>
                             <p className="text-justify">Fishcomb.com <i>CODE WANTS TO BE SIMPLE </i>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown specimen book.</p>
                         </div>
-
                         <div className="col-sm-6 col-sm-3">
                             <h6>For Individuals</h6>
                             <ul className="footer-links">
