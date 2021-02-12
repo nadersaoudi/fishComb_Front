@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addPost } from '../../../../Actions/Post';
 import $ from 'jquery';
+import ReactPlayer from 'react-player';
 
 const Post = ({ auth: { user }, addPost,  }) => {
   // eslint-disable-next-line
@@ -27,7 +28,6 @@ const Post = ({ auth: { user }, addPost,  }) => {
     e.preventDefault();
     var link = $('#linkurl').val();
     var description = $('#description').val();
- 
     addPost({ link, description });
     sethidden(true)
     setUrl('')
@@ -67,14 +67,16 @@ const Post = ({ auth: { user }, addPost,  }) => {
     }
   }
   return (
-
     <div className="pub px-0 ">
       <form onSubmit={e => Onsubmit(e)}>
         <div className=" pub__top">
           <Avatar src={user && user.attributes.profile_image} className={classes.large} />
           <div className='post'>
             <input ref={inputEl} id="description" placeholder={`What's on your mind?`} onChange={preview} className='pub__input' onClickCapture={e=>{sethidden(false)}} />
-            {url && <div hidden={hidden} ><ReactTinyLink cardSize="large" showGraphic={true} maxLine={2} minLine={1} url={url}  /></div>}
+            {url && <div hidden={hidden} > <ReactPlayer
+                    width='auto'
+                    url={url}
+                  /></div>}
             <input type="text" id="linkurl" />
           </div>
           <button id='sub' type="submit" onClick={handleShow}>submit</button>

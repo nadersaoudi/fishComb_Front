@@ -16,7 +16,7 @@ const HomePage = () => {
         
           </div>
           <div className='col-sm-6'></div>
-          <div className='col-sm-2 '>
+          <div className='col-sm-2  '>
           <NavLink className='login' to="/login">Login</NavLink>
           </div>
           <div className='col-sm-1 '>
@@ -25,9 +25,10 @@ const HomePage = () => {
         </div>
         <div className='home  '>
           
-          </div>
-         
-        <div className=' pt-5' >  <Footer  /></div>
+        </div> 
+        <div className=' pt-5' >
+          <Footer  />
+        </div>
          
    
       </div>

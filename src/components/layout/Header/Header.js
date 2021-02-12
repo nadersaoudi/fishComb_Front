@@ -188,7 +188,7 @@ const Header = ({
                                         position: 'relative',
                                         display: visible2 ? 'block' : 'none'
                                     }}>
-                                <Toast delay='3000' style={
+                                <Toast delay={3000} style={
                                     {
                                         position: 'fixed',
                                         top: 140,
@@ -199,7 +199,7 @@ const Header = ({
                                         <Toast.Body>
                                             <Row>
                                                 <Col xs={6}>
-                                                    <Image src={e.cover }  height='70' width='100' style={{borderRadius:'3px'}}/>
+                                                    <Image src={e.cover} height='70' width='100' style={{ borderRadius: '3px' }} />
                                                 </Col>
                                                 <Col xs={6}>
                                                     <Row>
@@ -222,7 +222,7 @@ const Header = ({
                                                 <Col xs={4}>
                                                     <Button variant="outlined" color="primary" className='pb-2' onClick={x => acceptinv(e.id)} >Accept</Button>
                                                 </Col>
-                                                
+
                                                 <Col xs={4}>
                                                     <Button variant="outlined" color="secondary">Decline</Button>
                                                 </Col>
@@ -230,8 +230,8 @@ const Header = ({
                                             </Row>
                                         </Toast.Body>
                                         <hr />
-                                       </div>)} 
-                                    </Toast>
+                                    </div>)}
+                                </Toast>
                             </div>
                         </div>
                         <div className='col-sm-4'>

@@ -163,7 +163,6 @@ export const addComment = (idpost, formData) => async (dispatch,getState) => {
         });
         toast.error('Comment Error');
     }
-
 }
 //delete Comment 
 export const deleteComment = id => async dispatch => {

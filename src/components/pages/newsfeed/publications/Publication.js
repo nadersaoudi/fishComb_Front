@@ -291,7 +291,6 @@ const Publication = ({
                   />
                   </NavLink>
                 </div>
-
                 <div className="col-lg-9 pp" >
                   <input
                     className=" col-lg-11 comm"
