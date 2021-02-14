@@ -8,6 +8,7 @@ import { addPost } from '../../../../Actions/Post';
 import $ from 'jquery';
 import ReactPlayer from 'react-player';
 
+
 const Post = ({ auth: { user }, addPost,  }) => {
   // eslint-disable-next-line
   const [show, setShow] = useState(false);
@@ -65,8 +66,10 @@ const Post = ({ auth: { user }, addPost,  }) => {
       $('#linkurl').val(inputEl.current.value)
     }
   }
+ 
   return (
     <div className="pub px-0 ">
+      
       <form onSubmit={e => Onsubmit(e)}>
         <div className=" pub__top">
           <Avatar src={user && user.attributes.profile_image} className={classes.large} />
