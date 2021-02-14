@@ -14,7 +14,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Form from 'react-bootstrap/Form';
 import Dialog from '@material-ui/core/Dialog';
 const SingleReply = ( { reply ,deleteReply , auth : { user }, updateReply } ) => {
-/*************************************/
+
+    /*************************************/
 const [open, setOpen] = React.useState(false);
 const handleClickOpen = () => {
     setOpen(true);
@@ -45,10 +46,9 @@ const submit = e => {
                 </Col>
             </Row>
             <Row className>
-                <Col xs={1}>
-                </Col> 
-                <Col xs={9}> 
-                    {reply && reply.body.charAt(0).toUpperCase() + reply.body.slice(1)}
+                <Col xs={1 }className='mr-4'></Col> 
+                <Col xs={8} className='body_reply' >
+                          {reply && reply.body.charAt(0).toUpperCase() + reply.body.slice(1)} 
                 </Col>
                 <Col xs={1}>
                     {user && reply && user.user_id ===   reply.user.id ?
@@ -62,7 +62,7 @@ const submit = e => {
             </Card>
             <Dialog open={open} onClose={handleClose} >
                             <form className='addQuestion' onSubmit={e => submit(e)} >
-                                <DialogTitle id="form-dialog-title">Update Question</DialogTitle>
+                                <DialogTitle id="form-dialog-title">Update</DialogTitle>
                                 <DialogContent>
                                     <Row className='pt-3'>
                                         <Col xs={12}>

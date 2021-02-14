@@ -4,14 +4,22 @@ import { connect } from 'react-redux';
 import { getoneThread } from '../../../Actions/Board';
 import { getReplies, addReplies } from '../../../Actions/Replies';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'reactstrap';
-import { Card } from '@material-ui/core';
+import { Col, Row, Card, Image } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Button } from '@material-ui/core';
 import SingleReply from './SingleReply';
+import UpdateIcon from '@material-ui/icons/Update';
 import './Board.css';
 
-const Replies = ( {thread: {threads} , match , getoneThread, getReplies , Replies: {replies} ,addReplies} ) => {
+const Replies = ( {auth:{user}, thread: {threads} , match , getoneThread, getReplies , Replies: {replies} ,addReplies} ) => {
+/**************************************/
+const [open, setOpen] = React.useState(false);
+const handleClickOpen = () => {
+    setOpen(true);
+};
+  const handleClose = () => {
+        setOpen(false);
+    };
 /**************************************/
     useEffect(() => {
         getoneThread(match.params.id);
@@ -30,6 +38,7 @@ const { body } = formData;
         addReplies(formData, threads.data.id);
         setformData({
             body: ''  
+        
         })
     }
 /**************************************/
@@ -47,16 +56,24 @@ const { body } = formData;
                         </Row>
                         <Row className='pt-3 pb-5'>
                             <Col xs={1}></Col>
-                            <Col xs={10}>
-                                <h6>{threads && threads.data.body}</h6>
-
+                            <Col xs={11}>
+                                <Row className='pt-2 pb-2'>
+                                    <Col xs={8}>
+                                        <span >{threads && threads.data.body.charAt(0).toUpperCase() + threads.data.body.slice(1)}</span>
+                                    </Col>
+                                    <Col xs={4}>
+                                        <Image src={threads && threads.data.image}  width="250" height="200" alt='event' rounded className='product'/>
+                                    </Col>
+                                </Row>
+                             
                             </Col>
-                           
                         </Row>
                     </Card>
                </Col>
            </Row>
            <Row className='pt-5 pb-5'>
+               <Col xs={1}></Col>
+             <Col xs={10}className='pb-3'><h2>Replies</h2></Col> 
                 <Col xs={2}></Col>
                 <Col xs={8}>
                     {replies && replies.map((replies) =>
@@ -97,14 +114,16 @@ Replies.prototype={
     getoneThread: PropTypes.func.isRequired,
     getReplies: PropTypes.func.isRequired,
     addReplies: PropTypes.func.isRequired,
-    reply: PropTypes.object.isRequired
+    reply: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired
 }
 const mapStateToProps = state => ({
     thread: state.Thread,
     threads: state.threads,
     Replies: state.Replies,
     replies : state.Replies,
-    reply: state.Replies
+    reply: state.Replies,
+    auth: state.auth
 })
 export default connect(mapStateToProps, { getoneThread , getReplies, addReplies  }) (Replies)
 

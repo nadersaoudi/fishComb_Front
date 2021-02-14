@@ -131,8 +131,10 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     }
     return (
         <div>
+            
               <Row className=' pb-3 '>
-                    <Col md={3} className='px-0' ></Col>
+
+                    <Col md={1} className='px-0' ></Col>
                     <Col md={4} className="pb-4 pt-5 px-0 ">
                         <ul className="nav nav-pills nav-justified " id='navprofil'>
                             <li className="nav-item">
@@ -146,15 +148,58 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             </li>
                         </ul>
                     </Col>
+                        
+        
+          
                     <Col md={5}></Col>
                 </Row>
-            <Row >
-                <Row >
-                    <Col md={5} sm={5} xl={5} className="pb-4">
-                        <ul className="nav nav-pills nav-justified " id='navprofil'>
+                    <Row  className='col-md-12 ' id='body'>
+                    <Col md={2} sm={2} xl={2} className="pb-4">
+                        
+                        </Col>
+
+                        <Row>
+                            <Col md={8} className=' pb-4'><h6 className="h66"><b>Featured</b></h6></Col>
+                            
+                        <Row>    
+                        <Col md={2} sm={2} xl={2}> 
+                                <Image src='https://picsum.photos/id/99/200/300'  width="200" height="180" alt='event' rounded className='product'/>
+                                <div className='description'>
+                                    <span>lorem ipsuem</span> <br />
+                                    <span>lorem ipsuem</span> <br />
+                            </div>
+                            </Col> <Col sm={1} md={1}></Col>
+                            <Col md={2} sm={2} xl={2} >
+                            <Image src='https://picsum.photos/id/100/200/300' width="200" height="180" alt='event' rounded className='product'/>
+                                <div className='description'>
+
+                                    <span>lorem ipsuem</span> <br />
+                                    <span>lorem ipsuem</span> <br />
+                              
+                            </div></Col> <Col sm={1} md={1}></Col>
+                            <Col md={2} sm={2} xl={2} >
+                            <Image src='https://picsum.photos/id/77/200/300'  width="200" height="180" alt='event' rounded className='product'/>
+                                    <div className='description'>
+                                        <span>lorem ipsuem</span> <br />
+                                        <span>lorem ipsuem</span> <br />
+                                    </div>
+                             
+                            </Col>
+                            <Col sm={1} md={1}></Col>
+                            <Col md={2} sm={2} xl={2} >
+                            <Image src='https://picsum.photos/id/98/200/300' width="200" height="180"alt='event' rounded className='product'/>
+                                    <div className='description'>
+                                        <span>lorem ipsuem</span> <br />
+                                        <span>lorem ipsuem</span> <br />
+                                    </div>
+                               
+                            </Col>
+<Col xl={1}></Col>
+                            <Col xl={1}>
+                            <ul className="nav nav-pills nav-justified " id='navprofil'>
                             <li className="nav-item">
                                 <form onSubmit={e => submit1(e)}>
-                                    <Row >
+                                    
                                         <Col sm={1} md={1} xl={1}>
                                             <Col sm={1} md={1} xl={1} className='filtre'>
                                                 <div className='col-xs-2 mr-2'>
@@ -178,16 +223,12 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                 <div className='col-xs-3'><button type='submit' id='button_sort'> <SortIcon /> Sort Event</button></div>
                                             </Col>
                                         </Col>
-                                    </Row>
+                                    
                                 </form>
                             </li>
                         </ul>
-                    </Col> 
-                </Row>
-                <Row >
-                    <Col md={3} sm={3} xl={3} className='side_min_bar '>
+                        <Col md={3} sm={3} xl={3} className='side_min_bar '>
                         <form onSubmit={e => onsubmit1(e)} >
-                            
                             <Col md={11} sm={11} xl={11} className="header__input px-0" >
                                 <input type="text" placeholder='Search Event' aria-label="Search"  value={value} onChange={handleChange1} />
                                 <button className="col-2 px-0  header__button" >
@@ -197,7 +238,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                         </g>
                                     </svg>
                                 </button>
-                                {/* <input type="checkbox" value="username" onChange={handleChange} /> by user*/}
+                                    {/* <input type="checkbox" value="username" onChange={handleChange} /> by user*/}
                                 <Dropdown isOpen={dropdownOpen} toggle={toggle} >
                                     <DropdownToggle caret style={{ color: 'black' }}>
                                     </DropdownToggle>
@@ -211,6 +252,11 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                              </RadioGroup>*/}
                             </Col>
                         </form>
+                    
+                    </Col> 
+                
+                
+                    <Col md={9}></Col>
                         <div className='row pt-2'>
                             <div className='col-sm-4'>
                             <Button className="event" onClick={myevents}><h6>My Events</h6></Button>
@@ -580,46 +626,11 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
 
 
 
-                            </form>
-                        </Dialog>
-                    </Col>
-                    <Row  className='col-md-9 ' id='body'>
-                        <Row>
-                            <Col md={12} className=' pb-4'><h6 className="h66"><b>Featured</b></h6></Col>
+                                </form>
+                            </Dialog>
+                            </Col>
                         </Row>
-                        <Row>
-                        <Col md={2} sm={2} xl={2}> 
-                                <Image src='https://picsum.photos/id/99/200/300'  width="200" height="180" alt='event' rounded className='product'/>
-                                <div className='description'>
-                                    <span>lorem ipsuem</span> <br />
-                                    <span>lorem ipsuem</span> <br />
-                            </div>
-                            </Col> <Col sm={1} md={1}></Col>
-                            <Col md={2} sm={2} xl={2} >
-                            <Image src='https://picsum.photos/id/100/200/300' width="200" height="180" alt='event' rounded className='product'/>
-                                <div className='description'>
 
-                                    <span>lorem ipsuem</span> <br />
-                                    <span>lorem ipsuem</span> <br />
-                              
-                            </div></Col> <Col sm={1} md={1}></Col>
-                            <Col md={2} sm={2} xl={2} >
-                            <Image src='https://picsum.photos/id/77/200/300'  width="200" height="180" alt='event' rounded className='product'/>
-                                    <div className='description'>
-                                        <span>lorem ipsuem</span> <br />
-                                        <span>lorem ipsuem</span> <br />
-                                    </div>
-                             
-                            </Col>
-                            <Col sm={1} md={1}></Col>
-                            <Col md={2} sm={2} xl={2} >
-                            <Image src='https://picsum.photos/id/98/200/300' width="200" height="180"alt='event' rounded className='product'/>
-                                    <div className='description'>
-                                        <span>lorem ipsuem</span> <br />
-                                        <span>lorem ipsuem</span> <br />
-                                    </div>
-                               
-                            </Col>
 
                         </Row>
                               <div className='row'>
@@ -634,15 +645,16 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                         </div>
 
                     </Row>
-
-
-                </Row>
-            </Row>
-
-        </div>
-
+                    
+                   
+</div>
     )
 }
+
+
+
+
+
 Events.prototype = {
     addEvent: PropTypes.func.isRequired,
     getevents: PropTypes.func.isRequired,
@@ -657,3 +669,4 @@ const mapStateToProps = state => ({
     categories: state.categories,
 })
 export default connect(mapStateToProps, { addEvent, getevents, sortEvents, myevents, search })(Events);
+ 

@@ -53,6 +53,7 @@ const Notification = ({users ,acceptInv}) => {
                 </div>
                 <input type='hidden' value={users && users.data.user_id} />
                 <div className='col-sm-3'>
+                  {/** to do change the icons to accept declien */}
                     <Button><PersonAddIcon onClick={(e) =>acceptinv()} className='add'/></Button>
                     <Button><MdCancel onClick={(e) =>deletinv()}  className='add'/></Button>
                 </div>
