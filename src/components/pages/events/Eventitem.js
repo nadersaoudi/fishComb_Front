@@ -197,30 +197,30 @@ const Eventitem = ({
         setStatus(e.target.value)
     }
     useEffect(() => {
-        setlocation1(loading || !!event && !event?.location ? '' : event?.location)
+        setlocation1(loading ||  !event?.location ? '' : event?.location)
     }, [loading])
     useEffect(() => {
-        setname(loading || !!event && !event?.name ? '' : event?.name)
+        setname(loading ||  !event?.name ? '' : event?.name)
     }, [loading])
     useEffect(() => {
-        setdescription(loading || !!event && !event?.description ? '' : event?.description)
+        setdescription(loading ||  !event?.description ? '' : event?.description)
     }, [loading])
-    useEffect(() => { }, [loading])
+    
     useEffect(() => {
-        setvideolink(loading || !!event && !event?.video_link ? '' : event?.video_link)
-    }, [loading])
-    useEffect(() => {
-        setStatus(loading || !!event && !event?.status ? 1 : event?.status)
+        setvideolink(loading || !event?.video_link ? '' : event?.video_link)
     }, [loading])
     useEffect(() => {
-        setdate(loading || !!event && !event?.date ? '' : event?.date)
+        setStatus(loading || !event?.status ? 1 : event?.status)
     }, [loading])
     useEffect(() => {
-        setcover(loading || !!event && !event?.cover ? '' : event?.cover)
+        setdate(loading || !event?.date ? '' : event?.date)
+    }, [loading])
+    useEffect(() => {
+        setcover(loading || !event?.cover ? '' : event?.cover)
 
     }, [loading])
     useEffect(() => {
-        setCategory_id(loading || !!event && !event?.category.id ? '' : event?.category.id)
+        setCategory_id(loading || !event?.category.id ? '' : event?.category.id)
 
     }, [loading])
     const handleswitch = (event) => {

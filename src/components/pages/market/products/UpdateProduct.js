@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Avatar } from "@material-ui/core";
 import { updateProduct } from '../../../../Actions/Market';
-import { Col, Row, Card, Image } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import Switch from '@material-ui/core/Switch';
 const UpdateProduct = ({ auth: { user }, updateProduct, market: { product, categories }, loading }) => {

@@ -12,7 +12,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import "./Publication.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { ReactTinyLink } from "react-tiny-link";
 import ReactPlayer from 'react-player';
 import Moment from "react-moment";
 import {
@@ -78,10 +77,11 @@ const Publication = ({
      console.log('aaaaa');
      updatePost(formdata ,post.id);
    }
+   
    useEffect(() => {
      setFormData({
-         description: loading || !!post.description ? '' : post.description,
-     })
+         description: loading || !!post?.description ? '' : post.description,
+     })// eslint-disable-next-line
    }, [loading])
   /******************************/
   const classes = useStyles();
@@ -329,8 +329,6 @@ Publication.prototype = {
   getPosts: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
   getUsers : PropTypes.func.isRequired,
-  Post: PropTypes.object.isRequired,
-  getPosts: PropTypes.func.isRequired,
   updatePost: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({

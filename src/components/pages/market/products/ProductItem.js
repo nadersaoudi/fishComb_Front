@@ -1,14 +1,9 @@
 import React from 'react' ;
-import { Fragment ,useState, useEffect} from 'react';
+import { Fragment , useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 import { IoBasketSharp } from 'react-icons/io5';
-import DialogContent from '@material-ui/core/DialogContent';
-import FormControl from 'react-bootstrap/FormControl';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Avatar } from "@material-ui/core";
 import { updateProduct } from '../../../../Actions/Market';
 import { addCart } from '../../../../Actions/cart';
 import {  deleteProduct, getProduct,getMarket } from '../../../../Actions/Market';
@@ -23,7 +18,6 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import '../Market.css';
 import { FaEdit } from 'react-icons/fa';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
-import SingleProduct from './SingleProduct';
 import UpdateProduct from './UpdateProduct';
 import { Col } from 'reactstrap';
 import { Row } from 'react-bootstrap';
@@ -40,23 +34,8 @@ useEffect(() => {
     getProduct(match.params.id);
 },  [getProduct, match.params.id]
 )
-/****************************/
-/****************************/
-/*****************************/    
-const [open1, setOpen1] = React.useState(false);
-const handleClickOpen1 = () => {
-    setOpen1(true);
-};
-const handleClose1 = () => {
-    setOpen1(false);
-};
-const [open2, setOpen2] = React.useState(false);
-const handleClose2 = () => {
-    setOpen1(false);
-};
-const handleOpen2 = () => {
-    setOpen1(true);
-};
+
+
 /*********************************/ 
 const [open, setOpen] = React.useState(false);
 const handleClickOpen = () => {
@@ -213,17 +192,14 @@ ProductItem.propTypes = {
     deleteProduct: PropTypes.func.isRequired,
     addCart:PropTypes.func.isRequired,
     categories: PropTypes.object.isRequired,
-    auth: PropTypes.object.isRequired,
     updateProduct : PropTypes.func.isRequired,
     getMarket: PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
     auth: state.auth,
     market: state.market,
-    updateProduct: state.market,
     categories: state.market,
     product : state.product,
-    updateProduct: state.market,
     markets: state.market,
     cart: state.cart,
     carts: state.cart
