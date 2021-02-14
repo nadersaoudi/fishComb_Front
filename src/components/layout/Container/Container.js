@@ -62,7 +62,7 @@ const Container = () => {
               </Route>
               <Route exact path={`/dashboard/profileuser/:id`} render={props => <Userprofile {...props} />}>
               </Route>
-              <Route exact path="/dashboard/profile">
+              <Route  path="/dashboard/profile">
                 <Profile />
               </Route>
               <Route exact path="/dashboard/search">
