@@ -80,7 +80,7 @@ const Publication = ({
    
    useEffect(() => {
      setFormData({
-         description: loading || !!post?.description ? '' : post.description,
+         description: loading || !!post?.description ? '' : post?.description,
      })// eslint-disable-next-line
    }, [loading])
   /******************************/

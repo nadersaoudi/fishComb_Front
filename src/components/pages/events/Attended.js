@@ -6,6 +6,7 @@ import { Card, Col, Row } from 'react-bootstrap';
 import { Button } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import './Events.css';
+
 const Attended = ({ events: { opted }, optedevent }) => {
     useEffect(() => {
         optedevent()
@@ -16,7 +17,6 @@ const Attended = ({ events: { opted }, optedevent }) => {
         <div>
             <title>Attended events | FishComb</title>
             <Row className=' pb-3 '>
-
 <Col md={1} className='px-0' ></Col>
 <Col md={4} className="pb-4 pt-5 px-0 ">
     <ul className="nav nav-pills nav-justified " id='navprofil'>

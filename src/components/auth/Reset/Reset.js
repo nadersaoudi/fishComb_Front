@@ -22,6 +22,7 @@ const Reset = ({ reset }) => {
 
 return(
     <div>
+        <title>Reset Password | FishComb</title>
     <div className="Reset">
     <div className="row">
     <a href="/" className="img">

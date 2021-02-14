@@ -58,6 +58,7 @@ export default class Register extends Component {
 
         return (
             <div className="Register">
+                <title>Register | FishComb</title>
                 <div className="row">
                 <a href="/" className="img">
           <img src="../../../../dist/img/logofish.png" alt="" /></a>

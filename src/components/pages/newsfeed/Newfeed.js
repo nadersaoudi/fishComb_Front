@@ -10,14 +10,16 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import {Col} from 'react-bootstrap'
 import Moment from 'react-moment';
-const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
+import Spinner from '../Spinner/Spinner'
+import { Fragment } from 'react';
+const NewFeed = ({ Post: { posts,loading }, getPosts,getevents,events:{events} }) => {
   useEffect(() => {
     getPosts()
   }, [getPosts])
   useEffect(() => {
     getevents()
   }, [getevents])
-  return (
+  return loading === true ? <Spinner /> : <Fragment>
     <div className='row pt-5 no-gutters'>
       <title>News Feed | FishComb</title>
       <div className='col-sm-1'></div>
@@ -80,10 +82,10 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
         <div className='col-sm-1'></div>
       </div>
     </div>
+    </Fragment>
 
 
-
-  )
+  
 }
 
 NewFeed.propTypes = {
