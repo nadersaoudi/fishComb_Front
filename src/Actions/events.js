@@ -321,7 +321,7 @@ export const acceptinv = (event_id) => async dispatch => {
     }
     try {
         const res = await axios.post(`api/events/invite/accept`,{event_id}, config) 
-        console.log(res.data)
+        //console.log(res.data)
         dispatch({
         type: ACCEPT_EVENT,
             payload: res.data

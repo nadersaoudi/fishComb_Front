@@ -89,6 +89,7 @@ const onsubmit1 = e => {
 /***************************************/
     return (
         <div>
+            <title>Forum | fishComb</title>
             <Row className='pt-5 mb-4'>
                 <Col md={3}></Col>
                 <Col md={4} style={{display:'contents'}}>
@@ -96,7 +97,7 @@ const onsubmit1 = e => {
                         <ul className="nav">
                             <Col xs={4}>
                                 <li className="nav-item">
-                                    <Link className='nav-link' className="link_cart" to='#' ><span className="n">Latest</span></Link>
+                                   <Button> <Link className='nav-link' className="link_cart" to='#' ><span className="n">Latest</span></Link></Button>
                                 </li>
                             </Col>
                             <Col xs={1}></Col>
@@ -164,6 +165,7 @@ const onsubmit1 = e => {
                                             </Col>
                                         </Row>
                                     </Col>
+                                    
                                 </Row>
                                 <Row className='pt-1 pb-1'>
                                 </Row>

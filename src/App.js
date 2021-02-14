@@ -11,18 +11,11 @@ import {
   Redirect, HashRouter
 } from "react-router-dom";
 import store from "./store";
-import { loadUser } from "./Actions/auth";
-import { getMyinvitations } from './Actions/Friends';
-import { getcategories, Myinvitations } from './Actions/events';
+import { loadUser  } from "./Actions/auth";
 import { Provider } from 'react-redux';
 import ProtectedRoute from "./ProtectedRoute";
-import Cookies from 'js-cookie';
-import { getCategories } from './Actions/Market';
-
-
-
+import  Cookies from 'js-cookie';
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
-
 const App = () => {
   if (Cookies.user) {
     ProtectedRoute(Cookies.user);
@@ -30,10 +23,7 @@ const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
-
-
   return (
-
     <Provider store={store}>
       <HashRouter>
         <React.Suspense fallback={loading()}>
@@ -54,14 +44,12 @@ const App = () => {
               <Dashboard />
             </ProtectedRoute>
             <Route exact path="*">
-              <Redirect exact from="/" to="/dashboard/newsfeed" />
+              <Redirect exact from="/" to="/dashboard/404" />
             </Route>
           </Switch>
         </React.Suspense>
       </HashRouter>
     </Provider>
-
   );
 }
-
 export default App;

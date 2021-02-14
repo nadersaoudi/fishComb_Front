@@ -16,7 +16,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Form from 'react-bootstrap/Form';
 import { NavLink } from 'react-router-dom';
 import Switch from '@material-ui/core/Switch';
-const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addReplies, match ,getReplies , loading}) => {
+const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addReplies, match ,getReplies , loading,reply}) => {
     /***********************************/
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
@@ -89,47 +89,37 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
     /************************************/
     /***********************************/
     return (
+        
         <Fragment>
-            <Row className='pb-2'>
-                <Col xs={12}>
-                    <Row>
-                        <Col xs={8}>
-                            <Card style={{ width: '55rem', marginBottom: '4px',borderRadius:'2px' }}>
-                                <Card.Title className='title_thread mt-2 ml-2'>
-                                    <NavLink to={`/dashboard/thread/${threads.data.id}`} className='threadLink'>
-                                        <b>{threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)} </b>
-                                    </NavLink>
-                                </Card.Title>
-                                <Card.Text className='text_thread ml-3'>
-                                    <Col xs={9}>
-                                        <Row className='pt-2 pb-2'>
-                                            <Col xs={11}>
-                                                <span>{threads && threads.data.body.charAt(0).toUpperCase() + threads.data.body.slice(1)}</span>
-                                            </Col>
-                                        </Row>
-                                    </Col>                       
-                                </Card.Text>
-                                <Row>
-                                    <Col xs={8}></Col>
-                                    <Col xs={4}>
-                                            {user && threads && user.user_id ===   threads.data.user.data.user_id ?
-                                                        <Button className="float-right thread__btn" onClick={handleClickOpen} ><UpdateIcon/>Edit</Button> : (<div></div>)}
-                                            
-                                            {user && threads && user.user_id ===   threads.data.user.data.user_id ?
-                                                <Button className="float-right thread__btn" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button> : (<div></div>)}
-                                            <NavLink to={`/dashboard/thread/${threads.data.id}`}>
-                                                <Button className='float-right thread__btn' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
-                                            </NavLink>
-                                    </Col>
-                                    </Row> 
-                            </Card>
-                        </Col>
-                        <Dialog open={open} onClose={handleClose} >
-                            <form className='addQuestion' onSubmit={e => submit(e)}>
-                                <DialogTitle id="form-dialog-title">Update Question</DialogTitle>
-                                <DialogContent>
-                                    <Row className=" pt-2">
-                                        <Col sm={12} md={12} xl={12}>
+            <title>{threads && threads?.data?.title?.charAt(0).toUpperCase() + threads?.data?.title?.slice(1)} | FishComb</title>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <NavLink to={`/dashboard/thread/${threads.data.id}`} className='threadLink'>
+                         <b className='title__thread'>{threads && threads.data.title.charAt(0).toUpperCase() + threads.data.title.slice(1)} </b>
+                    </NavLink>
+                  </div>
+            <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                    {threads && threads.data.body.charAt(0).toUpperCase() + threads.data.body.slice(1)}
+                        {reply && reply.body.charAt(0).toUpperCase() + reply.body.slice(1)} 
+                    
+                        <footer class="blockquote-footer">{user && threads && user.user_id ===   threads.data.user.data.user_id ?
+                    <Button className="float-right thread__btn" onClick={handleClickOpen} ><UpdateIcon/>Edit</Button> : (<div></div>)}                                     
+                        {user && threads && user.user_id ===   threads.data.user.data.user_id ?
+                      <Button className="float-right thread__btn" onClick={e => deleteTreadh(threads && threads.data.id)}><DeleteIcon />Delete</Button> : (<div></div>)}
+                                        <NavLink to={`/dashboard/thread/${threads.data.id}`}>
+                      <Button className='float-right thread__btn' onClick={e => getReplies(threads && threads.data.id)}>Replies</Button>
+                                         </NavLink>
+                </footer>
+                </blockquote>
+             </div>
+        </div>
+                            <Dialog open={open} onClose={handleClose} >
+                                    <form className='addQuestion' onSubmit={e => submit(e)}>
+                                        <DialogTitle id="form-dialog-title">Update Question</DialogTitle>
+                                    <DialogContent>
+                                            <Row className=" pt-2">
+                                         <Col sm={12} md={12} xl={12}>
                                             <Row>
                                                 <Col xs={2}>
                                                     <Form.Label>Title</Form.Label>
@@ -162,6 +152,7 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
                                                             name="body" value={body} onChange={onbodychange} />
                                                     </Col>
                                                 </Row>
+           
                                             </Form.Group>
                                         </Col>
                                     </Row>
@@ -203,9 +194,9 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
                                 </DialogContent>
                             </form>
                         </Dialog>
-                    </Row>
-                </Col>
-            </Row>
+                    
+                
+            
         </Fragment>
     )
 }

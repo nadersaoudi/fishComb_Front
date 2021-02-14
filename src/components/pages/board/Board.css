@@ -1,6 +1,12 @@
 .title{
     font-weight: 700;
 }
+.title__thread{
+    font-weight: 800;
+}
+.body_reply{
+border-left: 4px solid gray;
+}
 #Button_board{
     border-radius: 0 !important;
     background-color: #202c43 !important;

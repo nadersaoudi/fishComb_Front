@@ -15,8 +15,10 @@ import ProductItem from '../../pages/market/products/ProductItem';
 import Userprofile from '../../pages/profile/Userprofile';
 import Cart from '../../pages/market/Cart/Cart';
 import Replies from '../../pages/board/Replies';
-import Invited from '../../pages/events/Invited'
-import Gallery from '../../pages/events/Gallery'
+import Invited  from '../../pages/events/Invited'
+import Gallery  from '../../pages/events/Gallery'
+import Page500 from '../../auth/500Page/Page500'
+import Page404 from '../../auth/404Page/Page404'
 const Container = () => {
   return (
     <div classes='row no-gutters '>
@@ -68,6 +70,8 @@ const Container = () => {
               </Route>
               <Route path={'/dashboard/thread/:id'} render={props => <Replies {...props} />}>
               </Route>
+              <Route exact path={'/dashboard/404'} name="Page 404" render={props => <Page404 {...props} />} />
+              <Route exact path="/dashboard/500" name="Page 500" render={props => <Page500 {...props} />} />
             </Switch>
           </div>
         </main>

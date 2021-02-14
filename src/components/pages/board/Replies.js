@@ -42,7 +42,7 @@ const { body } = formData;
     }
 /**************************************/
     return (
-       <Fragment>
+       <Fragment><title>{threads && threads?.data?.title?.charAt(0).toUpperCase() + threads?.data?.title?.slice(1)} | FishComb</title>
            <Row className='pt-5 pb-5'>
                <Col xs={2}></Col>
                <Col xs={8} className='pt-4'>
@@ -57,22 +57,22 @@ const { body } = formData;
                             <Col xs={1}></Col>
                             <Col xs={11}>
                                 <Row className='pt-2 pb-2'>
-                                    <Col xs={9}>
-                                        <span>{threads && threads.data.body.charAt(0).toUpperCase() + threads.data.body.slice(1)}</span>
+                                    <Col xs={8}>
+                                        <span >{threads && threads.data.body.charAt(0).toUpperCase() + threads.data.body.slice(1)}</span>
+                                    </Col>
+                                    <Col xs={3}>
+                                        <Image src={threads && threads.data.image}  width="100%" height="150" alt='event' rounded className='product'/>
                                     </Col>
                                 </Row>
-                                <Row className='pt-3 pb-5'>
-                                    <Col XS={1}></Col>
-                                    <Col xs={11}>
-                                        <Image src={threads && threads.data.image}  width="250" height="200" alt='event' rounded className='product'/>
-                                    </Col>
-                                </Row>
+                             
                             </Col>
                         </Row>
                     </Card>
                </Col>
            </Row>
            <Row className='pt-5 pb-5'>
+               <Col xs={1}></Col>
+             <Col xs={10}className='pb-3'><h2>Replies</h2></Col> 
                 <Col xs={2}></Col>
                 <Col xs={8}>
                     {replies && replies.map((replies) =>

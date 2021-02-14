@@ -52,7 +52,6 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
     const onnamechange = e => {
         setname(e.target.value)
     }
-
     const ondescchange = e => {
         setdescription(e.target.value)
     }
@@ -111,6 +110,7 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
     /*********************************/
     return (
         <div>
+            <title>Marketplace | FishComb</title>
             <div>
                 <div className='row'>
                     <div className='col-md-12  mt-5'>

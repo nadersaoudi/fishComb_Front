@@ -10,15 +10,18 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import {Col} from 'react-bootstrap'
 import Moment from 'react-moment';
-const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
+import Spinner from '../Spinner/Spinner'
+import { Fragment } from 'react';
+const NewFeed = ({ Post: { posts,loading }, getPosts,getevents,events:{events} }) => {
   useEffect(() => {
     getPosts()
   }, [getPosts])
   useEffect(() => {
     getevents()
   }, [getevents])
-  return (
+  return loading === true ? <Spinner /> : <Fragment>
     <div className='row pt-5 no-gutters'>
+      <title>News Feed | FishComb</title>
       <div className='col-sm-1'></div>
       <div className='col-sm-6 '>
         <div className='card col-sm-12'>
@@ -33,7 +36,7 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
                                     (
                                         <div class="item" key={event.id}>
                                             <Col>
-                                            <img src={event.cover} width='200px' height='100px'  className='pb-2'/></Col>
+                                            <img src={event.cover} width='200px' height='100px'  className='pb-2' alt="fishcomb"/></Col>
                                            <Col> <p style={{color:'grey'}}>{event.name.charAt(0).toUpperCase() + event.name.slice(1) }</p>
                                             <p  style={{color:'grey'}}><Moment format='MMM Do YY'>{event.date}</Moment></p></Col>
                                             </div>
@@ -79,10 +82,10 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
         <div className='col-sm-1'></div>
       </div>
     </div>
+    </Fragment>
 
 
-
-  )
+  
 }
 
 NewFeed.propTypes = {

@@ -137,12 +137,11 @@ const UpdateThread = ({auth:{user}, thread: {threads}, loading, upadateThread, m
                                             </Form.Group>
                                         </Col>
                                     </Row>
-                                    <Row className=' pt-3'>
+                                    <Row className=' pt-3' >
                                         <Col  sm={12} md={12} xl={12} className="btn-group btn-group-toggle ">
-                                            <input accept="image/*" id="icon-button-file" type="file" onChange={onimagechange} />
+                                            <input accept= "image/*" id="icon-button-file" type="file" onChange={onimagechange} />
                                             { /*<Button variant="outlined" style={{ backgroundColor: '#202c43', color: 'white', borderRadius: '0' }}  >
                                                 <span  >Upload Video </span>
-
                                                 </Button>*/}
                                         </Col>
                                     </Row>
