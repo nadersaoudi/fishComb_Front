@@ -91,6 +91,7 @@ const SingleThread = ({ auth: {user}, threads, deleteTreadh, upadateThread, addR
     return (
         
         <Fragment>
+            <title>{threads && threads?.data?.title?.charAt(0).toUpperCase() + threads?.data?.title?.slice(1)} | FishComb</title>
             <div class="card mb-3">
                 <div class="card-header">
                     <NavLink to={`/dashboard/thread/${threads.data.id}`} className='threadLink'>

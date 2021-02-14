@@ -19,6 +19,7 @@ const NewFeed = ({ Post: { posts }, getPosts,getevents,events:{events} }) => {
   }, [getevents])
   return (
     <div className='row pt-5 no-gutters'>
+      <title>News Feed | FishComb</title>
       <div className='col-sm-1'></div>
       <div className='col-sm-6 '>
         <div className='card col-sm-12'>

@@ -12,6 +12,7 @@ const Invited = ({ events: { inv }, Myinvitations, acceptinv }) => {
 
     return (
         <div>
+            <title>Event invitation | FishComb</title>
  <Row className=' pb-3 '>
 
 <Col md={1} className='px-0' ></Col>

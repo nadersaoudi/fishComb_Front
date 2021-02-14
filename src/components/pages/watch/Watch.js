@@ -24,6 +24,7 @@ const Watch =() => {
       const classes = useStyles();
     return (
         <div>
+            <title>Webinair |FishComb</title>
             <div className="row pt-5" id="n" >
             <div className="col-2">
             </div>

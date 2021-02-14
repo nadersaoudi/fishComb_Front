@@ -131,7 +131,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     }
     return (
         <div>
-            
+            <title>Events | FishComb</title>
               <Row className=' pb-3 '>
 
                     <Col md={1} className='px-0' ></Col>

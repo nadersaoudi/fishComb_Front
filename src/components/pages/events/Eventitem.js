@@ -253,7 +253,9 @@ const Eventitem = ({
         e.target.reset();
     }
     return (
-        <div> {/*****************************Update Dialog*********************************** */}
+        <div>
+            <title>{event?.name} | FishComb</title>
+             {/*****************************Update Dialog*********************************** */}
             <Dialog open={open2}
                 onClose={handleClose2}
                 aria-labelledby="form-dialog-title1" className='dialogForm'>

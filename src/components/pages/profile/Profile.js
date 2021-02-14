@@ -82,6 +82,7 @@ const onsubmit2=e=>{
   const classes = useStyles();
   return (
     <Fragment>
+      <title>{user?.attributes?.first_name.charAt(0).toUpperCase() + user?.attributes?.first_name.slice(1)} {user?.attributes?.last_name.charAt(0).toUpperCase() + user?.attributes?.last_name.slice(1)} |FishComb</title>
     <Row>
     <Col sm={12}>
     <form onSubmit={e=>onsubmit2(e)}>

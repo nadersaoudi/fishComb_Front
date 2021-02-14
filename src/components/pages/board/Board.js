@@ -89,6 +89,7 @@ const onsubmit1 = e => {
 /***************************************/
     return (
         <div>
+            <title>Forum | fishComb</title>
             <Row className='pt-5 mb-4'>
                 <Col md={3}></Col>
                 <Col md={4} style={{display:'contents'}}>

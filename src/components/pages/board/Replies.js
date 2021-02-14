@@ -42,7 +42,7 @@ const { body } = formData;
     }
 /**************************************/
     return (
-       <Fragment>
+       <Fragment><title>{threads && threads?.data?.title?.charAt(0).toUpperCase() + threads?.data?.title?.slice(1)} | FishComb</title>
            <Row className='pt-5 pb-5'>
                <Col xs={2}></Col>
                <Col xs={8} className='pt-4'>

@@ -14,6 +14,7 @@ const Attended = ({ events: { opted }, optedevent }) => {
 
     return (
         <div>
+            <title>Attended events | FishComb</title>
             <Row className=' pb-3 '>
 
 <Col md={1} className='px-0' ></Col>
