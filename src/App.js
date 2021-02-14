@@ -51,7 +51,7 @@ const App = () => {
         <Dashboard />
       </ProtectedRoute>
       <Route exact path="*">
-        <Redirect exact from="/" to="/dashboard/newsfeed" />
+        <Redirect exact from="/" to="/dashboard/404" />
       </Route>
     </Switch>
     </React.Suspense>
