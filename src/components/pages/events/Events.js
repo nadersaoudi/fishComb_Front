@@ -16,10 +16,10 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 import { Link } from 'react-router-dom';
 import { Row, Col,Image } from 'react-bootstrap';
 import Switch from '@material-ui/core/Switch';
+import Spinner from '../Spinner/Spinner'
 
 
-
-const Events = ({ addEvent, getevents, events: { events, categories }, sortEvents, myevents, search }) => {
+const Events = ({ addEvent, getevents, events: { events, categories,loading }, sortEvents, myevents, search }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
@@ -129,7 +129,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
         // console.log(value)
         search(filter, value)
     }
-    return (
+    return loading ===true ? <Spinner /> :
         <div>
             <title>Events | FishComb</title>
               <Row className=' pb-3 '>
@@ -625,7 +625,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                         
                          
 </div>
-    )
+    
 }
 
 
