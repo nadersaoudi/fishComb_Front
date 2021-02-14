@@ -43,14 +43,12 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuList from '@material-ui/core/MenuList';
 import Moment from "react-moment";
-
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up"
         ref={ref}
         {...props} />;
 });
-
 const Eventitem = ({
     match,
     getevent,
@@ -117,15 +115,10 @@ const Eventitem = ({
 
     }, [event && event.previous_event])
 
-
-
-
-
     const [open2, setOpen2] = React.useState(false);
     const handleClose2 = () => {
         setOpen2(false);
     };
-
     const handleOpen2 = () => {
         setOpen2(true);
     };
@@ -136,13 +129,10 @@ const Eventitem = ({
     const handleClose3 = () => {
         setOpen3(false);
     };
-
     const handleOpen3 = () => {
         setOpen3(true);
     };
     const [open, setOpen] = React.useState(false);
-
-
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -514,26 +504,29 @@ const Eventitem = ({
                                                             <Paper>
                                                                 <ClickAwayListener onClickAway={handleClosePoint}>
                                                                     <MenuList autoFocusItem={open1} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                                                        <MenuItem > <Button className='Invite__btn mt-2 pr-3'
-                                                                            onClick={getlink}><IoShareSocialOutline />Share</Button>
+                                                                        <MenuItem >
+                                                                            <Button className='Invite__btn mt-2 pr-3'
+                                                                                onClick={getlink}><IoShareSocialOutline />
+                                                                                Share
+                                                                            </Button>
                                                                         </MenuItem>
-                                                                        <MenuItem >  <Button className='Invite__btn  mt-2'
-                                                                            onClick={handleClickOpen}>
-                                                                            <AddBoxIcon />
-                                                                                    Invite Friends</Button></MenuItem>
+                                                                        <MenuItem>
+                                                                            <Button className='Invite__btn  mt-2'
+                                                                                onClick={handleClickOpen}>
+                                                                                <AddBoxIcon />
+                                                                                    Invite Friends
+                                                                            </Button>
+                                                                        </MenuItem>
                                                                         <MenuItem>{
-                                                                            event && user && user.user_id === event.user.data.user_id ? <Button className='Invite__btn  mt-2' onClick={handleClickOpen2}>
+                                                                                event && user && user.user_id === event.user.data.user_id ? <Button className='Invite__btn  mt-2' onClick={handleClickOpen2}>
                                                                                 <UpdateRoundedIcon />
-                                                                                    Update</Button> : <div></div>
-                                                                        } </MenuItem><MenuItem> {
-                                                                            event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events' className='Invite__btn'>
+                                                                                    Update</Button> : <div></div>} </MenuItem><MenuItem> {
+                                                                                event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events' className='Invite__btn'>
                                                                                 <Button className='Invite__btn  mt-2'
                                                                                     onClick={
-                                                                                        e => deleteEvent(match.params.id)
-                                                                                    }>
+                                                                                        e => deleteEvent(match.params.id)}>
                                                                                     <DeleteOutlineRoundedIcon style={
-                                                                                        { color: '#212529' }
-                                                                                    } />
+                                                                                        { color: '#212529' }} />
                                                                                         Delete</Button>
                                                                             </Link> : <div></div>
                                                                         }</MenuItem><MenuItem>{
@@ -544,10 +537,8 @@ const Eventitem = ({
                                                         </Grow>
                                                     )}
                                                 </Popper>
-                                            
-                          
                                             </div>
-                                            </Col>
+                                        </Col>
                                     </Row>
                                     <div className='row'>
                                         <div className='col-sm-10'>
@@ -558,9 +549,9 @@ const Eventitem = ({
                                             </div>
                                             <div className='row'>
                                                 <div className='col-sm-6 pb-4 pt-3'>
-                                                    <span>{
-                                                        event && event.description
-                                                    }</span>
+                                                    <span>
+                                                        {event && event.description}
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div className='row pb-3'>
@@ -570,8 +561,7 @@ const Eventitem = ({
                                                     </Button> 
                                                     <AvatarGroup max={4} className='pt-2'>
                                                     {event?.participants?.map(participants => (<Avatar alt={participants?.data?.attributes?.name} src={participants?.data?.attributes?.profile_image} />))}
-                                                </AvatarGroup>
-                                                    
+                                                    </AvatarGroup> 
                                                 </div>
                                             </div>
                                         </div>
@@ -579,13 +569,11 @@ const Eventitem = ({
                                     </div>
                                     <div className="bot__section">
                                         <div className='row '>
-                                            {
-                                                event && event.is_subscribed === false ? <div className='col-sm-4' id='attend'>
-                                                    <button onClick={
-                                                        subscribEevent(event.id, 1)
-                                                    }
+                                            {event && event.is_subscribed === false ? <div className='col-sm-4' id='attend'>
+                                                    <button onClick={subscribEevent(event.id, 1)}
                                                         className='btn btn-outline-dark'
-                                                        disabled={disable}>Attend</button>
+                                                        disabled={disable}>Attend
+                                                    </button>
                                                 </div> : <div className='col-sm-4' id='attend'>
                                                         <button disabled={true}
                                                             className='btn btn-outline-dark'>Already subscribed</button>
@@ -598,28 +586,20 @@ const Eventitem = ({
                                                 onClose={handleClose}
                                                 aria-labelledby="alert-dialog-slide-title"
                                                 aria-describedby="alert-dialog-slide-description">
-
                                                 <form onSubmit={
-                                                    e => onsubmit(e)
-                                                }>
+                                                    e => onsubmit(e)}>
                                                     <DialogTitle id="alert-dialog-slide-title">
                                                         {"invite"}</DialogTitle>
-
                                                     <DialogContent>
                                                         <div className='row'>
-
                                                             <FormControl className='input_name' placeholder='Name' margin='dense' type='text'
                                                                 value={uid} /></div>
                                                         <div className='row pt-2'>
-
                                                             <div className='col-md-7 ' id='user_data'>
-
-                                                                {
-                                                                    friends && friends.map((c, index) => (
+                                                                {friends && friends.map((c, index) => (
                                                                         <div className='col-md-6'>
                                                                             <form onSubmit={
-                                                                                e => onsubmit(e)
-                                                                            }>
+                                                                                e => onsubmit(e)}>
                                                                                 <div className='col-md-12 pb-2 mt-1 friends border'>
                                                                                     <div><Avatar className='mt-1'
                                                                                         src={
@@ -716,11 +696,9 @@ const Eventitem = ({
                                                                 { borderRadius: '5px' }
                                                             } /></Col>
                                                 </div>
-
                                             ))
                                         } </OwlCarousel>
                                 </div>
-
                             </Row>
                         </div>
                     </Row>

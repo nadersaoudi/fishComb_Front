@@ -15,8 +15,8 @@ import ProductItem from '../../pages/market/products/ProductItem';
 import Userprofile from '../../pages/profile/Userprofile';
 import Cart from '../../pages/market/Cart/Cart';
 import Replies from '../../pages/board/Replies';
-import Invited  from '../../pages/events/Invited'
-import Gallery  from '../../pages/events/Gallery'
+import Invited from '../../pages/events/Invited'
+import Gallery from '../../pages/events/Gallery'
 const Container = () => {
   return (
     <div classes='row no-gutters '>
@@ -34,7 +34,7 @@ const Container = () => {
                 <Market />
               </Route>
               <Route path={"/dashboard/cart"}> <Cart />
-               
+
               </Route>
               <Route path={`/dashboard/watch`}>
                 <Watch />
@@ -51,9 +51,9 @@ const Container = () => {
               <Route path={`/dashboard/Gallery`}>
                 <Gallery />
               </Route>
-                <Route path={'/dashboard/singleevent/:id'} render={props => <Eventitem {...props} />}>
-                </Route>
-                  <Route path={'/dashboard/singleproduct/:id'} render={props => <ProductItem {...props} />}>
+              <Route path={'/dashboard/singleevent/:id'} render={props => <Eventitem {...props} />}>
+              </Route>
+              <Route path={'/dashboard/singleproduct/:id'} render={props => <ProductItem {...props} />}>
               </Route>
               <Route path={`/dashboard/board`}>
                 <Board />
@@ -68,21 +68,11 @@ const Container = () => {
               </Route>
               <Route path={'/dashboard/thread/:id'} render={props => <Replies {...props} />}>
               </Route>
-             
             </Switch>
-
-
-
-
           </div>
         </main>
-
-
       </div>
     </div>
-
   )
-
-
 }
 export default Container;
