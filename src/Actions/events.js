@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 toast.configure();
 //Add event
 export const addEvent = file => async dispatch => {
-
         const config = {
             headers: {
                 Authorization: 'Bearer ' + Cookies.get('user'),
@@ -13,16 +12,22 @@ export const addEvent = file => async dispatch => {
             }
         }
         try {
-
             const res = await axios.post(`/api/events`,file, config)
-           
+           console.log(res.data)
             dispatch({
                 type: ADD_EVENT,
                 payload: res.data.data,
             })
             toast.success('Event added');
-        } catch (error) {
-            toast.error('Error happened when adding event');
+        } catch (err) {
+            const errors = err.response.data.errors;
+            toast.error(errors.cover[0])
+            toast.error(errors.date[0])
+            toast.error(errors.location[0])
+            toast.error(errors.description[0])
+            toast.error(errors.name[0])
+            
+           
             dispatch({
                 type: EVENT_ERROR,
             });
@@ -98,7 +103,6 @@ export const getcategories = () => async dispatch => {
             type: EVENT_ERROR,
         });
     }
-
 }
 //delete event
 //show single event
@@ -220,7 +224,6 @@ export const invite = (user_id,event_id) => async dispatch => {
             type: EVENT_ERROR,
         });
     }
-
 }
 export const getfriends = () => async dispatch => {
     const config = {
@@ -241,33 +244,29 @@ export const getfriends = () => async dispatch => {
             type: EVENT_ERROR,
         });
     }
-
 }
 //update
 export const update = (file,event_id) => async dispatch => {
-
-        const config = {
-            headers: {
-                Authorization: 'Bearer ' + Cookies.get('user'),
-                'Content-Type': 'multipart/form-data'
-            }
-        }
-        try {
-
-            const res = await axios.post(`/api/events/update/${event_id}`, file , config)
-           
-            dispatch({
-                type: UPDATE_EVENT,
-                payload: res.data.data,
-            })
-            toast.success('Event updated');
-        } catch (error) {
-            toast.error('Error happened when updating event');
-            dispatch({
-                type: EVENT_ERROR,
-            });
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'Content-Type': 'multipart/form-data'
         }
     }
+    try {
+        const res = await axios.post(`/api/events/update/${event_id}`, file , config)
+        dispatch({
+            type: UPDATE_EVENT,
+            payload: res.data.data,
+        })
+        toast.success('Event updated');
+        } catch (error) {
+        toast.error('Error happened when updating event');
+            dispatch({
+                type: EVENT_ERROR,
+        });
+    }
+}
 //search
 export const search = (filter,value) => async dispatch => {
     const config = {

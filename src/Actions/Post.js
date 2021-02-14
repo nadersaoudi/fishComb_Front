@@ -13,7 +13,7 @@ export const getPosts = () => async dispatch => {
     }
     try {
         const res = await axios.post('/api/posts/getaLlposts', {}, config)
-        console.log(res)
+        //console.log(res.data)
         dispatch({
             type: GET_POSTS,
             payload: res.data
@@ -35,10 +35,10 @@ export const addLike = (post_id) => async dispatch => {
     }
     try {
         const res = await axios.post(`/api/posts/like`, { post_id }, config)
-        console.log(res.data)
+        console.log(res.data.like_count)
         dispatch({
             type: UPDATE_LIKES,
-            payload: res.data.data,
+            payload: res.data.like_count,
         })
     } catch (error) {
         dispatch({
@@ -163,7 +163,6 @@ export const addComment = (idpost, formData) => async (dispatch,getState) => {
         });
         toast.error('Comment Error');
     }
-
 }
 //delete Comment 
 export const deleteComment = id => async dispatch => {

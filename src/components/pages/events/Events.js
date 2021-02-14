@@ -44,7 +44,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
     };
     const [name, setname] = useState('')
     const [description, setdescription] = useState('')
-    const [category_id, setcategoryid] = useState('')
+    const [category_id, setcategoryid] = useState(1)
     const [location, setlocation1] = useState('')
     const [date, setdate] = useState('')
     const [video_link, setvideolink] = useState('')
@@ -148,61 +148,78 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             </li>
                         </ul>
                     </Col>
-                        
-        
-          
                     <Col md={5}></Col>
                 </Row>
-                    <Row  className='col-md-12 ' id='body'>
-                    <Col md={2} sm={2} xl={2} className="pb-4">
-                        
+                    <Row  className='pt-3 ' id='body'>
+                        <Col xs={9} md={9}>
+                            <Row className='pt-2 pb-2 px-2 '>
+                                <Col xs={12}>
+                                    <h6><b>Featured</b></h6>
+                                </Col>
+                            </Row>
+                            <Row className='pt-3 pb-4 px-3'>
+                                <Col xs={3}>
+                                    <Image src='https://picsum.photos/id/1/200/300' width="100%" height="180" alt='event' rounded className='product'/>
+                                </Col>
+                                <Col xs={3}>
+                                    <Image src='https://picsum.photos/id/800/200/300' width="100%" height="180" alt='event' rounded className='product'/>
+                                </Col>
+                                <Col xs={3}>
+                                    <Image src='https://picsum.photos/id/500/200/300' width="100%" height="180" alt='event' rounded className='product'/>
+                                </Col>
+                                <Col xs={3}>
+                                    <Image src='https://picsum.photos/id/120/200/300' width="100%" height="180" alt='event' rounded className='product'/> 
+                                </Col>
+                            </Row>
+                            <Row className='px-2'>
+                                <Col xs={12} >
+                                    <h6><b>All Events</b></h6>
+                                </Col>
+                            </Row>
+                            <Row className='pt-3 pb-2 px-3'>
+                                
+                                    {events && events.map((event) =>
+                                        (
+                                            <Single key={event.id} event={event} />)
+                                        )}
+                                
+                            </Row>
                         </Col>
+                        <Col md={3} className='pt-5 mt-2   miniside'>
+                        <form onSubmit={e => onsubmit1(e)}  >
 
-                        <Row>
-                            <Col md={8} className=' pb-4'><h6 className="h66"><b>Featured</b></h6></Col>
-                            
-                        <Row>    
-                        <Col md={2} sm={2} xl={2}> 
-                                <Image src='https://picsum.photos/id/99/200/300'  width="200" height="180" alt='event' rounded className='product'/>
-                                <div className='description'>
-                                    <span>lorem ipsuem</span> <br />
-                                    <span>lorem ipsuem</span> <br />
-                            </div>
-                            </Col> <Col sm={1} md={1}></Col>
-                            <Col md={2} sm={2} xl={2} >
-                            <Image src='https://picsum.photos/id/100/200/300' width="200" height="180" alt='event' rounded className='product'/>
-                                <div className='description'>
+                            <Col md={12} sm={12} xl={12} className="search_event px-0" >
+                                <input type="text" placeholder='Search Event' aria-label="Search"  value={value} onChange={handleChange1} />
+                                <Dropdown isOpen={dropdownOpen} toggle={toggle} >
+                                    <DropdownToggle caret style={{ color: 'black' }}>
+                                    </DropdownToggle>
+                                    <DropdownMenu onChange={handleChange}>
+                                        <DropdownItem onClick={e => setFilter('username')}>By user</DropdownItem>
+                                        <DropdownItem onClick={e => setFilter('name')}>By event title</DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
+                                {/*<RadioGroup  className="radio_input col-md-5" aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
+                                               <FormControlLabel value="username" control={<Radio />} label="By user" />
+                                             </RadioGroup>*/}
+                                <button className="col-2 px-2  header__button" >
+                                    <svg width="19px" height="19px" version="1.1" xmlns="http://www.w3.org/1999/xlink">
+                                        <g id="fishcomb-product-icons-14">
+                                            <path d="M12.2518 1.61932e-15C12.3328 0.0283492 12.4155 0.051191 12.4995 0.0683699C15.6293 0.480702 18.1632 2.82089 18.8306 5.91537C19.498 9.00985 18.1549 12.1912 15.4749 13.8641C12.7948 15.5369 9.35588 15.3404 6.88257 13.3732C6.81668 13.3207 6.74396 13.2752 6.63263 13.1977L0.840723 19L0 18.1978L5.82371 12.3658C5.74646 12.2656 5.68965 12.1858 5.6283 12.106C4.09022 10.1285 3.64051 7.51038 4.43017 5.13067C5.21984 2.75096 7.14415 0.925279 9.55698 0.266643C9.95007 0.157251 10.3545 0.0866019 10.7522 0L12.2518 1.61932e-15ZM11.4884 13.7948C14.0295 13.8077 16.3277 12.2829 17.3102 9.93242C18.2926 7.58189 17.7654 4.86919 15.9748 3.06078C14.1841 1.25238 11.4832 0.704965 9.13291 1.67411C6.78265 2.64325 5.24665 4.93781 5.24202 7.48651C5.24318 10.9531 8.03216 13.7697 11.4884 13.7948L11.4884 13.7948Z" id="Shape" fill="#CDCDCD" stroke="none" />
+                                        </g>
+                                    </svg>
+                                </button>
+                                    {/* <input type="checkbox" value="username" onChange={handleChange} /> by user*/}
 
-                                    <span>lorem ipsuem</span> <br />
-                                    <span>lorem ipsuem</span> <br />
-                              
-                            </div></Col> <Col sm={1} md={1}></Col>
-                            <Col md={2} sm={2} xl={2} >
-                            <Image src='https://picsum.photos/id/77/200/300'  width="200" height="180" alt='event' rounded className='product'/>
-                                    <div className='description'>
-                                        <span>lorem ipsuem</span> <br />
-                                        <span>lorem ipsuem</span> <br />
-                                    </div>
-                             
                             </Col>
-                            <Col sm={1} md={1}></Col>
-                            <Col md={2} sm={2} xl={2} >
-                            <Image src='https://picsum.photos/id/98/200/300' width="200" height="180"alt='event' rounded className='product'/>
-                                    <div className='description'>
-                                        <span>lorem ipsuem</span> <br />
-                                        <span>lorem ipsuem</span> <br />
-                                    </div>
-                               
-                            </Col>
-<Col xl={1}></Col>
-                            <Col xl={1}>
-                            <ul className="nav nav-pills nav-justified " id='navprofil'>
+                        </form>
+                        
+                        <ul className="nav nav-pills nav-justified  mt-3" id='navprofil'>
                             <li className="nav-item">
                                 <form onSubmit={e => submit1(e)}>
                                     
-                                        <Col sm={1} md={1} xl={1}>
-                                            <Col sm={1} md={1} xl={1} className='filtre'>
-                                                <div className='col-xs-2 mr-2'>
+                                        <Col sm={1} md={1} xl={1} >
+                                            <Col sm={1} md={1} xl={1} className='filtre px-0 pt-2'>
+                                                <div className='col-xs-2 mr-2 filterevent'>
                                                     <select value={location1}
                                                         name="location1"
                                                         onChange={e => onchange1(e)} >
@@ -227,36 +244,6 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                 </form>
                             </li>
                         </ul>
-                        <Col md={3} sm={3} xl={3} className='side_min_bar '>
-                        <form onSubmit={e => onsubmit1(e)} >
-                            <Col md={11} sm={11} xl={11} className="header__input px-0" >
-                                <input type="text" placeholder='Search Event' aria-label="Search"  value={value} onChange={handleChange1} />
-                                <button className="col-2 px-0  header__button" >
-                                    <svg width="19px" height="19px" version="1.1" xmlns="http://www.w3.org/1999/xlink">
-                                        <g id="fishcomb-product-icons-14">
-                                            <path d="M12.2518 1.61932e-15C12.3328 0.0283492 12.4155 0.051191 12.4995 0.0683699C15.6293 0.480702 18.1632 2.82089 18.8306 5.91537C19.498 9.00985 18.1549 12.1912 15.4749 13.8641C12.7948 15.5369 9.35588 15.3404 6.88257 13.3732C6.81668 13.3207 6.74396 13.2752 6.63263 13.1977L0.840723 19L0 18.1978L5.82371 12.3658C5.74646 12.2656 5.68965 12.1858 5.6283 12.106C4.09022 10.1285 3.64051 7.51038 4.43017 5.13067C5.21984 2.75096 7.14415 0.925279 9.55698 0.266643C9.95007 0.157251 10.3545 0.0866019 10.7522 0L12.2518 1.61932e-15ZM11.4884 13.7948C14.0295 13.8077 16.3277 12.2829 17.3102 9.93242C18.2926 7.58189 17.7654 4.86919 15.9748 3.06078C14.1841 1.25238 11.4832 0.704965 9.13291 1.67411C6.78265 2.64325 5.24665 4.93781 5.24202 7.48651C5.24318 10.9531 8.03216 13.7697 11.4884 13.7948L11.4884 13.7948Z" id="Shape" fill="#CDCDCD" stroke="none" />
-                                        </g>
-                                    </svg>
-                                </button>
-                                    {/* <input type="checkbox" value="username" onChange={handleChange} /> by user*/}
-                                <Dropdown isOpen={dropdownOpen} toggle={toggle} >
-                                    <DropdownToggle caret style={{ color: 'black' }}>
-                                    </DropdownToggle>
-                                    <DropdownMenu onChange={handleChange}>
-                                        <DropdownItem onClick={e => setFilter('username')}>By user</DropdownItem>
-                                        <DropdownItem onClick={e => setFilter('name')}>By event title</DropdownItem>
-                                    </DropdownMenu>
-                                </Dropdown>
-                                {/*<RadioGroup  className="radio_input col-md-5" aria-label="gender" name="gender1" value={filter} onChange={handleChange}>
-                                               <FormControlLabel value="username" control={<Radio />} label="By user" />
-                                             </RadioGroup>*/}
-                            </Col>
-                        </form>
-                    
-                    </Col> 
-                
-                
-                    <Col md={9}></Col>
                         <div className='row pt-2'>
                             <div className='col-sm-4'>
                             <Button className="event" onClick={myevents}><h6>My Events</h6></Button>
@@ -267,7 +254,10 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                 <Button className="event" onClick={handleClickOpen}><h6>Add Events</h6></Button>
                             </div>
                         </div>
-                        
+                        </Col>
+                        <Row>
+                            <Col></Col>
+                        </Row>
                         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" className='dialogForm'   >
                             <form className='add__event' onSubmit={e => submit(e)}>
                                 <DialogTitle id="form-dialog-title">Add Event</DialogTitle>
@@ -299,6 +289,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                                // placeholder='Category Event'
                                                 value={category_id}
                                                 name="category_id"
+                                                defaultValue='1'
                                                 onChange={oncategorychange}>
                                                 {categories && categories.map(c =>
                                                     (<option key={c.id} value={c.id}>{c.name} </option>)
@@ -628,25 +619,11 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
 
                                 </form>
                             </Dialog>
-                            </Col>
+                            
+                       
                         </Row>
-
-
-                        </Row>
-                              <div className='row'>
-                            <div className='col-md-12 mt-5 mb-3'> <h6 className="h66"><b>All Events</b></h6></div>
-                            <div className='row'>
-                                {events && events.map((event) =>
-                                (
-                                    <Single key={event.id} event={event} />)
-                                )}
-
-                            </div>
-                        </div>
-
-                    </Row>
-                    
-                   
+                        
+                         
 </div>
     )
 }

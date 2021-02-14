@@ -31,65 +31,51 @@ const Login = ({ log, isAuthenticated }) => {
   return (
     <div className="Login">
       <div className="row">
-
-
         <a href="/" className="img">
           <img src="../../../../dist/img/logofish.png" alt="" /></a>
-
       </div>
-      
       <div className='row'>
         <div className='col-sm-3'></div>
         <div className='col-sm-6'>
-        <div className="card col-sm-7 ">
-          <div className="card-body">
-            
-            <form onSubmit={e => onSubmit(e)} className="form-signin">
-            
-              <div className="mb-3  ">
-              </div>
-              <div className="form-group">
-                <div className="row">
-                  <div className="col-sm-12 mb-4 " >
-                    <input type="email" className="form-control log__input" placeholder="Email"
-                      name="login" value={login} onChange={e => onchange(e)} />
-                  </div>
-                  <div className="col-sm-12 mb-4 ">
-                    <input type="password" name="password" className="form-control log__input" placeholder="New Password"
-                      name="password" value={password}
-                      onChange={e => onchange(e)} />
+          <div className="card col-sm-7 ">
+            <div className="card-body">
+              <form onSubmit={e => onSubmit(e)} className="form-signin">
+                <div className="mb-3  ">
+                </div>
+                <div className="form-group">
+                  <div className="row">
+                    <div className="col-sm-12 mb-4 " >
+                      <input type="email" className="form-control log__input" placeholder="Email"
+                        name="login" value={login} onChange={e => onchange(e)} />
+                    </div>
+                    <div className="col-sm-12 mb-4 ">
+                      <input type="password" name="password" className="form-control log__input" placeholder="New Password"
+                        name="password" value={password}
+                        onChange={e => onchange(e)} />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div>
-                <button className="btn btn-primary col-sm-12  log-button" type="submit" value="handleSubmit" >Login</button>
-              </div>
-              <div className="col-sm-12  mt-3 mb-4 span1" >
-                <NavLink to="/reset" className="log__link" > <span>Forget password?</span></NavLink>
-              </div >
-              
-              <hr></hr>
-              <div>
-                <NavLink to="/register">
-                  <button className="btn btn-primary col-sm-12 mt-2 mb-4 log-button1">Create Account</button>
-                </NavLink>
-
-
-              </div>
-
-
-            </form>
-            
+                <div>
+                  <button className="btn btn-primary col-sm-12  log-button" type="submit" value="handleSubmit" >Login</button>
+                </div>
+                <div className="col-sm-12  mt-3 mb-4 span1" >
+                  <NavLink to="/reset" className="log__link" > <span>Forget password?</span></NavLink>
+                </div >
+                <hr></hr>
+                <div>
+                  <NavLink to="/register">
+                    <button className="btn btn-primary col-sm-12 mt-2 mb-4 log-button1">Create Account</button>
+                  </NavLink>
+                </div>
+              </form>
+            </div>
           </div>
-          
-        </div>
         </div>
         <div className='col-3'></div>
       </div>
       <div className='pt-5'></div>
       <Footer />
     </div>
-
   )
 }
 

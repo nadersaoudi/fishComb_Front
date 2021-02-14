@@ -1,11 +1,7 @@
 .form-signin{
 	margin: -10px;
-	align-items: center;
-	
-	
-   
+	align-items: center;  
 }
-
 .Login{
 	width: 100%;
 	padding-top: 10%;
@@ -13,11 +9,8 @@
 }
 .img{
 	margin: 40px auto;
-	width: 220px !important;
-    
+	width: 220px !important;   
 }
-
-
 .card {
 	position: relative;
     display: flex;
@@ -28,24 +21,16 @@
      border-radius: 0 !important;
 	padding: 0.25rem !important;
 }
-
 .log_su{
 	font-size: 12px;
     font-weight: 750;
 }
-
 .log__input{
-	background-color: #F7F8F9 !important;
-	
-
+	background-color: #F7F8F9 !important;	
 }
-
 .log__text{
 	font-size: 11.5px;
-
-	
 }
-
 .log-button{
 	background-color: #323F56 !important;
 	border: 0px solid !important;
@@ -54,37 +39,26 @@
 	font-size: 12px;
 	font-weight: 500;
 	line-height: 20px;
-	text-align: center;
-	
-	
+	text-align: center;	
 }
 
 .log-button:hover{
 	background-color: #00E2C8 !important;
 }
-
-
-
 .btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn {
 	background-color: #F7F8F9 !important;
 	border: 0px solid !important;
-	color: #555 !important; 
-	
+	color: #555 !important; 	
 }
 .btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:hover{
 	background-color: #00E2c8 !important;
-	
 }
-
 .btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:first-child):not(.dropdown-toggle) {
 	margin-left: 10px !important;
 }
-
 .form-control{
-	border-radius: 0 !important;
-	
+	border-radius: 0 !important;	
 }
-
 .log__link{
 	text-align:center;
 	font-size: 15px;

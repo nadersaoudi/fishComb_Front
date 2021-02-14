@@ -14,11 +14,9 @@ import { NavLink } from 'react-router-dom';
 
 
 const SingleComm = (
-
-  { getPosts, auth: { user } , Post: { posts }
-    , updateComment, deleteComment, comments,getUsers
+  { getPosts, auth: { user }, Post: { posts }
+    , updateComment, deleteComment, comments, getUsers
   }) => {
-
   const [hidden, setHidden] = useState(true);
   const [body, setText] = useState("");
   const onclick = () => {
@@ -26,53 +24,53 @@ const SingleComm = (
   }
   const updatecomment = async (id, body) => {
     updateComment(id, body);
+    setHidden(false);
     getPosts()
-    
   };
   return (
     <div className="row pt-1 pb-3" >
       <div className="col-1 mr-4">
         <NavLink to={`/dashboard/profileuser/${comments.user.id}`} >
-        <Avatar src={"http://77.68.24.35/storage/"+comments.user.profile_image.slice(6)}
-         onClick={(e) => getUsers(comments.user.id)} />
-         </NavLink>
+          <Avatar src={"http://77.68.24.35/storage/" + comments.user.profile_image.slice(6)}
+            onClick={(e) => getUsers(comments.user.id)} />
+        </NavLink>
       </div>
       <div className="col-7" id="comment" >
-        {comments.body}
+        {comments.body.charAt(0).toUpperCase() + comments.body.slice(1)}
         <div>
         </div>
       </div>
-      {user &&user.user_id===comments.user_id ? <div className='col-2 '>
-        <Button   variant="outlined" color="primary" onClick={onclick} >
+      {user && user.user_id === comments.user_id ? <div className='col-2 '>
+        <Button variant="outlined" color="primary" onClick={onclick} >
           <EditIcon className='butDelCom' />
         </Button>
-      </div>: <div></div>} 
-      {user && user.user_id===comments.user_id ? <div className='col-1 mr-2'>
-        <Button   variant="outlined" color="secondary" onClick={(e) => deleteComment(comments.id)} >
+      </div> : <div></div>}
+      {user && user.user_id === comments.user_id ? <div className='col-1 mr-2'>
+        <Button variant="outlined" color="secondary" onClick={(e) => deleteComment(comments.id)} >
           <DeleteIcon className='butDelCom' />
         </Button>
-      </div> : <div></div>} 
+      </div> : <div></div>}
       <div className='row pt-2' hidden={hidden}>
         <form
           onSubmit={(e) => {
             e.preventDefault();
             updatecomment(comments.id, { body });
+            setHidden(true);
             getPosts()
             setText("");
           }} >
           <div className="row pt-2  " >
-
             <div className="col-1">
-              <Avatar src={"http://77.68.24.35/storage/"+comments.user.profile_image.slice(6)} />
+              <Avatar src={"http://77.68.24.35/storage/" + comments.user.profile_image.slice(6)} />
             </div>
-            <div className="col-9 pp" >
+            <div className="col-10 pp" >
               <input
                 className=" col-10 comm"
                 type="text"
                 value={body}
                 onChange={(e) => setText(e.target.value)}
               />
-              <button type="submit"  className="b">
+              <button type="submit" className="b">
                 add
                 </button>
             </div>
@@ -80,8 +78,6 @@ const SingleComm = (
         </form>
       </div>
     </div>
-
-
   )
 }
 SingleComm.prototype = {
@@ -95,4 +91,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
   Post: state.Post,
 });
-export default connect(mapStateToProps, { deleteComment, getPosts, updateComment ,getUsers})(SingleComm);
+export default connect(mapStateToProps, { deleteComment, getPosts, updateComment, getUsers })(SingleComm);

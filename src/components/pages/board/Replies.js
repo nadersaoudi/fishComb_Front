@@ -38,7 +38,6 @@ const { body } = formData;
         addReplies(formData, threads.data.id);
         setformData({
             body: ''  
-        
         })
     }
 /**************************************/

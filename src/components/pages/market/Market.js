@@ -218,17 +218,22 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
                                                             </div>
                                                         </div>
                                                         <Row className='pt-3 pb-2'>
-                                                            <Col xs={12}> 
-                                                                <select
-                                                                        className='col-md-12'
-                                                                        // placeholder='Category Event'
-                                                                        value={category_id}
-                                                                        name="category_id"
-                                                                        onChange={oncategorychange}>
-                                                                        {categories && categories.map(c =>
-                                                                            (<option key={c.id} value={c.id}>{c.name} </option>)
-                                                                        )}
-                                                                    </select>
+                                                            <Col xs={12}>
+                                                                <Row>
+                                                                    <Col xs={4}></Col>
+                                                                    <Col xs={8}>
+                                                                        <select
+                                                                            className='col-md-12'
+                                                                            // placeholder='Category Event'
+                                                                            value={category_id}
+                                                                            name="category_id"
+                                                                            onChange={oncategorychange}>
+                                                                            {categories && categories.map(c =>
+                                                                                (<option key={c.id} value={c.id}>{c.name} </option>)
+                                                                            )}
+                                                                        </select>
+                                                                    </Col>
+                                                                    </Row>
                                                             </Col>
                                                         </Row>
                                                         <div className='row pt-3'>
@@ -239,7 +244,7 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
                                                                     </Col>
                                                                     <Col xs={8}>
                                                                         <FormControl
-                                                                            placeholder="Stock"
+                                                                            placeholder="Quantity"
                                                                             className='input_event'
                                                                             margin="dense"
                                                                             name="stock" value={stock} onChange={onstockchange}

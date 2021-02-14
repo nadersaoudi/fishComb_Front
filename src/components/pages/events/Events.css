@@ -1,12 +1,15 @@
 .side_min_bar{
     height: fit-content;
 }
+.miniside{
+border-left: 1px solid #dfdfdf;
+height: 90vh;
+}
 #button_sort{
     width: max-content;
     height: 28px;
     border: none;
     background-color: #F7F8FA;
-    
 }
 .friends{
     display: flex;
@@ -42,7 +45,6 @@ color: #F7F8FA;
     max-height: 100px;
     min-height: 100px;
 }*/
-
 .input_event{
     background-color:#f2f3f3 !important;
     border-radius: 0 !important;
@@ -210,4 +212,28 @@ color: #F7F8FA;
     letter-spacing: 4px;
     border-radius: 0;
     font-family: Montserrat, sans-serif;
+}
+.search_event{
+    display: flex;
+    align-items: center;  
+    background-color: #f2f2f2;
+    height: 20%;
+    border: 1px solid #c9c7c7 ;
+}
+.search_event >input{
+    font-weight: Roboto, medium;
+    outline: 0;
+    background: #f2f2f2;
+    width: 200%;
+    border: 0;   
+    padding: 14px;
+    font-weight: 380;
+    letter-spacing: 0.05;
+}
+.filterevent {
+    display: flex;
+    align-items: center;  
+    background-color: #f2f2f2;
+    height: 20%;
+    border: 1px solid #c9c7c7 ;
 }
