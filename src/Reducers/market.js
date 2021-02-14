@@ -16,6 +16,7 @@ export default function (state = initialState, action){
             return{
                 ...state,
                 markets:payload,
+                loading:false
             }
         case GET_MY_PRODUCTS:
             return{

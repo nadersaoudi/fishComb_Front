@@ -14,11 +14,11 @@ import Form from 'react-bootstrap/Form';
 import './Board.css';
 import { Button } from '@material-ui/core';
 import SingleThread from './SingleThread';
+import Spinner from '../Spinner/Spinner'
 
 
 
-
-const Board =( { categories, getThread, addThread , Thread: {thread}, searchThread, myThreads}) => {
+const Board =( { categories, getThread, addThread , Thread: {thread,loading}, searchThread, myThreads}) => {
     useEffect(() => {
         getThread()
     }, [getThread])
@@ -87,7 +87,7 @@ const onsubmit1 = e => {
     searchThread(filter, value)
 }
 /***************************************/
-    return (
+    return loading ===true ? <Spinner /> :
         <div>
             <title>Forum | fishComb</title>
             <Row className='pt-5 mb-4'>
@@ -204,7 +204,7 @@ const onsubmit1 = e => {
                         </form>
                     </Dialog>
                 </div>
-    )
+    
 }
 Board.prototype={
     categories: PropTypes.object.isRequired,

@@ -26,52 +26,51 @@ const Container = () => {
         <main role="main">
           <div className="main">
             <Switch>
-              <Route path={`/dashboard/newsfeed`}>
+              <Route exact path={`/dashboard/newsfeed`}>
                 <NewFeed />
               </Route>
-              <Route path={`/dashboard/messages`}>
+              <Route exact path={`/dashboard/messages`}>
                 <Message />
               </Route>
-              <Route path={`/dashboard/marketplace`}>
+              <Route exact path={`/dashboard/marketplace`}>
                 <Market />
               </Route>
-              <Route path={"/dashboard/cart"}> <Cart />
-
+              <Route exact path={"/dashboard/cart"}> <Cart />
               </Route>
-              <Route path={`/dashboard/watch`}>
+              <Route exact path={`/dashboard/watch`}>
                 <Watch />
               </Route>
-              <Route path={`/dashboard/events`}>
+              <Route exact path={`/dashboard/events`}>
                 <Events />
               </Route>
-              <Route path={`/dashboard/attendedevent`}>
+              <Route exact path={`/dashboard/attendedevent`}>
                 <Attended />
               </Route>
-              <Route path={`/dashboard/invited`}>
+              <Route exact path={`/dashboard/invited`}>
                 <Invited />
               </Route>
-              <Route path={`/dashboard/Gallery`}>
+              <Route exact path={`/dashboard/Gallery`}>
                 <Gallery />
               </Route>
-              <Route path={'/dashboard/singleevent/:id'} render={props => <Eventitem {...props} />}>
+                <Route exact path={'/dashboard/singleevent/:id'} render={props => <Eventitem {...props} />}>
+                </Route>
+                  <Route exact path={'/dashboard/singleproduct/:id'} render={props => <ProductItem {...props} />}>
               </Route>
-              <Route path={'/dashboard/singleproduct/:id'} render={props => <ProductItem {...props} />}>
-              </Route>
-              <Route path={`/dashboard/board`}>
+              <Route exact path={`/dashboard/board`}>
                 <Board />
               </Route>
-              <Route path={`/dashboard/profileuser/:id`} render={props => <Userprofile {...props} />}>
+              <Route exact path={`/dashboard/profileuser/:id`} render={props => <Userprofile {...props} />}>
               </Route>
-              <Route path="/dashboard/profile">
+              <Route  path="/dashboard/profile">
                 <Profile />
               </Route>
-              <Route path="/dashboard/search">
+              <Route exact path="/dashboard/search">
                 <Searchitem />
               </Route>
-              <Route path={'/dashboard/thread/:id'} render={props => <Replies {...props} />}>
+              <Route exact path={'/dashboard/thread/:id'} render={props => <Replies {...props} />}>
               </Route>
-              <Route exact path={'/dashboard/404'} name="Page 404" render={props => <Page404 {...props} />} />
-              <Route exact path="/dashboard/500" name="Page 500" render={props => <Page500 {...props} />} />
+              <Route  path={'/dashboard/404'}  render={props => <Page404 {...props} />} />
+              <Route  path={'/dashboard/500'}  render={props => <Page500 {...props} />} />
             </Switch>
           </div>
         </main>

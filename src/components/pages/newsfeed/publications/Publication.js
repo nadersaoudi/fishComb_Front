@@ -26,6 +26,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {  NavLink } from "react-router-dom";
+import ReactEmoji from 'react-emoji'
 /*********************************/
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -184,7 +185,7 @@ const Publication = ({
               <div className="col-lg-1"></div>
               <div className="row pt-5">
                 <div className="col-lg-1"></div>
-                <div className="col-lg-10">{posts && posts.data.description}</div>
+                <div className="col-lg-10">{posts && ReactEmoji.emojify(posts.data.description)}</div>
               </div>
               <div className="row pt-3"></div>
               <div className="col-sm-1"></div>

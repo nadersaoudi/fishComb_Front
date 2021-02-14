@@ -25,30 +25,30 @@ const App = () => {
   }, []);
   return (
     <Provider store={store}>
-      <HashRouter>
-        <React.Suspense fallback={loading()}>
-          <Switch>
-            <Route path="/home">
-              <HomePage />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/register">
-              <Register />
-            </Route>
-            <Route path="/reset">
-              <Reset />
-            </Route>
-            <ProtectedRoute path="/dashboard">
-              <Dashboard />
-            </ProtectedRoute>
-            <Route exact path="*">
-              <Redirect exact from="/" to="/dashboard/404" />
-            </Route>
-          </Switch>
-        </React.Suspense>
-      </HashRouter>
+    <HashRouter>
+    <React.Suspense fallback={loading()}>
+    <Switch>
+    <Route path="/home">
+        <HomePage />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/register">
+        <Register />
+      </Route>
+      <Route path="/reset">
+          <Reset />
+        </Route>
+      <ProtectedRoute  path="/dashboard">
+        <Dashboard />
+      </ProtectedRoute>
+      <Route exact path="*">
+        <Redirect exact from="/" to="/dashboard/404" />
+      </Route>
+    </Switch>
+    </React.Suspense>
+    </HashRouter>
     </Provider>
   );
 }
