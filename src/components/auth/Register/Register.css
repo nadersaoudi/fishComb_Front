@@ -53,3 +53,17 @@ body {
 .checked{
 	background-color: #F7F8F9;
 }
+.Button__Minis{
+	background-color: #323F56 !important;
+}
+.Button__Minis:hover{
+	background-color: #00E2C8 !important;
+}
+.navlinkregi{
+	text-decoration: none;
+	color: aliceblue;
+}
+.navlinkregi:hover{
+	text-decoration: none;
+	color: aliceblue;
+}
