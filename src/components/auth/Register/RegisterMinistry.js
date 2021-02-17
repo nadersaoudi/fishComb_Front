@@ -20,7 +20,7 @@ export default class RegisterMinistry extends Component {
             birth_date: this.year+'/'+this.month+'/'+this.day,
             gender: this.gender,
             location: this.location,
-            types:this.type,
+            type: '2',
             username:this.username,
             about: this.about,
             phone:this.phone,
