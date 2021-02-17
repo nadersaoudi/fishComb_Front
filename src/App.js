@@ -3,8 +3,10 @@ import './App.css';
 import Dashboard from './components/pages/Dashboard/Dashboard'
 import Login from './components/auth/login/Login';
 import Reset from './components/auth/Reset/Reset';
-import Register from './components/auth/Register/Register';
+import RegisterTypes from './components/auth/Register/RegisterTypes';
 import HomePage from './components/auth/HomePage/HomePage';
+import RegisterMinistry from './components/auth/Register/RegisterMinistry';
+import RegisterUser from './components/auth/Register/RegisterUser';
 import {
   Switch,
   Route,
@@ -35,11 +37,17 @@ const App = () => {
         <Login />
       </Route>
       <Route path="/register">
-        <Register />
+        <RegisterTypes />
+      </Route>
+      <Route path="/ministryregister">
+          <RegisterMinistry />
+      </Route>
+      <Route path="/userregister">
+        <RegisterUser />
       </Route>
       <Route path="/reset">
           <Reset />
-        </Route>
+      </Route>
       <ProtectedRoute  path="/dashboard">
         <Dashboard />
       </ProtectedRoute>

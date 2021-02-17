@@ -80,7 +80,6 @@ export const getevent = (eventID) => async dispatch => {
             type: EVENT_ERROR,
         });
     }
-
 }
 ///get categories
 export const getcategories = () => async dispatch => {

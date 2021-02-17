@@ -68,11 +68,10 @@ const SingleComm = (
                 className=" col-10 comm"
                 type="text"
                 value={body}
-                onChange={(e) => setText(e.target.value)}
-              />
+                onChange={(e) => setText(e.target.value)} />
               <button type="submit" className="b">
                 add
-                </button>
+              </button>
             </div>
           </div>
         </form>
