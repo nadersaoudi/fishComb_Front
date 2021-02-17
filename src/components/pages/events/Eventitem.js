@@ -24,7 +24,6 @@ import {
 } from '@material-ui/core'
 import { FormControl } from 'react-bootstrap'
 import Button from '@material-ui/core/Button';
-import { ReactTinyLink } from 'react-tiny-link';
 import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
@@ -242,6 +241,15 @@ const Eventitem = ({
         update(file, event.id)
         e.target.reset();
     }
+    const [open5, setOpen5] = React.useState(false);
+
+    const handleClickOpen5 = () => {
+      setOpen5(true);
+    };
+  
+    const handleClose5 = () => {
+      setOpen5(false);
+    };
     return (
         <div>
             <title>{event?.name} | FishComb</title>
@@ -558,12 +566,28 @@ const Eventitem = ({
                                             </div>
                                             <div className='row pb-3'>
                                                 <div className='col-sm-5 pb-4'>
-                                                    <Button>
+                                                    <Button onClick={handleClickOpen5}>
                                                         Participants {event && event.participants.length}
                                                     </Button> 
                                                     <AvatarGroup max={4} className='pt-2'>
                                                     {event?.participants?.map(participants => (<Avatar alt={participants?.data?.attributes?.name} src={participants?.data?.attributes?.profile_image} />))}
                                                     </AvatarGroup> 
+                                                    <Dialog fullWidth  align='center'
+                                                                        open={open5}
+                                                                        onClose={handleClose5}
+                                                                        aria-labelledby="alert-dialog-title"
+                                                                        aria-describedby="alert-dialog-description"
+                                                                    >
+                                                                        <DialogTitle id="alert-dialog-title">{"Participants                                      "}</DialogTitle>
+                                                                        <DialogContent>
+                                                                            <Row >
+                                                                                <Col sm={3} >{event?.participants?.map(participants =>(<Avatar alt={participants?.data?.attributes?.name} src={participants?.data?.attributes?.profile_image} />))}
+                                                                            </Col>
+                                                                        
+                                                                            <Col sm={6}>{event?.participants?.map(participants =>(<div className='pt-2'>{participants?.data?.attributes?.name}</div> ))}</Col>
+                                                                            </Row>
+                                                                        </DialogContent>
+                                                                    </Dialog>
                                                 </div>
                                             </div>
                                         </div>
