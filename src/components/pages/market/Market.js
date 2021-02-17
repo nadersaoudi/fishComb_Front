@@ -146,21 +146,24 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories,load
                                     </button>
                                 </div>
                             </form>
+                            { user.attributes.type ===2 ?
                             <div className='row pt-2'>
                                 <div className='col-sm-4'>
                                     <Button className='marketbotton ' onClick={handleClickOpen1}><h6>Your Account</h6></Button>
                                 </div>
-                            </div>
+                                </div>:<div></div>}
+                            { user.attributes.type ===2 ?
                             <div className='row pt-2'>
                                 <div className='col-sm-4'>
                                     <Button className='marketbotton' onClick={handleClickOpen}><h6>Add Product</h6></Button>
                                 </div>
-                            </div>
+                            </div>:<div></div>}
+                            { user.attributes.type ===2 ?
                             <div className='row pt-2'>
                                 <div className='col-sm-4'>
                                     <Button className='marketbotton' onClick={myProduct} ><h6>My Product</h6></Button>
                                 </div>
-                            </div>
+                                </div>:<div></div>}
                         </div>
                         <Dialog className='addProduct'>
                             <YourAccount />
