@@ -128,7 +128,7 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
                                 <li className="col-sm-7">
                                 </li>
                                 <li className='nav-item'>
-                                    <button className='btn btn-outline-dark button__cart'><NavLink to={'/dashboard/cart'} className="link__cart"><span className='cart__span'>Basket <IoBasketSharp />{cart && cart.carts ? <div>{cart.carts.length}</div> : <div></div>}</span></NavLink> </button>
+                                    <button className='btn btn-outline-dark button__cart'><NavLink to={'/dashboard/cart'} className="link__cart"><span className='cart__span'>Basket <IoBasketSharp />{cart && cart.carts ? <span>{cart.carts.length}</span> : <div></div>}</span></NavLink> </button>
                                 </li>
                             </ul>
                         </div>
@@ -136,7 +136,7 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
                     <div className='row pt-4'>
                         <div className='col-md-3  side_min_bar'>
                             <form onSubmit={e => onsubmit1(e)} >
-                                <div className="col-sm-11 px-0 header__input" >
+                                <div className="col-sm-12 px-0 header__input" >
                                     <input type="text" placeholder='Search Product' aria-label="Search" value={value} onChange={handleChange1} />
                                     <button className="col-sm-2  header__button" >
                                         <svg width="19px" height="19px" version="1.1" xmlns="http://www.w3.org/1999/xlink">
@@ -147,19 +147,19 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
                                     </button>
                                 </div>
                             </form>
-                            <div className='row pt-2'>
-                                <div className='col-sm-4'>
-                                    <Button className='marketbotton ' onClick={handleClickOpen1}><h6>Your Account</h6></Button>
+                            <div className='row pt-2 mx-1'>
+                                <div className='col-sm-12 marketbtn px-0 '>
+                                    <Button className='marketbtn' onClick={handleClickOpen1}><h6>Your Account</h6></Button>
                                 </div>
                             </div>
-                            <div className='row pt-2'>
-                                <div className='col-sm-4'>
-                                    <Button className='marketbotton' onClick={handleClickOpen}><h6>Add Product</h6></Button>
+                            <div className='row pt-2 mx-1'>
+                                <div className='col-sm-12 px-0 marketbtn'>
+                                    <Button className='marketbtn' onClick={handleClickOpen}><h6>Add Product</h6></Button>
                                 </div>
                             </div>
-                            <div className='row pt-2'>
-                                <div className='col-sm-4'>
-                                    <Button className='marketbotton' onClick={myProduct} ><h6>My Product</h6></Button>
+                            <div className='row pt-2 mx-1'>
+                                <div className='col-sm-12 px-0 marketbtn'>
+                                    <Button className='marketbtn' onClick={myProduct} ><h6>My Product</h6></Button>
                                 </div>
                             </div>
                         </div>

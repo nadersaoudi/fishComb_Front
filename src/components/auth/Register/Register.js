@@ -5,11 +5,12 @@ import {Redirect} from "react-router-dom";
 import { toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "../../layout/Footer/Footer"
+
+
 export default class Register extends Component {
-    state = {}
-    
+
+    state = {}    
     handleSubmit = e => {
-           
         e.preventDefault();
         toast.configure();
 
@@ -73,20 +74,23 @@ export default class Register extends Component {
                             </div>
                             <div className="form-group">
                                 <div className="row">
+                                  
                                     <div className="col-sm-6 mb-3 ">
                                         <input type="text" className="form-control reg__input" placeholder="First Name"
                                                onChange={e => this.firstname = e.target.value}/>
                                     </div>
+       
                                     <div className="col-sm-6 mb-3 ">
                                         <input type="text" className="form-control reg__input" placeholder="Last Name"
                                                onChange={e => this.lastname = e.target.value}/>
                                     </div>
+       
                                     <div className="col-sm-12 mb-3 ">
                                         <input type="email" className="form-control reg__input" placeholder="Email"
                                                onChange={e => this.email = e.target.value}/>
                                     </div>
-                                    <div className="col-sm-12 mb-3 ">
-                                       
+       
+                                    <div className="col-sm-12 mb-3 ">                                
                                  <select id="country" name="country" className="form-control reg__input" onChange={e => this.location = e.target.value}>
                                         <option value='default'>Location</option>
                                         <option value="Afganistan" className='reg__input'>Afghanistan</option>

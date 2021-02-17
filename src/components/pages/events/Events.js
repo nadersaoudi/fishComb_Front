@@ -217,7 +217,7 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                             <li className="nav-item">
                                 <form onSubmit={e => submit1(e)}>
                                     
-                                        <Col sm={1} md={1} xl={1} >
+                                        <Col sm={1} md={1} xl={1} className='px-0' >
                                             <Col sm={1} md={1} xl={1} className='filtre px-0 pt-2'>
                                                 <div className='col-xs-2 mr-2 filterevent'>
                                                     <select value={location1}
@@ -244,14 +244,14 @@ const Events = ({ addEvent, getevents, events: { events, categories }, sortEvent
                                 </form>
                             </li>
                         </ul>
-                        <div className='row pt-2'>
-                            <div className='col-sm-4'>
-                            <Button className="event" onClick={myevents}><h6>My Events</h6></Button>
+                        <div className='row pt-2 ml-1 mr-1'>
+                            <div className='col-sm-12 px-0 eventbtn'>
+                            <Button className="eventbtn" onClick={myevents}><h6>My Events</h6></Button>
                             </div>
                         </div>
-                        <div className='row pt-2'>
-                            <div className='col-sm-4'>
-                                <Button className="event" onClick={handleClickOpen}><h6>Add Events</h6></Button>
+                        <div className='row pt-2 mx-1'>
+                            <div className='col-sm-12 px-0 eventbtn'>
+                                <Button className="eventbtn" onClick={handleClickOpen}><h6>Add Events</h6></Button>
                             </div>
                         </div>
                         </Col>
