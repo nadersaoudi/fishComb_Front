@@ -401,7 +401,7 @@ const Eventitem = ({
                         <li className="nav-item">
                             <Link to={`/dashboard/events`}
                                 className="link_cart">
-                                <span className="n">General event</span>
+                                <span className="n">General Event</span>
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -706,8 +706,6 @@ const Eventitem = ({
                     </Row>
                 </Col>
             </Row>
-
-
         </div>
     )
 }; Eventitem.propTypes = {
@@ -721,7 +719,6 @@ const Eventitem = ({
     update: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     getevents: PropTypes.func.isRequired
-
 }
 const mapStateToProps = state => ({ events: state.events, auth: state.auth, categories: state.categories })
 export default connect(mapStateToProps, {
