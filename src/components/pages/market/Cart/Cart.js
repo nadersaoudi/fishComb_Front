@@ -20,6 +20,7 @@ const [hidden,sethidden]=useState(true)
 /******************************/ 
 return (
     <Fragment>
+        <title>Shopping cart | FishComb</title>
         <Row className='pt-5 pb-5 '>
             <Col sm={2} ></Col>
             <Col sm={9} className='card__shop'>

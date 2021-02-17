@@ -30,6 +30,7 @@ const Login = ({ log, isAuthenticated }) => {
   };
   return (
     <div className="Login">
+      <title>Login | FishComb</title>
       <div className="row">
         <a href="/" className="img">
           <img src="../../../../dist/img/logofish.png" alt="" /></a>

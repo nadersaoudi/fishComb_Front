@@ -24,7 +24,6 @@ import {
 } from '@material-ui/core'
 import { FormControl } from 'react-bootstrap'
 import Button from '@material-ui/core/Button';
-import { ReactTinyLink } from 'react-tiny-link';
 import UpdateRoundedIcon from '@material-ui/icons/UpdateRounded';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
@@ -43,14 +42,12 @@ import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuList from '@material-ui/core/MenuList';
 import Moment from "react-moment";
-
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up"
         ref={ref}
         {...props} />;
 });
-
 const Eventitem = ({
     match,
     getevent,
@@ -117,15 +114,10 @@ const Eventitem = ({
 
     }, [event && event.previous_event])
 
-
-
-
-
     const [open2, setOpen2] = React.useState(false);
     const handleClose2 = () => {
         setOpen2(false);
     };
-
     const handleOpen2 = () => {
         setOpen2(true);
     };
@@ -136,13 +128,10 @@ const Eventitem = ({
     const handleClose3 = () => {
         setOpen3(false);
     };
-
     const handleOpen3 = () => {
         setOpen3(true);
     };
     const [open, setOpen] = React.useState(false);
-
-
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -197,30 +186,30 @@ const Eventitem = ({
         setStatus(e.target.value)
     }
     useEffect(() => {
-        setlocation1(loading || !!event && !event?.location ? '' : event?.location)
+        setlocation1(loading ||  !event?.location ? '' : event?.location)
     }, [loading])
     useEffect(() => {
-        setname(loading || !!event && !event?.name ? '' : event?.name)
+        setname(loading ||  !event?.name ? '' : event?.name)
     }, [loading])
     useEffect(() => {
-        setdescription(loading || !!event && !event?.description ? '' : event?.description)
+        setdescription(loading ||  !event?.description ? '' : event?.description)
     }, [loading])
-    useEffect(() => { }, [loading])
+    
     useEffect(() => {
-        setvideolink(loading || !!event && !event?.video_link ? '' : event?.video_link)
-    }, [loading])
-    useEffect(() => {
-        setStatus(loading || !!event && !event?.status ? 1 : event?.status)
+        setvideolink(loading || !event?.video_link ? '' : event?.video_link)
     }, [loading])
     useEffect(() => {
-        setdate(loading || !!event && !event?.date ? '' : event?.date)
+        setStatus(loading || !event?.status ? 1 : event?.status)
     }, [loading])
     useEffect(() => {
-        setcover(loading || !!event && !event?.cover ? '' : event?.cover)
+        setdate(loading || !event?.date ? '' : event?.date)
+    }, [loading])
+    useEffect(() => {
+        setcover(loading || !event?.cover ? '' : event?.cover)
 
     }, [loading])
     useEffect(() => {
-        setCategory_id(loading || !!event && !event?.category.id ? '' : event?.category.id)
+        setCategory_id(loading || !event?.category.id ? '' : event?.category.id)
 
     }, [loading])
     const handleswitch = (event) => {
@@ -252,8 +241,19 @@ const Eventitem = ({
         update(file, event.id)
         e.target.reset();
     }
+    const [open5, setOpen5] = React.useState(false);
+
+    const handleClickOpen5 = () => {
+      setOpen5(true);
+    };
+  
+    const handleClose5 = () => {
+      setOpen5(false);
+    };
     return (
-        <div> {/*****************************Update Dialog*********************************** */}
+        <div>
+            <title>{event?.name} | FishComb</title>
+             {/*****************************Update Dialog*********************************** */}
             <Dialog open={open2}
                 onClose={handleClose2}
                 aria-labelledby="form-dialog-title1" className='dialogForm'>
@@ -409,7 +409,7 @@ const Eventitem = ({
                         <li className="nav-item">
                             <Link to={`/dashboard/events`}
                                 className="link_cart">
-                                <span className="n">General event</span>
+                                <span className="n">General Event</span>
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -514,26 +514,29 @@ const Eventitem = ({
                                                             <Paper>
                                                                 <ClickAwayListener onClickAway={handleClosePoint}>
                                                                     <MenuList autoFocusItem={open1} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                                                        <MenuItem > <Button className='Invite__btn mt-2 pr-3'
-                                                                            onClick={getlink}><IoShareSocialOutline />Share</Button>
+                                                                        <MenuItem >
+                                                                            <Button className='Invite__btn mt-2 pr-3'
+                                                                                onClick={getlink}><IoShareSocialOutline />
+                                                                                Share
+                                                                            </Button>
                                                                         </MenuItem>
-                                                                        <MenuItem >  <Button className='Invite__btn  mt-2'
-                                                                            onClick={handleClickOpen}>
-                                                                            <AddBoxIcon />
-                                                                                    Invite Friends</Button></MenuItem>
+                                                                        <MenuItem>
+                                                                            <Button className='Invite__btn  mt-2'
+                                                                                onClick={handleClickOpen}>
+                                                                                <AddBoxIcon />
+                                                                                    Invite Friends
+                                                                            </Button>
+                                                                        </MenuItem>
                                                                         <MenuItem>{
-                                                                            event && user && user.user_id === event.user.data.user_id ? <Button className='Invite__btn  mt-2' onClick={handleClickOpen2}>
+                                                                                event && user && user.user_id === event.user.data.user_id ? <Button className='Invite__btn  mt-2' onClick={handleClickOpen2}>
                                                                                 <UpdateRoundedIcon />
-                                                                                    Update</Button> : <div></div>
-                                                                        } </MenuItem><MenuItem> {
-                                                                            event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events' className='Invite__btn'>
+                                                                                    Update</Button> : <div></div>} </MenuItem><MenuItem> {
+                                                                                event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events' className='Invite__btn'>
                                                                                 <Button className='Invite__btn  mt-2'
                                                                                     onClick={
-                                                                                        e => deleteEvent(match.params.id)
-                                                                                    }>
+                                                                                        e => deleteEvent(match.params.id)}>
                                                                                     <DeleteOutlineRoundedIcon style={
-                                                                                        { color: '#212529' }
-                                                                                    } />
+                                                                                        { color: '#212529' }} />
                                                                                         Delete</Button>
                                                                             </Link> : <div></div>
                                                                         }</MenuItem><MenuItem>{
@@ -544,10 +547,8 @@ const Eventitem = ({
                                                         </Grow>
                                                     )}
                                                 </Popper>
-                                            
-                          
                                             </div>
-                                            </Col>
+                                        </Col>
                                     </Row>
                                     <div className='row'>
                                         <div className='col-sm-10'>
@@ -558,20 +559,35 @@ const Eventitem = ({
                                             </div>
                                             <div className='row'>
                                                 <div className='col-sm-6 pb-4 pt-3'>
-                                                    <span>{
-                                                        event && event.description
-                                                    }</span>
+                                                    <span>
+                                                        {event && event.description}
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div className='row pb-3'>
                                                 <div className='col-sm-5 pb-4'>
-                                                    <Button>
+                                                    <Button onClick={handleClickOpen5}>
                                                         Participants {event && event.participants.length}
                                                     </Button> 
                                                     <AvatarGroup max={4} className='pt-2'>
                                                     {event?.participants?.map(participants => (<Avatar alt={participants?.data?.attributes?.name} src={participants?.data?.attributes?.profile_image} />))}
-                                                </AvatarGroup>
-                                                    
+                                                    </AvatarGroup> 
+                                                    <Dialog fullWidth  align='center'
+                                                                        open={open5}
+                                                                        onClose={handleClose5}
+                                                                        aria-labelledby="alert-dialog-title"
+                                                                        aria-describedby="alert-dialog-description"
+                                                                    >
+                                                                        <DialogTitle id="alert-dialog-title">{"Participants                                      "}</DialogTitle>
+                                                                        <DialogContent>
+                                                                            <Row >
+                                                                                <Col sm={3} >{event?.participants?.map(participants =>(<Avatar alt={participants?.data?.attributes?.name} src={participants?.data?.attributes?.profile_image} />))}
+                                                                            </Col>
+                                                                        
+                                                                            <Col sm={6}>{event?.participants?.map(participants =>(<div className='pt-2'>{participants?.data?.attributes?.name}</div> ))}</Col>
+                                                                            </Row>
+                                                                        </DialogContent>
+                                                                    </Dialog>
                                                 </div>
                                             </div>
                                         </div>
@@ -579,13 +595,11 @@ const Eventitem = ({
                                     </div>
                                     <div className="bot__section">
                                         <div className='row '>
-                                            {
-                                                event && event.is_subscribed === false ? <div className='col-sm-4' id='attend'>
-                                                    <button onClick={
-                                                        subscribEevent(event.id, 1)
-                                                    }
+                                            {event && event.is_subscribed === false ? <div className='col-sm-4' id='attend'>
+                                                    <button onClick={subscribEevent(event.id, 1)}
                                                         className='btn btn-outline-dark'
-                                                        disabled={disable}>Attend</button>
+                                                        disabled={disable}>Attend
+                                                    </button>
                                                 </div> : <div className='col-sm-4' id='attend'>
                                                         <button disabled={true}
                                                             className='btn btn-outline-dark'>Already subscribed</button>
@@ -598,28 +612,20 @@ const Eventitem = ({
                                                 onClose={handleClose}
                                                 aria-labelledby="alert-dialog-slide-title"
                                                 aria-describedby="alert-dialog-slide-description">
-
                                                 <form onSubmit={
-                                                    e => onsubmit(e)
-                                                }>
+                                                    e => onsubmit(e)}>
                                                     <DialogTitle id="alert-dialog-slide-title">
                                                         {"invite"}</DialogTitle>
-
                                                     <DialogContent>
                                                         <div className='row'>
-
                                                             <FormControl className='input_name' placeholder='Name' margin='dense' type='text'
                                                                 value={uid} /></div>
                                                         <div className='row pt-2'>
-
                                                             <div className='col-md-7 ' id='user_data'>
-
-                                                                {
-                                                                    friends && friends.map((c, index) => (
+                                                                {friends && friends.map((c, index) => (
                                                                         <div className='col-md-6'>
                                                                             <form onSubmit={
-                                                                                e => onsubmit(e)
-                                                                            }>
+                                                                                e => onsubmit(e)}>
                                                                                 <div className='col-md-12 pb-2 mt-1 friends border'>
                                                                                     <div><Avatar className='mt-1'
                                                                                         src={
@@ -716,18 +722,14 @@ const Eventitem = ({
                                                                 { borderRadius: '5px' }
                                                             } /></Col>
                                                 </div>
-
                                             ))
                                         } </OwlCarousel>
                                 </div>
-
                             </Row>
                         </div>
                     </Row>
                 </Col>
             </Row>
-
-
         </div>
     )
 }; Eventitem.propTypes = {
@@ -741,7 +743,6 @@ const Eventitem = ({
     update: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     getevents: PropTypes.func.isRequired
-
 }
 const mapStateToProps = state => ({ events: state.events, auth: state.auth, categories: state.categories })
 export default connect(mapStateToProps, {

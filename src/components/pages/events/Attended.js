@@ -6,6 +6,7 @@ import { Card, Col, Row } from 'react-bootstrap';
 import { Button } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import './Events.css';
+
 const Attended = ({ events: { opted }, optedevent }) => {
     useEffect(() => {
         optedevent()
@@ -14,22 +15,24 @@ const Attended = ({ events: { opted }, optedevent }) => {
 
     return (
         <div>
-            <Row className='pt-5 pb-3'>
-                    <Col md={3} className='px-0' ></Col>
-                    <Col md={4} className="pb-4 px-0 mr-5">
-                        <ul className="nav nav-pills nav-justified " id='navprofil'>
-                            <li className="nav-item">
-                                <Link to={`/dashboard/events`} className="link_cart"><span className='n' >All Events</span></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={`/dashboard/invited`} className="link_cart"><span  className='n'>Invited Events</span></Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={`/dashboard/attendedevent`} className="link_cart"><span  className='n'>Attending</span></Link>
-                            </li>
-                        </ul>
-                    </Col>
-                </Row>
+            <title>Attended events | FishComb</title>
+            <Row className=' pb-3 '>
+<Col md={1} className='px-0' ></Col>
+<Col md={4} className="pb-4 pt-5 px-0 ">
+    <ul className="nav nav-pills nav-justified " id='navprofil'>
+        <li className="nav-item">
+            <Link to={`/dashboard/events`} className="link_cart"><span className='n' >All Events</span></Link>
+        </li>
+        <li className="nav-item">
+            <Link to={`/dashboard/invited`} className="link_cart"><span  className='n'>Invited Events</span></Link>
+        </li>
+        <li className="nav-item">
+            <Link to={`/dashboard/attendedevent`} className="link_cart"><span  className='n'>Attending</span></Link>
+        </li>
+    </ul>
+</Col>
+<Col md={5}></Col>
+</Row>
             <Row className='pt-5 '>
             {opted && opted.map((opted) =>
             (

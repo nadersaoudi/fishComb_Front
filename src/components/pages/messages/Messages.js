@@ -6,6 +6,7 @@ import './Message.css';
 const Message =() => {
     return (
         <div>
+          <title>Messages | FishComb</title>
           <Row className='pt-5'></Row>
           <Row className='pt-2'>
           <Col md={3} sm={3} xl={3} className='side_min_bar'>

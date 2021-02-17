@@ -12,7 +12,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import "./Publication.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { ReactTinyLink } from "react-tiny-link";
 import ReactPlayer from 'react-player';
 import Moment from "react-moment";
 import {
@@ -27,6 +26,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {  NavLink } from "react-router-dom";
+import ReactEmoji from 'react-emoji'
 /*********************************/
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,10 +78,11 @@ const Publication = ({
      console.log('aaaaa');
      updatePost(formdata ,post.id);
    }
+   
    useEffect(() => {
      setFormData({
-         description: loading || !!post.description ? '' : post.description,
-     })
+         description: loading || !!post?.description ? '' : post?.description,
+     })// eslint-disable-next-line
    }, [loading])
   /******************************/
   const classes = useStyles();
@@ -184,7 +185,7 @@ const Publication = ({
               <div className="col-lg-1"></div>
               <div className="row pt-5">
                 <div className="col-lg-1"></div>
-                <div className="col-lg-10">{posts && posts.data.description}</div>
+                <div className="col-lg-10">{posts && ReactEmoji.emojify(posts.data.description)}</div>
               </div>
               <div className="row pt-3"></div>
               <div className="col-sm-1"></div>
@@ -329,8 +330,6 @@ Publication.prototype = {
   getPosts: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
   getUsers : PropTypes.func.isRequired,
-  Post: PropTypes.object.isRequired,
-  getPosts: PropTypes.func.isRequired,
   updatePost: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({

@@ -84,7 +84,6 @@ const Header = ({
             <header className="main-header row  pt-4 pb-5 ">
                 <div className="col-sm-2   pi">
                     <a href="/#/dashboard/newsfeed" className="logo flex-center">
-
                         <svg width="37px" height="39px" version="1.1" xmlns="http://www.w3.org/2000/svg">
                             <defs>
                                 <linearGradient x1="0.15688919" y1="0.84793705" x2="0.70083094" y2="-0.2158695" id="gradient_1">
@@ -118,7 +117,6 @@ const Header = ({
                                 </g>
                             </g>
                         </svg>
-
                     </a>
                 </div>
                 <form className="col-sm-5 px-0  header__input"
@@ -130,7 +128,6 @@ const Header = ({
                         }
                     }>
                     <div className="col-sm px-0  header__input">
-
                         <input type="text" placeholder='Search Fishcomb' aria-label="Search"
                             value={uid}
                             onChange={
@@ -160,7 +157,6 @@ const Header = ({
                                 classes.large
                             } />
                     </div>
-
                     <div className="col-sm-6 pt-3">
                         <Link to={`/dashboard/profile/about`}
                             className='lin'>
@@ -194,6 +190,7 @@ const Header = ({
                                         top: 140,
                                         right: 50,
                                         borderRadius: '0',
+                                        background: 'white',
                                     }}>
                                     {inv && inv.map(e => <div key={e.id}>
                                         <Toast.Body>
@@ -257,8 +254,8 @@ const Header = ({
                                         right: 40,
                                         width: '425px',
                                         height: 'auto',
-                                        borderRadius: '0'
-
+                                        borderRadius: '0',
+                                        background: 'white'
                                     }
                                 }>
                                     <Toast.Body>
@@ -295,13 +292,13 @@ const Header = ({
                                 }>
                                 <Toast style={
                                     {
+                                        background: 'white',
                                         position: 'fixed',
                                         top: 140,
                                         right: 40,
                                         width: '200px',
                                         height: ' 130px',
                                         borderRadius: '0'
-
                                     }
                                 }>
                                     <Toast.Body>

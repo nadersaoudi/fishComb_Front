@@ -11,7 +11,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import Button from '@material-ui/core/Button';
 import { getUsers } from '../../../../Actions/profile';
 import { NavLink } from 'react-router-dom';
-
+import ReactEmoji from 'react-emoji'
 
 const SingleComm = (
   { getPosts, auth: { user }, Post: { posts }
@@ -36,7 +36,7 @@ const SingleComm = (
         </NavLink>
       </div>
       <div className="col-7" id="comment" >
-        {comments.body.charAt(0).toUpperCase() + comments.body.slice(1)}
+        {ReactEmoji.emojify(comments.body.charAt(0).toUpperCase() + comments.body.slice(1))}
         <div>
         </div>
       </div>
@@ -68,11 +68,10 @@ const SingleComm = (
                 className=" col-10 comm"
                 type="text"
                 value={body}
-                onChange={(e) => setText(e.target.value)}
-              />
+                onChange={(e) => setText(e.target.value)} />
               <button type="submit" className="b">
                 add
-                </button>
+              </button>
             </div>
           </div>
         </form>

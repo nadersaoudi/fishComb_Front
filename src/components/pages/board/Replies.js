@@ -42,7 +42,7 @@ const { body } = formData;
     }
 /**************************************/
     return (
-       <Fragment>
+       <Fragment><title>{threads && threads?.data?.title?.charAt(0).toUpperCase() + threads?.data?.title?.slice(1)} | FishComb</title>
            <Row className='pt-5 pb-5'>
                <Col xs={2}></Col>
                <Col xs={8} className='pt-4'>
@@ -60,8 +60,8 @@ const { body } = formData;
                                     <Col xs={8}>
                                         <span >{threads && threads.data.body.charAt(0).toUpperCase() + threads.data.body.slice(1)}</span>
                                     </Col>
-                                    <Col xs={4}>
-                                        <Image src={threads && threads.data.image}  width="250" height="200" alt='event' rounded className='product'/>
+                                    <Col xs={3}>
+                                        <Image src={threads && threads.data.image}  width="100%" height="150" alt='event' rounded className='product'/>
                                     </Col>
                                 </Row>
                              

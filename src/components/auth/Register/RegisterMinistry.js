@@ -1,19 +1,16 @@
-import React, {Component} from 'react';
+import React, {Component ,useState} from 'react';
 import './Register.css';
 import axios from 'axios';
 import {Redirect} from "react-router-dom";
 import { toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from "../../layout/Footer/Footer"
+import Footer from "../../layout/Footer/Footer";
 
-
-export default class Register extends Component {
-
-    state = {}    
-    handleSubmit = e => {
+export default class RegisterMinistry extends Component {
+    state = {}
+    handleSubmit = e => {  
         e.preventDefault();
         toast.configure();
-
         const data = {
             first_name: this.firstname,
             last_name: this.lastname,
@@ -23,23 +20,26 @@ export default class Register extends Component {
             birth_date: this.year+'/'+this.month+'/'+this.day,
             gender: this.gender,
             location: this.location,
+            types:this.type,
             username:this.username,
             about: this.about,
             phone:this.phone,
+            ministry_name: this.mininame,
+            ministry_description: this.minides,
+            ministry_city: this.minicity,
+            ministry_country: this.minicount,
+            ministry_type: this.minitype,
             profile_image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRozxy746wCC8yP00EIlpWRqJ_f9OaspKdUwg&usqp=CAU'
         };
-        
         if (this.password !== this.passwordConfermation) {
-            
             toast.error('Password doesnt match');
-
             console.log(this.passwordConfermation);
             console.log(this.password);
         }else{
             axios.post('api/user/register', data).then(
             res => {
                 this.setState({
-                    register: true
+                     register: true
                 });
                 toast.success('Please Check Your Email');
             }
@@ -50,19 +50,19 @@ export default class Register extends Component {
             }
         )
     }
-        
     };
+
     render() {
         if (this.state.register) {
             return <Redirect to={'/login'}/>;
         }
-
         return (
             <div className="Register">
+                <title>Register | FishComb</title>
                 <div className="row">
                 <a href="/" className="img">
-          <img src="../../../../dist/img/logofish.png" alt="" /></a>
-      </div>   
+                <img src="../../../../dist/img/logofish.png" alt="" /></a>
+            </div>   
                 <div className="row">
                     <div className='col-sm-3'></div>
                     <div className='col-sm-6'>
@@ -74,24 +74,39 @@ export default class Register extends Component {
                             </div>
                             <div className="form-group">
                                 <div className="row">
-                                  
-                                    <div className="col-sm-6 mb-3 ">
-                                        <input type="text" className="form-control reg__input" placeholder="First Name"
-                                               onChange={e => this.firstname = e.target.value}/>
-                                    </div>
-       
-                                    <div className="col-sm-6 mb-3 ">
-                                        <input type="text" className="form-control reg__input" placeholder="Last Name"
-                                               onChange={e => this.lastname = e.target.value}/>
-                                    </div>
-       
-                                    <div className="col-sm-12 mb-3 ">
-                                        <input type="email" className="form-control reg__input" placeholder="Email"
-                                               onChange={e => this.email = e.target.value}/>
-                                    </div>
-       
-                                    <div className="col-sm-12 mb-3 ">                                
-                                 <select id="country" name="country" className="form-control reg__input" onChange={e => this.location = e.target.value}>
+                                <div className='row mb-3 pt-1'>
+                                </div>
+                                <div> 
+                                </div>
+                                <div className="col-sm-6 mb-3 ">
+                                    <input type="text" className="form-control reg__input" placeholder="First Name"
+                                        onChange={e => this.firstname = e.target.value} />
+                                </div>
+                                <div className="col-sm-6 mb-3 ">
+                                    <input type="text" className="form-control reg__input" placeholder="Last Name"
+                                        onChange={e => this.lastname = e.target.value}/>
+                                </div>
+                                <div className="col-sm-12 mb-3 ">
+                                    <input type="email" className="form-control reg__input" placeholder="Email"
+                                        onChange={e => this.email = e.target.value}/>
+                                </div>
+                                <div className="col-sm-12 mb-3 ">
+                                    <input type="text" className="form-control reg__input"
+                                        placeholder="UserName"
+                                        onChange={e => this.username = e.target.value}/>
+                                </div>
+                                <div className="col-sm-6 mb-3 ">
+                                    <input type="password" className="form-control reg__input"
+                                        placeholder="New Password"
+                                        onChange={e => this.password = e.target.value}/>
+                                </div>
+                                <div className="col-sm-6 mb-3 ">
+                                    <input type="password" className="form-control reg__input"
+                                        placeholder="Password confirmation"
+                                        onChange={e => this.passwordConfermation = e.target.value}/>
+                                </div>
+                                <div className="col-sm-6 mb-3 ">      
+                                    <select id="country" name="country" className="form-control reg__input" onChange={e => this.location = e.target.value}>
                                         <option value='default'>Location</option>
                                         <option value="Afganistan" className='reg__input'>Afghanistan</option>
                                         <option value="Albania">Albania</option>
@@ -340,32 +355,40 @@ export default class Register extends Component {
                                         <option value="Zambia">Zambia</option>
                                         <option value="Zimbabwe">Zimbabwe</option>
                                         </select>
-
-                                    </div>
-                                    <div className="col-sm-12 mb-3 ">
-                                        <input type="text" className="form-control reg__input" placeholder="Phone"
-                                               onChange={e => this.phone = e.target.value}/>
-                                    </div>
-                                    <div className="col-sm-12 mb-3 ">
-                                        <input type="text" className="form-control reg__input" placeholder="About"
-                                               onChange={e => this.about = e.target.value}/>
-                                    </div>
-                                    <div className="col-sm-12 mb-3 ">
-                                        <input type="text" className="form-control reg__input"
-                                               placeholder="UserName"
-                                               onChange={e => this.username = e.target.value}/>
-                                    </div>
-                                    <div className="col-sm-12 mb-3 ">
-                                        <input type="password" className="form-control reg__input"
-                                               placeholder="New Password"
-                                               onChange={e => this.password = e.target.value}/>
-                                    </div>
-                                    <div className="col-sm-12 mb-3 ">
-                                        <input type="password" className="form-control reg__input"
-                                               placeholder="Password confirmation"
-                                               onChange={e => this.passwordConfermation = e.target.value}/>
-
-                                    </div>
+                                </div>
+                                <div className="col-sm-6 mb-3 ">
+                                    <input type="text" className="form-control reg__input" placeholder="Phone"
+                                        onChange={e => this.phone = e.target.value}/>
+                                </div>
+                                <div className="col-sm-12 mb-3 ">
+                                    <textarea  type="texterea" className="form-control reg__input" id="exampleFormControlTextarea1" row='4' placeholder="About"
+                                        onChange={e => this.about = e.target.value}/>
+                                </div>
+                                <div className="col-sm-6 mb-3  ">
+                                    <input type="text" className="form-control reg__input" placeholder="Ministry Name"
+                                        onChange={e => this.mininame = e.target.value}  />
+                                </div>
+                                <div className="col-sm-6 mb-3  ">
+                                    <input type="text" className="form-control reg__input" placeholder="Ministry City"
+                                        onChange={e => this.minicity = e.target.value}  />
+                                </div> 
+                                <div className="col-sm-6 mb-3  ">
+                                    <input type="text" className="form-control reg__input" placeholder="Ministry Country"
+                                        onChange={e => this.minicount = e.target.value} />
+                                </div> 
+                                <div className="col-sm-6 mb-3 ">      
+                                    <select id="country" name="country" className="form-control reg__input"  onChange={e => this.minitype = e.target.value}>
+                                        <option value='default'>Ministry Type</option>
+                                        <option value="Afganistan" className='reg__input'>Church Art/Music</option>
+                                        <option value="Albania"> Charity/Organisation</option>
+                                        <option value="Algeria">Other</option>
+                                    </select>
+                                </div>
+                                <div className="col-sm-12 mb-3  ">
+                                    <textarea type="text" className="form-control reg__input"
+                                        placeholder="Ministry Description"
+                                        onChange={e => this.minides = e.target.value} />
+                                </div>
                                 </div>
                                 <label>Birthday</label>
                                 <div className="row">
@@ -385,10 +408,8 @@ export default class Register extends Component {
                                             <option value="11">November</option>
                                             <option value="12">December</option>
                                         </select>
-
                                     </div>
                                     <div className="col-sm-4 mt-2">
-
                                         <select className=" form-control reg__input"
                                                 onChange={(e) => this.day = e.target.value}>
                                             <option className='reg__input'>- Day -</option>
@@ -534,9 +555,8 @@ export default class Register extends Component {
                                 <label className="btn btn-outline-primary" for="btnradio3">Female</label>
                                 </div>
                                 </div>
-                                 </div>
-                          
-                            <div>
+                                </div>                              
+                                <div>  
                                 <button className="btn btn-primary col-sm-12 reg-button" type="submit">Sign Up</button>
                             </div>
                         </form>
@@ -550,9 +570,6 @@ export default class Register extends Component {
       <Footer />
              
             </div>
-
-
-
         );
     }
 }

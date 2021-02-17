@@ -8,6 +8,7 @@ import Footer from '../../layout/Footer/Footer';
 const HomePage = () => {
     return (
       <div>
+        <title>HomePage | FishComb</title>
         <div className='row  pt-5 pb-5 header'>
         <div className='col-sm-1'></div>
           <div className='col-sm-1 '>

@@ -11,14 +11,13 @@ import "./Market.css";
 import DialogContent from '@material-ui/core/DialogContent';
 import { addProduct } from '../../../Actions/Market';
 import FormControl from 'react-bootstrap/FormControl';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
 import YourAccount from './YourAccount';
 import { Avatar } from "@material-ui/core";
 import SingleProduct from './products/SingleProduct';
 import { Col, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, myProduct, search, addProduct, cart: { cart }, showCart }) => {
+import Spinner from'../Spinner/Spinner'
+const Market = ({ auth: { user }, getMarket, markets: { markets, categories,loading }, myProduct, search, addProduct, cart: { cart }, showCart }) => {
     /******************************/
     useEffect(() => {
         getMarket()
@@ -52,7 +51,6 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
     const onnamechange = e => {
         setname(e.target.value)
     }
-
     const ondescchange = e => {
         setdescription(e.target.value)
     }
@@ -109,8 +107,9 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
         setOpen(false);
     };
     /*********************************/
-    return (
+    return loading ===true ? <Spinner/> :
         <div>
+            <title>Marketplace | FishComb</title>
             <div>
                 <div className='row'>
                     <div className='col-md-12  mt-5'>
@@ -372,7 +371,7 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories }, m
             </div>
         </div>
 
-    )
+    
 }
 Market.prototype = {
     auth: PropTypes.object.isRequired,

@@ -2,12 +2,12 @@ import React, { useState, useRef } from 'react';
 import { Avatar } from '@material-ui/core';
 import './Post.css';
 import { makeStyles } from '@material-ui/core/styles';
-import { ReactTinyLink } from 'react-tiny-link';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addPost } from '../../../../Actions/Post';
 import $ from 'jquery';
 import ReactPlayer from 'react-player';
+
 
 const Post = ({ auth: { user }, addPost,  }) => {
   // eslint-disable-next-line
@@ -66,8 +66,10 @@ const Post = ({ auth: { user }, addPost,  }) => {
       $('#linkurl').val(inputEl.current.value)
     }
   }
+ 
   return (
     <div className="pub px-0 ">
+      
       <form onSubmit={e => Onsubmit(e)}>
         <div className=" pub__top">
           <Avatar src={user && user.attributes.profile_image} className={classes.large} />

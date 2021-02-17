@@ -14,11 +14,11 @@ import Form from 'react-bootstrap/Form';
 import './Board.css';
 import { Button } from '@material-ui/core';
 import SingleThread from './SingleThread';
+import Spinner from '../Spinner/Spinner'
 
 
 
-
-const Board =( { categories, getThread, addThread , Thread: {thread}, searchThread, myThreads}) => {
+const Board =( { categories, getThread, addThread , Thread: {thread,loading}, searchThread, myThreads}) => {
     useEffect(() => {
         getThread()
     }, [getThread])
@@ -87,8 +87,9 @@ const onsubmit1 = e => {
     searchThread(filter, value)
 }
 /***************************************/
-    return (
+    return loading ===true ? <Spinner /> :
         <div>
+            <title>Forum | fishComb</title>
             <Row className='pt-5 mb-4'>
                 <Col md={3}></Col>
                 <Col md={4} style={{display:'contents'}}>
@@ -102,7 +103,9 @@ const onsubmit1 = e => {
                             <Col xs={1}></Col>
                             <Col xs={6}>
                                  <li className="nav-item">
-                                    <Link className='nav-link' className="link_cart" to='#' onClick={myThreads} ><span className="n" >My Posts</span></Link>
+                                 <Button>
+                                        <Link className='nav-link' className="link_cart" to='#' onClick={myThreads} ><span className="n" >My Posts</span></Link>
+                                    </Button>
                                 </li>
                            </Col>
                         </ul>
@@ -127,9 +130,9 @@ const onsubmit1 = e => {
                                 </button>
                             </Col>
                         </form>
-                        <Row className='pt-2'>
-                            <Col xs={4}>
-                                <Button className='BoradBotton'><h6>My Account</h6> </Button>
+                        <Row className='marketbtn mt-2 ml-0'>
+                            <Col xs={12} calssName='marketbtn px-0'>
+                                <Button className='marketbtn px-0'><h6>My Account</h6> </Button>
                             </Col> 
                         </Row>
                             </Col>
@@ -203,7 +206,7 @@ const onsubmit1 = e => {
                         </form>
                     </Dialog>
                 </div>
-    )
+    
 }
 Board.prototype={
     categories: PropTypes.object.isRequired,

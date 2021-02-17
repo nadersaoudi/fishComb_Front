@@ -1,0 +1,16 @@
+.rotate {
+    animation: rotation 3s infinite forwards;
+    width: 100%;
+    height: 100%;
+   
+    transition: transform 1s linear;
+    transform-origin: center center;
+  }
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
