@@ -20,7 +20,7 @@ export default class RegisterUser extends Component {
             birth_date: this.year+'/'+this.month+'/'+this.day,
             gender: this.gender,
             location: this.location,
-            types:this.type,
+            type:"1",
             username:this.username,
             about: this.about,
             phone:this.phone,
