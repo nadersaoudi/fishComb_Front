@@ -168,7 +168,7 @@ const Publication = ({
                           <Paper>
                             <ClickAwayListener onClickAway={handleClose}>
                               <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                              <MenuItem onClick={handleClickOpen1}  > <span onClick={(e) => getpost(posts.data.id)}>Update My Post</span></MenuItem>
+                             {/* <MenuItem onClick={handleClickOpen1}  > <span onClick={(e) => getpost(posts.data.id)}>Update My Post</span></MenuItem> */} 
                               <MenuItem onClick={(e) => deletePost(posts.data.id)}>Delete My Post</MenuItem>
                               </MenuList>
                             </ClickAwayListener>
