@@ -43,6 +43,8 @@ import Popper from '@material-ui/core/Popper';
 import MenuList from '@material-ui/core/MenuList';
 import Moment from "react-moment";
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import Dropdown from 'react-bootstrap/Dropdown'
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up"
         ref={ref}
@@ -491,62 +493,53 @@ const Eventitem = ({
                                         </Col>
                                         <Col md={2}>
                                         <div className='col-sm-2' >
-                                            <Button
-                                                    ref={anchorRef}
-                                                    aria-controls={open1 ? 'menu-list-grow' : undefined}
-                                                    aria-haspopup="true"
-                                                    onClick={handleToggle}>
-                                                    <svg width="26px" height="7px" version="1.1" xmlns="http://www.w3.org/1999/xlink" >
-                                                        <g id="Group" transform="translate(0.5 0.5)">
-                                                            <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" id="Oval" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
-                                                            <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(20 0)" id="Oval-Copy" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
-                                                            <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(10 0)" id="Oval-Copy-2" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
-                                                        </g>
-                                                    </svg>
-                                            </Button>
-                                        
-                                        
-                                        <Popper open={open1} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                                                    {({ TransitionProps, placement }) => (
-                                                        <Grow
-                                                            {...TransitionProps}
-                                                            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom', borderRadius: '0' }}>
-                                                            <Paper>
-                                                                <ClickAwayListener onClickAway={handleClosePoint}>
-                                                                    <MenuList autoFocusItem={open1} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                                                        <MenuItem >
-                                                                            <Button className='Invite__btn mt-2 pr-3'
-                                                                                onClick={getlink}><IoShareSocialOutline />
-                                                                                Share
-                                                                            </Button>
-                                                                        </MenuItem>
-                                                                        <MenuItem>
-                                                                            <Button className='Invite__btn  mt-2'
-                                                                                onClick={handleClickOpen}>
+                                                                   <Dropdown>
+                                                                    <Dropdown.Toggle>
+                                                                    <svg width="26px" height="7px" version="1.1" xmlns="http://www.w3.org/1999/xlink" >
+                                                                    <g id="Group" transform="translate(0.5 0.5)">
+                                                                        <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" id="Oval" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
+                                                                        <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(20 0)" id="Oval-Copy" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
+                                                                        <path d="M2.5 5C3.88071 5 5 3.88071 5 2.5C5 1.11929 3.88071 0 2.5 0C1.11929 0 0 1.11929 0 2.5C0 3.88071 1.11929 5 2.5 5Z" transform="translate(10 0)" id="Oval-Copy-2" fill="#D8D8D8" fill-rule="evenodd" stroke="none" />
+                                                                    </g>
+                                                                </svg>
+                                                                    </Dropdown.Toggle>
+
+                                                                    <Dropdown.Menu>
+                                                                        <Dropdown.Item>
+                                                                               <IoShareSocialOutline />
+                                                                              Share
+                                                                          </Dropdown.Item>
+                                                                        <Dropdown.Item onClick={handleClickOpen}>
                                                                                 <AddBoxIcon />
-                                                                                    Invite Friends
-                                                                            </Button>
-                                                                        </MenuItem>
-                                                                        <MenuItem>{
-                                                                                event && user && user.user_id === event.user.data.user_id ? <Button className='Invite__btn  mt-2' onClick={handleClickOpen2}>
-                                                                                <UpdateRoundedIcon />
-                                                                                    Update</Button> : <div></div>} </MenuItem><MenuItem> {
-                                                                                event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events' className='Invite__btn'>
-                                                                                <Button className='Invite__btn  mt-2'
-                                                                                    onClick={
+                                                                                    Invite Friends</Dropdown.Item>
+                                                                                    {
+                                                                                event && user && user.user_id === event.user.data.user_id ?  <Dropdown.Item onClick={handleClickOpen2}>  <UpdateRoundedIcon /> Update 
+                                                                                  </Dropdown.Item>: <div></div>}
+                                                                                  {
+                                                                                event && user && user.user_id === event.user.data.user_id ?  <Link to='/dashboard/events'> <Dropdown.Item  onClick={
                                                                                         e => deleteEvent(match.params.id)}>
+                                                                                           
                                                                                     <DeleteOutlineRoundedIcon style={
                                                                                         { color: '#212529' }} />
-                                                                                        Delete</Button>
-                                                                            </Link> : <div></div>
-                                                                        }</MenuItem><MenuItem>{
-                                                                            event && user && user.user_id === event.user.data.user_id ? <FeaturedDialog /> : <div></div>}</MenuItem>
+                                                                                        Delete
+                                                                          </Dropdown.Item> </Link>: <div></div> }
+                                                                          {event && user && user.user_id === event.user.data.user_id ?  <Dropdown.Item><FeaturedDialog /></Dropdown.Item>: <div></div>}
+                                                                    </Dropdown.Menu>
+                                                                    </Dropdown>
+
+
+                                           {/*
+                                        
+                                                                             
+                                                                 
+                                                                       
+                                                                        {event && user && user.user_id === event.user.data.user_id ?<MenuItem > <FeaturedDialog /> </MenuItem>: <div></div>}
                                                                     </MenuList>
                                                                 </ClickAwayListener>
                                                             </Paper>
                                                         </Grow>
                                                     )}
-                                                </Popper>
+                                                </Popper>*/} 
                                             </div>
                                         </Col>
                                     </Row>
