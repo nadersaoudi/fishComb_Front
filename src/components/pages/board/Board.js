@@ -103,7 +103,9 @@ const onsubmit1 = e => {
                             <Col xs={1}></Col>
                             <Col xs={6}>
                                  <li className="nav-item">
-                                    <Link className='nav-link' className="link_cart" to='#' onClick={myThreads} ><span className="n" >My Posts</span></Link>
+                                    <Button>
+                                        <Link className='nav-link' className="link_cart" to='#' onClick={myThreads} ><span className="n" >My Posts</span></Link>
+                                    </Button>
                                 </li>
                            </Col>
                         </ul>
