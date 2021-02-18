@@ -159,16 +159,16 @@ const Events = ({ addEvent, getevents, events: { events, categories,loading }, s
                             </div>
                             <div className='row pt-3 pb-4 '>
                                 <div className='col-md-3 col-sm-3'>
-                                    <Image src='https://picsum.photos/id/1/200/300' width="100%" height="180" alt='event' rounded className='product'/>
+                                    <Image src='https://picsum.photos/id/1/200/300' width="80%" height="180" alt='event' rounded className='product'/>
                                 </div>
                                 <div className='col-md-3 col-sm-3'>
-                                    <Image src='https://picsum.photos/id/800/200/300' width="100%" height="180" alt='event' rounded className='product'/>
+                                    <Image src='https://picsum.photos/id/800/200/300' width="80%" height="180" alt='event' rounded className='product'/>
                                 </div>
                                 <div className='col-md-3 col-sm-3'>
-                                    <Image  src='https://picsum.photos/id/500/200/300' width="100%" height="180" alt='event' rounded className='product'/>
+                                    <Image  src='https://picsum.photos/id/500/200/300' width="80%" height="180" alt='event' rounded className='product'/>
                                 </div>
                                 <div className='col-md-3 col-sm-3'>
-                                    <Image  src='https://picsum.photos/id/120/200/300' width="100%" height="180" alt='event' rounded className='product'/>
+                                    <Image  src='https://picsum.photos/id/120/200/300' width="80%" height="180" alt='event' rounded className='product'/>
                                 </div>
                             </div>
                             <div className='row px-2'>
@@ -614,13 +614,8 @@ const Events = ({ addEvent, getevents, events: { events, categories,loading }, s
                                         </div>
                                     </div>
                                 </DialogContent>
-
-
-
                                 </form>
                             </Dialog>
-                            
-                       
                         </div>
                         
                          

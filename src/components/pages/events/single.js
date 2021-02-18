@@ -10,7 +10,7 @@ const Single =({  event })=> {
         <div className='col-md-2 pb-4 '>
         <div className='image_holder grid '>
         <NavLink to={`/dashboard/singleevent/${event.id}`} > 
-        <img src={event && event.cover} width="100%" height="100" alt='event'  style={{borderRadius:'5px'}} className='product' /></NavLink>
+        <img src={event && event.cover} width="80%" height="100" alt='event'  style={{borderRadius:'5px'}} className='product' /></NavLink>
             <div className='description'>
                 <span><b>{event && event.name.charAt(0).toUpperCase() + event.name.slice(1) }</b></span> <br /> 
                 <Moment
