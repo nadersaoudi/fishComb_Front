@@ -490,7 +490,7 @@ const Eventitem = ({
                                             </h4>
                                         </Col>
                                         <Col md={2}>
-                                        <div className='col-sm-2' >
+                                       
                                             <Button
                                                     ref={anchorRef}
                                                     aria-controls={open1 ? 'menu-list-grow' : undefined}
@@ -504,8 +504,7 @@ const Eventitem = ({
                                                         </g>
                                                     </svg>
                                             </Button>
-                                        
-                                        
+                                        </Col>
                                         <Popper open={open1} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                                                     {({ TransitionProps, placement }) => (
                                                         <Grow
@@ -515,7 +514,7 @@ const Eventitem = ({
                                                                 <ClickAwayListener onClickAway={handleClosePoint}>
                                                                     <MenuList autoFocusItem={open1} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                                                                         <MenuItem >
-                                                                            <Button className='Invite__btn mt-2 pr-3'
+                                                                            <Button className='Invite__btn '
                                                                                 onClick={getlink}><IoShareSocialOutline />
                                                                                 Share
                                                                             </Button>
@@ -527,10 +526,11 @@ const Eventitem = ({
                                                                                     Invite Friends
                                                                             </Button>
                                                                         </MenuItem>
-                                                                        <MenuItem>{
-                                                                                event && user && user.user_id === event.user.data.user_id ? <Button className='Invite__btn  mt-2' onClick={handleClickOpen2}>
+                                                                        {
+                                                                                event && user && user.user_id === event.user.data.user_id ?<MenuItem> <Button className='Invite__btn  mt-2' onClick={handleClickOpen2}>
                                                                                 <UpdateRoundedIcon />
-                                                                                    Update</Button> : <div></div>} </MenuItem><MenuItem> {
+                                                                                    Update</Button> </MenuItem>: <div></div>} 
+                                                                                    <MenuItem> {
                                                                                 event && user && user.user_id === event.user.data.user_id ? <Link to='/dashboard/events' className='Invite__btn'>
                                                                                 <Button className='Invite__btn  mt-2'
                                                                                     onClick={
@@ -538,17 +538,16 @@ const Eventitem = ({
                                                                                     <DeleteOutlineRoundedIcon style={
                                                                                         { color: '#212529' }} />
                                                                                         Delete</Button>
-                                                                            </Link> : <div></div>
-                                                                        }</MenuItem><MenuItem>{
-                                                                            event && user && user.user_id === event.user.data.user_id ? <FeaturedDialog /> : <div></div>}</MenuItem>
+                                                                            </Link> : <div></div>}
+                                                                        </MenuItem>
+                                                                        {event && user && user.user_id === event.user.data.user_id ? <MenuItem><FeaturedDialog style={{ backgroundColor: '#212529'}} /></MenuItem> : <div></div>}   
                                                                     </MenuList>
                                                                 </ClickAwayListener>
                                                             </Paper>
                                                         </Grow>
                                                     )}
                                                 </Popper>
-                                            </div>
-                                        </Col>
+                                        
                                     </Row>
                                     <div className='row'>
                                         <div className='col-sm-10'>
