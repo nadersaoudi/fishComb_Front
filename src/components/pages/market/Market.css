@@ -1,9 +1,11 @@
 .MuiPaper-rounded{
     border-radius:  0px !important;
 }
+
 .delete_prod{
     text-decoration: none;
 }
+
 .delete_prod :hover{
     text-decoration: none;
 }
@@ -39,6 +41,7 @@
 }
 .button__cart{
     border-radius: 0 !important;
+    width:max-content;
 }
 .link_cart{
     text-decoration: none;
@@ -51,7 +54,7 @@
 }
 .product__price{
     color: #777777;
-     text-align: center;
+    text-align: center;
 }
 .sing__prod {
     border-radius: 5px;
@@ -59,8 +62,17 @@
 .cart__btn:hover{
     color: #00E2c8;
 }
+
 .marketbotton{
     width: 150px;
     align-items: center;
     justify-content: center;
+}
+
+.marketbtn{    
+    display: block;
+    width: 100%;
+    background-color: #f2f2f2;
+    border: 1px solid #c9c7c7 ;
+    font-weight: 800;
 }

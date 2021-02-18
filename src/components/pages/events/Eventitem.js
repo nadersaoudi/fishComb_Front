@@ -473,7 +473,7 @@ const Eventitem = ({
                                         event && event.cover
                                     }
                                         width="100%"
-                                        height="100%"
+                                        height="320"
                                         alt='event'
                                         style={
                                             { borderRadius: '4px' }
