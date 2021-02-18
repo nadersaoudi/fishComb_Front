@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 const Single =({  event })=> {
     return (
      
-        <div className='col-md-2 col-sm-2 col-xl-2 pb-4 '>
+        <div className='col-md-2 pb-4 '>
         <div className='image_holder grid '>
         <NavLink to={`/dashboard/singleevent/${event.id}`} > 
         <img src={event && event.cover} width="100%" height="100" alt='event'  style={{borderRadius:'5px'}} className='product' /></NavLink>
