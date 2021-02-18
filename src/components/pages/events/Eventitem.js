@@ -528,18 +528,7 @@ const Eventitem = ({
                                                                     </Dropdown>
 
 
-                                           {/*
-                                        
-                                                                             
-                                                                 
-                                                                       
-                                                                        {event && user && user.user_id === event.user.data.user_id ?<MenuItem > <FeaturedDialog /> </MenuItem>: <div></div>}
-                                                                    </MenuList>
-                                                                </ClickAwayListener>
-                                                            </Paper>
-                                                        </Grow>
-                                                    )}
-                                                </Popper>*/} 
+                                   
                                             </div>
                                         </Col>
                                     </Row>
