@@ -73,7 +73,8 @@
 .butDelCom{
     color: #3f3f3f; 
 }
-.add__event{
-    width: 550px;
-    min-height: auto;
+.UpdatePost{
+    width: 1400px;
+    min-height: 420px;
+    height: 500px;
 }

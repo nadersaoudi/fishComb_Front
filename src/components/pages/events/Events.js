@@ -157,33 +157,33 @@ const Events = ({ addEvent, getevents, events: { events, categories,loading }, s
                                     <h6><b>Featured</b></h6>
                                 </Col>
                             </Row>
-                            <Row className='pt-3 pb-4 px-3'>
-                                <Col xs={3}>
+                            <div className='row pt-3 pb-4 '>
+                                <div className='col-md-3 col-sm-3'>
                                     <Image src='https://picsum.photos/id/1/200/300' width="100%" height="180" alt='event' rounded className='product'/>
-                                </Col>
-                                <Col xs={3}>
+                                </div>
+                                <div className='col-md-3 col-sm-3'>
                                     <Image src='https://picsum.photos/id/800/200/300' width="100%" height="180" alt='event' rounded className='product'/>
-                                </Col>
-                                <Col xs={3}>
-                                    <Image src='https://picsum.photos/id/500/200/300' width="100%" height="180" alt='event' rounded className='product'/>
-                                </Col>
-                                <Col xs={3}>
-                                    <Image src='https://picsum.photos/id/120/200/300' width="100%" height="180" alt='event' rounded className='product'/> 
-                                </Col>
-                            </Row>
+                                </div>
+                                <div className='col-md-3 col-sm-3'>
+                                    <Image  src='https://picsum.photos/id/500/200/300' width="100%" height="180" alt='event' rounded className='product'/>
+                                </div>
+                                <div className='col-md-3 col-sm-3'>
+                                    <Image  src='https://picsum.photos/id/120/200/300' width="100%" height="180" alt='event' rounded className='product'/>
+                                </div>
+                            </div>
                             <Row className='px-2'>
                                 <Col xs={12} >
                                     <h6><b>All Events</b></h6>
                                 </Col>
                             </Row>
-                            <Row className='pt-3 pb-2 px-3'>
+                            <div className=' row pt-3 pb-2 px-3'>
                                 
                                     {events && events.map((event) =>
                                         (
                                             <Single key={event.id} event={event} />)
                                         )}
                                 
-                            </Row>
+                            </div>
                         </Col>
                         <Col md={3} className='pt-5 mt-2   miniside'>
                         <form onSubmit={e => onsubmit1(e)}  >

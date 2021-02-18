@@ -578,13 +578,12 @@ const Eventitem = ({
                                                                         aria-labelledby="alert-dialog-title"
                                                                         aria-describedby="alert-dialog-description"
                                                                     >
-                                                                        <DialogTitle id="alert-dialog-title">{"Participants                                      "}</DialogTitle>
+                                                                        <DialogTitle id="alert-dialog-title">{"Participants "}</DialogTitle>
                                                                         <DialogContent>
-                                                                            <Row >
-                                                                                <Col sm={3} >{event?.participants?.map(participants =>(<Avatar alt={participants?.data?.attributes?.name} src={participants?.data?.attributes?.profile_image} />))}
+                                                                            <Row className='pb-4 pt-3'>
+                                                                                <Col sm={2}  >{event?.participants?.map(participants =>(<Avatar alt={participants?.data?.attributes?.name} src={participants?.data?.attributes?.profile_image} />))}
                                                                             </Col>
-                                                                        
-                                                                            <Col sm={6}>{event?.participants?.map(participants =>(<div className='pt-2'>{participants?.data?.attributes?.name}</div> ))}</Col>
+                                                                            <Col sm={4}>{event?.participants?.map(participants =>(<div className='pt-2'>{participants?.data?.attributes?.name}</div> ))}</Col>
                                                                             </Row>
                                                                         </DialogContent>
                                                                     </Dialog>
@@ -649,8 +648,6 @@ const Eventitem = ({
                                                                 } </div>
 
                                                         </div>
-
-
                                                         <div></div>
                                                     </DialogContent>
                                                     <DialogActions></DialogActions>
@@ -660,10 +657,8 @@ const Eventitem = ({
                                                 <button className='btn btn-outline-dark' id='cancel'>Cancel</button>
                                             </div>
                                         </div>
-
                                     </div>
                                 </Col>
-
                             </Row>
                         </Card>
                         <div className='mt-4 mb-2'></div>

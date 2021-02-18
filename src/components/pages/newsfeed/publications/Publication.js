@@ -76,7 +76,7 @@ const Publication = ({
    const onSubmit = e => {
      e.preventDefault();
      console.log('aaaaa');
-     updatePost(formdata ,post.id);
+     updatePost(formdata ,post.data.id);
    }
    
    useEffect(() => {
@@ -200,7 +200,7 @@ const Publication = ({
               <div className="col-1"></div>
             </div>
           </form>
-               <Dialog open={open1} onClose={handleClose1} aria-labelledby="form-dialog-title"   className='add__event' >
+               <Dialog open={open1} onClose={handleClose1} aria-labelledby="form-dialog-title"   className='UpdatePost' >
                                 <DialogTitle id="form-dialog-title">Update Post</DialogTitle>
                                 <DialogContent>
                                 <div className="pub px-0 ">
