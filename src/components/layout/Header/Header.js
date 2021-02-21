@@ -297,13 +297,16 @@ const Header = ({
                                         top: 140,
                                         right: 40,
                                         width: '200px',
-                                        height: ' 130px',
+                                        height: ' 160px',
                                         borderRadius: '0'
                                     }
                                 }>
                                     <Toast.Body>
                                         <MenuItem>Settings</MenuItem>
                                         <MenuItem>Password</MenuItem>
+                                        <Link to='/dashboard/Calendar'  className='rea'>
+                                        <MenuItem>Calendar</MenuItem>
+                                        </Link>
                                         <Link to='/home'
                                             onClick={logout}
                                             className='rea'>

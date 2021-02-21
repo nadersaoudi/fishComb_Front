@@ -17,6 +17,7 @@ import Cart from '../../pages/market/Cart/Cart';
 import Replies from '../../pages/board/Replies';
 import Invited  from '../../pages/events/Invited'
 import Gallery  from '../../pages/events/Gallery'
+import Calendar  from '../../pages/Calendar/Calendar'
 import Page500 from '../../auth/500Page/Page500'
 import Page404 from '../../auth/404Page/Page404'
 const Container = () => {
@@ -63,6 +64,9 @@ const Container = () => {
               </Route>
               <Route  path="/dashboard/profile">
                 <Profile />
+              </Route>
+              <Route  path="/dashboard/Calendar">
+                <Calendar />
               </Route>
               <Route exact path="/dashboard/search">
                 <Searchitem />
