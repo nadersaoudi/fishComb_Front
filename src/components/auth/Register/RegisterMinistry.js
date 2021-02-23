@@ -72,7 +72,7 @@ export default class RegisterMinistry extends Component {
                                 </div>
                              
                                 <div className="col-sm-6 mb-3  ">
-                                    <input type="text" className="form-control reg__input" placeholder="Organition Name"
+                                    <input type="text" className="form-control reg__input" placeholder="Organisation Name"
                                         onChange={e => this.mininame = e.target.value}  />
                                 </div>
                                 <div className="col-sm-6 mb-3 ">      

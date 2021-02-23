@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Checkout', 'Payment', 'Create an ad'];
+  return ['Checkout', 'Payment', 'Finish up payment'];
 }
 
 function getStepContent(step) {

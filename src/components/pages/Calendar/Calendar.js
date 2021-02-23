@@ -11,15 +11,22 @@ import {
   MonthView,
   DayView,
   TodayButton,
+  AppointmentForm,
+  AppointmentTooltip,
+  ConfirmationDialog,
 } from '@devexpress/dx-react-scheduler-material-ui';
 
 import { appointments } from './appointments';
+import { Fragment } from 'react';
 const Calendar =()=>{
     var  [currentViewName,setcurrentViewName]=useState('work-week');
     const  currentViewNameChange = (currentViewName) => {
      setcurrentViewName(currentViewName);
     };
+
     return (
+      <Fragment>
+        <title>Calendar</title>
         <Paper>
          
         <Scheduler
@@ -51,8 +58,13 @@ const Calendar =()=>{
           <ViewSwitcher />
           <TodayButton />
           <Appointments />
+          <AppointmentTooltip
+            showOpenButton
+            showDeleteButton
+          />
+          <AppointmentForm />
         </Scheduler>
-      </Paper>
+      </Paper></Fragment>
     );
 }
 export default Calendar

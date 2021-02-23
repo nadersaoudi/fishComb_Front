@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { Myinvitations, acceptinv } from "../../../Actions/events";
+import { Myinvitations, acceptinv, declineInv } from "../../../Actions/events";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types'
 import { Card, Col, Row } from 'react-bootstrap'
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
-const Invited = ({ events: { inv }, Myinvitations, acceptinv }) => {
+const Invited = ({ events: { inv }, Myinvitations, acceptinv, declineInv }) => {
     useEffect(() => {
         Myinvitations()
     }, [Myinvitations])
@@ -13,24 +13,24 @@ const Invited = ({ events: { inv }, Myinvitations, acceptinv }) => {
     return (
         <div>
             <title>Event invitation | FishComb</title>
- <Row className=' pb-3 '>
+            <Row className=' pb-3 '>
 
-<Col md={1} className='px-0' ></Col>
-<Col md={4} className="pb-4 pt-5 px-0 ">
-    <ul className="nav nav-pills nav-justified " id='navprofil'>
-        <li className="nav-item">
-            <Link to={`/dashboard/events`} className="link_cart"><span className='n' >All Events</span></Link>
-        </li>
-        <li className="nav-item">
-            <Link to={`/dashboard/invited`} className="link_cart"><span  className='n'>Invited Events</span></Link>
-        </li>
-        <li className="nav-item">
-            <Link to={`/dashboard/attendedevent`} className="link_cart"><span  className='n'>Attending</span></Link>
-        </li>
-    </ul>
-</Col>
-<Col md={5}></Col>
-</Row>
+                <Col md={1} className='px-0' ></Col>
+                <Col md={4} className="pb-4 pt-5 px-0 ">
+                    <ul className="nav nav-pills nav-justified " id='navprofil'>
+                        <li className="nav-item">
+                            <Link to={`/dashboard/events`} className="link_cart"><span className='n' >All Events</span></Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={`/dashboard/invited`} className="link_cart"><span className='n'>Invited Events</span></Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={`/dashboard/attendedevent`} className="link_cart"><span className='n'>Attending</span></Link>
+                        </li>
+                    </ul>
+                </Col>
+                <Col md={5}></Col>
+            </Row>
             <Row className='pt-3'>
                 <Col xs={2}>
 
@@ -61,7 +61,7 @@ const Invited = ({ events: { inv }, Myinvitations, acceptinv }) => {
                                         <Button variant="outlined" color="primary" onClick={e => acceptinv(inv.id)}>Accept</Button>
                                     </Col>
                                     <Col xs={4}>
-                                        <Button variant="outlined" color="secondary">Decline</Button>
+                                        <Button variant="outlined" color="secondary" onClick={e => declineInv(inv.id, 0)}>Decline</Button>
                                     </Col>
                                 </Row>
                             </Card.Body>
@@ -78,12 +78,11 @@ const Invited = ({ events: { inv }, Myinvitations, acceptinv }) => {
 }
 Invited.propTypes = {
     events: PropTypes.object.isRequired,
-    Myinvitations: PropTypes.func.isRequired
-    , acceptinv: PropTypes.func.isRequired
+    Myinvitations: PropTypes.func.isRequired, 
+    acceptinv: PropTypes.func.isRequired,
+    declineInv: PropTypes.func.isRequired,
 }
-
-
 const mapStateToProps = state => ({
     events: state.events
 })
-export default connect(mapStateToProps, { Myinvitations, acceptinv })(Invited);
+export default connect(mapStateToProps, { Myinvitations, acceptinv, declineInv })(Invited);

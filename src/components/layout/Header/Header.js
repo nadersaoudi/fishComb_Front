@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Searchfriend } from '../../../Actions/Friends';
-import { acceptinv } from '../../../Actions/events';
+import { acceptinv, declineInv } from '../../../Actions/events';
 import { useHistory } from 'react-router-dom';
 import Notification from './Notification';
 import Toast from 'react-bootstrap/Toast'
@@ -27,7 +27,7 @@ const Header = ({
     events: {
         inv
     },
-    acceptinv
+    acceptinv, declineInv
 }) => {
 
 
@@ -221,7 +221,7 @@ const Header = ({
                                                 </Col>
 
                                                 <Col xs={4}>
-                                                    <Button variant="outlined" color="secondary">Decline</Button>
+                                                    <Button variant="outlined" color="secondary" onClick={x => declineInv(e.id, 0)} >Decline</Button>
                                                 </Col>
                                                 <Col xs={2}></Col>
                                             </Row>
@@ -304,8 +304,8 @@ const Header = ({
                                     <Toast.Body>
                                         <MenuItem>Settings</MenuItem>
                                         <MenuItem>Password</MenuItem>
-                                        <Link to='/dashboard/Calendar'  className='rea'>
-                                        <MenuItem>Calendar</MenuItem>
+                                        <Link to='/dashboard/Calendar' className='rea'>
+                                            <MenuItem>Calendar</MenuItem>
                                         </Link>
                                         <Link to='/home'
                                             onClick={logout}
@@ -331,8 +331,8 @@ Header.propTypes = {
     Friends: PropTypes.object.isRequired,
     Searchfriend: PropTypes.func.isRequired,
     events: PropTypes.object.isRequired,
-    acceptinv: PropTypes.func.isRequired
-
+    acceptinv: PropTypes.func.isRequired,
+    declineInv: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({ auth: state.auth, Friends: state.Friends, events: state.events })
-export default connect(mapStateToProps, { logout, Searchfriend, acceptinv })(Header);
+export default connect(mapStateToProps, { logout, Searchfriend, acceptinv, declineInv })(Header);

@@ -7,7 +7,8 @@ import {
     invite,
     getfriends,
     update,
-    getevents
+    getevents,
+    declineInv
 } from '../../../Actions/events'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -67,7 +68,8 @@ const Eventitem = ({
     getfriends,
     invite,
     update,
-    getevents
+    getevents,
+    declineInv
 }) => {
     useEffect(() => {
         getevent(match.params?.id);
@@ -629,7 +631,7 @@ const Eventitem = ({
                                                 </form>
                                             </Dialog>
                                             <div className='col-sm-4 '>
-                                                <button className='btn btn-outline-dark' id='cancel'>Cancel</button>
+                                                <button className='btn btn-outline-dark' id='cancel' onClick={e => declineInv(event.id, 0)}>Cancel</button>
                                             </div>
                                         </div>
                                     </div>
@@ -712,7 +714,8 @@ const Eventitem = ({
     categories: PropTypes.object.isRequired,
     update: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    getevents: PropTypes.func.isRequired
+    getevents: PropTypes.func.isRequired,
+    declineInv: PropTypes.func.isRequired,
 }
 const mapStateToProps = state => ({ events: state.events, auth: state.auth, categories: state.categories })
 export default connect(mapStateToProps, {
@@ -722,5 +725,6 @@ export default connect(mapStateToProps, {
     subscribEevent,
     getfriends,
     invite,
-    getevents
+    getevents,
+    declineInv
 })(Eventitem)

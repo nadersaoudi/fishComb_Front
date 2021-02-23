@@ -33,8 +33,8 @@ return(
       <td>{order.data.first_name}</td>
       <td>{order.data.last_name}</td>
       <td>{order.data.sub_total}</td>
-      <td>{order.data.payment_id}</td>
-      <td><button onClick={e=>CancelPayment(order.data.id)}>Cancel Payment</button></td>
+      {order.data.payment_id !==null ? <td>{order.data.payment_id}</td>:<td></td>}
+      {order.data.payment_id !==null ? <td><button onClick={e=>CancelPayment(order.data.id)}>Cancel Payment</button></td>:<td></td>}
     </tr>
     )
 

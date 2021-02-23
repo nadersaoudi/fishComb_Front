@@ -1,14 +1,14 @@
-import {ADD_EVENT,GET_EVENTS,GET_EVENT, GET_CATEGORIES, DELETE_EVENT, FILTER_EVENT, INVITE_FRIENDS,GET_FRIENDS,UPDATE_EVENT, SEARCH_EVENT, GET_INV1,ACCEPT_EVENT, ATTENDED, SUBSCRIBE} from  '../Actions/types'
+import { ADD_EVENT, GET_EVENTS, GET_EVENT, GET_CATEGORIES, DELETE_EVENT, FILTER_EVENT, INVITE_FRIENDS, GET_FRIENDS, UPDATE_EVENT, SEARCH_EVENT, GET_INV1, ACCEPT_EVENT, ATTENDED, SUBSCRIBE, DECLINE_INV } from '../Actions/types'
 const initialState = {
 
     events: [],
     event: null,
-    categories:null,
-    friends:[],
-    loading:true,
-    inv:[],
-    opted:[]
-    
+    categories: null,
+    friends: [],
+    loading: true,
+    inv: [],
+    opted: []
+
 }
 // eslint-disable-next-line
 export default function (state = initialState, action) {
@@ -17,13 +17,13 @@ export default function (state = initialState, action) {
         case SEARCH_EVENT:
             return {
                 ...state,
-                events:payload,
-                loading:false
+                events: payload,
+                loading: false
             }
         case UPDATE_EVENT:
             return {
                 ...state,
-                event:payload,loading:false
+                event: payload, loading: false
             }
         case INVITE_FRIENDS:
             return {
@@ -32,12 +32,12 @@ export default function (state = initialState, action) {
         case GET_FRIENDS:
             return {
                 ...state,
-                friends:payload
+                friends: payload
             }
         case FILTER_EVENT:
             return {
                 ...state,
-                 events:payload
+                events: payload
             }
         case DELETE_EVENT:
             return {
@@ -47,48 +47,53 @@ export default function (state = initialState, action) {
         case GET_CATEGORIES:
             return {
                 ...state,
-                categories:payload
+                categories: payload
             }
-        case GET_EVENTS :
+        case GET_EVENTS:
             return {
                 ...state,
-                events:payload,
+                events: payload,
                 loading: false
             }
-            case GET_EVENT :
-                return {
-                    ...state,
-                    event:payload,
-                    loading: false
-                }
-                case SUBSCRIBE:
-                    return {
-                        ...state,
-                        event:payload,
-                        loading:false
-                    }
-       case  ADD_EVENT:
-        return{
-            ...state,
-            events:[payload,...state.events],
-            loading:false
-        }
-        case ATTENDED :
+        case GET_EVENT:
             return {
                 ...state,
-                opted:payload
+                event: payload,
+                loading: false
+            }
+        case SUBSCRIBE:
+            return {
+                ...state,
+                event: payload,
+                loading: false
+            }
+        case ADD_EVENT:
+            return {
+                ...state,
+                events: [payload, ...state.events],
+                loading: false
+            }
+        case ATTENDED:
+            return {
+                ...state,
+                opted: payload
             }
         case GET_INV1:
             return {
                 ...state,
-                inv:payload
+                inv: payload
             }
-            case ACCEPT_EVENT:
-                return {
-                    ...state,
-                    inv: state.inv.filter(inv => inv.id !== payload.data.id),
-
-                }
+        case ACCEPT_EVENT:
+            return {
+                ...state,
+                inv: state.inv.filter(inv => inv.id !== payload.data.id),
+            }
+        case DECLINE_INV: 
+            return {
+                ...state,
+                inv: state.inv.filter(inv => inv.id !== payload.data.id),
+                opted: state.opted.filter(opted => opted.id !== payload.data.id),
+            }
         default:
             return state;
     }

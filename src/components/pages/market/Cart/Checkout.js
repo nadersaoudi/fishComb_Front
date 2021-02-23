@@ -34,8 +34,6 @@ const Checkout = ({checkout}) => {
     const [disable,setdisable]=useState(false)
     const submit =e=>{
         e.preventDefault()
-    
-      console.log(formData)
       checkout(formData)
       setdisable(true)
     }

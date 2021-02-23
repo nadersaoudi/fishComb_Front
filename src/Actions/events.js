@@ -1,4 +1,4 @@
-import { ADD_EVENT, EVENT_ERROR ,GET_EVENTS,GET_EVENT, GET_CATEGORIES, DELETE_EVENT,FILTER_EVENT, GET_FRIENDS, INVITE_FRIENDS,UPDATE_EVENT, SEARCH_EVENT,GET_INV1, ACCEPT_EVENT,ATTENDED, SUBSCRIBE} from './types'
+import { ADD_EVENT, EVENT_ERROR ,GET_EVENTS,GET_EVENT, GET_CATEGORIES, DELETE_EVENT,FILTER_EVENT, GET_FRIENDS, INVITE_FRIENDS,UPDATE_EVENT, SEARCH_EVENT,GET_INV1, ACCEPT_EVENT,ATTENDED, SUBSCRIBE, DECLINE_INV } from './types'
 import axios from 'axios'
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -350,6 +350,29 @@ export const optedevent = () => async dispatch => {
         })
     } catch (error) {
        // toast.error('Error happened when fetching event');
+        dispatch({
+            type: EVENT_ERROR,
+        });
+    }
+
+}
+
+//Decline Inv 
+export const declineInv = (event_id) => async dispatch => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try{
+        const res = await axios.post(`/api/events/invite/decline`,{event_id},config)
+        dispatch({
+            type: DECLINE_INV,
+                payload: res.data
+            })
+        toast.info('Canel Sub')
+    }catch (error){
         dispatch({
             type: EVENT_ERROR,
         });
