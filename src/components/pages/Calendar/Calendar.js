@@ -17,6 +17,7 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 
 import { appointments } from './appointments';
+import { Fragment } from 'react';
 const Calendar =()=>{
     var  [currentViewName,setcurrentViewName]=useState('work-week');
     const  currentViewNameChange = (currentViewName) => {
@@ -24,6 +25,8 @@ const Calendar =()=>{
     };
 
     return (
+      <Fragment>
+        <title>Calendar</title>
         <Paper>
          
         <Scheduler
@@ -61,7 +64,7 @@ const Calendar =()=>{
           />
           <AppointmentForm />
         </Scheduler>
-      </Paper>
+      </Paper></Fragment>
     );
 }
 export default Calendar
