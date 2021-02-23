@@ -351,16 +351,12 @@ export default class RegisterUser extends Component {
                                         <option value="Zimbabwe">Zimbabwe</option>
                                         </select>
                                 </div>
-                                <div className="col-sm-6 mb-3 ">
-                                    <input type="text" className="form-control reg__input" placeholder="Phone"
-                                        onChange={e => this.phone = e.target.value}/>
-                                </div>
                                 <div className="col-sm-12 mb-3 ">
                                     <textarea  type="texterea" className="form-control reg__input" id="exampleFormControlTextarea1" row='4' placeholder="About"
                                         onChange={e => this.about = e.target.value}/>
                                 </div>
                                 </div>
-                                <label>Birthday</label>
+                                <label>D.O.B</label>
                                 <div className="row">
                                     <div className="col-sm-4 mt-2">
                                         <select className=" form-control reg__input" onChange={(e) => this.month = e.target.value}>

@@ -48,9 +48,9 @@ const App = () => {
       <Route path="/reset">
           <Reset />
       </Route>
-      <ProtectedRoute  path="/dashboard">
+      <Route  path="/dashboard">
         <Dashboard />
-      </ProtectedRoute>
+      </Route>
       <Route exact path="*">
         <Redirect exact from="/" to="/dashboard/404" />
       </Route>

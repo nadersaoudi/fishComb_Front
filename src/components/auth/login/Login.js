@@ -50,7 +50,7 @@ const Login = ({ log, isAuthenticated }) => {
                         name="login" value={login} onChange={e => onchange(e)} />
                     </div>
                     <div className="col-sm-12 mb-4 ">
-                      <input type="password" name="password" className="form-control log__input" placeholder="New Password"
+                      <input type="password" name="password" className="form-control log__input" placeholder="Password"
                         name="password" value={password}
                         onChange={e => onchange(e)} />
                     </div>

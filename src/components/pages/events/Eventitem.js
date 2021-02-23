@@ -411,7 +411,7 @@ const Eventitem = ({
                         <li className="nav-item">
                             <Link to={`/dashboard/events`}
                                 className="link_cart">
-                                <span className="n">General Event</span>
+                                <span className="n">General Events</span>
                             </Link>
                         </li>
                         <li className="nav-item">

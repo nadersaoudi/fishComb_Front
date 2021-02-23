@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 
 const Single =({  event })=> {
     return (
-     
         <div className='col-md-2 pb-4 '>
         <div className='image_holder grid '>
         <NavLink to={`/dashboard/singleevent/${event.id}`} > 
@@ -17,13 +16,9 @@ const Single =({  event })=> {
                       date={event && event.date}
                       format="YYYY-MM-DD"
                       trim/>
-                 
             </div>
         </div>
-       
     </div>
-
-    
     )
 }
 Single.propTypes = {

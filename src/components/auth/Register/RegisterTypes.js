@@ -25,14 +25,14 @@ const RegisterTypes = () => {
                         <Col>
                             <NavLink to={'/userregister'} className='navlinkregi' >
                                 <Button className="btn btn-primary col-sm-12 mt-2 mb-4 reg-button ">
-                                    Norml User
+                                    Personal Account
                                 </Button>
                             </NavLink>
                         </Col>
                         </Row>
                             <NavLink to={'/ministryregister'} className='navlinkregi' >
                                 <Button className="btn btn-primary col-sm-12 mt-2 mb-4  reg-button">
-                                        Ministry User
+                                        Ministry Account
                                 </Button>
                             </NavLink>
                     </Card>
