@@ -146,19 +146,19 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories,load
                                     </button>
                                 </div>
                             </form>
-                           { user.attributes.type ===2 ?
+                           { user?.attributes?.type ===2 ?
                            <div className='row pt-2 mx-1'>
                                 <div className='col-sm-12 marketbtn px-0 '>
                                     <Button className='marketbtn' onClick={handleClickOpen1}><h6>Your Account</h6></Button>
                                 </div>
                             </div>:<div></div>}
-                             { user.attributes.type ===2 ?
+                             { user?.attributes?.type ===2 ?
                             <div className='row pt-2 mx-1'>
                                 <div className='col-sm-12 px-0 marketbtn'>
                                     <Button className='marketbtn' onClick={handleClickOpen}><h6>Add Product</h6></Button>
                                 </div>
                             </div>:<div></div>}
-                             { user.attributes.type ===2 ?
+                             { user?.attributes?.type ===2 ?
                             <div className='row pt-2 mx-1'>
                                 <div className='col-sm-12 px-0 marketbtn'>
                                     <Button className='marketbtn' onClick={myProduct} ><h6>My Product</h6></Button>
@@ -174,13 +174,13 @@ const Market = ({ auth: { user }, getMarket, markets: { markets, categories,load
                                     <DialogContent>
                                         <div className='row'>
                                             <div className='col-sm-1 mr-2'>
-                                                <Avatar src={user && user.attributes.profile_image} />
+                                                <Avatar src={user && user?.attributes.profile_image} />
                                             </div>
                                             <div className='col-sm-10 pt-3'>
                                                 <div className='row'>
                                                     <div className='row pb-2'>
                                                         <div className='col-sm-12'>
-                                                            <h6><b>{user && user.attributes.first_name.charAt(0).toUpperCase() + user.attributes.first_name.slice(1)}  {user && user.attributes.last_name.charAt(0).toUpperCase() + user.attributes.last_name.slice(1)}</b></h6>
+                                                            <h6><b>{user && user?.attributes.first_name.charAt(0).toUpperCase() + user?.attributes.first_name.slice(1)}  {user && user.attributes.last_name.charAt(0).toUpperCase() + user?.attributes.last_name.slice(1)}</b></h6>
                                                         </div>
                                                     </div>
                                                     <div className='row'>
