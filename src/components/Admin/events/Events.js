@@ -21,6 +21,9 @@ const Events = ({events: {
                         <th>location</th>
                         <th>Date</th>
                         <th>Description</th>
+                        <th>category</th>
+                        <th>Creator</th>
+                        <th>Participant</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -40,6 +43,18 @@ const Events = ({events: {
                             }</td>
                              <td>{
                                 events.description
+                            }</td>
+                            <td>{
+                                events.category.name
+                            }</td>
+                            <td>{
+                                events.user.data.attributes.first_name 
+                            }{' '}{
+                                events.user.data.attributes.last_name 
+                            }
+                            </td>
+                            <td>{
+                                events?.participants?.length
                             }</td>
                             <td><button>delete</button></td>
                         </tr>
