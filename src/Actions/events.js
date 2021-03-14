@@ -371,7 +371,7 @@ export const declineInv = (event_id) => async dispatch => {
             type: DECLINE_INV,
                 payload: res.data
             })
-        toast.info('Canel Sub')
+        toast.info('Decline Success')
     }catch (error){
         dispatch({
             type: EVENT_ERROR,

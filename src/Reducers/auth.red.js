@@ -35,9 +35,6 @@ export default function (state = initialState, action) {
                 token: null,
                 loading: false,
                 success: true,
-        
-           
-               
             }
         default:
             return state;
