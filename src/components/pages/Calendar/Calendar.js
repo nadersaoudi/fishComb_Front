@@ -19,20 +19,13 @@ import { connect } from 'react-redux';
 import { appointments } from './appointments';
 import { Fragment } from 'react';
 import { useEffect } from 'react';
-const Calendar =({events:{events}})=>{
-  const initialValue =  { title:'xxss', startDate:'' }; 
-  const [interceptor,setinterceptor]=useState([])
-  const interceptEvents=()=>{
-    events.forEach(event=>{
-      initialValue.title=event.name
-      initialValue.startDate=event.date
-         interceptor.push(initialValue)   
-    })
-    console.log(interceptor)
-  }
+import {getCalendar} from '../../../Actions/calendar'
+import PropTypes from 'prop-types';
+const Calendar =({getCalendar,Calendars:{calendars}})=>{
+ 
   useEffect(()=>{
-    interceptEvents()
-  },[interceptEvents])
+    getCalendar()
+  },[getCalendar])
     var  [currentViewName,setcurrentViewName]=useState('work-week');
     const  currentViewNameChange = (currentViewName) => {
      setcurrentViewName(currentViewName);
@@ -43,11 +36,12 @@ const Calendar =({events:{events}})=>{
         <Paper>
          
         <Scheduler
-         // data={interceptor}
+          data={calendars}
           height={660}
+          
         >
           <ViewState
-            defaultCurrentDate="2018-07-25"
+            defaultCurrentDate="2021-03-25"
             currentViewName={currentViewName}
             onCurrentViewNameChange={currentViewNameChange}
           />
@@ -81,7 +75,13 @@ const Calendar =({events:{events}})=>{
       </Paper></Fragment>
     );
 }
+Calendar.prototype = {
+ 
+  getCalendar: PropTypes.func.isRequired,
+  Calendars:PropTypes.object.isRequired,
+  
+}
 const mapStateToProps =state=>({
-  events:state.events
+  Calendars:state.calendars
 })
-export default connect(mapStateToProps) (Calendar)
+export default connect(mapStateToProps,{getCalendar}) (Calendar)
