@@ -13,6 +13,7 @@ const Events = ({events: {
         <div>
             <title>
                 Admin | events</title>
+                <div>events count {events?.length}</div>
             <Table striped bordered hover>
                 <thead>
                     <tr>
