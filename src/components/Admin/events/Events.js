@@ -25,6 +25,7 @@ const Events = ({events: {
                         <th>category</th>
                         <th>Creator</th>
                         <th>Participant</th>
+                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -56,6 +57,9 @@ const Events = ({events: {
                             </td>
                             <td>{
                                 events?.participants?.length
+                            }</td>
+                            <td>{
+                                events?.status === true ? <div>actif</div>:<div>disabled</div>
                             }</td>
                             <td><button>delete</button></td>
                         </tr>
