@@ -21,8 +21,7 @@ const Market =({markets:{markets},getMarket})=>{
                         <th>Price</th>
                         <th>Stock</th>
                         <th>Description</th>
-                        <th>category</th>
-                        <th>Creator</th>
+                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -43,6 +42,7 @@ const Market =({markets:{markets},getMarket})=>{
                              <td>{
                                 markets.description
                             }</td>
+                            <td>{markets.status === 1 ? <div>actif</div>:<div>disabled</div>}</td>
                             <td>
                                 <button>delete</button>
                             </td>
