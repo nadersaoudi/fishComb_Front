@@ -6,11 +6,14 @@ import {getcategories,Myinvitations} from '../../../Actions/events';
 import {getMyinvitations} from '../../../Actions/Friends';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCategories } from '../../../Actions/Market';
-const Dashboard =({getcategories,getCategories,Myinvitations,getMyinvitations})=> {
+import { getCategories, getMarket } from '../../../Actions/Market';
+const Dashboard =({getcategories,getCategories,Myinvitations,getMyinvitations, getMarket })=> {
     useEffect(() => {
         getMyinvitations();
       }, [getMyinvitations]);
+      useEffect(() => {
+        getMarket()
+    }, [getMarket])
       useEffect(() => {
         getcategories();
       }, [getcategories]);
@@ -30,7 +33,7 @@ const Dashboard =({getcategories,getCategories,Myinvitations,getMyinvitations})=
     
 }
 Dashboard.propTypes = {
-
+    getMarket: PropTypes.func.isRequired,
     getMyinvitations: PropTypes.func.isRequired,
     Myinvitations: PropTypes.func.isRequired,
     getcategories: PropTypes.func.isRequired,
@@ -38,4 +41,4 @@ Dashboard.propTypes = {
   
   
   }; 
-export default connect(null,{getcategories,getCategories,Myinvitations,getMyinvitations})(Dashboard);
+export default connect(null,{getcategories,getCategories,Myinvitations,getMyinvitations ,getMarket })(Dashboard);

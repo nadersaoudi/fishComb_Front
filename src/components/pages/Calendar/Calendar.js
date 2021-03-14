@@ -13,24 +13,37 @@ import {
   TodayButton,
   AppointmentForm,
   AppointmentTooltip,
-  ConfirmationDialog,
+  AllDayPanel,
 } from '@devexpress/dx-react-scheduler-material-ui';
-
+import { connect } from 'react-redux';
 import { appointments } from './appointments';
 import { Fragment } from 'react';
-const Calendar =()=>{
+import { useEffect } from 'react';
+const Calendar =({events:{events}})=>{
+  const initialValue =  { title:'xxss', startDate:'' }; 
+  const [interceptor,setinterceptor]=useState([])
+  const interceptEvents=()=>{
+    events.forEach(event=>{
+      initialValue.title=event.name
+      initialValue.startDate=event.date
+         interceptor.push(initialValue)   
+    })
+    console.log(interceptor)
+  }
+  useEffect(()=>{
+    interceptEvents()
+  },[interceptEvents])
     var  [currentViewName,setcurrentViewName]=useState('work-week');
     const  currentViewNameChange = (currentViewName) => {
      setcurrentViewName(currentViewName);
     };
-
     return (
       <Fragment>
         <title>Calendar</title>
         <Paper>
          
         <Scheduler
-          data={appointments}
+         // data={interceptor}
           height={660}
         >
           <ViewState
@@ -63,8 +76,12 @@ const Calendar =()=>{
             showDeleteButton
           />
           <AppointmentForm />
+          <AllDayPanel />
         </Scheduler>
       </Paper></Fragment>
     );
 }
-export default Calendar
+const mapStateToProps =state=>({
+  events:state.events
+})
+export default connect(mapStateToProps) (Calendar)

@@ -20,6 +20,9 @@ import Gallery  from '../../pages/events/Gallery'
 import Calendar  from '../../pages/Calendar/Calendar'
 import Page500 from '../../auth/500Page/Page500'
 import Page404 from '../../auth/404Page/Page404'
+import AdminEvents from '../../Admin/events/Events'
+import Adminmarket from '../../Admin/marketplace/Market'
+import Adminposts from '../../Admin/posts/posts'
 const Container = () => {
   return (
     <div classes='row no-gutters '>
@@ -29,6 +32,15 @@ const Container = () => {
             <Switch>
               <Route exact path={`/dashboard/newsfeed`}>
                 <NewFeed />
+              </Route>
+              <Route exact path={`/dashboard/Admin/events`}>
+                <AdminEvents />
+              </Route>
+              <Route exact path={`/dashboard/Admin/market`}>
+                <Adminmarket />
+              </Route>
+              <Route exact path={`/dashboard/Admin/posts`}>
+                <Adminposts />
               </Route>
               <Route exact path={`/dashboard/messages`}>
                 <Message />
