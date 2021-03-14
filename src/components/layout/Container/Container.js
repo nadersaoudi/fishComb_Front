@@ -23,6 +23,7 @@ import Page404 from '../../auth/404Page/Page404'
 import AdminEvents from '../../Admin/events/Events'
 import Adminmarket from '../../Admin/marketplace/Market'
 import Adminposts from '../../Admin/posts/posts'
+import AdminForum from '../../Admin/Forum/Forum'
 const Container = () => {
   return (
     <div classes='row no-gutters '>
@@ -38,6 +39,9 @@ const Container = () => {
               </Route>
               <Route exact path={`/dashboard/Admin/market`}>
                 <Adminmarket />
+              </Route>
+              <Route exact path={`/dashboard/Admin/Forum`}>
+                <AdminForum />
               </Route>
               <Route exact path={`/dashboard/Admin/posts`}>
                 <Adminposts />
