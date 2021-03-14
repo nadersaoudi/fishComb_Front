@@ -13,13 +13,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import SortIcon from '@material-ui/icons/Sort';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Row, Col, Image } from 'react-bootstrap';
 import Switch from '@material-ui/core/Switch';
 import Spinner from '../Spinner/Spinner'
 
 
-const Events = ({ addEvent, getevents, events: { events, categories, loading }, sortEvents, myevents, search }) => {
+const Events = ({ addEvent, getevents, events: { events, categories, loading }, sortEvents, myevents, search,auth:{user} }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
@@ -129,6 +129,9 @@ const Events = ({ addEvent, getevents, events: { events, categories, loading }, 
         // console.log(value)
         search(filter, value)
     }
+   /* if(user?.attributes.type ===1){
+      return  <Redirect to='/dashboard/admin/events'/>
+    } else */
     return loading === true ? <Spinner /> :
         <div>
             <title>Events | FishComb</title>
@@ -614,11 +617,13 @@ Events.prototype = {
     categories: PropTypes.object.isRequired,
     sortEvents: PropTypes.func.isRequired,
     myevents: PropTypes.func.isRequired,
-    search: PropTypes.func.isRequired
+    search: PropTypes.func.isRequired,
+    auth:PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
     addEvent: state.addEvent,
     events: state.events,
     categories: state.categories,
+    auth:state.auth
 })
 export default connect(mapStateToProps, { addEvent, getevents, sortEvents, myevents, search })(Events);
