@@ -2,10 +2,10 @@ import React, {useEffect} from 'react'
 import Table from 'react-bootstrap/Table'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
-import {getevents} from '../../../Actions/events';
+import {getevents,deleteEvent} from '../../../Actions/events';
 const Events = ({events: {
         events
-    }, getevents}) => {
+    }, getevents,deleteEvent}) => {
     useEffect(() => {
         getevents()
     }, [getevents])
@@ -61,7 +61,7 @@ const Events = ({events: {
                             <td>{
                                 events?.status === true ? <div>actif</div>:<div>disabled</div>
                             }</td>
-                            <td><button>delete</button></td>
+                            <td><button onClick={ e => deleteEvent(events?.id)}>delete</button></td>
                         </tr>
                     ))
                 } </tbody>
@@ -70,7 +70,8 @@ const Events = ({events: {
     )
 }; Events.prototype = {
     events: PropTypes.object.isRequired,
-    getevents: PropTypes.func.isRequired
+    getevents: PropTypes.func.isRequired,
+    deleteEvent: PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({events: state.events})
-export default connect(mapStateToProps, {getevents})(Events)
+export default connect(mapStateToProps, {getevents,deleteEvent})(Events)
