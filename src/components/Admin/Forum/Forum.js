@@ -19,7 +19,9 @@ const Forum =({getThread,Thread:{thread}})=>{
                     <th>Title</th>
                     <th>Description</th>
                     <th>Creator</th>
+                    <th>status</th>
                     <th></th>
+                   
                 </tr>
             </thead>
             <tbody> {
@@ -28,6 +30,8 @@ const Forum =({getThread,Thread:{thread}})=>{
                     <td>{forum.data?.title}</td>
                     <td>{forum.data?.body}</td>
                     <td>{forum.data?.user.data.attributes.first_name}{' '}{forum.data?.user.data.attributes.last_name}</td>
+                    <td>{forum.data?.status === 1 ? <div>actif</div>:<div>disabled</div>}</td>
+                    <td><button>Delete</button></td>
                     
                 </tr>
                 ))
