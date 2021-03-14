@@ -11,6 +11,7 @@ const Forum =({getThread,Thread:{thread}})=>{
         <div>
         <title>
             Admin | Forum</title>
+            <div>Forum count : {thread?.length}</div>
         <Table striped bordered hover>
             <thead>
                 <tr>
