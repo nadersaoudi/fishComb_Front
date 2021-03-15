@@ -35,7 +35,10 @@ export const log = ( login, password) => async dispatch => {
             });
             
         }).catch((err)=>{
-            toast.error('Invalid Credentials')
+            const errors = err.response.data.message;
+            const error = err.response.data.errors;
+            toast.error(errors)
+            toast.error(error)
             dispatch({
                 type: LOGIN_FAIL,
             })  

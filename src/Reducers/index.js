@@ -8,8 +8,9 @@ import market from './market';
 import cart from './cart';
 import Thread from './Board';
 import Replies from './Replies'
+import calendars from './calendars'
 export default combineReducers({
 
-    auth,Post,Friends,Profile,events,market,cart,Thread,Replies
+    auth,Post,Friends,Profile,events,market,cart,Thread,Replies,calendars
 
 });

@@ -12,7 +12,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Col } from 'react-bootstrap'
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import { Button } from '@material-ui/core';
+import { Button, Card } from '@material-ui/core';
 
 const Network = ({ Post: { posts }, getPosts, getevents, events: { events }, Searchfriend }) => {
   useEffect(() => {
@@ -25,9 +25,9 @@ const Network = ({ Post: { posts }, getPosts, getevents, events: { events }, Sea
   const history = useHistory()
   return (
     <Fragment>
-
+      <nav>
       <div className='row pt-2 pb-4'>
-      <form className="col-sm-5 px-0  header__input"
+      <form className="col-sm-4 px-0  header__input"
                     onSubmit={
                         e => {
                             e.preventDefault();
@@ -41,7 +41,7 @@ const Network = ({ Post: { posts }, getPosts, getevents, events: { events }, Sea
                             onChange={
                                 e => setText(e.target.value)
                             } />
-                        <button className="col-sm-1  header__button"
+                        <button className="col-sm-2  header__button"
                             onClick={
                                 () => {
                                     history.push('/dashboard/search')
@@ -55,13 +55,14 @@ const Network = ({ Post: { posts }, getPosts, getevents, events: { events }, Sea
                         </button>
                     </div>
                 </form>
-                <Col md={4} className=" px-4 ">
+                <Col md={1}></Col>
+                <Col md={5} className=" px-4 ">
                     <ul className="nav nav-pills nav-justified " id='navprofil'>
                         <li className="nav-item">
                             <Link  to={`/dashboard/profile/friend`}className="link_cart"><span className='n' >Frineds</span></Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={`/dashboard/invited`} className="link_cart"><span className='n'>Invited</span></Link>
+                            <Link to={`/dashboard/profile/invitation`}className="link_cart"><span className='n'>Invitations</span></Link>
                         </li>
                         <li className="nav-item">
                             <Link to={`/dashboard/attendedevent`} className="link_cart"><span className='n'>Attending</span></Link>
@@ -69,6 +70,7 @@ const Network = ({ Post: { posts }, getPosts, getevents, events: { events }, Sea
                     </ul>
                 </Col>
       </div>
+      </nav>
       <div className='row mt-5'>
         <div className='col-sm-6'>
           <OwlCarousel className="slider-items owl-carousel">
@@ -116,7 +118,6 @@ const Network = ({ Post: { posts }, getPosts, getevents, events: { events }, Sea
     </Fragment>
   )
 }
-
 Network.propTypes = {
   Post: PropTypes.object.isRequired,
   getPosts: PropTypes.func.isRequired,
@@ -125,12 +126,8 @@ Network.propTypes = {
   Searchfriend: PropTypes.func.isRequired,
   Friends: PropTypes.object.isRequired,
 }
-
 const mapStateToProps = (state) => ({
   Post: state.Post,
   events: state.events
 })
-
-
-
 export default connect(mapStateToProps, { getPosts, getevents, Searchfriend })(Network)
