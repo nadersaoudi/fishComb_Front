@@ -78,3 +78,40 @@
     min-height: 420px;
     height: 500px;
 }
+#form_pub{
+    padding: 3%;
+}
+.card__Pub{
+    border-radius: 0 !important;
+    position: relative !important; 
+}
+.button__Com{
+    display: none !important;
+}
+.input__Com{
+    background-color: #f7f8f9 !important;
+    border-radius: 2px !important;
+}
+.card__comments{
+    background-color: #f3f2f3 !important;
+    box-shadow: rgb(47, 62, 77) !important;
+    position: relative !important;
+}
+.Button_editPub{
+    background-color: #fff !important;
+}
+.button__comm{
+    background-color: #fff !important;
+}
+.button_editCom{
+    background-color: #f3f2f3 !important;
+}
+.input__ComUpdate{
+    outline: 0 !important;
+    border: 0 !important;
+    box-shadow: rgb(47, 62, 77) !important;
+    background-color: #f3f2f3 !important;
+}
+.update_combutton{
+    display: none;
+}

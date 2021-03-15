@@ -1,5 +1,5 @@
 
-import { ADD_FRIEND, ADD_FRIEND_FAILED, SEARCH_SUCCESS, SEARCH_FAILED, GET_INV, INV_ERROR , ACC_INV ,ACC_ERROR} from './types'
+import { ADD_FRIEND, ADD_FRIEND_FAILED, SEARCH_SUCCESS, SEARCH_FAILED, GET_INV, INV_ERROR ,FRIEND_ERROR, ACC_INV ,ACC_ERROR, GET_FRIENDS} from './types'
 import axios from 'axios'
 import Cookies from 'js-cookie';
 import { toast} from 'react-toastify';
@@ -91,5 +91,27 @@ export const acceptInv = (user_id,status) => async dispatch =>  {
             dispatch({
                 type: ACC_ERROR,
             })
+    }
+}
+
+//get all Friends 
+export const getFriends = () => async (dispatch) => {
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + Cookies.get('user'),
+            'content-Type': 'application/json'
+        }
+    }
+    try {
+        const res = await axios.post(`api/user/friends`,{}, config) 
+        dispatch({
+            type: GET_FRIENDS,
+            payload: res.data.users
+        })
+    } catch (error) {
+        toast.error('Error happened when fetching event');
+        dispatch({
+            type: FRIEND_ERROR,
+        });
     }
 }

@@ -1,4 +1,4 @@
-import { ADD_FRIEND,ADD_FRIEND_FAILED,SEARCH_SUCCESS,SEARCH_FAILED ,GET_INV, ACC_INV} from '../Actions/types'
+import { ADD_FRIEND,ADD_FRIEND_FAILED,SEARCH_SUCCESS,SEARCH_FAILED ,GET_INV, ACC_INV , GET_FRIENDS} from '../Actions/types'
 
 const initialState = {
     friend:null,
@@ -33,6 +33,11 @@ export default function (state = initialState, action) {
             return {
                ...state,
                 users: payload,
+            }
+            case GET_FRIENDS:
+            return {
+                ...state,
+                friends: payload
             }
             case ACC_INV:
                 return {

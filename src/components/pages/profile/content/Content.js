@@ -5,6 +5,7 @@ import Order from '../edit-profile/Order';
 import Edit from '../edit-profile/Edit';
 import Network from '../edit-profile/Network'
 import Webinars from '../edit-profile/Webinars';
+import FriendsList from '../edit-profile/FriendsList';
 
 const Content = () => {
 
@@ -21,6 +22,9 @@ const Content = () => {
           </Route>
           <Route path={`/dashboard/profile/order`}>
             <Order />
+          </Route>
+          <Route path={`/dashboard/profile/friend`}>
+            <FriendsList />
           </Route>
           <Route path={`/dashboard/profile/network`}>
             <Network />
